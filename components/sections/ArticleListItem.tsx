@@ -17,7 +17,7 @@ export const ArticleListItem: React.FC<ArticleListItemProps> = ({ title, excerpt
         {/* Subtle hover accent line */}
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
         
-        <div className="pl-0 group-hover:pl-6 transition-all duration-500 ease-out flex flex-col md:flex-row gap-8 items-center">
+        <div className="pl-0 md:group-hover:pl-6 transition-all duration-500 ease-out flex flex-col md:flex-row gap-8 items-center">
           
           <div className="flex-1 w-full order-2 md:order-1">
             <div className="flex items-center gap-3 text-xs font-sans text-charcoal/60 uppercase tracking-[0.2em] mb-4">
