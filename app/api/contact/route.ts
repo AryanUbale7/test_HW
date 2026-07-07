@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { supabaseAdmin } from '@/lib/supabase/admin';
 
 // Initialize Resend. Will gracefully fail if API key is not present.
 const resend = new Resend(process.env.RESEND_API_KEY || 're_dummy_key');
@@ -15,6 +16,22 @@ export async function POST(request: Request) {
         { error: 'Missing required fields or consent' },
         { status: 400 }
       );
+    }
+
+    // Insert into Supabase
+    const { error: dbError } = await supabaseAdmin
+      .from('ContactMessage')
+      .insert({
+        name: `${firstName} ${lastName}`.trim(),
+        email,
+        phone: phone || null,
+        message,
+        consentGiven: consent,
+      });
+
+    if (dbError) {
+      console.error('Failed to insert contact message into DB:', dbError);
+      // We log but continue, so they still get the email notification at least
     }
 
     if (process.env.RESEND_API_KEY) {

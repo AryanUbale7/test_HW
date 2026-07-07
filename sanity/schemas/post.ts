@@ -9,6 +9,13 @@ export const post = defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          if (context.document?.status === 'published' && !value) {
+            return 'Title is required before you can publish this post.'
+          }
+          return true
+        }),
     }),
     defineField({
       name: 'slug',
@@ -18,17 +25,38 @@ export const post = defineType({
         source: 'title',
         maxLength: 96,
       },
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          if (context.document?.status === 'published' && !value) {
+            return 'A URL slug is required before publishing.'
+          }
+          return true
+        }),
     }),
     defineField({
       name: 'excerpt',
       title: 'Excerpt',
       type: 'text',
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          if (context.document?.status === 'published' && !value) {
+            return 'Please write a short excerpt before publishing.'
+          }
+          return true
+        }),
     }),
     defineField({
       name: 'body',
       title: 'Body',
       type: 'array',
       of: [{ type: 'block' }],
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          if (context.document?.status === 'published' && (!value || (value as any[]).length === 0)) {
+            return 'You need to write some content in the body before publishing.'
+          }
+          return true
+        }),
     }),
     defineField({
       name: 'coverImage',
@@ -50,6 +78,13 @@ export const post = defineType({
           { title: 'General', value: 'General' },
         ],
       },
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          if (context.document?.status === 'published' && !value) {
+            return 'Please select a business arm before publishing.'
+          }
+          return true
+        }),
     }),
     defineField({
       name: 'type',
@@ -61,12 +96,26 @@ export const post = defineType({
           { title: 'News', value: 'News' },
         ],
       },
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          if (context.document?.status === 'published' && !value) {
+            return 'Please select a post type before publishing.'
+          }
+          return true
+        }),
     }),
     defineField({
       name: 'sourceUrl',
       title: 'Source URL',
       type: 'url',
       hidden: ({ document }) => document?.type !== 'News',
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          if (context.document?.status === 'published' && context.document?.type === 'News' && !value) {
+            return 'News posts require a Source URL before publishing.'
+          }
+          return true
+        }),
     }),
     defineField({
       name: 'publishedAt',
@@ -102,4 +151,19 @@ export const post = defineType({
       to: { type: 'author' },
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      author: 'author.name',
+      status: 'status',
+      media: 'coverImage',
+    },
+    prepare({ title, author, status, media }) {
+      return {
+        title,
+        subtitle: `${author || 'No author'} • ${status === 'published' ? '🟢 Published' : '🟠 Draft'}`,
+        media,
+      }
+    },
+  },
 })
