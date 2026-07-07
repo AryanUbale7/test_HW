@@ -137,7 +137,7 @@ async function seed() {
   try {
     console.log('Starting seed process...')
     for (const post of posts) {
-      const result = await client.create(post)
+      const result = await client.create(post as any)
       console.log(`Seeded post: ${post.title} (${result._id})`)
     }
     console.log('Seeding complete!')
