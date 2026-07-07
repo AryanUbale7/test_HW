@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+@theme inline {
+  --color-ivory: #FBF8F0;
+  --color-sage: #AEC3B0;
+  --color-sage-mist: #E8EFE6;
+  --color-gold: #B8923E;
+  --color-deep-green: #2E4A3A;
+  --color-charcoal: #36403B;
+  
+  --font-serif: var(--font-merriweather), serif;
+  --font-sans: var(--font-merriweather), sans-serif;
+}
+
+body {
+  background-color: var(--color-ivory);
+  color: var(--color-charcoal);
+}
