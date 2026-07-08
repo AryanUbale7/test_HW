@@ -6,6 +6,7 @@ interface SectionHeaderProps {
   subtext?: string;
   className?: string;
   align?: 'left' | 'center';
+  headingTag?: 'h1' | 'h2';
 }
 
 export const SectionHeader: React.FC<SectionHeaderProps> = ({
@@ -14,8 +15,10 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   subtext,
   className = '',
   align = 'left',
+  headingTag = 'h2',
 }) => {
   const alignClass = align === 'center' ? 'text-center mx-auto' : 'text-left';
+  const Tag = headingTag;
 
   return (
     <div className={`max-w-3xl ${alignClass} ${className}`}>
@@ -24,9 +27,9 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
           {eyebrow}
         </span>
       )}
-      <h2 className="text-4xl md:text-5xl font-serif text-deep-green mb-6 leading-tight">
+      <Tag className="text-4xl md:text-5xl font-serif text-deep-green mb-6 leading-tight">
         {heading}
-      </h2>
+      </Tag>
       {subtext && (
         <p className="text-lg md:text-xl font-sans text-charcoal leading-relaxed">
           {subtext}

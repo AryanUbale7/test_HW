@@ -1,11 +1,43 @@
 import React from 'react';
+import { Metadata } from 'next';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ContactForm } from '@/components/sections/ContactForm';
 import { Card } from '@/components/ui/Card';
 
+export const metadata: Metadata = {
+  title: 'Reach Me | Honworth',
+  description: 'Start a conversation with Honworth. Book a discovery call via Calendly, submit our contact form, or connect via WhatsApp.',
+  alternates: {
+    canonical: 'https://honworth.in/reach-me',
+  },
+};
+
 export default function ReachMePage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://honworth.in"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Reach Me",
+        "item": "https://honworth.in/reach-me"
+      }
+    ]
+  };
+
   return (
     <div className="bg-ivory min-h-screen py-20 md:py-32">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader 
           eyebrow="Reach Me"
@@ -13,6 +45,7 @@ export default function ReachMePage() {
           subtext="Whether you have a specific inquiry or wish to explore a long-term partnership, I am available to discuss your financial architecture."
           className="mb-16 text-center mx-auto"
           align="center"
+          headingTag="h1"
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20">

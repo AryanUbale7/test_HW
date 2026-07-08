@@ -12,6 +12,7 @@ export const ContactForm = () => {
     inquiryType: 'General Inquiry',
     message: '',
     consent: false,
+    website: '',
   });
 
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -55,6 +56,7 @@ export const ContactForm = () => {
         inquiryType: 'General Inquiry',
         message: '',
         consent: false,
+        website: '',
       });
     } catch (err) {
       setStatus('error');
@@ -173,6 +175,20 @@ export const ContactForm = () => {
         <label htmlFor="consent" className="text-sm font-sans text-charcoal leading-relaxed">
           I consent to Honworth collecting and processing my details to respond to this inquiry, in accordance with the Privacy Policy. *
         </label>
+      </div>
+
+      {/* Honeypot field for bot protection */}
+      <div className="hidden" aria-hidden="true">
+        <label htmlFor="website">Leave this field blank</label>
+        <input
+          type="text"
+          id="website"
+          name="website"
+          value={formData.website}
+          onChange={handleChange}
+          tabIndex={-1}
+          autoComplete="off"
+        />
       </div>
 
       {status === 'error' && (

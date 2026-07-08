@@ -1,4 +1,5 @@
 import React from 'react';
+import { Metadata } from 'next';
 import { getResources, getFaqs } from '@/lib/supabase/queries';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ResourceCard } from '@/components/sections/ResourceCard';
@@ -8,6 +9,14 @@ import { SipCalculator } from '@/components/ui/SipCalculator';
 import { LifeCoverEstimator } from '@/components/ui/LifeCoverEstimator';
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: 'My Library | Honworth',
+  description: 'Access exclusive financial calculators, downloadable checklists, guides, and frequently asked questions on wealth creation, protection, and legacy.',
+  alternates: {
+    canonical: 'https://honworth.in/library',
+  },
+};
 
 export default async function LibraryPage() {
   const [resources, faqs] = await Promise.all([
@@ -27,8 +36,51 @@ export default async function LibraryPage() {
     return acc;
   }, {}) || {};
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://honworth.in"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Library",
+        "item": "https://honworth.in/library"
+      }
+    ]
+  };
+
+  const faqSchema = faqs && faqs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq: any) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  } : null;
+
   return (
     <div className="bg-ivory min-h-screen py-20">
+      {/* Schemas */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       
       {/* Resources Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32">
@@ -37,6 +89,7 @@ export default async function LibraryPage() {
           heading="Exclusive resources and guides."
           subtext="In-depth materials designed to help you navigate complex wealth decisions with clarity."
           className="mb-16"
+          headingTag="h1"
         />
 
         {resources && resources.length > 0 ? (

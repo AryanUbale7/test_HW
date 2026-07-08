@@ -1,11 +1,29 @@
 import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase/admin';
 import { sendEmail } from '@/lib/mail';
+import { checkRateLimit, contactFormLimiter } from '@/lib/rate-limit';
 
 export async function POST(request: Request) {
   try {
+    // 1. Rate Limiting check
+    const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || '127.0.0.1';
+    const rateLimitResult = await checkRateLimit(ip, contactFormLimiter);
+    
+    if (!rateLimitResult.allowed) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again in a few minutes.' },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
-    const { firstName, lastName, email, phone, inquiryType, message, consent } = body;
+    const { firstName, lastName, email, phone, inquiryType, message, consent, website } = body;
+
+    // 2. Honeypot check
+    if (website) {
+      // Return silent 200 success to trick bots
+      return NextResponse.json({ success: true, bot: true }, { status: 200 });
+    }
 
     if (!firstName || !email || !message || consent !== true) {
       return NextResponse.json(

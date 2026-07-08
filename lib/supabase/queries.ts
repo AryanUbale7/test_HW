@@ -148,4 +148,20 @@ export async function getFaqs() {
   })) || []
 }
 
+export async function getAllPostSlugs() {
+  const supabase = await createClient()
+  const { data, error } = await supabase
+    .from('posts')
+    .select('slug, published_at')
+    .eq('status', 'published')
+    .order('published_at', { ascending: false })
+
+  if (error) {
+    console.error('Error fetching post slugs:', error)
+    return []
+  }
+
+  return data || []
+}
+
 

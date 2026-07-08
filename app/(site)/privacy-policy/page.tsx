@@ -1,5 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | Honworth',
+  description: 'Read the Privacy Policy of Honworth to understand how we collect, process, and protect your personal and financial data.',
+  alternates: {
+    canonical: 'https://honworth.in/privacy-policy',
+  },
+};
 
 export default function PrivacyPolicyPage() {
   return (

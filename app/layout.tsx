@@ -7,9 +7,11 @@ const merriweather = Merriweather({
   subsets: ["latin"],
   weight: ["300", "400", "700", "900"],
   style: ["normal", "italic"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://honworth.in'),
   title: "Honworth",
   description: "Premium wealth-advisory brochure + blog site",
 };

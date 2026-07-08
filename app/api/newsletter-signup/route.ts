@@ -1,9 +1,21 @@
 import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase/admin';
 import { sendEmail } from '@/lib/mail';
+import { checkRateLimit, newsletterLimiter } from '@/lib/rate-limit';
 
 export async function POST(request: Request) {
   try {
+    // Rate Limiting check (max 10 signups per 10 mins)
+    const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || '127.0.0.1';
+    const rateLimitResult = await checkRateLimit(ip, newsletterLimiter);
+    
+    if (!rateLimitResult.allowed) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again in a few minutes.' },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
     const { email, source } = body;
 

@@ -1,0 +1,24 @@
+# Honworth
+
+Honworth is a premium wealth advisory firm focused on helping high-net-worth families, professionals, and business owners architect robust financial strategies across three core pillars: Wealth Creation, Wealth Protection, and Wealth Legacy.
+
+## Key Details
+- **Website:** https://honworth.in
+- **Advisor Status:** AMFI-registered Mutual Fund Distributor
+- **Empanelments:** Mutual Funds, PMS (Portfolio Management Services), SIF (Strategic Investment Funds), and Insurance (Term & Health, through Bajaj Allianz Life and TATA AIA Life).
+
+## Site Structure
+
+- **Homepage (Articles Archive):** `/` - Welcome and listing of educational personal-finance posts, economy commentary, and behavioral finance insights.
+- **My Story:** `/my-story` - The journey, work philosophy, meaning of Honour + Worth, and credentials.
+- **How I Work:** `/how-i-work` - Our transparent distributor-model compensation, onboarding flow, and core approach.
+- **Wealth Creation:** `/wealth-creation` - Strategic compounding and wealth creation strategies using vetted mutual funds, PMS, and SIF.
+- **Wealth Protection:** `/wealth-protection` - Pure-risk defensive structuring with Term Life and Health insurance.
+- **Wealth Legacy:** `/wealth-legacy` - Succession planning, coordination of Wills, nominations, and private family trusts.
+- **Articles Listing:** `/articles` - Dedicated archive of insights, commentaries, and posts.
+- **Library:** `/library` - Interactive calculators (SIP, Life Cover Estimator) and downloadable guides/checklists.
+- **Reach Me:** `/reach-me` - Contact details, office address, WhatsApp link, and booking calendar.
+- **Regulatory Disclosures:** `/disclosures` - Full regulatory numbers (ARN), conflict of interest disclosures, and grievance redressal SCORES.
+
+## Compliance Disclaimer
+Mutual fund investments are subject to market risks. Read all scheme-related documents carefully.

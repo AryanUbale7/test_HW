@@ -24,8 +24,21 @@ export const ArmPageTemplate: React.FC<ArmPageTemplateProps> = ({
         <SectionHeader 
           eyebrow="How I Work"
           heading={heading}
-          className="mb-16"
+          className="mb-8"
+          headingTag="h1"
         />
+
+        {/* Advisor/Credibility Block (E-E-A-T & AI Discoverability) */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 py-4 px-6 mb-12 bg-sage-mist/20 border border-sage/20 rounded-sm text-sm font-sans text-charcoal/80">
+          <div className="font-semibold text-deep-green">Stewardship by:</div>
+          <div className="flex flex-wrap gap-x-3 gap-y-1">
+            <span>Honworth Principal Advisor</span>
+            <span className="text-sage">|</span>
+            <span>AMFI-registered Mutual Fund Distributor</span>
+            <span className="text-sage">|</span>
+            <span>NISM &amp; IRDAI Certified</span>
+          </div>
+        </div>
 
         <div className="space-y-16">
           {/* Philosophy Section */}

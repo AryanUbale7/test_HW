@@ -10,14 +10,14 @@ import { SidebarNewsletter } from '@/components/sections/SidebarNewsletter';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Honworth | Wealth Creation, Protection & Legacy Planning',
-  description: 'We help high-net-worth families, professionals, and business owners architect robust financial strategies. Welcome to our journal.',
+  title: 'Articles & Insights | Honworth',
+  description: 'Explore our latest insights, economy commentary, and behavioral finance articles on wealth creation, protection, and legacy planning.',
   alternates: {
-    canonical: 'https://honworth.in',
+    canonical: 'https://honworth.in/articles',
   },
 };
 
-export default async function HomePage(props: {
+export default async function ArticlesPage(props: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   const searchParams = await props.searchParams;
@@ -31,14 +31,13 @@ export default async function HomePage(props: {
 
   return (
     <div className="bg-ivory min-h-screen">
-      <h1 className="sr-only">Honworth | Wealth Creation, Protection & Legacy Planning</h1>
       <IntroStrip />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex flex-col lg:flex-row gap-12 lg:gap-16">
         
         {/* Left Column: Posts Feed */}
         <div className="w-full lg:w-2/3">
-          <ArticleFilters basePath="/" searchParams={searchParams} />
+          <ArticleFilters basePath="/articles" searchParams={searchParams} />
 
           {posts && posts.length > 0 ? (
             <div className="flex flex-col mt-4">
@@ -68,7 +67,7 @@ export default async function HomePage(props: {
             currentPage={page} 
             totalItems={total} 
             itemsPerPage={limit} 
-            basePath="/"
+            basePath="/articles"
             searchParams={searchParams}
           />
         </div>

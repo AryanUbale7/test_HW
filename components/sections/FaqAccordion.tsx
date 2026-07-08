@@ -33,9 +33,11 @@ export const FaqAccordion: React.FC<FaqAccordionProps> = ({ items }) => {
           >
             <button
               onClick={() => toggleItem(item.id)}
-              className="w-full flex justify-between items-center text-left py-4 focus:outline-none group"
+              aria-expanded={isOpen}
+              aria-controls={`faq-answer-${item.id}`}
+              className="w-full flex justify-between items-center text-left py-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm group"
             >
-              <span className="text-lg md:text-xl font-serif text-deep-green group-hover:text-gold transition-colors pr-8">
+              <span id={`faq-question-${item.id}`} className="text-lg md:text-xl font-serif text-deep-green group-hover:text-gold transition-colors pr-8">
                 {item.question}
               </span>
               <span className="flex-shrink-0 text-deep-green">
@@ -50,6 +52,9 @@ export const FaqAccordion: React.FC<FaqAccordionProps> = ({ items }) => {
             <AnimatePresence>
               {isOpen && (
                 <motion.div
+                  id={`faq-answer-${item.id}`}
+                  role="region"
+                  aria-labelledby={`faq-question-${item.id}`}
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}

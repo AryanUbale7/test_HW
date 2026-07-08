@@ -1,6 +1,15 @@
 import React from 'react';
+import { Metadata } from 'next';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { CtaBlock } from '@/components/sections/CtaBlock';
+
+export const metadata: Metadata = {
+  title: 'My Story | Honworth',
+  description: 'Learn about the journey of Honworth, APEX financials transition, our core philosophy of Honour and Worth, and credentials as an AMFI registered distributor.',
+  alternates: {
+    canonical: 'https://honworth.in/my-story',
+  },
+};
 
 export default function MyStoryPage() {
   return (
@@ -11,6 +20,7 @@ export default function MyStoryPage() {
             eyebrow="My Story"
             heading="A decade of stewardship, guided discretion and discipline."
             className="mb-12"
+            headingTag="h1"
           />
 
           {/* Credentials Badge Row */}
@@ -33,7 +43,7 @@ export default function MyStoryPage() {
             Every practice has a starting point. Mine began with a conversation I wasn't ready for.
           </p>
           
-          <h3 id="journey" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-20 mb-8 scroll-mt-32 border-t border-sage/20 pt-12">From IT to personal finance</h3>
+          <h2 id="journey" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-20 mb-8 scroll-mt-32 border-t border-sage/20 pt-12">From IT to personal finance</h2>
           <p>
             My understanding of equity investing began in 2016, almost by accident. At a family gathering, a close friend met after many years and he picked topic on Equity Investing. I spent most of the conversation listening — absorbing everything he said, while quietly realizing how little I actually understood about this topic, much intriguing.
           </p>
@@ -56,7 +66,7 @@ export default function MyStoryPage() {
             I first ran my practice as APEX Financials, when I began with mutual fund distribution. As the work grew to include wealth creation, wealth protection, and wealth legacy, the old name no longer captured what I did — so I renamed it Honworth.
           </p>
 
-          <h3 id="philosophy" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-20 mb-8 scroll-mt-32 border-t border-sage/20 pt-12">How I work</h3>
+          <h2 id="philosophy" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-20 mb-8 scroll-mt-32 border-t border-sage/20 pt-12">How I work</h2>
           <p>
             I have a simple rule: no one should invest in something they can't explain back to me.
           </p>
@@ -70,7 +80,7 @@ export default function MyStoryPage() {
             Over the past year, attending several financial events drew me deeper into something I'd underestimated — succession and wealth legacy planning. As I sat with the idea, I remembered a tragic incident involving a friend, and how much it cost their family to untangle matters afterwards, simply because nothing had been set down in advance. Late is better than never: it made me realise why succession deserves an open conversation within families, and why planning for legacy belongs alongside building and protecting wealth.
           </p>
 
-          <h3 id="meaning" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-20 mb-8 scroll-mt-32 border-t border-sage/20 pt-12">The name</h3>
+          <h2 id="meaning" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-20 mb-8 scroll-mt-32 border-t border-sage/20 pt-12">The name</h2>
           <p>
             Honworth joins two words - honour and worth.
           </p>
@@ -84,12 +94,12 @@ export default function MyStoryPage() {
             Together, the name means something simple — an honourable practice built on trust, helping families protect what they've earned and pass it on with dignity, across the generations.
           </p>
 
-          <h3 id="credentials" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-20 mb-8 scroll-mt-32 border-t border-sage/20 pt-12">Credentials</h3>
+          <h2 id="credentials" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-20 mb-8 scroll-mt-32 border-t border-sage/20 pt-12">Credentials</h2>
           <p>
             AMFI-registered Mutual Fund Distributor (ARN–XXXXXX), AMFI-registered SIF Distributor, APMI-registered PMS Distributor.
           </p>
 
-          <h3 id="who-i-serve" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-20 mb-8 scroll-mt-32 border-t border-sage/20 pt-12">Who I work with</h3>
+          <h2 id="who-i-serve" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-20 mb-8 scroll-mt-32 border-t border-sage/20 pt-12">Who I work with</h2>
           <p>
             I work with two kinds of people especially well. The first are young professionals just stepping into their careers — the stage where good habits, started early, make the biggest difference over a lifetime. The second are families who want to bring order to their money around real life goals: a child's education, a home, kid’s marriage, a secure retirement, and what they hope to leave behind.
           </p>

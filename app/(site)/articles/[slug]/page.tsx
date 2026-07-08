@@ -1,4 +1,5 @@
 import React from 'react';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 
@@ -6,6 +7,38 @@ import { getPostBySlug, getRelatedPosts } from '@/lib/supabase/queries';
 import { ArticleCard } from '@/components/sections/ArticleCard';
 
 export const revalidate = 60;
+
+export async function generateMetadata(
+  props: { params: Promise<{ slug: string }> }
+): Promise<Metadata> {
+  const params = await props.params;
+  const post = await getPostBySlug(params.slug);
+  if (!post) {
+    return {};
+  }
+  return {
+    title: `${post.title} | Honworth`,
+    description: post.excerpt.substring(0, 155),
+    alternates: {
+      canonical: `https://honworth.in/articles/${post.slug}`,
+    },
+    openGraph: {
+      title: `${post.title} | Honworth`,
+      description: post.excerpt,
+      url: `https://honworth.in/articles/${post.slug}`,
+      images: post.thumbnailUrl ? [{ url: post.thumbnailUrl }] : [],
+      type: 'article',
+      publishedTime: post.publishedAt,
+      authors: post.author ? [post.author.name] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${post.title} | Honworth`,
+      description: post.excerpt,
+      images: post.thumbnailUrl ? [post.thumbnailUrl] : [],
+    },
+  };
+}
 
 export default async function SingleArticlePage(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;
@@ -17,8 +50,6 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
 
   const relatedPosts = await getRelatedPosts(post.slug, post.arm);
 
-
-
   const categoryColors: Record<string, string> = {
     Creation: 'bg-sage-mist text-deep-green border-sage',
     Protection: 'bg-ivory text-gold border-gold/30',
@@ -27,8 +58,69 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
   };
   const catColor = categoryColors[post.arm || 'General'] || categoryColors.General;
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://honworth.in"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Articles",
+        "item": "https://honworth.in/articles"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post.title,
+        "item": `https://honworth.in/articles/${post.slug}`
+      }
+    ]
+  };
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.excerpt,
+    "image": post.thumbnailUrl || 'https://honworth.in/opengraph-image.png',
+    "datePublished": post.publishedAt,
+    "dateModified": post.publishedAt,
+    "author": post.author ? {
+      "@type": "Person",
+      "name": post.author.name,
+      "jobTitle": "Principal Advisor"
+    } : {
+      "@type": "Organization",
+      "name": "Honworth"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Honworth",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://honworth.in/logo/main_logo.png"
+      }
+    }
+  };
+
   return (
     <div className="bg-ivory min-h-screen">
+      {/* Dynamic JSON-LD Schemas */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+
       <article className="max-w-3xl mx-auto px-4 sm:px-6 pt-20 pb-16">
         
         {/* Header */}
@@ -60,6 +152,17 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
                 <span>By {post.author.name}</span>
               </>
             )}
+          </div>
+
+          {/* Credentials/E-E-A-T Strip (AI & E-E-A-T Discoverability) */}
+          <div className="mt-6 py-2.5 px-4 bg-sage-mist/20 border border-sage/20 rounded-sm text-xs font-sans text-charcoal/80 inline-flex flex-wrap items-center justify-center gap-2 max-w-xl mx-auto">
+            <span className="font-semibold text-deep-green">Stewardship:</span>
+            <span>{post.author ? post.author.name : 'Honworth Advisor'}</span>
+            {post.author?.credentials && post.author.credentials.length > 0 && (
+              <span className="text-charcoal/60">({post.author.credentials.join(', ')})</span>
+            )}
+            <span className="text-sage">|</span>
+            <span>AMFI-registered Mutual Fund Distributor</span>
           </div>
           
           {post.type === 'News' && post.sourceUrl && (

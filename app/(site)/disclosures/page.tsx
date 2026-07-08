@@ -1,4 +1,13 @@
 import React from 'react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Regulatory Disclosures | Honworth',
+  description: 'Read the regulatory disclosures, registration numbers (ARN), and commission structure details for Honworth.',
+  alternates: {
+    canonical: 'https://honworth.in/disclosures',
+  },
+};
 
 export default function DisclosuresPage() {
   return (

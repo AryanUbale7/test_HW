@@ -1,4 +1,13 @@
 import React from 'react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Disclaimer | Honworth',
+  description: 'Read the informational, investment risk, and liability disclaimers for Honworth.',
+  alternates: {
+    canonical: 'https://honworth.in/disclaimer',
+  },
+};
 
 export default function DisclaimerPage() {
   return (
