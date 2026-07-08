@@ -1,9 +1,13 @@
 import React from 'react';
-import { getPosts } from '@/lib/sanity/queries';
+import { getPosts } from '@/lib/supabase/queries';
 import { IntroStrip } from '@/components/sections/IntroStrip';
 import { ArticleListItem } from '@/components/sections/ArticleListItem';
 import { ArticleFilters } from '@/components/sections/ArticleFilters';
 import { Pagination } from '@/components/ui/Pagination';
+
+import { SidebarNewsletter } from '@/components/sections/SidebarNewsletter';
+
+export const revalidate = 60;
 
 export default async function HomePage(props: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
@@ -25,7 +29,7 @@ export default async function HomePage(props: {
         
         {/* Left Column: Posts Feed */}
         <div className="w-full lg:w-2/3">
-          <ArticleFilters basePath="/" />
+          <ArticleFilters basePath="/" searchParams={searchParams} />
 
           {posts && posts.length > 0 ? (
             <div className="flex flex-col mt-4">
@@ -56,6 +60,7 @@ export default async function HomePage(props: {
             totalItems={total} 
             itemsPerPage={limit} 
             basePath="/"
+            searchParams={searchParams}
           />
         </div>
 
@@ -73,23 +78,7 @@ export default async function HomePage(props: {
           </div>
 
           {/* Newsletter Widget */}
-          <div className="bg-deep-green text-ivory p-8 rounded-sm relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gold rounded-full blur-2xl opacity-10 transform translate-x-1/2 -translate-y-1/2" />
-            <h3 className="text-xl font-serif mb-4 relative z-10">Join Our Inner Circle</h3>
-            <p className="text-sm font-sans text-ivory/80 mb-6 relative z-10">
-              Get actionable wealth architecture insights delivered directly to your inbox.
-            </p>
-            <form className="flex flex-col gap-3 relative z-10">
-              <input 
-                type="email" 
-                placeholder="Email address" 
-                className="bg-ivory text-charcoal px-4 py-2 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-gold"
-              />
-              <button type="submit" className="bg-gold text-ivory font-medium px-4 py-2 rounded-sm text-sm hover:bg-white hover:text-deep-green transition-colors">
-                Subscribe
-              </button>
-            </form>
-          </div>
+          <SidebarNewsletter />
         </aside>
 
       </main>

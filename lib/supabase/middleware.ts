@@ -6,11 +6,6 @@ export async function updateSession(request: NextRequest) {
     request,
   })
 
-  // --- MOCK LOGIN BYPASS ---
-  if (request.cookies.get('mock_admin')?.value === 'true') {
-    return supabaseResponse
-  }
-  // --- END MOCK LOGIN BYPASS ---
 
   // Fallback if env vars are missing (prevents blank screen on public site)
   if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
@@ -38,25 +33,28 @@ export async function updateSession(request: NextRequest) {
     }
   )
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-
   // Protect /admin routes (except /admin/login)
   const isAdminRoute = request.nextUrl.pathname.startsWith('/admin')
   const isLoginRoute = request.nextUrl.pathname === '/admin/login'
 
-  if (isAdminRoute && !isLoginRoute && !user) {
-    const url = request.nextUrl.clone()
-    url.pathname = '/admin/login'
-    return NextResponse.redirect(url)
-  }
+  // Only perform getUser network request if the route is an admin route
+  if (isAdminRoute || isLoginRoute) {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
 
-  // Redirect logged-in users away from the login page
-  if (isLoginRoute && user) {
-    const url = request.nextUrl.clone()
-    url.pathname = '/admin'
-    return NextResponse.redirect(url)
+    if (isAdminRoute && !isLoginRoute && !user) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/admin/login'
+      return NextResponse.redirect(url)
+    }
+
+    // Redirect logged-in users away from the login page
+    if (isLoginRoute && user) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/admin/dashboard'
+      return NextResponse.redirect(url)
+    }
   }
 
   return supabaseResponse

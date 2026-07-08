@@ -2,9 +2,6 @@
 
 import { useActionState } from 'react'
 import { login } from '@/lib/actions/auth'
-import { Card } from '@/components/ui/Card'
-import { Button } from '@/components/ui/Button'
-import Image from 'next/image'
 
 const initialState = {
   error: '',
@@ -14,29 +11,18 @@ export default function LoginPage() {
   const [state, formAction, isPending] = useActionState(login, initialState)
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-ivory px-4 py-12">
-      <div className="w-full max-w-md">
-        <div className="flex justify-center mb-8">
-          <Image 
-            src="/logo/main_logo.png" 
-            alt="Honworth Logo" 
-            width={240} 
-            height={80} 
-            className="object-contain h-12 w-auto"
-            priority
-          />
+    <div className="min-h-screen flex items-center justify-center bg-slate-100 px-4">
+      <div className="w-full max-w-sm">
+        <div className="text-center mb-8">
+          <h1 className="text-2xl font-bold text-slate-900">Admin Login</h1>
+          <p className="text-slate-500 text-sm mt-1">Sign in to manage Honworth</p>
         </div>
-        
-        <Card className="p-8 md:p-8 bg-white">
-          <div className="text-center mb-8">
-            <h1 className="text-2xl font-serif text-deep-green mb-2">Admin Access</h1>
-            <p className="text-charcoal/70 text-sm">Sign in to manage Honworth</p>
-          </div>
 
-          <form action={formAction} className="space-y-5">
+        <div className="bg-white p-8 rounded-lg border border-slate-200 shadow-sm">
+          <form action={formAction} className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-charcoal mb-1">
-                Email Address
+              <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">
+                Email
               </label>
               <input
                 id="email"
@@ -44,12 +30,12 @@ export default function LoginPage() {
                 type="email"
                 autoComplete="email"
                 required
-                className="w-full px-4 py-2 border border-sage/50 rounded-sm focus:outline-none focus:ring-2 focus:ring-gold bg-ivory/50"
+                className="w-full px-3 py-2 border border-slate-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-charcoal mb-1">
+              <label htmlFor="password" className="block text-sm font-medium text-slate-700 mb-1">
                 Password
               </label>
               <input
@@ -58,25 +44,25 @@ export default function LoginPage() {
                 type="password"
                 autoComplete="current-password"
                 required
-                className="w-full px-4 py-2 border border-sage/50 rounded-sm focus:outline-none focus:ring-2 focus:ring-gold bg-ivory/50"
+                className="w-full px-3 py-2 border border-slate-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
 
             {state?.error && (
-              <div className="p-3 bg-red-50 text-red-600 text-sm rounded-sm border border-red-100">
+              <div className="p-3 bg-red-50 text-red-700 text-sm rounded-md border border-red-200">
                 {state.error}
               </div>
             )}
 
-            <Button 
-              type="submit" 
-              className="w-full justify-center"
+            <button
+              type="submit"
               disabled={isPending}
+              className="w-full bg-blue-600 text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {isPending ? 'Signing in...' : 'Sign In'}
-            </Button>
+            </button>
           </form>
-        </Card>
+        </div>
       </div>
     </div>
   )

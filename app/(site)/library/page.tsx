@@ -1,11 +1,13 @@
 import React from 'react';
-import { getResources, getFaqs } from '@/lib/sanity/queries';
+import { getResources, getFaqs } from '@/lib/supabase/queries';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ResourceCard } from '@/components/sections/ResourceCard';
 import { FaqAccordion } from '@/components/sections/FaqAccordion';
 import { NewsletterSignup } from '@/components/sections/NewsletterSignup';
 import { SipCalculator } from '@/components/ui/SipCalculator';
 import { LifeCoverEstimator } from '@/components/ui/LifeCoverEstimator';
+
+export const revalidate = 60;
 
 export default async function LibraryPage() {
   const [resources, faqs] = await Promise.all([

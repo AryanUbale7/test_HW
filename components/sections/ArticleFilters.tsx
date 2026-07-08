@@ -1,42 +1,56 @@
-'use client';
-
 import React from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 
 interface ArticleFiltersProps {
   basePath?: string;
+  searchParams?: Record<string, string | string[] | undefined>;
 }
 
-export const ArticleFilters: React.FC<ArticleFiltersProps> = ({ basePath = '/articles' }) => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const currentArm = searchParams.get('arm') || 'All';
-  const currentType = searchParams.get('type') || '';
+export const ArticleFilters: React.FC<ArticleFiltersProps> = ({ basePath = '/articles', searchParams = {} }) => {
+  const currentArm = typeof searchParams.arm === 'string' ? searchParams.arm : 'All';
+  const currentType = typeof searchParams.type === 'string' ? searchParams.type : '';
 
   const arms = ['All', 'Creation', 'Protection', 'Legacy'];
   const types = ['Insight', 'News'];
 
-  const handleArmChange = (arm: string) => {
-    const params = new URLSearchParams(searchParams.toString());
+  const getArmUrl = (arm: string) => {
+    const params = new URLSearchParams();
+    Object.entries(searchParams).forEach(([key, val]) => {
+      if (typeof val === 'string') {
+        params.set(key, val);
+      } else if (Array.isArray(val) && val[0]) {
+        params.set(key, val[0]);
+      }
+    });
+    
     if (arm === 'All') {
       params.delete('arm');
     } else {
       params.set('arm', arm);
     }
-    params.delete('page'); // Reset pagination on filter change
-    router.push(`${basePath}?${params.toString()}`);
+    params.delete('page'); // Reset pagination
+    const qs = params.toString();
+    return qs ? `${basePath}?${qs}` : basePath;
   };
 
-  const handleTypeChange = (type: string) => {
-    const params = new URLSearchParams(searchParams.toString());
+  const getTypeUrl = (type: string) => {
+    const params = new URLSearchParams();
+    Object.entries(searchParams).forEach(([key, val]) => {
+      if (typeof val === 'string') {
+        params.set(key, val);
+      } else if (Array.isArray(val) && val[0]) {
+        params.set(key, val[0]);
+      }
+    });
+
     if (currentType === type) {
       params.delete('type');
     } else {
       params.set('type', type);
     }
-    params.delete('page'); // Reset pagination on filter change
-    router.push(`${basePath}?${params.toString()}`);
+    params.delete('page'); // Reset pagination
+    const qs = params.toString();
+    return qs ? `${basePath}?${qs}` : basePath;
   };
 
   return (
@@ -46,9 +60,10 @@ export const ArticleFilters: React.FC<ArticleFiltersProps> = ({ basePath = '/art
         <span className="text-charcoal font-serif italic text-lg mr-2">Filter by</span>
         <div className="flex flex-wrap gap-4">
           {arms.map(arm => (
-            <button
+            <Link
               key={arm}
-              onClick={() => handleArmChange(arm)}
+              href={getArmUrl(arm)}
+              prefetch={false}
               className={`text-sm font-sans tracking-wide transition-all duration-300 relative pb-1 ${
                 currentArm === arm 
                   ? 'text-gold font-medium' 
@@ -59,7 +74,7 @@ export const ArticleFilters: React.FC<ArticleFiltersProps> = ({ basePath = '/art
               {currentArm === arm && (
                 <span className="absolute bottom-0 left-0 w-full h-px bg-gold" />
               )}
-            </button>
+            </Link>
           ))}
         </div>
       </div>
@@ -67,9 +82,10 @@ export const ArticleFilters: React.FC<ArticleFiltersProps> = ({ basePath = '/art
       {/* Secondary Type Filters (Insight vs News) */}
       <div className="flex gap-4 border-l border-sage/30 pl-6">
         {types.map(type => (
-          <button
+          <Link
             key={type}
-            onClick={() => handleTypeChange(type)}
+            href={getTypeUrl(type)}
+            prefetch={false}
             className={`text-xs font-sans uppercase tracking-[0.15em] px-3 py-1.5 border transition-colors ${
               currentType === type
                 ? 'border-gold text-gold bg-gold/5'
@@ -77,7 +93,7 @@ export const ArticleFilters: React.FC<ArticleFiltersProps> = ({ basePath = '/art
             }`}
           >
             {type}
-          </button>
+          </Link>
         ))}
       </div>
     </div>

@@ -1,8 +1,5 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { ArrowRight, Shield, TrendingUp, Landmark } from 'lucide-react';
 
 interface ArmCardProps {
@@ -12,7 +9,7 @@ interface ArmCardProps {
   delay?: number;
 }
 
-export const ArmCard: React.FC<ArmCardProps> = ({ type, description, href, delay = 0 }) => {
+export const ArmCard: React.FC<ArmCardProps> = ({ type, description, href }) => {
   const icons = {
     Creation: <TrendingUp className="w-8 h-8 text-gold" strokeWidth={1.5} />,
     Protection: <Shield className="w-8 h-8 text-gold" strokeWidth={1.5} />,
@@ -20,11 +17,7 @@ export const ArmCard: React.FC<ArmCardProps> = ({ type, description, href, delay
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay }}
+    <div
       className="group bg-ivory border border-sage/50 rounded-md p-8 md:p-10 hover:border-sage transition-colors flex flex-col h-full"
     >
       <div className="mb-6 bg-sage-mist w-16 h-16 rounded-full flex items-center justify-center">
@@ -45,6 +38,6 @@ export const ArmCard: React.FC<ArmCardProps> = ({ type, description, href, delay
       >
         Learn more <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
       </Link>
-    </motion.div>
+    </div>
   );
 };

@@ -1,8 +1,6 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface ArticleCardProps {
   title: string;
@@ -29,21 +27,18 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   };
 
   return (
-    <motion.article 
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5 }}
-      className="group flex flex-col h-full bg-ivory rounded-md border border-sage/30 hover:border-sage overflow-hidden transition-all"
+    <article 
+      className="group flex flex-col h-full bg-ivory rounded-md border border-sage/30 hover:border-sage overflow-hidden transition-all duration-300"
     >
       <Link href={href} className="flex flex-col h-full">
         {thumbnailUrl && (
-          <div className="aspect-[16/9] w-full overflow-hidden bg-sage-mist">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img 
+          <div className="aspect-[16/9] w-full overflow-hidden bg-sage-mist relative">
+            <Image 
               src={thumbnailUrl} 
               alt={title} 
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+              fill
+              sizes="(max-width: 768px) 100vw, 33vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105" 
             />
           </div>
         )}
@@ -69,6 +64,6 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           </span>
         </div>
       </Link>
-    </motion.article>
+    </article>
   );
 };

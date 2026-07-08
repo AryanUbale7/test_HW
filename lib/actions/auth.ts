@@ -11,14 +11,7 @@ export async function login(prevState: any, formData: FormData) {
     return { error: 'Please enter both email and password' }
   }
 
-  // --- MOCK LOGIN START ---
-  if (email === 'aryanubale318@gmail.com' && password === 'Honworth@123') {
-    const { cookies } = await import('next/headers')
-    const cookieStore = await cookies()
-    cookieStore.set('mock_admin', 'true')
-    redirect('/admin')
-  }
-  // --- MOCK LOGIN END ---
+
 
   const supabase = await createClient()
 
@@ -31,7 +24,7 @@ export async function login(prevState: any, formData: FormData) {
     return { error: error.message }
   }
 
-  redirect('/admin')
+  redirect('/admin/dashboard')
 }
 
 export async function logout() {

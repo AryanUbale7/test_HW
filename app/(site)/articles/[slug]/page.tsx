@@ -1,8 +1,11 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { PortableText } from 'next-sanity';
-import { getPostBySlug, getRelatedPosts } from '@/lib/sanity/queries';
+import Image from 'next/image';
+
+import { getPostBySlug, getRelatedPosts } from '@/lib/supabase/queries';
 import { ArticleCard } from '@/components/sections/ArticleCard';
+
+export const revalidate = 60;
 
 export default async function SingleArticlePage(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;
@@ -14,23 +17,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
 
   const relatedPosts = await getRelatedPosts(post.slug, post.arm);
 
-  // Custom Portable Text components to match brand typography
-  const ptComponents = {
-    block: {
-      h2: ({children}: any) => <h2 className="text-3xl font-serif text-deep-green mt-12 mb-6">{children}</h2>,
-      h3: ({children}: any) => <h3 className="text-2xl font-serif text-deep-green mt-8 mb-4">{children}</h3>,
-      normal: ({children}: any) => <p className="text-charcoal font-sans text-lg leading-relaxed mb-6">{children}</p>,
-      blockquote: ({children}: any) => <blockquote className="border-l-4 border-gold pl-6 italic text-deep-green font-serif text-xl my-8">{children}</blockquote>,
-    },
-    marks: {
-      strong: ({children}: any) => <strong className="font-semibold text-deep-green">{children}</strong>,
-      link: ({children, value}: any) => <a href={value.href} className="text-deep-green underline underline-offset-4 hover:text-gold transition-colors" target="_blank" rel="noopener noreferrer">{children}</a>,
-    },
-    list: {
-      bullet: ({children}: any) => <ul className="list-disc pl-6 text-charcoal font-sans text-lg leading-relaxed mb-6 space-y-2">{children}</ul>,
-      number: ({children}: any) => <ol className="list-decimal pl-6 text-charcoal font-sans text-lg leading-relaxed mb-6 space-y-2">{children}</ol>,
-    }
-  };
+
 
   const categoryColors: Record<string, string> = {
     Creation: 'bg-sage-mist text-deep-green border-sage',
@@ -61,11 +48,11 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
           
           <div className="flex justify-center items-center gap-4 text-sm font-sans text-charcoal">
             <time>
-              {new Date(post.publishedAt).toLocaleDateString('en-US', {
+              {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
-              })}
+              }) : 'Draft'}
             </time>
             {post.author && (
               <>
@@ -84,16 +71,22 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
 
         {/* Thumbnail */}
         {post.thumbnailUrl && (
-          <div className="aspect-[21/9] w-full overflow-hidden bg-sage-mist rounded-md mb-16">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={post.thumbnailUrl} alt={post.title} className="w-full h-full object-cover" />
+          <div className="aspect-[21/9] w-full overflow-hidden bg-sage-mist rounded-md mb-16 relative">
+            <Image 
+              src={post.thumbnailUrl} 
+              alt={post.title} 
+              fill 
+              sizes="(max-width: 768px) 100vw, 800px" 
+              className="object-cover" 
+              priority 
+            />
           </div>
         )}
 
         {/* Body Content */}
         <div className="prose prose-lg max-w-none">
           {post.body ? (
-            <PortableText value={post.body} components={ptComponents} />
+            <div dangerouslySetInnerHTML={{ __html: post.body }} />
           ) : (
             <p className="text-charcoal font-sans text-lg">{post.excerpt}</p>
           )}
@@ -103,8 +96,15 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
         {post.author && (
           <div className="mt-16 pt-8 border-t border-sage/30 flex items-center gap-6">
             {post.author.photoUrl && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={post.author.photoUrl} alt={post.author.name} className="w-16 h-16 rounded-full object-cover" />
+              <div className="relative w-16 h-16 shrink-0">
+                <Image 
+                  src={post.author.photoUrl} 
+                  alt={post.author.name} 
+                  fill 
+                  sizes="64px" 
+                  className="rounded-full object-cover" 
+                />
+              </div>
             )}
             <div>
               <h4 className="font-serif text-lg text-deep-green">{post.author.name}</h4>

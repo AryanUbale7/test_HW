@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface ArticleListItemProps {
   title: string;
@@ -42,10 +43,12 @@ export const ArticleListItem: React.FC<ArticleListItemProps> = ({ title, excerpt
 
           {thumbnailUrl && (
             <div className="w-full md:w-1/3 shrink-0 overflow-hidden rounded-sm aspect-[16/10] relative order-1 md:order-2">
-              <img 
+              <Image 
                 src={thumbnailUrl} 
                 alt={title}
-                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
               />
             </div>
           )}
