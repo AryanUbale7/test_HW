@@ -8,8 +8,13 @@ export async function middleware(request: NextRequest) {
   // Matches admin.honworth.in, studio.honworth.in, or local admin.localhost:3000
   const isAdminSubdomain = host.startsWith('admin.') || host.startsWith('studio.');
 
-  // 1. Block access to "/admin" paths on the main domain (return 404)
-  if (!isAdminSubdomain && url.pathname.startsWith('/admin')) {
+  // Temporary: also allow direct /admin access on vercel.app preview URLs and localhost
+  // until custom domain honworth.in is connected to Vercel.
+  // Remove this once admin.honworth.in is live.
+  const isVercelPreview = host.includes('.vercel.app') || host.startsWith('localhost');
+
+  // 1. Block access to "/admin" paths on the main production domain only (return 404)
+  if (!isAdminSubdomain && !isVercelPreview && url.pathname.startsWith('/admin')) {
     return new NextResponse('Page Not Found', { status: 404 });
   }
 
