@@ -63,7 +63,6 @@ export const ArticleFilters: React.FC<ArticleFiltersProps> = ({ basePath = '/art
             <Link
               key={arm}
               href={getArmUrl(arm)}
-              prefetch={false}
               className={`text-sm font-sans tracking-wide transition-all duration-300 relative pb-1 ${
                 currentArm === arm 
                   ? 'text-gold font-medium' 
@@ -85,7 +84,6 @@ export const ArticleFilters: React.FC<ArticleFiltersProps> = ({ basePath = '/art
           <Link
             key={type}
             href={getTypeUrl(type)}
-            prefetch={false}
             className={`text-xs font-sans uppercase tracking-[0.15em] px-3 py-1.5 border transition-colors ${
               currentType === type
                 ? 'border-gold text-gold bg-gold/5'

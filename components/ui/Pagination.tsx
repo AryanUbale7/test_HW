@@ -39,7 +39,6 @@ export const Pagination: React.FC<PaginationProps> = ({
       {currentPage > 1 ? (
         <Link
           href={createPageUrl(currentPage - 1)}
-          prefetch={false}
           className="px-4 py-2 font-sans text-sm text-charcoal hover:text-gold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm"
         >
           Previous
@@ -57,7 +56,6 @@ export const Pagination: React.FC<PaginationProps> = ({
       {currentPage < totalPages ? (
         <Link
           href={createPageUrl(currentPage + 1)}
-          prefetch={false}
           className="px-4 py-2 font-sans text-sm text-charcoal hover:text-gold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm"
         >
           Next
