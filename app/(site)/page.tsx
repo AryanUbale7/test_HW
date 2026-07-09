@@ -30,8 +30,20 @@ export default async function HomePage(props: {
 
   const { posts, total } = await getPosts({ page, limit, arm, type });
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Honworth",
+    "url": "https://honworth.in",
+    "description": "We help high-net-worth families, professionals, and business owners architect robust financial strategies."
+  };
+
   return (
     <div className="bg-ivory min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
       <h1 className="sr-only">Honworth | Wealth Creation, Protection & Legacy Planning</h1>
       <IntroStrip />
 

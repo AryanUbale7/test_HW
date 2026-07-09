@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { getPostBySlug, getRelatedPosts } from '@/lib/queries/posts';
 import { getGlossaryTermsList } from '@/lib/queries/glossary';
 import { autoLinkGlossary } from '@/lib/utils/autoLinkGlossary';
+import { generateTocAndInjectIds } from '@/lib/utils/toc';
 import { formatDate } from '@/lib/utils/formatDate';
 import { ArticleCard } from '@/components/sections/ArticleCard';
 
@@ -55,6 +56,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
   const relatedPosts = await getRelatedPosts(post.slug, post.arm);
   const glossaryTermsList = await getGlossaryTermsList();
   const autoLinkedBody = post.body ? autoLinkGlossary(post.body, glossaryTermsList) : '';
+  const { html: processedBody, headings } = generateTocAndInjectIds(autoLinkedBody);
 
   const armUrls: Record<string, { href: string; label: string }> = {
     Creation: { href: '/wealth-creation', label: 'Wealth Creation' },
@@ -203,10 +205,33 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
           </div>
         )}
 
+        {/* Entity/Compliance Banner for Guide Articles */}
+        {post.type === 'Guide' && (
+          <div className="mb-10 p-5 bg-sage-mist/30 border border-sage/20 rounded-sm text-sm font-sans text-charcoal/80 leading-relaxed italic">
+            <strong>Stewardship Statement:</strong> Honworth is an AMFI-registered Mutual Fund Distributor based in India, working with families across Wealth Creation, Protection, and Legacy planning. This guide is educational and does not constitute financial or legal advice.
+          </div>
+        )}
+
+        {/* Table of Contents for Guides */}
+        {post.type === 'Guide' && headings.length > 0 && (
+          <nav className="mb-12 p-6 bg-sage-mist/10 border border-sage/20 rounded-sm" aria-label="Table of Contents">
+            <h2 className="font-serif text-lg text-deep-green font-semibold mb-4 uppercase tracking-wider text-xs">Table of Contents</h2>
+            <ul className="space-y-2.5 font-sans text-sm text-charcoal/90">
+              {headings.map((heading) => (
+                <li key={heading.id}>
+                  <a href={`#${heading.id}`} className="hover:text-gold transition-colors underline underline-offset-4 decoration-sage/30 hover:decoration-gold">
+                    {heading.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
+
         {/* Body Content */}
         <div className="prose prose-lg max-w-none">
           {post.body ? (
-            <div dangerouslySetInnerHTML={{ __html: autoLinkedBody }} />
+            <div dangerouslySetInnerHTML={{ __html: processedBody }} />
           ) : (
             <p className="text-charcoal font-sans text-lg">{post.excerpt}</p>
           )}

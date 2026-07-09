@@ -25,12 +25,8 @@ export default async function WealthLegacyPage() {
       author={author}
       posts={posts}
       glossaryTerms={glossaryTerms}
-      philosophyText={`Wealth legacy is the structured coordination of succession planning to ensure your life's work is seamlessly transitioned to future generations. We believe a well-architected succession strategy prevents familial friction and preserves family capital across generations with absolute clarity.
-
-Ensuring a smooth transition requires foresight, discretion, and meticulous structuring. It is about ensuring your intentions are honored with certainty and transparency.`}
-      offeringDescription={`We provide comprehensive succession and estate facilitation services. This involves coordinating the complex mechanics of Wills, secure nominations, and the establishment of private family trusts.
-
-We serve as the coordinator for your legacy, working intimately alongside your preferred legal professionals and tax advisors to ensure that your strategies translate into flawlessly executed legal structures.`}
+      philosophyText={`Wealth legacy at Honworth is the structured coordination of succession planning to ensure your assets are seamlessly transitioned to future generations. We believe a well-architected succession blueprint prevents familial friction and preserves family capital across generations with absolute clarity.`}
+      offeringDescription={`Honworth facilitates succession planning in India by coordinating Wills, bank account nominations, and the establishment of private family trusts. We act as your legacy coordinator, aligning with your preferred legal and tax professionals.`}
       disclaimerText="Succession services involve facilitation and coordination; Honworth is not a law firm and does not provide legal or tax advice."
       ctaText="Begin drafting your legacy blueprint"
     />
