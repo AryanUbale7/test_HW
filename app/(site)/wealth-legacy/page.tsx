@@ -1,6 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 import { ArmPageTemplate } from '@/components/sections/ArmPageTemplate';
+import { getPrimaryAuthor } from '@/lib/queries/posts';
 
 export const metadata: Metadata = {
   title: 'Wealth Legacy | Honworth',
@@ -10,10 +11,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function WealthLegacyPage() {
+export default async function WealthLegacyPage() {
+  const author = await getPrimaryAuthor();
   return (
     <ArmPageTemplate 
       heading="Wealth Legacy"
+      author={author}
       philosophyText={`Wealth legacy is the structured coordination of succession planning to ensure your life's work is seamlessly transitioned to future generations. We believe a well-architected succession strategy prevents familial friction and preserves family capital across generations with absolute clarity.
 
 Ensuring a smooth transition requires foresight, discretion, and meticulous structuring. It is about ensuring your intentions are honored with certainty and transparency.`}

@@ -68,7 +68,7 @@ export const Footer: React.FC = () => {
         {/* 3. Compliance Block */}
         <div className="max-w-5xl font-sans font-light text-sm text-ivory/70 leading-relaxed mb-12 space-y-3">
           <p>
-            <strong>Registration Numbers:</strong> AMFI-registered Mutual Fund Distributor (ARN-XXXXXX) &middot; AMFI-registered SIF Distributor &middot; APMI-registered PMS Distributor.
+            <strong>Registration Numbers:</strong> AMFI-registered Mutual Fund Distributor ({process.env.NEXT_PUBLIC_ARN_NUMBER || 'ARN-XXXXXX'}) &middot; AMFI-registered SIF Distributor &middot; APMI-registered PMS Distributor.
           </p>
           <p>
             <strong>Mutual Fund Disclaimer:</strong> Mutual fund investments are subject to market risks, read all scheme related documents carefully.

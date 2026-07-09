@@ -96,7 +96,7 @@ export default function MyStoryPage() {
 
           <h2 id="credentials" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-20 mb-8 scroll-mt-32 border-t border-sage/20 pt-12">Credentials</h2>
           <p>
-            AMFI-registered Mutual Fund Distributor (ARN–XXXXXX), AMFI-registered SIF Distributor, APMI-registered PMS Distributor.
+            AMFI-registered Mutual Fund Distributor (ARN–{process.env.NEXT_PUBLIC_ARN_NUMBER || 'XXXXXX'}), AMFI-registered SIF Distributor, APMI-registered PMS Distributor.
           </p>
 
           <h2 id="who-i-serve" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-20 mb-8 scroll-mt-32 border-t border-sage/20 pt-12">Who I work with</h2>

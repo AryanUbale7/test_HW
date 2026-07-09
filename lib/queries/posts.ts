@@ -69,6 +69,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       authors ( name, bio, photo_url, credentials )
     `)
     .eq('slug', slug)
+    .eq('status', 'published')
     .single();
 
   if (error || !data) return null;
@@ -239,6 +240,24 @@ export async function getAdminPostBySlug(slug: string): Promise<any> {
 
   if (error || !data) {
     console.error('Error fetching admin post by slug:', error);
+    return null;
+  }
+  return data;
+}
+
+/**
+ * Fetches the primary author (first one in the DB) to display on static page banners.
+ */
+export async function getPrimaryAuthor(): Promise<any | null> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from('authors')
+    .select('name, bio, photo_url, credentials')
+    .limit(1)
+    .maybeSingle();
+
+  if (error) {
+    console.error('Error fetching primary author:', error);
     return null;
   }
   return data;

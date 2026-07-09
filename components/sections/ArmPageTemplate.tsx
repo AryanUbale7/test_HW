@@ -9,6 +9,10 @@ interface ArmPageTemplateProps {
   offeringDescription: string;
   disclaimerText: string;
   ctaText?: string;
+  author?: {
+    name: string;
+    credentials?: string[];
+  } | null;
 }
 
 export const ArmPageTemplate: React.FC<ArmPageTemplateProps> = ({
@@ -17,6 +21,7 @@ export const ArmPageTemplate: React.FC<ArmPageTemplateProps> = ({
   offeringDescription,
   disclaimerText,
   ctaText = "Start a Conversation",
+  author,
 }) => {
   return (
     <div className="bg-ivory">
@@ -32,11 +37,22 @@ export const ArmPageTemplate: React.FC<ArmPageTemplateProps> = ({
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 py-4 px-6 mb-12 bg-sage-mist/20 border border-sage/20 rounded-sm text-sm font-sans text-charcoal/80">
           <div className="font-semibold text-deep-green">Stewardship by:</div>
           <div className="flex flex-wrap gap-x-3 gap-y-1">
-            <span>Honworth Principal Advisor</span>
-            <span className="text-sage">|</span>
-            <span>AMFI-registered Mutual Fund Distributor</span>
-            <span className="text-sage">|</span>
-            <span>NISM &amp; IRDAI Certified</span>
+            <span>{author?.name || 'Honworth Principal Advisor'}</span>
+            {author?.credentials && author.credentials.length > 0 ? (
+              author.credentials.map((cred) => (
+                <React.Fragment key={cred}>
+                  <span className="text-sage">|</span>
+                  <span>{cred}</span>
+                </React.Fragment>
+              ))
+            ) : (
+              <>
+                <span className="text-sage">|</span>
+                <span>AMFI-registered Mutual Fund Distributor</span>
+                <span className="text-sage">|</span>
+                <span>NISM &amp; IRDAI Certified</span>
+              </>
+            )}
           </div>
         </div>
 

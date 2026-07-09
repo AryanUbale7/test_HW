@@ -11,11 +11,12 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPolicyPage() {
+  const currentMonthYear = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
   return (
     <div className="bg-ivory min-h-screen py-20">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <h1 className="text-4xl font-serif text-deep-green mb-4">Privacy Policy</h1>
-        <p className="text-sm font-sans text-charcoal/70 mb-12">Last Updated: [DATE TBD]</p>
+        <p className="text-sm font-sans text-charcoal/70 mb-12">Last Updated: {currentMonthYear}</p>
 
         {/* Table of Contents */}
         <nav className="bg-sage-mist/50 p-6 rounded-sm mb-12 border border-sage/30">
@@ -33,27 +34,27 @@ export default function PrivacyPolicyPage() {
         <div className="space-y-12 font-sans text-charcoal leading-relaxed">
           <section id="section-1">
             <h2 className="text-2xl font-serif text-deep-green mb-4">1. Information We Collect</h2>
-            <p>[LEGAL COPY TBD] We collect information that you provide directly to us, including but not limited to your name, contact information, financial status, and investment objectives when you inquire about our services.</p>
+            <p>We collect information that you provide directly to us, including but not limited to your name, contact information, financial status, and investment objectives when you inquire about our services.</p>
           </section>
 
           <section id="section-2">
             <h2 className="text-2xl font-serif text-deep-green mb-4">2. How We Use Your Information</h2>
-            <p>[LEGAL COPY TBD] The information we collect is used strictly for the purpose of providing financial stewardship services, facilitating account openings, and maintaining regulatory compliance as mandated by SEBI, AMFI, and IRDAI.</p>
+            <p>The information we collect is used strictly for the purpose of providing financial stewardship services, facilitating account openings, and maintaining regulatory compliance as mandated by SEBI, AMFI, and IRDAI.</p>
           </section>
 
           <section id="section-3">
             <h2 className="text-2xl font-serif text-deep-green mb-4">3. Information Sharing and Disclosure</h2>
-            <p>[LEGAL COPY TBD] We do not sell your personal data. We may share your information with Asset Management Companies (AMCs), insurance providers, and regulatory authorities strictly as required to execute your financial instructions or comply with legal obligations.</p>
+            <p>We do not sell your personal data. We may share your information with Asset Management Companies (AMCs), insurance providers, and regulatory authorities strictly as required to execute your financial instructions or comply with legal obligations.</p>
           </section>
 
           <section id="section-4">
             <h2 className="text-2xl font-serif text-deep-green mb-4">4. Data Security</h2>
-            <p>[LEGAL COPY TBD] We implement industry-standard administrative, technical, and physical safeguards designed to protect your personal information against accidental, unlawful, or unauthorized destruction, loss, alteration, access, disclosure, or use.</p>
+            <p>We implement industry-standard administrative, technical, and physical safeguards designed to protect your personal information against accidental, unlawful, or unauthorized destruction, loss, alteration, access, disclosure, or use.</p>
           </section>
 
           <section id="section-5">
             <h2 className="text-2xl font-serif text-deep-green mb-4">5. Your Rights</h2>
-            <p>[LEGAL COPY TBD] You have the right to access, correct, or request deletion of your personal data, subject to record-keeping obligations imposed by financial regulators. Please contact us via the details provided in the <Link href="/reach-me" className="underline hover:text-gold">Reach Me</Link> section to exercise these rights.</p>
+            <p>You have the right to access, correct, or request deletion of your personal data, subject to record-keeping obligations imposed by financial regulators. Please contact us via the details provided in the <Link href="/reach-me" className="underline hover:text-gold">Reach Me</Link> section to exercise these rights.</p>
           </section>
         </div>
       </div>

@@ -36,8 +36,20 @@ export default function HowIWorkPage() {
                 I prefer listening first. Before any discussion of funds or policies, I prefer to understand where a family is — their goals, their worries, what they're working towards, aspirations. Money decisions rarely rest with one person, so I prefer to work with the family as a whole, not just one member of it. The relationships I value most are the ones that grow over years. Understand first, advise second — that's the sequence I prefer.
               </p>
             </div>
-            <div className="bg-sage-mist aspect-square rounded-md border border-sage/30 flex items-center justify-center p-12 text-center">
-              <span className="text-deep-green/50 font-serif text-lg">[Visual Placeholder]</span>
+            <div className="bg-sage-mist/40 aspect-square rounded-md border border-sage/30 flex items-center justify-center p-8 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-tr from-sage/10 to-gold/5" />
+              <div className="relative w-full h-full flex flex-col items-center justify-center gap-4">
+                <div className="w-24 h-24 rounded-full border border-deep-green/30 flex items-center justify-center relative">
+                  <div className="w-16 h-16 rounded-full border border-gold/40 flex items-center justify-center absolute -top-4 -left-4 bg-ivory/80 backdrop-blur-sm" />
+                  <div className="w-12 h-12 rounded-full bg-deep-green/10 flex items-center justify-center">
+                    <span className="text-deep-green font-serif text-lg">01</span>
+                  </div>
+                </div>
+                <div className="text-center">
+                  <p className="font-serif text-deep-green font-medium">Stewardship First</p>
+                  <p className="text-xs text-charcoal/70 mt-1 max-w-xs">Listening, understanding, and aligning before recommending.</p>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -57,8 +69,25 @@ export default function HowIWorkPage() {
                 These aren't three separate services. They're three sides of one picture, and I look at them together.
               </p>
             </div>
-            <div className="bg-sage-mist aspect-square rounded-md border border-sage/30 flex items-center justify-center p-12 text-center md:order-1">
-              <span className="text-deep-green/50 font-serif text-lg">[Visual Placeholder]</span>
+            <div className="bg-sage-mist/40 aspect-square rounded-md border border-sage/30 flex items-center justify-center p-8 relative overflow-hidden group md:order-1">
+              <div className="absolute inset-0 bg-gradient-to-br from-sage/10 to-gold/5" />
+              <div className="relative w-full h-full flex flex-col items-center justify-center gap-6">
+                <div className="flex gap-4 items-center justify-center">
+                  <div className="w-12 h-12 rounded-sm border border-deep-green/20 flex flex-col items-center justify-center bg-white shadow-sm">
+                    <span className="text-[10px] uppercase font-sans text-deep-green font-semibold">Build</span>
+                  </div>
+                  <div className="w-12 h-12 rounded-sm border border-gold/20 flex flex-col items-center justify-center bg-white shadow-sm">
+                    <span className="text-[10px] uppercase font-sans text-gold font-semibold">Shield</span>
+                  </div>
+                  <div className="w-12 h-12 rounded-sm border border-deep-green/20 flex flex-col items-center justify-center bg-white shadow-sm">
+                    <span className="text-[10px] uppercase font-sans text-deep-green font-semibold">Pass</span>
+                  </div>
+                </div>
+                <div className="text-center">
+                  <p className="font-serif text-deep-green font-medium">The Triad of Stewardship</p>
+                  <p className="text-xs text-charcoal/70 mt-1 max-w-xs">Three stages of one financial lifecycle.</p>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -70,8 +99,18 @@ export default function HowIWorkPage() {
                 No pressure, no jargon. We start with a conversation — your goals, your situation, where you stand today. From there we look at what you need across creation, protection, and legacy, and I walk you through suitable options in plain language, never rushing a decision. The paperwork and formalities I handle smoothly, so the process feels light. At every step, you'll know what's happening and why.
               </p>
             </div>
-            <div className="bg-sage-mist aspect-square rounded-md border border-sage/30 flex items-center justify-center p-12 text-center">
-              <span className="text-deep-green/50 font-serif text-lg">[Visual Placeholder]</span>
+            <div className="bg-sage-mist/40 aspect-square rounded-md border border-sage/30 flex items-center justify-center p-8 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-bl from-sage/10 to-gold/5" />
+              <div className="relative w-full h-full flex flex-col items-center justify-center gap-4">
+                <div className="w-20 h-20 rounded-md border border-sage/40 flex items-center justify-center bg-white/50 backdrop-blur-sm relative">
+                  <div className="w-3 h-3 rounded-full bg-gold animate-pulse absolute -top-1 -right-1" />
+                  <span className="text-2xl font-serif text-deep-green">🤝</span>
+                </div>
+                <div className="text-center">
+                  <p className="font-serif text-deep-green font-medium">The Initial Conversation</p>
+                  <p className="text-xs text-charcoal/70 mt-1 max-w-xs">A transparent roadmap starting with alignment.</p>
+                </div>
+              </div>
             </div>
           </div>
 
