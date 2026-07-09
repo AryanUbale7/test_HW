@@ -63,18 +63,30 @@ export default function ReachMePage() {
               <h3 className="text-xl font-serif text-deep-green mb-6">Direct Contact</h3>
               <div className="space-y-4 font-sans text-charcoal">
                 <p id="hours" className="scroll-mt-32">
-                  <strong>Office Hours:</strong><br />
-                  Monday – Friday<br />
-                  9:00 AM – 6:00 PM IST
+                  <strong>Working Hours:</strong><br />
+                  9:30 AM – 6:30 PM IST (Monday to Saturday)<br />
+                  Sunday Holiday
                 </p>
                 <p id="map" className="scroll-mt-32">
-                  <strong>Location:</strong><br />
-                  Bandra West,<br />
-                  Mumbai, Maharashtra, India
+                  <strong>Address:</strong><br />
+                  Pimple Saudagar,<br />
+                  Pune – 411027, Maharashtra, India
+                </p>
+                <p>
+                  <strong>Email:</strong><br />
+                  <a href="mailto:rahul.karandikar@honworth.in" className="underline hover:text-gold transition-colors">
+                    rahul.karandikar@honworth.in
+                  </a>
+                </p>
+                <p>
+                  <strong>Mobile:</strong><br />
+                  <a href="tel:+919923375175" className="underline hover:text-gold transition-colors">
+                    +91 9923375175
+                  </a>
                 </p>
                 <div id="whatsapp" className="pt-4 mt-4 border-t border-sage/30 scroll-mt-32">
                   <a 
-                    href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210'}?text=${encodeURIComponent("Hello, I'd like to start a conversation with Honworth.")}`}
+                    href={`https://wa.me/919923375175?text=${encodeURIComponent("Hello, I'd like to start a conversation with Honworth.")}`}
                     target="_blank" 
                     rel="noopener noreferrer"
                     aria-label="Contact us on WhatsApp"
