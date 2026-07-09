@@ -37,6 +37,8 @@ export const Footer: React.FC = () => {
               <Link href="/how-i-work" className="hover:text-gold transition-colors w-fit focus-visible:ring-2 focus-visible:ring-gold focus:outline-none rounded-sm">Our Approach</Link>
               <Link href="/library" className="hover:text-gold transition-colors w-fit focus-visible:ring-2 focus-visible:ring-gold focus:outline-none rounded-sm">Library</Link>
               <Link href="/glossary" className="hover:text-gold transition-colors w-fit focus-visible:ring-2 focus-visible:ring-gold focus:outline-none rounded-sm">Glossary</Link>
+              <Link href="/calculators/sip" className="hover:text-gold transition-colors w-fit focus-visible:ring-2 focus-visible:ring-gold focus:outline-none rounded-sm">SIP Calculator</Link>
+              <Link href="/calculators/life-cover" className="hover:text-gold transition-colors w-fit focus-visible:ring-2 focus-visible:ring-gold focus:outline-none rounded-sm">Life Cover Estimator</Link>
             </nav>
           </div>
 
