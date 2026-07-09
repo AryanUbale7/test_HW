@@ -103,7 +103,7 @@ export default function ReachMePage() {
                     href="https://calendly.com/[CONFIRM]" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="mt-4 inline-block text-sm text-gold underline"
+                    className="mt-4 inline-block text-sm text-deep-green font-medium hover:text-gold underline"
                   >
                     Or open calendar link
                   </a>
