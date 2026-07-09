@@ -32,7 +32,7 @@ export const SidebarNewsletter = () => {
   return (
     <div className="bg-deep-green text-ivory p-8 rounded-sm relative overflow-hidden">
       <div className="absolute top-0 right-0 w-32 h-32 bg-gold rounded-full blur-2xl opacity-10 transform translate-x-1/2 -translate-y-1/2" />
-      <h3 className="text-xl font-serif mb-4 relative z-10">Join Our Inner Circle</h3>
+      <h2 className="text-xl font-serif mb-4 relative z-10">Join Our Inner Circle</h2>
       <p className="text-sm font-sans text-ivory/80 mb-6 relative z-10">
         Get actionable wealth architecture insights delivered directly to your inbox.
       </p>

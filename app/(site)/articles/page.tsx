@@ -32,6 +32,7 @@ export default async function ArticlesPage(props: {
 
   return (
     <div className="bg-ivory min-h-screen">
+      <h1 className="sr-only">Articles and Insights | Honworth</h1>
       <IntroStrip />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex flex-col lg:flex-row gap-12 lg:gap-16">
@@ -73,7 +74,7 @@ export default async function ArticlesPage(props: {
         <aside className="w-full lg:w-1/3 flex flex-col gap-10">
           {/* Author / "Start Here" Widget */}
           <div className="bg-sage-mist/20 border border-sage/20 p-8 rounded-sm">
-            <h3 className="text-xl font-serif text-deep-green mb-4">About Honworth</h3>
+            <h2 className="text-xl font-serif text-deep-green mb-4">About Honworth</h2>
             <p className="text-sm font-sans text-charcoal/80 mb-6 leading-relaxed">
               We help high-net-worth families, professionals, and business owners architect robust financial strategies. Welcome to our journal on wealth creation, protection, and legacy.
             </p>

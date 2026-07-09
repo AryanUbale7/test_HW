@@ -19,7 +19,7 @@ export default async function Image() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          border: '12px solid #B8923E',
+          border: '12px solid #8C6921',
           padding: '40px',
         }}
       >
@@ -40,7 +40,7 @@ export default async function Image() {
           style={{
             width: '120px',
             height: '2px',
-            background: '#B8923E',
+            background: '#8C6921',
             marginBottom: '30px',
           }}
         />

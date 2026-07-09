@@ -86,7 +86,7 @@ export default async function HomePage(props: {
         <aside className="w-full lg:w-1/3 flex flex-col gap-10">
           {/* Author / "Start Here" Widget */}
           <div className="bg-sage-mist/20 border border-sage/20 p-8 rounded-sm">
-            <h3 className="text-xl font-serif text-deep-green mb-4">About Honworth</h3>
+            <h2 className="text-xl font-serif text-deep-green mb-4">About Honworth</h2>
             <p className="text-sm font-sans text-charcoal/80 mb-6 leading-relaxed">
               We help high-net-worth families, professionals, and business owners architect robust financial strategies. Welcome to our journal on wealth creation, protection, and legacy.
             </p>

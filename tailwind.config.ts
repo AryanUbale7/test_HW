@@ -12,7 +12,7 @@ const config: Config = {
         ivory: "#FBF8F0",
         sage: "#AEC3B0",
         "sage-mist": "#E8EFE6",
-        gold: "#B8923E",
+        gold: "#8C6921",
         "deep-green": "#2E4A3A",
         charcoal: "#36403B",
       },
