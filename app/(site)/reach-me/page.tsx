@@ -50,7 +50,7 @@ export default function ReachMePage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20">
           {/* Main Form Area */}
-          <div className="lg:col-span-3">
+          <div id="form" className="lg:col-span-3 scroll-mt-32">
             <h2 className="text-2xl font-serif text-deep-green mb-8">Send an Inquiry</h2>
             <ContactForm />
           </div>
@@ -59,20 +59,20 @@ export default function ReachMePage() {
           <div className="lg:col-span-2 flex flex-col gap-8">
             
             {/* Direct Contact & Office */}
-            <Card className="bg-sage-mist/50">
+            <Card id="contact-info" className="bg-sage-mist/50 scroll-mt-32">
               <h3 className="text-xl font-serif text-deep-green mb-6">Direct Contact</h3>
               <div className="space-y-4 font-sans text-charcoal">
-                <p>
+                <p id="hours" className="scroll-mt-32">
                   <strong>Office Hours:</strong><br />
                   Monday – Friday<br />
                   9:00 AM – 6:00 PM IST
                 </p>
-                <p>
+                <p id="map" className="scroll-mt-32">
                   <strong>Location:</strong><br />
                   Bandra West,<br />
                   Mumbai, Maharashtra, India
                 </p>
-                <div className="pt-4 mt-4 border-t border-sage/30">
+                <div id="whatsapp" className="pt-4 mt-4 border-t border-sage/30 scroll-mt-32">
                   <a 
                     href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210'}?text=${encodeURIComponent("Hello, I'd like to start a conversation with Honworth.")}`}
                     target="_blank" 

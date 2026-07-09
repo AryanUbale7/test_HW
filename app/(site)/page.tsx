@@ -48,7 +48,7 @@ export default async function HomePage(props: {
       <h1 className="sr-only">Honworth | Wealth Creation, Protection & Legacy Planning</h1>
       <IntroStrip />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex flex-col lg:flex-row gap-12 lg:gap-16">
+      <main id="articles" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex flex-col lg:flex-row gap-12 lg:gap-16 scroll-mt-32">
         
         {/* Left Column: Posts Feed */}
         <div className="w-full lg:w-2/3">

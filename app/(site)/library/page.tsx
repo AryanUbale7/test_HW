@@ -84,7 +84,8 @@ export default async function LibraryPage() {
       )}
       
       {/* Resources Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32">
+      <section id="guides" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 scroll-mt-32">
+        <div id="reading" className="scroll-mt-32" />
         <SectionHeader 
           eyebrow="The Library"
           heading="Exclusive resources and guides."
@@ -131,12 +132,12 @@ export default async function LibraryPage() {
       </section>
 
       {/* Newsletter */}
-      <div className="max-w-7xl mx-auto">
+      <div id="resources" className="max-w-7xl mx-auto scroll-mt-32">
         <NewsletterSignup />
       </div>
 
       {/* FAQ Section */}
-      <section className="bg-sage-mist border-y border-sage/30 py-32">
+      <section id="faqs" className="bg-sage-mist border-y border-sage/30 py-32 scroll-mt-32">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <SectionHeader 
             heading="Frequently Asked Questions"
