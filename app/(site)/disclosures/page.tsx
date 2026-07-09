@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -46,7 +47,7 @@ export default function DisclosuresPage() {
 
           <section id="privacy" className="scroll-mt-32 border-t border-sage/20 pt-8">
             <h2 className="text-2xl font-serif text-deep-green mb-4">Privacy & Terms of Use Summary</h2>
-            <p>We respect client privacy and confidentiality. Personal data collected through forms, newsletter signups, or calculators is processed solely for compliance, client communication, and service fulfillment in accordance with our <a href="/privacy-policy" className="text-gold hover:underline">Privacy Policy</a>.</p>
+            <p>We respect client privacy and confidentiality. Personal data collected through forms, newsletter signups, or calculators is processed solely for compliance, client communication, and service fulfillment in accordance with our <Link href="/privacy-policy" className="text-gold hover:underline">Privacy Policy</Link>.</p>
           </section>
         </div>
       </div>

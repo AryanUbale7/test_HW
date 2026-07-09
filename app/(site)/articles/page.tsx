@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Metadata } from 'next';
 import { getPosts } from '@/lib/queries/posts';
 import { formatDate } from '@/lib/utils/formatDate';
@@ -79,9 +80,9 @@ export default async function ArticlesPage(props: {
             <p className="text-sm font-sans text-charcoal/80 mb-6 leading-relaxed">
               We help high-net-worth families, professionals, and business owners architect robust financial strategies. Welcome to our journal on wealth creation, protection, and legacy.
             </p>
-            <a href="/how-i-work" className="inline-block bg-deep-green text-ivory px-6 py-2 rounded-sm text-sm font-medium hover:bg-gold transition-colors w-full text-center">
+            <Link href="/how-i-work" className="inline-block bg-deep-green text-ivory px-6 py-2 rounded-sm text-sm font-medium hover:bg-gold transition-colors w-full text-center">
               Work With Us
-            </a>
+            </Link>
           </div>
 
           {/* Newsletter Widget */}

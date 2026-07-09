@@ -53,8 +53,11 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
     notFound();
   }
 
-  const relatedPosts = await getRelatedPosts(post.slug, post.arm);
-  const glossaryTermsList = await getGlossaryTermsList();
+  // Fetch related posts and glossary terms in parallel (not sequentially)
+  const [relatedPosts, glossaryTermsList] = await Promise.all([
+    getRelatedPosts(post.slug, post.arm),
+    getGlossaryTermsList(),
+  ]);
   const autoLinkedBody = post.body ? autoLinkGlossary(post.body, glossaryTermsList) : '';
   const { html: processedBody, headings } = generateTocAndInjectIds(autoLinkedBody);
 
