@@ -32,7 +32,7 @@ export const EmailCaptureModal: React.FC<EmailCaptureModalProps> = ({ isOpen, on
       if (!response.ok) throw new Error('Failed to submit');
 
       onSuccess();
-    } catch (err) {
+    } catch {
       setError('An error occurred. Please try again.');
     } finally {
       setIsSubmitting(false);

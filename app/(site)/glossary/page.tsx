@@ -1,6 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
-import { getAllGlossaryTerms } from '@/lib/supabase/queries';
+import { getAllGlossaryTerms } from '@/lib/queries/glossary';
 import { GlossaryIndex } from '@/components/sections/GlossaryIndex';
 
 export const revalidate = 60;

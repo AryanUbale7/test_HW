@@ -1,6 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
-import { getPosts } from '@/lib/supabase/queries';
+import { getPosts } from '@/lib/queries/posts';
+import { formatDate } from '@/lib/utils/formatDate';
 import { IntroStrip } from '@/components/sections/IntroStrip';
 import { ArticleListItem } from '@/components/sections/ArticleListItem';
 import { ArticleFilters } from '@/components/sections/ArticleFilters';
@@ -46,11 +47,7 @@ export default async function ArticlesPage(props: {
                   key={post.slug}
                   title={post.title}
                   excerpt={post.excerpt}
-                  date={new Date(post.publishedAt).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric'
-                  })}
+                  date={formatDate(post.publishedAt)}
                   category={post.arm || 'General'}
                   href={`/articles/${post.slug}`}
                   thumbnailUrl={post.thumbnailUrl}

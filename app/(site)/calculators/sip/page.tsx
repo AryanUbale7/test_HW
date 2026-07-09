@@ -1,7 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { SipCalculator } from '@/components/ui/SipCalculator';
+import { SipCalculator } from '@/components/sections/SipCalculator';
 
 export const metadata: Metadata = {
   title: 'SIP Calculator | Honworth',

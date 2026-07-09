@@ -58,7 +58,7 @@ export const ContactForm = () => {
         consent: false,
         website: '',
       });
-    } catch (err) {
+    } catch {
       setStatus('error');
       setErrorMessage('There was a problem sending your message. Please try again later.');
     }

@@ -3,7 +3,8 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 
-import { getPostBySlug, getRelatedPosts } from '@/lib/supabase/queries';
+import { getPostBySlug, getRelatedPosts } from '@/lib/queries/posts';
+import { formatDate } from '@/lib/utils/formatDate';
 import { ArticleCard } from '@/components/sections/ArticleCard';
 
 export const revalidate = 60;
@@ -140,11 +141,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
           
           <div className="flex justify-center items-center gap-4 text-sm font-sans text-charcoal">
             <time>
-              {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              }) : 'Draft'}
+              {post.publishedAt ? formatDate(post.publishedAt, { year: 'numeric', month: 'long', day: 'numeric' }) : 'Draft'}
             </time>
             {post.author && (
               <>
@@ -235,11 +232,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
                   key={rel.slug}
                   title={rel.title}
                   excerpt={rel.excerpt}
-                  date={new Date(rel.publishedAt).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}
+                  date={formatDate(rel.publishedAt, { year: 'numeric', month: 'long', day: 'numeric' })}
                   category={rel.arm || 'General'}
                   href={`/articles/${rel.slug}`}
                   thumbnailUrl={rel.thumbnailUrl}

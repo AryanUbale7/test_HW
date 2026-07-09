@@ -22,13 +22,33 @@ import TaskItem from '@tiptap/extension-task-item'
 import {
   Bold, Italic, Underline as UnderlineIcon, Strikethrough, Heading2, Heading3, 
   List, ListOrdered, Link as LinkIcon, Image as ImageIcon, Undo, Redo, 
-  Minus, AlignLeft, AlignCenter, AlignRight, AlignJustify, Quote, Code, 
+  Minus, AlignLeft, AlignCenter, AlignRight, AlignJustify, Quote, 
   Maximize2, Minimize2, Palette, Highlighter, Trash2, Subscript as SubIcon,
-  Superscript as SuperIcon, Table as TableIcon, CheckSquare, Plus, ArrowUp,
-  ArrowDown, ArrowLeft, ArrowRight, Grid, Home, FilePlus
+  Superscript as SuperIcon, Table as TableIcon, CheckSquare, ArrowUp,
+  ArrowDown, ArrowLeft, ArrowRight
 } from 'lucide-react'
 import { useCallback, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
+
+const RibbonButton = ({
+  onClick, active, children, title, disabled = false, className = ''
+}: {
+  onClick: () => void, active?: boolean, children: React.ReactNode, title: string, disabled?: boolean, className?: string
+}) => (
+  <button
+    type="button"
+    onClick={onClick}
+    title={title}
+    disabled={disabled}
+    className={`p-1.5 rounded transition-colors flex items-center justify-center gap-1.5 ${
+      active 
+        ? 'bg-blue-100 text-blue-700 font-medium' 
+        : 'text-slate-700 hover:bg-slate-200 hover:text-slate-900'
+    } disabled:opacity-30 disabled:cursor-not-allowed ${className}`}
+  >
+    {children}
+  </button>
+)
 
 interface RichTextEditorProps {
   content: string
@@ -136,27 +156,9 @@ export function RichTextEditor({ content, onChange, error }: RichTextEditorProps
     input.click()
   }, [editor])
 
+
   if (!editor) return null
 
-  const RibbonButton = ({
-    onClick, active, children, title, disabled = false, className = ''
-  }: {
-    onClick: () => void, active?: boolean, children: React.ReactNode, title: string, disabled?: boolean, className?: string
-  }) => (
-    <button
-      type="button"
-      onClick={onClick}
-      title={title}
-      disabled={disabled}
-      className={`p-1.5 rounded transition-colors flex items-center justify-center gap-1.5 ${
-        active 
-          ? 'bg-blue-100 text-blue-700 font-medium' 
-          : 'text-slate-700 hover:bg-slate-200 hover:text-slate-900'
-      } disabled:opacity-30 disabled:cursor-not-allowed ${className}`}
-    >
-      {children}
-    </button>
-  )
 
   const colors = [
     { name: 'Default', value: '' },
@@ -303,7 +305,11 @@ export function RichTextEditor({ content, onChange, error }: RichTextEditorProps
                       key={f.name}
                       type="button"
                       onClick={() => {
-                        f.value ? editor.chain().focus().setFontFamily(f.value).run() : editor.chain().focus().unsetFontFamily().run()
+                        if (f.value) {
+                          editor.chain().focus().setFontFamily(f.value).run()
+                        } else {
+                          editor.chain().focus().unsetFontFamily().run()
+                        }
                         setShowFontPicker(false)
                       }}
                       className="px-3 py-1.5 text-xs text-left hover:bg-slate-100 rounded text-slate-800"
@@ -359,7 +365,11 @@ export function RichTextEditor({ content, onChange, error }: RichTextEditorProps
                       key={c.name}
                       type="button"
                       onClick={() => {
-                        c.value ? editor.chain().focus().setColor(c.value).run() : editor.chain().focus().unsetColor().run()
+                        if (c.value) {
+                          editor.chain().focus().setColor(c.value).run()
+                        } else {
+                          editor.chain().focus().unsetColor().run()
+                        }
                         setShowColorPicker(false)
                       }}
                       title={c.name}
@@ -388,7 +398,11 @@ export function RichTextEditor({ content, onChange, error }: RichTextEditorProps
                       key={h.name}
                       type="button"
                       onClick={() => {
-                        h.value ? editor.chain().focus().toggleHighlight({ color: h.value }).run() : editor.chain().focus().unsetHighlight().run()
+                        if (h.value) {
+                          editor.chain().focus().toggleHighlight({ color: h.value }).run()
+                        } else {
+                          editor.chain().focus().unsetHighlight().run()
+                        }
                         setShowHighlightPicker(false)
                       }}
                       title={h.name}

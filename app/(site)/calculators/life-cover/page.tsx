@@ -1,7 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { LifeCoverEstimator } from '@/components/ui/LifeCoverEstimator';
+import { LifeCoverEstimator } from '@/components/sections/LifeCoverEstimator';
 
 export const metadata: Metadata = {
   title: 'Life Cover Estimator | Honworth',

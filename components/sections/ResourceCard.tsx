@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { Card } from '../ui/Card';
-import { Button } from '../ui/Button';
 import { EmailCaptureModal } from '../ui/EmailCaptureModal';
 import { Download } from 'lucide-react';
 

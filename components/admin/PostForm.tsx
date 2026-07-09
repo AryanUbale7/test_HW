@@ -34,14 +34,8 @@ interface PostFormProps {
   mode: 'create' | 'edit'
 }
 
-function slugify(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .trim()
-}
+import { slugify } from '@/lib/utils/slugify'
+
 
 const initialState = { errors: {} as Record<string, string>, success: false }
 
@@ -74,12 +68,6 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
     }
   }, [state.success])
 
-  // Auto-generate slug from title
-  useEffect(() => {
-    if (!slugManuallyEdited && title) {
-      setSlug(slugify(title))
-    }
-  }, [title, slugManuallyEdited])
 
   const handleDelete = async () => {
     if (!post?.id) return
@@ -200,7 +188,7 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
                 name="title"
                 type="text"
                 value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={(e) => { setTitle(e.target.value); if (!slugManuallyEdited) setSlug(slugify(e.target.value)); }}
                 className={`w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                   errors.title ? 'border-red-300' : 'border-slate-300'
                 }`}

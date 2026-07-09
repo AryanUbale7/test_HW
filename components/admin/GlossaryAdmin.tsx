@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { Plus, Pencil, Trash2, X, Check, AlertCircle } from 'lucide-react';
 
@@ -17,9 +17,8 @@ type GlossaryTerm = {
 
 const ARM_OPTIONS = ['Creation', 'Protection', 'Legacy', 'General'];
 
-function slugify(text: string) {
-  return text.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-}
+import { slugify } from '@/lib/utils/slugify';
+
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -53,12 +52,6 @@ export function GlossaryAdmin({ terms: initialTerms }: { terms: GlossaryTerm[] }
   const [error, setError] = useState('');
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
 
-  // Auto-generate slug from term (only when creating new)
-  useEffect(() => {
-    if (!editingId) {
-      setForm(f => ({ ...f, slug: slugify(f.term) }));
-    }
-  }, [form.term, editingId]);
 
   function openNew() {
     setForm(EMPTY_FORM);
@@ -177,7 +170,7 @@ export function GlossaryAdmin({ terms: initialTerms }: { terms: GlossaryTerm[] }
                 <input
                   className="w-full border border-slate-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   value={form.term}
-                  onChange={e => setForm(f => ({ ...f, term: e.target.value }))}
+                  onChange={e => setForm(f => ({ ...f, term: e.target.value, slug: editingId ? f.slug : slugify(e.target.value) }))}
                   placeholder="e.g. Asset Allocation"
                 />
               </div>

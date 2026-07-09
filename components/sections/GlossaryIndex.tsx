@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
-import type { GlossaryTerm } from '@/lib/supabase/queries';
+import type { GlossaryTerm } from '@/types/glossary';
 
 const ARM_COLORS: Record<string, string> = {
   Creation: 'bg-sage-mist text-deep-green border-sage',

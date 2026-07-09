@@ -19,10 +19,10 @@ export const AuthorWelcome: React.FC = () => {
 
       <div className="flex-1 text-center md:text-left">
         <h2 className="text-2xl md:text-3xl font-serif text-deep-green mb-4">
-          Welcome to Honworth. Let's Build Your Legacy.
+          Welcome to Honworth. Let&apos;s Build Your Legacy.
         </h2>
         <p className="text-base md:text-lg text-charcoal/80 mb-6 max-w-2xl leading-relaxed">
-          Hi, I'm the principal advisor at Honworth. I help high-net-worth families, professionals, and business owners architect robust financial strategies. Whether you're looking to create, protect, or transition wealth, you're in the right place.
+          Hi, I&apos;m the principal advisor at Honworth. I help high-net-worth families, professionals, and business owners architect robust financial strategies. Whether you&apos;re looking to create, protect, or transition wealth, you&apos;re in the right place.
         </p>
         <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
           <Link 

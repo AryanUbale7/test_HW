@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { FileText, Users, FolderOpen, HelpCircle, Mail, LogOut, Home, Send } from 'lucide-react'
+import { FileText, FolderOpen, HelpCircle, Mail, LogOut, Home, Send } from 'lucide-react'
 import { logout } from '@/lib/actions/auth'
 
 export function AdminSidebar() {

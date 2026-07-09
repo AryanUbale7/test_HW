@@ -1,12 +1,13 @@
 import React from 'react';
 import { Metadata } from 'next';
-import { getResources, getFaqs } from '@/lib/supabase/queries';
+import { getResources } from '@/lib/queries/resources';
+import { getFaqs } from '@/lib/queries/faqs';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ResourceCard } from '@/components/sections/ResourceCard';
 import { FaqAccordion } from '@/components/sections/FaqAccordion';
 import { NewsletterSignup } from '@/components/sections/NewsletterSignup';
-import { SipCalculator } from '@/components/ui/SipCalculator';
-import { LifeCoverEstimator } from '@/components/ui/LifeCoverEstimator';
+import { SipCalculator } from '@/components/sections/SipCalculator';
+import { LifeCoverEstimator } from '@/components/sections/LifeCoverEstimator';
 
 export const revalidate = 60;
 

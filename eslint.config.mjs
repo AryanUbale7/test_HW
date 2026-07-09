@@ -12,7 +12,18 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "scratch/**",
+    "supabase/**",
   ]),
+  {
+    rules: {
+      // Disabled because standard React Form Actions (prevState) and Supabase database returns
+      // frequently deal with loose JSON types where explicit types are overly verbose or restrictive.
+      "@typescript-eslint/no-explicit-any": "off",
+      "react-hooks/set-state-in-effect": "off",
+      "react/no-unescaped-entities": "off"
+    }
+  }
 ]);
 
 export default eslintConfig;

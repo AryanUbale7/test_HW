@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
-import { getAllPostSlugs, getAllGlossarySlugs } from '@/lib/supabase/queries';
+import { getAllPostSlugs } from '@/lib/queries/posts';
+import { getAllGlossarySlugs } from '@/lib/queries/glossary';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://honworth.in';
