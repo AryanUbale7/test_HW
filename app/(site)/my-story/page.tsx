@@ -12,8 +12,38 @@ export const metadata: Metadata = {
 };
 
 export default function MyStoryPage() {
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://honworth.in/#organization",
+        "name": "Honworth",
+        "url": "https://honworth.in",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://honworth.in/logo/main_logo.png"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://honworth.in/#person",
+        "name": "Aryan Ubale",
+        "jobTitle": "AMFI-registered Mutual Fund Distributor",
+        "worksFor": {
+          "@id": "https://honworth.in/#organization"
+        },
+        "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a"
+      }
+    ]
+  };
+
   return (
     <div className="bg-ivory">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
       <article className="max-w-3xl mx-auto px-6 md:px-8 py-20 md:py-32">
         <div className="w-full">
           <SectionHeader 

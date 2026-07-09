@@ -5,6 +5,11 @@ export async function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
   const host = request.headers.get('host') || '';
 
+  // Redirect www.honworth.in to honworth.in (canonical consistency)
+  if (host === 'www.honworth.in') {
+    return NextResponse.redirect(`https://honworth.in${url.pathname}${url.search}`, 308);
+  }
+
   // Matches admin.honworth.in, studio.honworth.in, or local admin.localhost:3000
   const isAdminSubdomain = host.startsWith('admin.') || host.startsWith('studio.');
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Metadata } from 'next';
 import { ArmPageTemplate } from '@/components/sections/ArmPageTemplate';
-import { getPrimaryAuthor } from '@/lib/queries/posts';
+import { getPrimaryAuthor, getPosts } from '@/lib/queries/posts';
+import { getGlossaryTermsByArm } from '@/lib/queries/glossary';
 
 export const metadata: Metadata = {
   title: 'Wealth Protection | Honworth',
@@ -12,11 +13,18 @@ export const metadata: Metadata = {
 };
 
 export default async function WealthProtectionPage() {
-  const author = await getPrimaryAuthor();
+  const [author, { posts }, glossaryTerms] = await Promise.all([
+    getPrimaryAuthor(),
+    getPosts({ limit: 3, arm: 'Protection' }),
+    getGlossaryTermsByArm('Protection', 3),
+  ]);
+
   return (
     <ArmPageTemplate 
       heading="Wealth Protection"
       author={author}
+      posts={posts}
+      glossaryTerms={glossaryTerms}
       philosophyText={`Wealth protection is the indispensable foundation of any robust financial architecture. We believe a secure, term-first protective structure is essential to shield your family and assets from unforeseen, catastrophic liabilities.
 
 A single unforeseen event should never be permitted to dismantle decades of hard work. We focus on identifying vulnerabilities in your current financial architecture and deploying precise, cost-effective instruments to insulate your family and assets.`}

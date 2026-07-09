@@ -13,6 +13,7 @@ export const AuthorWelcome: React.FC = () => {
           src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400"
           alt="Honworth Advisor"
           fill
+          sizes="(max-width: 768px) 160px, 192px"
           className="object-cover"
         />
       </div>

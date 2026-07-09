@@ -1,5 +1,13 @@
+import { Metadata } from 'next'
 import { AdminSidebar } from '@/components/admin/AdminSidebar'
 import { AdminMain } from '@/components/admin/AdminMain'
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+}
 
 export default function AdminLayout({
   children,

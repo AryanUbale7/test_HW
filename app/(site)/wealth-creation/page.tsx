@@ -1,7 +1,8 @@
 import React from 'react';
 import { Metadata } from 'next';
 import { ArmPageTemplate } from '@/components/sections/ArmPageTemplate';
-import { getPrimaryAuthor } from '@/lib/queries/posts';
+import { getPrimaryAuthor, getPosts } from '@/lib/queries/posts';
+import { getGlossaryTermsByArm } from '@/lib/queries/glossary';
 
 export const metadata: Metadata = {
   title: 'Wealth Creation | Honworth',
@@ -12,11 +13,18 @@ export const metadata: Metadata = {
 };
 
 export default async function WealthCreationPage() {
-  const author = await getPrimaryAuthor();
+  const [author, { posts }, glossaryTerms] = await Promise.all([
+    getPrimaryAuthor(),
+    getPosts({ limit: 3, arm: 'Creation' }),
+    getGlossaryTermsByArm('Creation', 3),
+  ]);
+
   return (
     <ArmPageTemplate 
       heading="Wealth Creation"
       author={author}
+      posts={posts}
+      glossaryTerms={glossaryTerms}
       philosophyText={`True wealth creation is rooted in a long-term, goal-based compounding approach rather than chasing short-term speculation. We believe a disciplined, structured asset allocation strategy tailored to your specific financial milestones is the most reliable engine for building generational wealth.
 
 By tuning out the noise, we focus on strategic asset allocation, rigorous due diligence, and risk-adjusted returns designed to outpace inflation and secure your financial objectives.`}

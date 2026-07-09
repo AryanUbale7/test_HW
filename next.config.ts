@@ -59,6 +59,26 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  trailingSlash: false,
+  async redirects() {
+    return [
+      {
+        source: '/how-i-work/creation',
+        destination: '/wealth-creation',
+        permanent: true,
+      },
+      {
+        source: '/how-i-work/protection',
+        destination: '/wealth-protection',
+        permanent: true,
+      },
+      {
+        source: '/how-i-work/legacy',
+        destination: '/wealth-legacy',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

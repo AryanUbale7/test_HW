@@ -2,8 +2,11 @@ import React from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { getPostBySlug, getRelatedPosts } from '@/lib/queries/posts';
+import { getGlossaryTermsList } from '@/lib/queries/glossary';
+import { autoLinkGlossary } from '@/lib/utils/autoLinkGlossary';
 import { formatDate } from '@/lib/utils/formatDate';
 import { ArticleCard } from '@/components/sections/ArticleCard';
 
@@ -50,6 +53,15 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
   }
 
   const relatedPosts = await getRelatedPosts(post.slug, post.arm);
+  const glossaryTermsList = await getGlossaryTermsList();
+  const autoLinkedBody = post.body ? autoLinkGlossary(post.body, glossaryTermsList) : '';
+
+  const armUrls: Record<string, { href: string; label: string }> = {
+    Creation: { href: '/wealth-creation', label: 'Wealth Creation' },
+    Protection: { href: '/wealth-protection', label: 'Wealth Protection' },
+    Legacy: { href: '/wealth-legacy', label: 'Wealth Legacy' },
+  };
+  const armInfo = post.arm ? armUrls[post.arm] : null;
 
   const categoryColors: Record<string, string> = {
     Creation: 'bg-sage-mist text-deep-green border-sage',
@@ -161,6 +173,14 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
             <span className="text-sage">|</span>
             <span>AMFI-registered Mutual Fund Distributor</span>
           </div>
+
+          {armInfo && (
+            <div className="mt-6">
+              <Link href={armInfo.href} className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-sage-mist/40 text-deep-green border border-sage/30 hover:border-gold hover:text-gold transition-colors text-xs font-sans font-medium uppercase tracking-wider rounded-sm">
+                Related to: {armInfo.label} <span className="text-[10px]">→</span>
+              </Link>
+            </div>
+          )}
           
           {post.type === 'News' && post.sourceUrl && (
             <div className="mt-4 text-sm font-sans text-charcoal/70">
@@ -186,7 +206,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
         {/* Body Content */}
         <div className="prose prose-lg max-w-none">
           {post.body ? (
-            <div dangerouslySetInnerHTML={{ __html: post.body }} />
+            <div dangerouslySetInnerHTML={{ __html: autoLinkedBody }} />
           ) : (
             <p className="text-charcoal font-sans text-lg">{post.excerpt}</p>
           )}

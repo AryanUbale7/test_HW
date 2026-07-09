@@ -1,8 +1,16 @@
+import { Metadata } from 'next'
 import { getAdminPostBySlug } from '@/lib/queries/posts'
 import { notFound } from 'next/navigation'
 import { formatDate } from '@/lib/utils/formatDate'
 
 export const dynamic = 'force-dynamic'
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+}
 
 export default async function DraftPreviewPage({
   params,

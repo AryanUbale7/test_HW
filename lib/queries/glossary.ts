@@ -65,3 +65,39 @@ export async function getGlossaryTermsCount(): Promise<number> {
   }
   return count || 0;
 }
+
+/**
+ * Fetches only the term and slug of all glossary terms for lightweight link matching.
+ */
+export async function getGlossaryTermsList(): Promise<{ term: string; slug: string }[]> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from('glossary_terms')
+    .select('term, slug')
+    .order('term', { ascending: true });
+
+  if (error) {
+    console.error('Error fetching glossary terms list:', error);
+    return [];
+  }
+  return data || [];
+}
+
+/**
+ * Fetches glossary terms by arm, sorted alphabetically, capped at a limit.
+ */
+export async function getGlossaryTermsByArm(arm: string, limit = 3): Promise<any[]> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from('glossary_terms')
+    .select('*')
+    .eq('arm', arm)
+    .order('term', { ascending: true })
+    .limit(limit);
+
+  if (error) {
+    console.error(`Error fetching glossary terms for arm ${arm}:`, error);
+    return [];
+  }
+  return data || [];
+}

@@ -2,7 +2,9 @@ import React from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getGlossaryTermBySlug, getAllGlossaryTerms } from '@/lib/queries/glossary';
+import { getPosts } from '@/lib/queries/posts';
 import { supabaseAdmin } from '@/lib/supabase/admin';
 
 export const revalidate = 60;
@@ -50,15 +52,20 @@ export default async function GlossaryTermPage(
   const term = await getGlossaryTermBySlug(slug);
   if (!term) notFound();
 
-  // Fetch related terms for cross-linking
+  // Fetch related terms and matching posts concurrently
+  const [allTerms, postsResult] = await Promise.all([
+    getAllGlossaryTerms(),
+    term.arm && term.arm !== 'General' ? getPosts({ limit: 3, arm: term.arm }) : Promise.resolve({ posts: [] }),
+  ]);
+
   let relatedTerms: { term: string; slug: string; short_definition: string }[] = [];
   if (term.related_term_slugs?.length) {
-    const allTerms = await getAllGlossaryTerms();
     relatedTerms = allTerms
       .filter(t => term.related_term_slugs.includes(t.slug))
       .map(t => ({ term: t.term, slug: t.slug, short_definition: t.short_definition }));
   }
 
+  const relatedPosts = postsResult?.posts || [];
   const armPage = ARM_PAGE[term.arm || 'General'] || ARM_PAGE.General;
 
   // JSON-LD schemas
@@ -147,6 +154,40 @@ export default async function GlossaryTermPage(
                   <p className="text-xs font-sans text-charcoal/60 line-clamp-2 leading-relaxed">
                     {rt.short_definition}
                   </p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Related Articles */}
+        {relatedPosts.length > 0 && (
+          <section className="mb-14" aria-label="Related articles">
+            <h2 className="font-serif text-2xl text-deep-green mb-6">Recent Articles in {term.arm}</h2>
+            <div className="grid gap-6 sm:grid-cols-3">
+              {relatedPosts.map(post => (
+                <Link
+                  key={post.slug}
+                  href={`/articles/${post.slug}`}
+                  className="group flex flex-col"
+                >
+                  {post.thumbnailUrl && (
+                    <div className="aspect-[16/9] w-full overflow-hidden bg-sage-mist rounded-sm mb-3 relative">
+                      <Image 
+                        src={post.thumbnailUrl} 
+                        alt={post.title} 
+                        fill 
+                        sizes="(max-width: 768px) 100vw, 250px"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105" 
+                      />
+                    </div>
+                  )}
+                  <p className="font-serif text-charcoal group-hover:text-gold transition-colors font-medium leading-snug line-clamp-2">
+                    {post.title}
+                  </p>
+                  <span className="text-[10px] text-gold uppercase tracking-wider font-sans font-medium mt-2 inline-flex items-center gap-1">
+                    Read Article <span className="transition-transform group-hover:translate-x-1">→</span>
+                  </span>
                 </Link>
               ))}
             </div>
