@@ -2,11 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { getPosts } from '@/lib/queries/posts';
-import { formatDate } from '@/lib/utils/formatDate';
 import { IntroStrip } from '@/components/sections/IntroStrip';
-import { ArticleListItem } from '@/components/sections/ArticleListItem';
-import { ArticleFilters } from '@/components/sections/ArticleFilters';
-import { Pagination } from '@/components/ui/Pagination';
+import { ArticlesFeed } from '@/components/sections/ArticlesFeed';
 import { SidebarNewsletter } from '@/components/sections/SidebarNewsletter';
 
 export const revalidate = 60;
@@ -23,13 +20,9 @@ export default async function HomePage(props: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   const searchParams = await props.searchParams;
-  const page = typeof searchParams.page === 'string' ? parseInt(searchParams.page, 10) : 1;
-  const arm = typeof searchParams.arm === 'string' ? searchParams.arm : undefined;
-  const type = typeof searchParams.type === 'string' ? searchParams.type : undefined;
   
-  const limit = 9;
-
-  const { posts, total } = await getPosts({ page, limit, arm, type });
+  // Fetch up to 100 posts to cover all articles for instant client-side filtering
+  const { posts } = await getPosts({ limit: 100 });
 
   const websiteSchema = {
     "@context": "https://schema.org",
@@ -52,35 +45,10 @@ export default async function HomePage(props: {
         
         {/* Left Column: Posts Feed */}
         <div className="w-full lg:w-2/3">
-          <ArticleFilters basePath="/" searchParams={searchParams} />
-
-          {posts && posts.length > 0 ? (
-            <div className="flex flex-col mt-4">
-              {posts.map((post: any, idx: number) => (
-                <ArticleListItem 
-                  key={post.slug}
-                  title={post.title}
-                  excerpt={post.excerpt}
-                  date={formatDate(post.publishedAt)}
-                  category={post.arm || 'General'}
-                  href={`/articles/${post.slug}`}
-                  thumbnailUrl={post.thumbnailUrl}
-                  priority={idx === 0}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-20">
-              <p className="text-lg font-sans text-charcoal">No articles found matching your criteria.</p>
-            </div>
-          )}
-
-          <Pagination 
-            currentPage={page} 
-            totalItems={total} 
-            itemsPerPage={limit} 
-            basePath="/"
-            searchParams={searchParams}
+          <ArticlesFeed 
+            initialPosts={posts || []} 
+            basePath="/" 
+            initialSearchParams={searchParams} 
           />
         </div>
 
