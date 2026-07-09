@@ -19,24 +19,34 @@ export default function DisclosuresPage() {
 
         {/* Legal Content */}
         <div className="space-y-12 font-sans text-charcoal leading-relaxed">
-          <section>
-            <h2 className="text-2xl font-serif text-deep-green mb-4">Registration Details</h2>
-            <p>Honworth operates as an AMFI-registered Mutual Fund Distributor with ARN–{process.env.NEXT_PUBLIC_ARN_NUMBER || 'XXXXXX'}. We act strictly in a distribution capacity for mutual funds and are compensated via commissions paid by Asset Management Companies (AMCs) on the products distributed.</p>
+          <section id="numbers" className="scroll-mt-32">
+            <h2 className="text-2xl font-serif text-deep-green mb-4">Registration & Empanelment Details</h2>
+            <p>Honworth is a professional financial distribution firm operating under the following regulatory registrations:</p>
+            <ul className="list-disc list-inside mt-3 space-y-2 pl-2">
+              <li><strong>AMFI Mutual Fund Distributor:</strong> ARN–{process.env.NEXT_PUBLIC_ARN_NUMBER || 'XXXXXX'}</li>
+              <li><strong>SIF Empanelment:</strong> Empanelled Strategic Investment Fund Distributor</li>
+              <li><strong>PMS Empanelment:</strong> Empanelled Portfolio Management Services Distributor</li>
+            </ul>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-serif text-deep-green mb-4">Commission Structure</h2>
-            <p>In accordance with SEBI circulars, a detailed breakdown of the commission structure (upfront and trail) earned by us from various AMCs is available upon request. We distribute regular plans of mutual fund schemes.</p>
+          <section id="disclaimer" className="scroll-mt-32 border-t border-sage/20 pt-8">
+            <h2 className="text-2xl font-serif text-deep-green mb-4">Distributor (Non-Advisory) Disclaimer</h2>
+            <p>Honworth acts strictly in a distribution capacity. We are not a registered investment adviser (RIA) under SEBI, and we do not provide fee-based investment advice or comprehensive financial planning services. All materials, tools, calculators, and commentary shared on this site are purely for educational and distribution purposes.</p>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-serif text-deep-green mb-4">Conflict of Interest</h2>
-            <p>While we strive to recommend products that align with your financial objectives, our remuneration from AMCs may present a conflict of interest. We urge investors to independently evaluate products before committing capital.</p>
+          <section id="no-guarantee" className="scroll-mt-32 border-t border-sage/20 pt-8">
+            <h2 className="text-2xl font-serif text-deep-green mb-4">No Guaranteed-Returns Disclaimer</h2>
+            <p>Mutual fund and securities investments are subject to market risks, and there is no assurance or guarantee that the objectives of any schemes will be achieved. Past performance is not indicative of future results. We make no representations or guarantees regarding future returns or capital safety.</p>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-serif text-deep-green mb-4">Insurance & Other Products</h2>
-            <p>For insurance products, we are empanelled with specific insurers and act as corporate agents/brokers where applicable. Insurance is the subject matter of solicitation. All related commissions and fees will be disclosed prior to transaction execution.</p>
+          <section id="grievance" className="scroll-mt-32 border-t border-sage/20 pt-8">
+            <h2 className="text-2xl font-serif text-deep-green mb-4">Grievance Redressal & SCORES</h2>
+            <p>For any service-related complaints, please reach out to us at <a href="mailto:grievance@honworth.in" className="text-gold hover:underline">grievance@honworth.in</a>. If the grievance is not resolved within 30 days, you can lodge a formal complaint on the SEBI SCORES portal at <a href="https://scores.sebi.gov.in/" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">scores.sebi.gov.in</a>.</p>
+          </section>
+
+          <section id="privacy" className="scroll-mt-32 border-t border-sage/20 pt-8">
+            <h2 className="text-2xl font-serif text-deep-green mb-4">Privacy & Terms of Use Summary</h2>
+            <p>We respect client privacy and confidentiality. Personal data collected through forms, newsletter signups, or calculators is processed solely for compliance, client communication, and service fulfillment in accordance with our <a href="/privacy-policy" className="text-gold hover:underline">Privacy Policy</a>.</p>
           </section>
         </div>
       </div>

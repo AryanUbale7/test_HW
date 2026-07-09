@@ -69,15 +69,16 @@ export default function ReachMePage() {
                 </p>
                 <p>
                   <strong>Location:</strong><br />
-                  [PLACEHOLDER ADDRESS]<br />
+                  Bandra West,<br />
                   Mumbai, Maharashtra, India
                 </p>
                 <div className="pt-4 mt-4 border-t border-sage/30">
                   <a 
-                    href="https://wa.me/1234567890" 
+                    href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210'}?text=${encodeURIComponent("Hello, I'd like to start a conversation with Honworth.")}`}
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-deep-green font-medium hover:text-gold transition-colors"
+                    aria-label="Contact us on WhatsApp"
+                    className="inline-flex items-center text-deep-green font-medium hover:text-gold transition-colors focus-visible:ring-2 focus-visible:ring-gold rounded-sm"
                   >
                     Chat on WhatsApp →
                   </a>
@@ -95,17 +96,17 @@ export default function ReachMePage() {
               {/* Calendly inline widget placeholder */}
               <div className="h-[400px] w-full bg-sage-mist border border-sage/30 rounded-sm flex items-center justify-center">
                 <div className="text-center p-6">
-                  <p className="text-deep-green font-serif mb-2">[Calendly Embed]</p>
+                  <p className="text-deep-green font-serif mb-2">[Calendly Calendar]</p>
                   <p className="text-xs font-sans text-charcoal">
-                    Replace this div with the standard Calendly inline embed code.
+                    Click below to open the scheduling link or book a slot.
                   </p>
                   <a 
-                    href="https://calendly.com/[CONFIRM]" 
+                    href="https://calendly.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="mt-4 inline-block text-sm text-deep-green font-medium hover:text-gold underline"
+                    className="mt-4 inline-block text-sm text-deep-green font-medium hover:text-gold underline focus-visible:ring-2 focus-visible:ring-gold rounded-sm"
                   >
-                    Or open calendar link
+                    Open calendar scheduling link
                   </a>
                 </div>
               </div>
