@@ -10,7 +10,7 @@ export const AuthorWelcome: React.FC = () => {
 
       <div className="w-40 h-40 md:w-48 md:h-48 shrink-0 relative rounded-full overflow-hidden border-4 border-white shadow-sm">
         <Image 
-          src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400"
+          src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=70&w=256"
           alt="Honworth Advisor"
           fill
           sizes="(max-width: 768px) 160px, 192px"
