@@ -186,7 +186,11 @@ export const Navbar = () => {
                   >
                     {link.label}
                   </Link>
-                  <button className="p-4 text-sage focus:outline-none relative flex items-center justify-center w-12 h-12">
+                  <button 
+                    aria-label={`Toggle ${link.label} submenu`}
+                    aria-expanded={activeDropdown === link.label}
+                    className="p-4 text-sage focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm relative flex items-center justify-center w-12 h-12"
+                  >
                     <div className={`absolute w-2 h-2 border border-sage rotate-45 transition-all duration-500 ease-out ${activeDropdown === link.label ? 'rotate-[225deg] bg-gold border-gold' : ''}`} />
                     <div className={`absolute w-1 h-1 bg-sage rotate-45 transition-opacity duration-300 ${activeDropdown === link.label ? 'opacity-0' : 'opacity-100'}`} />
                   </button>

@@ -31,6 +31,7 @@ function SliderWithInput({
           <input
             type="text"
             inputMode="numeric"
+            aria-label={label}
             className="w-24 text-right border-b border-sage bg-transparent text-sm font-semibold text-deep-green focus:outline-none focus:border-gold py-0.5"
             value={editing ? raw : value.toLocaleString('en-IN')}
             onFocus={() => { setEditing(true); setRaw(String(value)); }}

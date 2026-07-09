@@ -9,9 +9,10 @@ interface ArticleListItemProps {
   category: string;
   href: string;
   thumbnailUrl?: string | null;
+  priority?: boolean;
 }
 
-export const ArticleListItem: React.FC<ArticleListItemProps> = ({ title, excerpt, date, category, href, thumbnailUrl }) => {
+export const ArticleListItem: React.FC<ArticleListItemProps> = ({ title, excerpt, date, category, href, thumbnailUrl, priority }) => {
   return (
     <Link href={href} className="block group">
       <div className="py-10 border-b border-sage/20 transition-all duration-500 relative overflow-hidden">
@@ -47,6 +48,7 @@ export const ArticleListItem: React.FC<ArticleListItemProps> = ({ title, excerpt
                 src={thumbnailUrl} 
                 alt={title}
                 fill
+                priority={priority}
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
               />

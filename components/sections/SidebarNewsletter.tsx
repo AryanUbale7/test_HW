@@ -49,6 +49,7 @@ export const SidebarNewsletter = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email address" 
+            aria-label="Email address"
             className="bg-ivory text-charcoal px-4 py-2 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-gold"
           />
           <button 

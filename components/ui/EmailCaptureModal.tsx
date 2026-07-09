@@ -66,7 +66,8 @@ export const EmailCaptureModal: React.FC<EmailCaptureModalProps> = ({ isOpen, on
           >
             <button 
               onClick={onClose}
-              className="absolute top-4 right-4 text-charcoal hover:text-deep-green"
+              aria-label="Close modal"
+              className="absolute top-4 right-4 text-charcoal hover:text-deep-green focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm"
             >
               <X className="w-6 h-6" strokeWidth={1.5} />
             </button>

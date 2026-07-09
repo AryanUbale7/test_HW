@@ -55,7 +55,7 @@ export default async function HomePage(props: {
 
           {posts && posts.length > 0 ? (
             <div className="flex flex-col mt-4">
-              {posts.map((post: any) => (
+              {posts.map((post: any, idx: number) => (
                 <ArticleListItem 
                   key={post.slug}
                   title={post.title}
@@ -64,6 +64,7 @@ export default async function HomePage(props: {
                   category={post.arm || 'General'}
                   href={`/articles/${post.slug}`}
                   thumbnailUrl={post.thumbnailUrl}
+                  priority={idx === 0}
                 />
               ))}
             </div>
