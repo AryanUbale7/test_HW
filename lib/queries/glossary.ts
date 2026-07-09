@@ -1,11 +1,11 @@
-import { createClient } from '@/lib/supabase/server';
+import { createClient, createReadOnlyClient } from '@/lib/supabase/server';
 import { GlossaryTerm } from '@/types/glossary';
 
 /**
  * Fetches all glossary terms sorted alphabetically.
  */
 export async function getAllGlossaryTerms(): Promise<GlossaryTerm[]> {
-  const supabase = await createClient();
+  const supabase = createReadOnlyClient();
   const { data, error } = await supabase
     .from('glossary_terms')
     .select('*')
@@ -22,7 +22,7 @@ export async function getAllGlossaryTerms(): Promise<GlossaryTerm[]> {
  * Fetches a single glossary term by its slug.
  */
 export async function getGlossaryTermBySlug(slug: string): Promise<GlossaryTerm | null> {
-  const supabase = await createClient();
+  const supabase = createReadOnlyClient();
   const { data, error } = await supabase
     .from('glossary_terms')
     .select('*')
@@ -37,7 +37,7 @@ export async function getGlossaryTermBySlug(slug: string): Promise<GlossaryTerm 
  * Fetches all glossary slugs for static site generation.
  */
 export async function getAllGlossarySlugs(): Promise<{ slug: string; updated_at: string }[]> {
-  const supabase = await createClient();
+  const supabase = createReadOnlyClient();
   const { data, error } = await supabase
     .from('glossary_terms')
     .select('slug, updated_at')
@@ -54,7 +54,7 @@ export async function getAllGlossarySlugs(): Promise<{ slug: string; updated_at:
  * Fetches the count of glossary terms.
  */
 export async function getGlossaryTermsCount(): Promise<number> {
-  const supabase = await createClient();
+  const supabase = createReadOnlyClient();
   const { count, error } = await supabase
     .from('glossary_terms')
     .select('*', { count: 'exact', head: true });
@@ -70,7 +70,7 @@ export async function getGlossaryTermsCount(): Promise<number> {
  * Fetches only the term and slug of all glossary terms for lightweight link matching.
  */
 export async function getGlossaryTermsList(): Promise<{ term: string; slug: string }[]> {
-  const supabase = await createClient();
+  const supabase = createReadOnlyClient();
   const { data, error } = await supabase
     .from('glossary_terms')
     .select('term, slug')
@@ -87,7 +87,7 @@ export async function getGlossaryTermsList(): Promise<{ term: string; slug: stri
  * Fetches glossary terms by arm, sorted alphabetically, capped at a limit.
  */
 export async function getGlossaryTermsByArm(arm: string, limit = 3): Promise<any[]> {
-  const supabase = await createClient();
+  const supabase = createReadOnlyClient();
   const { data, error } = await supabase
     .from('glossary_terms')
     .select('*')

@@ -1,11 +1,11 @@
-import { createClient } from '@/lib/supabase/server';
+import { createClient, createReadOnlyClient } from '@/lib/supabase/server';
 import { FAQ } from '@/types/faq';
 
 /**
  * Fetches all FAQs ordered by creation date.
  */
 export async function getFaqs(): Promise<FAQ[]> {
-  const supabase = await createClient();
+  const supabase = createReadOnlyClient();
   const { data, error } = await supabase
     .from('faqs')
     .select('id, question, answer, arm')
@@ -30,7 +30,7 @@ export async function getFaqs(): Promise<FAQ[]> {
  * Fetches the count of FAQs.
  */
 export async function getFaqsCount(): Promise<number> {
-  const supabase = await createClient();
+  const supabase = createReadOnlyClient();
   const { count, error } = await supabase
     .from('faqs')
     .select('*', { count: 'exact', head: true });

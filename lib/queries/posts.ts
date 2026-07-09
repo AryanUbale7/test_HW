@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server';
+import { createClient, createReadOnlyClient } from '@/lib/supabase/server';
 import { Post, AdminPost } from '@/types/post';
 
 /**
@@ -15,7 +15,7 @@ export async function getPosts({
   arm?: string;
   type?: string;
 }) {
-  const supabase = await createClient();
+  const supabase = createReadOnlyClient();
 
   let query = supabase
     .from('posts')
@@ -60,7 +60,7 @@ export async function getPosts({
  * Fetches a single published post by its slug.
  */
 export async function getPostBySlug(slug: string): Promise<Post | null> {
-  const supabase = await createClient();
+  const supabase = createReadOnlyClient();
 
   const { data, error } = await supabase
     .from('posts')
@@ -102,7 +102,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
  * Fetches related published posts excluding the current one.
  */
 export async function getRelatedPosts(currentSlug: string, arm?: string, limit = 3): Promise<Post[]> {
-  const supabase = await createClient();
+  const supabase = createReadOnlyClient();
 
   let query = supabase
     .from('posts')
@@ -133,7 +133,7 @@ export async function getRelatedPosts(currentSlug: string, arm?: string, limit =
  * Fetches all slugs of published posts for static generation.
  */
 export async function getAllPostSlugs(): Promise<{ slug: string; published_at: string }[]> {
-  const supabase = await createClient();
+  const supabase = createReadOnlyClient();
   const { data, error } = await supabase
     .from('posts')
     .select('slug, published_at')
@@ -249,7 +249,7 @@ export async function getAdminPostBySlug(slug: string): Promise<any> {
  * Fetches the primary author (first one in the DB) to display on static page banners.
  */
 export async function getPrimaryAuthor(): Promise<any | null> {
-  const supabase = await createClient();
+  const supabase = createReadOnlyClient();
   const { data, error } = await supabase
     .from('authors')
     .select('name, bio, photo_url, credentials')

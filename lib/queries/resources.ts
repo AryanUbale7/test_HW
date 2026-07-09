@@ -1,11 +1,11 @@
-import { createClient } from '@/lib/supabase/server';
+import { createClient, createReadOnlyClient } from '@/lib/supabase/server';
 import { Resource } from '@/types/resource';
 
 /**
  * Fetches all available resources ordered by creation date.
  */
 export async function getResources(): Promise<Resource[]> {
-  const supabase = await createClient();
+  const supabase = createReadOnlyClient();
   const { data, error } = await supabase
     .from('resources')
     .select('id, title, description, file_url, gated_by_email')
@@ -31,7 +31,7 @@ export async function getResources(): Promise<Resource[]> {
  * Fetches the count of resources.
  */
 export async function getResourcesCount(): Promise<number> {
-  const supabase = await createClient();
+  const supabase = createReadOnlyClient();
   const { count, error } = await supabase
     .from('resources')
     .select('*', { count: 'exact', head: true });
