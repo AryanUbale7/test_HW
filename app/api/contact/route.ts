@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { firstName, lastName, email, phone, inquiryType, message, consent, website } = body;
+    const { firstName, lastName, email, phone, inquiryType, message, website } = body;
 
     // 2. Honeypot check
     if (website) {
@@ -25,9 +25,12 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true, bot: true }, { status: 200 });
     }
 
-    if (!firstName || !email || !message || consent !== true) {
+    // 3. Zod Schema Validation
+    const { contactSchema } = await import('@/lib/validations/contact');
+    const validation = contactSchema.safeParse(body);
+    if (!validation.success) {
       return NextResponse.json(
-        { error: 'Missing required fields or consent' },
+        { error: validation.error.issues[0].message },
         { status: 400 }
       );
     }

@@ -7,9 +7,20 @@ export const NewsletterSignup = () => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
+  const [errorMsg, setErrorMsg] = useState('');
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
+    setErrorMsg('');
+
+    const { validateNewsletterSignup } = await import('@/lib/validations/newsletter');
+    const validationError = validateNewsletterSignup(email);
+    if (validationError) {
+      setErrorMsg(validationError);
+      setStatus('error');
+      return;
+    }
 
     try {
       const response = await fetch('/api/newsletter-signup', {
@@ -18,11 +29,15 @@ export const NewsletterSignup = () => {
         body: JSON.stringify({ email }),
       });
 
-      if (!response.ok) throw new Error('Failed to subscribe');
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Failed to subscribe');
+      }
 
       setStatus('success');
       setEmail('');
-    } catch {
+    } catch (err: any) {
+      setErrorMsg(err.message || 'An error occurred. Please try again.');
       setStatus('error');
     }
   };
@@ -67,7 +82,7 @@ export const NewsletterSignup = () => {
             </form>
           )}
           {status === 'error' && (
-            <p className="text-red-400 text-sm mt-2 font-sans text-center md:text-left">An error occurred. Please try again.</p>
+            <p className="text-red-400 text-sm mt-2 font-sans text-center md:text-left">{errorMsg || 'An error occurred. Please try again.'}</p>
           )}
         </div>
       </div>

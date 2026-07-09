@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
 import { Plus, Pencil, Trash2, X, Check, AlertCircle } from 'lucide-react';
+import { saveGlossaryTerm, deleteGlossaryTerm } from '@/lib/actions/admin';
 
 type GlossaryTerm = {
   id: string;
@@ -19,11 +19,6 @@ const ARM_OPTIONS = ['Creation', 'Protection', 'Legacy', 'General'];
 
 import { slugify } from '@/lib/utils/slugify';
 
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 type FormState = {
   term: string;
@@ -92,23 +87,14 @@ export function GlossaryAdmin({ terms: initialTerms }: { terms: GlossaryTerm[] }
     };
 
     if (editingId) {
-      const { data, error: err } = await supabase
-        .from('glossary_terms')
-        .update(payload)
-        .eq('id', editingId)
-        .select()
-        .single();
-
-      if (err) { setError(err.message); setSaving(false); return; }
+      const result = await saveGlossaryTerm(editingId, payload);
+      if (result.error) { setError(result.error); setSaving(false); return; }
+      const data = result.data;
       setTerms(prev => prev.map(t => t.id === editingId ? data : t).sort((a, b) => a.term.localeCompare(b.term)));
     } else {
-      const { data, error: err } = await supabase
-        .from('glossary_terms')
-        .insert(payload)
-        .select()
-        .single();
-
-      if (err) { setError(err.message); setSaving(false); return; }
+      const result = await saveGlossaryTerm(null, payload);
+      if (result.error) { setError(result.error); setSaving(false); return; }
+      const data = result.data;
       setTerms(prev => [...prev, data].sort((a, b) => a.term.localeCompare(b.term)));
     }
 
@@ -118,8 +104,8 @@ export function GlossaryAdmin({ terms: initialTerms }: { terms: GlossaryTerm[] }
   }
 
   async function handleDelete(id: string) {
-    const { error: err } = await supabase.from('glossary_terms').delete().eq('id', id);
-    if (err) { alert(err.message); return; }
+    const result = await deleteGlossaryTerm(id);
+    if (result && result.error) { alert(result.error); return; }
     setTerms(prev => prev.filter(t => t.id !== id));
     setDeleteConfirm(null);
   }

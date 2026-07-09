@@ -44,7 +44,9 @@
     "react-easy-crop": "^6.2.2",
     "react-markdown": "^10.1.0",
     "recharts": "^3.9.2",
-    "resend": "^6.17.1"
+    "resend": "^6.17.1",
+    "sanitize-html": "^2.17.5",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -52,6 +54,7 @@
     "@types/nodemailer": "^8.0.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/sanitize-html": "^2.16.1",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
     "tailwindcss": "^4",

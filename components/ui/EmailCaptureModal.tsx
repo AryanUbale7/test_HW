@@ -22,6 +22,14 @@ export const EmailCaptureModal: React.FC<EmailCaptureModalProps> = ({ isOpen, on
     setIsSubmitting(true);
     setError('');
 
+    const { validateNewsletterSignup } = await import('@/lib/validations/newsletter');
+    const validationError = validateNewsletterSignup(email);
+    if (validationError) {
+      setError(validationError);
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const response = await fetch('/api/lead-capture', {
         method: 'POST',

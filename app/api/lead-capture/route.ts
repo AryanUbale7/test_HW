@@ -6,9 +6,16 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { email, resourceId } = body;
 
-    if (!email || !resourceId) {
+    const { z } = await import('zod');
+    const schema = z.object({
+      email: z.string().trim().email('Please provide a valid email address.'),
+      resourceId: z.string().trim().min(1, 'Resource ID is required.'),
+    });
+
+    const validation = schema.safeParse(body);
+    if (!validation.success) {
       return NextResponse.json(
-        { error: 'Email and resourceId are required' },
+        { error: validation.error.issues[0].message },
         { status: 400 }
       );
     }

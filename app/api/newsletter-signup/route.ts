@@ -19,9 +19,12 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { email, source } = body;
 
-    if (!email) {
+    // Zod Schema Validation
+    const { newsletterSchema } = await import('@/lib/validations/newsletter');
+    const validation = newsletterSchema.safeParse({ email });
+    if (!validation.success) {
       return NextResponse.json(
-        { error: 'Email is required' },
+        { error: validation.error.issues[0].message },
         { status: 400 }
       );
     }
