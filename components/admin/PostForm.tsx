@@ -300,6 +300,9 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
                 <option value="Creation">Creation</option>
                 <option value="Protection">Protection</option>
                 <option value="Legacy">Legacy</option>
+                <option value="Pers.Fin">Personal Finance (Pers.Fin)</option>
+                <option value="Economy">Economy</option>
+                <option value="General">General</option>
               </select>
               {errors.arm && <p className="text-red-600 text-xs mt-1">{errors.arm}</p>}
             </div>

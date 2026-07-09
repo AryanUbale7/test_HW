@@ -7,7 +7,7 @@ export const postSchema = z.object({
   excerpt: z.string().trim().optional().nullable(),
   body: z.string().trim().optional().nullable(),
   cover_image_url: z.string().trim().optional().nullable(),
-  arm: z.enum(['Creation', 'Protection', 'Legacy', 'General']),
+  arm: z.enum(['Creation', 'Protection', 'Legacy', 'General', 'Pers.Fin', 'Economy']),
   type: z.enum(['Insight', 'News', 'Guide']),
   source_url: z.string().trim().url('Invalid source URL').or(z.literal('')).optional().nullable(),
   author_id: z.string().uuid('Invalid author ID').optional().nullable(),

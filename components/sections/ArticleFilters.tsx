@@ -10,7 +10,7 @@ export const ArticleFilters: React.FC<ArticleFiltersProps> = ({ basePath = '/art
   const currentArm = typeof searchParams.arm === 'string' ? searchParams.arm : 'All';
   const currentType = typeof searchParams.type === 'string' ? searchParams.type : '';
 
-  const arms = ['All', 'Creation', 'Protection', 'Legacy'];
+  const arms = ['All', 'Creation', 'Protection', 'Legacy', 'Pers.Fin', 'Economy'];
   const types = ['Insight', 'News'];
 
   const getArmUrl = (arm: string) => {
@@ -54,39 +54,39 @@ export const ArticleFilters: React.FC<ArticleFiltersProps> = ({ basePath = '/art
   };
 
   return (
-    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 py-6 border-b border-sage/30 mb-8">
+    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 py-6 border-b border-sage/30 mb-8">
       {/* Primary Category Filters */}
-      <div className="flex items-center gap-6">
-        <span className="text-charcoal font-serif italic text-lg mr-2">Filter by</span>
-        <div className="flex flex-wrap gap-4">
-          {arms.map(arm => (
-            <Link
-              key={arm}
-              href={getArmUrl(arm)}
-              className={`text-sm font-sans tracking-wide transition-all duration-300 relative pb-1 ${
-                currentArm === arm 
-                  ? 'text-gold font-medium' 
-                  : 'text-charcoal/60 hover:text-deep-green'
-              }`}
-            >
-              {arm}
-              {currentArm === arm && (
-                <span className="absolute bottom-0 left-0 w-full h-px bg-gold" />
-              )}
-            </Link>
-          ))}
+      <div className="flex items-center gap-4 flex-wrap">
+        <span className="text-charcoal font-sans font-semibold text-sm">Filter:</span>
+        <div className="flex flex-wrap gap-2">
+          {arms.map(arm => {
+            const isActive = currentArm === arm;
+            return (
+              <Link
+                key={arm}
+                href={getArmUrl(arm)}
+                className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 ${
+                  isActive 
+                    ? 'bg-gold text-ivory shadow-sm' 
+                    : 'bg-sage-mist/50 text-charcoal/80 hover:bg-sage-mist hover:text-deep-green'
+                }`}
+              >
+                {arm}
+              </Link>
+            );
+          })}
         </div>
       </div>
 
       {/* Secondary Type Filters (Insight vs News) */}
-      <div className="flex gap-4 border-l border-sage/30 pl-6">
+      <div className="flex gap-2.5 flex-wrap">
         {types.map(type => (
           <Link
             key={type}
             href={getTypeUrl(type)}
-            className={`text-xs font-sans uppercase tracking-[0.15em] px-3 py-1.5 border transition-colors ${
+            className={`text-xs font-sans uppercase tracking-[0.12em] px-3.5 py-1.5 rounded-sm border transition-colors ${
               currentType === type
-                ? 'border-gold text-gold bg-gold/5'
+                ? 'border-gold text-gold bg-gold/5 font-medium'
                 : 'border-sage/30 text-charcoal/60 hover:border-deep-green hover:text-deep-green'
             }`}
           >
