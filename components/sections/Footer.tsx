@@ -36,6 +36,7 @@ export const Footer: React.FC = () => {
               <Link href="/wealth-legacy" className="hover:text-gold transition-colors w-fit focus-visible:ring-2 focus-visible:ring-gold focus:outline-none rounded-sm">Wealth Legacy</Link>
               <Link href="/how-i-work" className="hover:text-gold transition-colors w-fit focus-visible:ring-2 focus-visible:ring-gold focus:outline-none rounded-sm">Our Approach</Link>
               <Link href="/library" className="hover:text-gold transition-colors w-fit focus-visible:ring-2 focus-visible:ring-gold focus:outline-none rounded-sm">Library</Link>
+              <Link href="/glossary" className="hover:text-gold transition-colors w-fit focus-visible:ring-2 focus-visible:ring-gold focus:outline-none rounded-sm">Glossary</Link>
             </nav>
           </div>
 

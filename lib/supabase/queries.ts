@@ -28,7 +28,6 @@ export async function getPosts({ page = 1, limit = 9, arm, type }: { page?: numb
     return { posts: [], total: 0 }
   }
 
-  // Map to the format the frontend expects
   const formattedPosts = data?.map(post => ({
     title: post.title,
     slug: post.slug,
@@ -56,7 +55,6 @@ export async function getPostBySlug(slug: string) {
     
   if (error || !data) return null
 
-  // Supabase returns authors as object (single FK) or array — normalize
   const rawAuthor = Array.isArray(data.authors) ? data.authors[0] : data.authors
   const author = rawAuthor ? {
     name: rawAuthor.name,
@@ -164,4 +162,58 @@ export async function getAllPostSlugs() {
   return data || []
 }
 
+// =====================
+// Glossary queries
+// =====================
 
+export type GlossaryTerm = {
+  id: string
+  term: string
+  slug: string
+  short_definition: string
+  full_explanation: string | null
+  arm: string | null
+  related_term_slugs: string[]
+  created_at: string
+  updated_at: string
+}
+
+export async function getAllGlossaryTerms(): Promise<GlossaryTerm[]> {
+  const supabase = await createClient()
+  const { data, error } = await supabase
+    .from('glossary_terms')
+    .select('*')
+    .order('term', { ascending: true })
+
+  if (error) {
+    console.error('Error fetching glossary terms:', error)
+    return []
+  }
+  return data || []
+}
+
+export async function getGlossaryTermBySlug(slug: string): Promise<GlossaryTerm | null> {
+  const supabase = await createClient()
+  const { data, error } = await supabase
+    .from('glossary_terms')
+    .select('*')
+    .eq('slug', slug)
+    .single()
+
+  if (error || !data) return null
+  return data
+}
+
+export async function getAllGlossarySlugs() {
+  const supabase = await createClient()
+  const { data, error } = await supabase
+    .from('glossary_terms')
+    .select('slug, updated_at')
+    .order('term', { ascending: true })
+
+  if (error) {
+    console.error('Error fetching glossary slugs:', error)
+    return []
+  }
+  return data || []
+}

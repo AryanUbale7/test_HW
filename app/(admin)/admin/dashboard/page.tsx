@@ -1,5 +1,5 @@
 import { createAdminClient } from '@/lib/supabase/server'
-import { FileText, FolderOpen, HelpCircle, Mail, Send } from 'lucide-react'
+import { FileText, FolderOpen, HelpCircle, Mail, Send, BookA } from 'lucide-react'
 
 export const dynamic = 'force-dynamic'
 
@@ -12,14 +12,16 @@ export default async function AdminDashboardPage() {
     { count: resources },
     { count: faqs },
     { count: unreadLeads },
-    { count: subscribers }
+    { count: subscribers },
+    { count: glossaryTerms }
   ] = await Promise.all([
     supabase.from('posts').select('*', { count: 'exact', head: true }).eq('status', 'draft'),
     supabase.from('posts').select('*', { count: 'exact', head: true }).eq('status', 'published'),
     supabase.from('resources').select('*', { count: 'exact', head: true }),
     supabase.from('faqs').select('*', { count: 'exact', head: true }),
     supabase.from('contact_messages').select('*', { count: 'exact', head: true }).eq('contacted', false),
-    supabase.from('newsletter_subscribers').select('*', { count: 'exact', head: true })
+    supabase.from('newsletter_subscribers').select('*', { count: 'exact', head: true }),
+    supabase.from('glossary_terms').select('*', { count: 'exact', head: true }),
   ])
 
   const stats = [
@@ -27,6 +29,7 @@ export default async function AdminDashboardPage() {
     { name: 'Draft Posts', value: draftPosts || 0, icon: FileText, color: 'text-amber-600', bg: 'bg-amber-100' },
     { name: 'Resources', value: resources || 0, icon: FolderOpen, color: 'text-blue-600', bg: 'bg-blue-100' },
     { name: 'FAQs', value: faqs || 0, icon: HelpCircle, color: 'text-purple-600', bg: 'bg-purple-100' },
+    { name: 'Glossary Terms', value: glossaryTerms || 0, icon: BookA, color: 'text-teal-600', bg: 'bg-teal-100' },
     { name: 'Unread Leads', value: unreadLeads || 0, icon: Mail, color: 'text-red-600', bg: 'bg-red-100' },
     { name: 'Subscribers', value: subscribers || 0, icon: Send, color: 'text-indigo-600', bg: 'bg-indigo-100' },
   ]

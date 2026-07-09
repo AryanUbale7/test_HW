@@ -9,7 +9,7 @@ import {
   BookOpen, Library, TrendingUp, Brain, Search,
   Download, Calculator, BookMarked, Mail, MessageCircleQuestion,
   MessageSquare, Building2, Phone, Clock, MapPin,
-  FileDigit, AlertCircle, ShieldAlert, Scale, Lock
+  FileDigit, AlertCircle, ShieldAlert, Scale, Lock, BookA
 } from 'lucide-react';
 
 const NAV_LINKS = [
@@ -55,6 +55,7 @@ const NAV_LINKS = [
       { label: 'Recommended reading', href: '/library#reading', icon: BookMarked },
       { label: 'Email lead-capture for resources', href: '/library#resources', icon: Mail },
       { label: 'FAQs', href: '/library#faqs', icon: MessageCircleQuestion },
+      { label: 'Glossary', href: '/glossary', icon: BookA },
     ]
   },
   { 
