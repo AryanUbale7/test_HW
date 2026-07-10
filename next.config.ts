@@ -1,15 +1,22 @@
 import type { NextConfig } from "next";
 
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://gimmekpwypvlkbisygzz.supabase.co';
+const supabaseHost = new URL(supabaseUrl).hostname;
+const supabaseOrigin = new URL(supabaseUrl).origin;
+const supabaseWss = supabaseOrigin.replace(/^http/, 'ws');
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
+        pathname: '/**',
       },
       {
         protocol: 'https',
-        hostname: 'gimmekpwypvlkbisygzz.supabase.co',
+        hostname: supabaseHost,
+        pathname: '/**',
       },
     ],
   },
@@ -24,8 +31,8 @@ const nextConfig: NextConfig = {
               "default-src 'self';",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://assets.calendly.com;",
               "frame-src 'self' https://calendly.com https://www.google.com https://maps.google.com;",
-              "connect-src 'self' https://gimmekpwypvlkbisygzz.supabase.co wss://gimmekpwypvlkbisygzz.supabase.co;",
-              "img-src 'self' blob: data: https://images.unsplash.com https://gimmekpwypvlkbisygzz.supabase.co;",
+              `connect-src 'self' ${supabaseOrigin} ${supabaseWss};`,
+              `img-src 'self' blob: data: https://images.unsplash.com ${supabaseOrigin};`,
               "style-src 'self' 'unsafe-inline' https://assets.calendly.com;",
               "font-src 'self';",
               "object-src 'none';",
@@ -82,3 +89,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+

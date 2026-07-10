@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
 
           {/* Column 2: Explore */}
           <div className="flex flex-col gap-5">
-            <h4 className="font-serif text-xl text-ivory/90 mb-1">Explore</h4>
+            <p className="font-serif text-xl text-ivory/90 mb-1 font-semibold">Explore</p>
             <nav className="flex flex-col gap-3 font-sans font-light text-ivory/70 text-sm">
               <Link href="/my-story" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">About</Link>
               <Link href="/wealth-creation" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">Wealth Creation</Link>
@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
 
           {/* Column 3: Resources */}
           <div className="flex flex-col gap-5">
-            <h4 className="font-serif text-xl text-ivory/90 mb-1">Resources</h4>
+            <p className="font-serif text-xl text-ivory/90 mb-1 font-semibold">Resources</p>
             <nav className="flex flex-col gap-3 font-sans font-light text-ivory/70 text-sm">
               <Link href="/library" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">Library</Link>
               <Link href="/glossary" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">Glossary</Link>
@@ -51,7 +51,7 @@ export const Footer: React.FC = () => {
 
           {/* Column 4: Get in Touch */}
           <div className="flex flex-col gap-5">
-            <h4 className="font-serif text-xl text-ivory/90 mb-1">Get in Touch</h4>
+            <p className="font-serif text-xl text-ivory/90 mb-1 font-semibold">Get in Touch</p>
             <div className="flex flex-col gap-4 font-sans font-light text-ivory/70 text-sm">
               <a href="mailto:rahul.karandikar@honworth.in" className="hover:text-[#E5C158] transition-colors w-fit flex items-center gap-3 focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>

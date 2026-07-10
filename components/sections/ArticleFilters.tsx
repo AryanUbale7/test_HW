@@ -66,7 +66,7 @@ export const ArticleFilters: React.FC<ArticleFiltersProps> = ({ basePath = '/art
               className={`text-sm font-sans tracking-wide transition-all duration-300 relative pb-1 ${
                 currentArm === arm 
                   ? 'text-gold font-medium' 
-                  : 'text-charcoal/60 hover:text-deep-green'
+                  : 'text-charcoal/85 hover:text-deep-green'
               }`}
             >
               {arm}
@@ -87,7 +87,7 @@ export const ArticleFilters: React.FC<ArticleFiltersProps> = ({ basePath = '/art
             className={`text-xs font-sans uppercase tracking-[0.15em] px-3 py-1.5 border transition-colors ${
               currentType === type
                 ? 'border-gold text-gold bg-gold/5'
-                : 'border-sage/30 text-charcoal/60 hover:border-deep-green hover:text-deep-green'
+                : 'border-sage/30 text-charcoal/85 hover:border-deep-green hover:text-deep-green'
             }`}
           >
             {type}

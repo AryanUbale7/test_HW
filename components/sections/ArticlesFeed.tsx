@@ -91,7 +91,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
                 className={`text-sm font-sans tracking-wide transition-all duration-300 relative pb-1 ${
                   currentArm === arm
                     ? 'text-gold font-medium'
-                    : 'text-charcoal/60 hover:text-deep-green'
+                    : 'text-charcoal/85 hover:text-deep-green'
                 }`}
               >
                 {arm}
@@ -114,7 +114,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
                 className={`text-xs font-sans uppercase tracking-[0.15em] px-3 py-1.5 border transition-colors ${
                   isActive
                     ? 'border-gold text-gold bg-gold/5'
-                    : 'border-sage/30 text-charcoal/60 hover:border-deep-green hover:text-deep-green'
+                    : 'border-sage/30 text-charcoal/85 hover:border-deep-green hover:text-deep-green'
                 }`}
               >
                 {type}
@@ -152,7 +152,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
           <button
             disabled={currentPage <= 1}
             onClick={() => updateUrlAndState(currentArm, currentType, currentPage - 1)}
-            className="text-xs font-sans uppercase tracking-widest text-charcoal/60 hover:text-deep-green disabled:opacity-30 disabled:hover:text-charcoal/60 transition-colors"
+            className="text-xs font-sans uppercase tracking-widest text-charcoal/80 hover:text-deep-green disabled:opacity-30 disabled:hover:text-charcoal/80 transition-colors"
           >
             ← Previous
           </button>
@@ -166,7 +166,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
                   className={`w-8 h-8 rounded-full text-xs font-sans transition-colors ${
                     currentPage === p
                       ? 'bg-deep-green text-ivory'
-                      : 'text-charcoal/60 hover:bg-sage-mist/50 hover:text-deep-green'
+                      : 'text-charcoal/80 hover:bg-sage-mist/50 hover:text-deep-green'
                   }`}
                 >
                   {p}
@@ -177,7 +177,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
           <button
             disabled={currentPage >= Math.ceil(total / limit)}
             onClick={() => updateUrlAndState(currentArm, currentType, currentPage + 1)}
-            className="text-xs font-sans uppercase tracking-widest text-charcoal/60 hover:text-deep-green disabled:opacity-30 disabled:hover:text-charcoal/60 transition-colors"
+            className="text-xs font-sans uppercase tracking-widest text-charcoal/80 hover:text-deep-green disabled:opacity-30 disabled:hover:text-charcoal/80 transition-colors"
           >
             Next →
           </button>

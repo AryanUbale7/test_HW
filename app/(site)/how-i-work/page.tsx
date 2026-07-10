@@ -88,15 +88,15 @@ export default function HowIWorkPage() {
               </p>
               <ul className="space-y-6 font-sans text-charcoal leading-relaxed">
                 <li>
-                  <h4 className="font-serif font-bold text-deep-green text-lg">Wealth Creation</h4>
+                  <h3 className="font-serif font-bold text-deep-green text-lg">Wealth Creation</h3>
                   <p className="text-sm mt-1">Helping your money grow steadily towards the goals that matter most.</p>
                 </li>
                 <li>
-                  <h4 className="font-serif font-bold text-deep-green text-lg">Wealth Protection</h4>
+                  <h3 className="font-serif font-bold text-deep-green text-lg">Wealth Protection</h3>
                   <p className="text-sm mt-1">Safeguarding what you've built—making sure the right cover is in place so that an unexpected event does not undo years of effort.</p>
                 </li>
                 <li>
-                  <h4 className="font-serif font-bold text-deep-green text-lg">Wealth Legacy</h4>
+                  <h3 className="font-serif font-bold text-deep-green text-lg">Wealth Legacy</h3>
                   <p className="text-sm mt-1">Thinking ahead about how wealth passes on within a family, clearly, efficiently, and without unnecessary confusion.</p>
                 </li>
               </ul>

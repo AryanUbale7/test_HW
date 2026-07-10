@@ -100,7 +100,7 @@ export default async function GlossaryTermPage(
       <article className="max-w-3xl mx-auto px-4 sm:px-6 pt-20 pb-24">
 
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-xs font-sans text-charcoal/50 mb-10" aria-label="Breadcrumb">
+        <nav className="flex items-center gap-2 text-xs font-sans text-charcoal/80 mb-10" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gold transition-colors">Home</Link>
           <span>/</span>
           <Link href="/glossary" className="hover:text-gold transition-colors">Glossary</Link>
@@ -151,7 +151,7 @@ export default async function GlossaryTermPage(
                   <p className="font-serif text-deep-green group-hover:text-gold transition-colors font-medium mb-1">
                     {rt.term}
                   </p>
-                  <p className="text-xs font-sans text-charcoal/60 line-clamp-2 leading-relaxed">
+                  <p className="text-xs font-sans text-charcoal/80 line-clamp-2 leading-relaxed">
                     {rt.short_definition}
                   </p>
                 </Link>
@@ -196,7 +196,7 @@ export default async function GlossaryTermPage(
 
         {/* Arm CTA */}
         <div className="bg-sage-mist/30 border border-sage/20 rounded-sm p-8 mb-8 text-center">
-          <p className="font-sans text-sm text-charcoal/60 mb-2 tracking-wide uppercase text-xs">
+          <p className="font-sans text-sm text-charcoal/80 mb-2 tracking-wide uppercase text-xs">
             Explore further
           </p>
           <h3 className="font-serif text-xl text-deep-green mb-4">

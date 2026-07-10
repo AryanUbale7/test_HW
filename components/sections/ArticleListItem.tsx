@@ -22,7 +22,7 @@ export const ArticleListItem: React.FC<ArticleListItemProps> = ({ title, excerpt
         <div className="pl-0 md:group-hover:pl-6 transition-all duration-500 ease-out flex flex-col md:flex-row gap-8 items-center">
           
           <div className="flex-1 w-full order-2 md:order-1">
-            <div className="flex items-center gap-3 text-xs font-sans text-charcoal/60 uppercase tracking-[0.2em] mb-4">
+            <div className="flex items-center gap-3 text-xs font-sans text-charcoal/80 uppercase tracking-[0.2em] mb-4">
               <time>{date}</time>
               <span className="w-4 h-px bg-sage/50" />
               <span className="text-gold font-medium">{category}</span>

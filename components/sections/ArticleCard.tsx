@@ -48,7 +48,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             <span className={`text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-sm border ${categoryColors[category]}`}>
               {category}
             </span>
-            <time className="text-sm font-sans text-charcoal/70">{date}</time>
+            <time className="text-sm font-sans text-charcoal/80">{date}</time>
           </div>
           
           <h3 className="text-xl md:text-2xl font-serif text-deep-green mb-3 group-hover:text-gold transition-colors line-clamp-2">

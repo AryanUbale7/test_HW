@@ -28,7 +28,7 @@ export default function SipCalculatorPage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-28">
 
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-xs font-sans text-charcoal/50 mb-10" aria-label="Breadcrumb">
+        <nav className="flex items-center gap-2 text-xs font-sans text-charcoal/80 mb-10" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-gold transition-colors">Home</Link>
           <span>/</span>
           <Link href="/library" className="hover:text-gold transition-colors">Library</Link>

@@ -255,7 +255,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
               </div>
             )}
             <div>
-              <h4 className="font-serif text-lg text-deep-green">{post.author.name}</h4>
+              <h3 className="font-serif text-lg text-deep-green">{post.author.name}</h3>
               <p className="font-sans text-sm text-charcoal">{post.author.bio}</p>
               {post.author.credentials && (
                 <div className="flex gap-2 mt-2">
