@@ -6,7 +6,7 @@ import { Preloader } from '@/components/sections/Preloader';
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex flex-col min-h-screen">
-      <Preloader />
+      {/* <Preloader /> */}
       <Navbar />
       <main className="flex-grow pt-20">
         {children}

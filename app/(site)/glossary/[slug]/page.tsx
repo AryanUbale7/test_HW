@@ -177,7 +177,8 @@ export default async function GlossaryTermPage(
                         src={post.thumbnailUrl} 
                         alt={post.title} 
                         fill 
-                        sizes="(max-width: 768px) 100vw, 250px"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 250px"
+                        quality={80}
                         className="object-cover transition-transform duration-500 group-hover:scale-105" 
                       />
                     </div>

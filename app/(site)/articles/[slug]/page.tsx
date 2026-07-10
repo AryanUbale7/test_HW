@@ -202,6 +202,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
               alt={post.title} 
               fill 
               sizes="(max-width: 768px) 100vw, 800px" 
+              quality={80}
               className="object-cover" 
               priority 
             />
