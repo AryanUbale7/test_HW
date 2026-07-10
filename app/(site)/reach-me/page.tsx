@@ -72,6 +72,18 @@ export default function ReachMePage() {
                   Pimple Saudagar,<br />
                   Pune – 411027, Maharashtra, India
                 </p>
+                <div className="w-full h-48 rounded-sm overflow-hidden border border-sage/30 mt-4 shadow-sm">
+                  <iframe
+                    title="Honworth Office Location Map"
+                    src="https://maps.google.com/maps?q=Pimple%20Saudagar,%20Pune%20-%20411027,%20Maharashtra,%20India&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen={false}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
                 <p>
                   <strong>Email:</strong><br />
                   <a href="mailto:rahul.karandikar@honworth.in" className="underline hover:text-gold transition-colors">
