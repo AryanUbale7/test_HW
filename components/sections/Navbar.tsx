@@ -37,13 +37,13 @@ const NAV_LINKS = [
   },
   { 
     label: 'Articles', 
-    href: '/',
+    href: '/articles',
     dropdown: [
-      { label: 'Educational personal-finance posts', href: '/#articles', icon: BookOpen },
-      { label: 'Filed by arm: Creation/Protection/Legacy', href: '/#articles', icon: Library },
-      { label: 'Economy & policy commentary', href: '/#articles', icon: TrendingUp },
-      { label: 'Behavioural finance / investor mindset', href: '/#articles', icon: Brain },
-      { label: 'Search + category archive', href: '/#articles', icon: Search },
+      { label: 'Educational personal-finance posts', href: '/articles?type=Insight', icon: BookOpen },
+      { label: 'Filed by arm: Creation/Protection/Legacy', href: '/articles', icon: Library },
+      { label: 'Economy & policy commentary', href: '/articles?type=News', icon: TrendingUp },
+      { label: 'Behavioural finance / investor mindset', href: '/articles?type=Insight', icon: Brain },
+      { label: 'Search + category archive', href: '/articles', icon: Search },
     ]
   },
   { 
