@@ -16,11 +16,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function HomePage(props: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}) {
-  const searchParams = await props.searchParams;
-  
+export default async function HomePage() {
   // Fetch up to 100 posts to cover all articles for instant client-side filtering
   const { posts } = await getPosts({ limit: 100 });
 
@@ -48,7 +44,6 @@ export default async function HomePage(props: {
           <ArticlesFeed 
             initialPosts={posts || []} 
             basePath="/" 
-            initialSearchParams={searchParams} 
           />
         </div>
 

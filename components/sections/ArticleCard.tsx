@@ -37,8 +37,8 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
               src={thumbnailUrl} 
               alt={title} 
               fill
-              sizes="(max-width: 640px) 480px, (max-width: 1024px) 50vw, 400px"
-              quality={80}
+              sizes="(max-width: 640px) 380px, (max-width: 1024px) 33vw, 290px"
+              quality={70}
               className="object-cover transition-transform duration-500 group-hover:scale-105" 
             />
           </div>

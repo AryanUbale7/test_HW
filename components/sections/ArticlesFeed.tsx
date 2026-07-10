@@ -7,35 +7,29 @@ import { ArticleListItem } from './ArticleListItem';
 interface ArticlesFeedProps {
   initialPosts: any[];
   basePath: string;
-  initialSearchParams: any;
 }
 
 export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
   initialPosts,
   basePath,
-  initialSearchParams,
 }) => {
-  const [currentArm, setCurrentArm] = useState<string>(() => {
-    return typeof initialSearchParams?.arm === 'string' ? initialSearchParams.arm : 'All';
-  });
-  const [currentType, setCurrentType] = useState<string>(() => {
-    return typeof initialSearchParams?.type === 'string' ? initialSearchParams.type : '';
-  });
-  const [currentPage, setCurrentPage] = useState<number>(() => {
-    return typeof initialSearchParams?.page === 'string' ? parseInt(initialSearchParams.page, 10) : 1;
-  });
-
-  // Sync state if user clicks browser back/forward buttons
+  const [currentArm, setCurrentArm] = useState<string>('All');
+  const [currentType, setCurrentType] = useState<string>('');
+  const [currentPage, setCurrentPage] = useState<number>(1);
+ 
+  // Sync state if user clicks browser back/forward buttons and on initial mount
   useEffect(() => {
-    const handlePopState = () => {
+    const syncParams = () => {
       const urlParams = new URLSearchParams(window.location.search);
       setCurrentArm(urlParams.get('arm') || 'All');
       setCurrentType(urlParams.get('type') || '');
       setCurrentPage(parseInt(urlParams.get('page') || '1', 10));
     };
 
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    syncParams();
+
+    window.addEventListener('popstate', syncParams);
+    return () => window.removeEventListener('popstate', syncParams);
   }, []);
 
   const updateUrlAndState = (newArm: string, newType: string, newPage: number) => {
