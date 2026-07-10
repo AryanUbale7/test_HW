@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
             value: [
               "default-src 'self';",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://assets.calendly.com;",
-              "frame-src 'self' https://calendly.com;",
+              "frame-src 'self' https://calendly.com https://www.google.com https://maps.google.com;",
               "connect-src 'self' https://gimmekpwypvlkbisygzz.supabase.co wss://gimmekpwypvlkbisygzz.supabase.co;",
               "img-src 'self' blob: data: https://images.unsplash.com https://gimmekpwypvlkbisygzz.supabase.co;",
               "style-src 'self' 'unsafe-inline' https://assets.calendly.com;",
