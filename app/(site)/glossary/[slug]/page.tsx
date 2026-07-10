@@ -59,9 +59,10 @@ export default async function GlossaryTermPage(
   ]);
 
   let relatedTerms: { term: string; slug: string; short_definition: string }[] = [];
-  if (term.related_term_slugs?.length) {
+  const slugs = term.related_term_slugs || [];
+  if (slugs.length) {
     relatedTerms = allTerms
-      .filter(t => term.related_term_slugs.includes(t.slug))
+      .filter(t => slugs.includes(t.slug))
       .map(t => ({ term: t.term, slug: t.slug, short_definition: t.short_definition }));
   }
 

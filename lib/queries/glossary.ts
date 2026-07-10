@@ -8,7 +8,7 @@ export async function getAllGlossaryTerms(): Promise<GlossaryTerm[]> {
   const supabase = createReadOnlyClient();
   const { data, error } = await supabase
     .from('glossary_terms')
-    .select('*')
+    .select('id, term, slug, short_definition, arm')
     .order('term', { ascending: true });
 
   if (error) {

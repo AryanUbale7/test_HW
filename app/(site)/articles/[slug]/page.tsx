@@ -10,8 +10,17 @@ import { autoLinkGlossary } from '@/lib/utils/autoLinkGlossary';
 import { generateTocAndInjectIds } from '@/lib/utils/toc';
 import { formatDate } from '@/lib/utils/formatDate';
 import { ArticleCard } from '@/components/sections/ArticleCard';
+import { supabaseAdmin } from '@/lib/supabase/admin';
 
 export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const { data } = await supabaseAdmin
+    .from('posts')
+    .select('slug')
+    .eq('status', 'published');
+  return (data || []).map(post => ({ slug: post.slug }));
+}
 
 export async function generateMetadata(
   props: { params: Promise<{ slug: string }> }
