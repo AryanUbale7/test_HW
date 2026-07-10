@@ -133,7 +133,7 @@ export default async function GlossaryTermPage(
         {term.full_explanation && (
           <div className="prose prose-lg max-w-none font-sans text-charcoal/85 leading-relaxed mb-14">
             <h2 className="font-serif text-2xl text-deep-green mb-4">In More Detail</h2>
-            <p className="whitespace-pre-line">{term.full_explanation}</p>
+            <div dangerouslySetInnerHTML={{ __html: term.full_explanation }} />
           </div>
         )}
 

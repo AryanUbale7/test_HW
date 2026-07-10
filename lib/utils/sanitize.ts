@@ -37,7 +37,9 @@ export function sanitizeRichText(html: string): string {
       '*': {
         'text-align': [/^left$/, /^right$/, /^center$/, /^justify$/],
         'color': [/^#(?:[0-9a-fA-F]{3}){1,2}$/, /^rgb\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*\)$/],
-        'background-color': [/^#(?:[0-9a-fA-F]{3}){1,2}$/, /^rgb\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*\)$/]
+        'background-color': [/^#(?:[0-9a-fA-F]{3}){1,2}$/, /^rgb\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*\)$/],
+        'margin-left': [/^\d+(?:\.\d+)?(?:px|em|rem)$/],
+        'margin-right': [/^\d+(?:\.\d+)?(?:px|em|rem)$/]
       }
     },
     allowedSchemes: ['http', 'https', 'mailto', 'tel'],

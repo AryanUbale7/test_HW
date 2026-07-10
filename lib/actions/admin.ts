@@ -7,6 +7,7 @@ import { verifyAdminSession } from '@/lib/supabase/auth-check'
 import { resourceSchema, faqSchema } from '@/lib/validations/admin'
 import { validateUploadedFile } from '@/lib/utils/magicBytes'
 import { writeAuditLog } from '@/lib/supabase/audit'
+import { sanitizeRichText } from '@/lib/utils/sanitize'
 
 export async function createResource(prevState: any, formData: FormData) {
   try {
@@ -323,7 +324,7 @@ export async function saveGlossaryTerm(id: string | null, payload: any) {
       term: payload.term.trim(),
       slug: payload.slug.trim(),
       short_definition: payload.short_definition.trim(),
-      full_explanation: payload.full_explanation?.trim() || null,
+      full_explanation: payload.full_explanation ? sanitizeRichText(payload.full_explanation.trim()) : null,
       arm: payload.arm,
       related_term_slugs: payload.related_term_slugs || [],
     }

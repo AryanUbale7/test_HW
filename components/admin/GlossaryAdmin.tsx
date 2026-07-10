@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { Plus, Pencil, Trash2, X, Check, AlertCircle } from 'lucide-react';
 import { saveGlossaryTerm, deleteGlossaryTerm } from '@/lib/actions/admin';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+const RichTextEditor = dynamic(() => import('./RichTextEditor').then(mod => mod.RichTextEditor), { ssr: false });
 
 type GlossaryTerm = {
   id: string;
@@ -211,14 +213,11 @@ export function GlossaryAdmin({
               </div>
 
               {/* Full Explanation */}
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Full Explanation <span className="text-xs text-slate-400">(optional, markdown supported)</span></label>
-                <textarea
-                  rows={6}
-                  className="w-full border border-slate-300 rounded-md px-3 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-500 resize-y"
-                  value={form.full_explanation}
-                  onChange={e => setForm(f => ({ ...f, full_explanation: e.target.value }))}
-                  placeholder="3-5 sentences of richer explanation..."
+              <div className="space-y-1">
+                <label className="block text-sm font-medium text-slate-700">Full Explanation</label>
+                <RichTextEditor
+                  content={form.full_explanation}
+                  onChange={html => setForm(f => ({ ...f, full_explanation: html }))}
                 />
               </div>
 

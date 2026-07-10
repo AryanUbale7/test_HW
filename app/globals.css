@@ -24,3 +24,114 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Active tap/click feedback under 100ms for instant perceived responsiveness */
+a, button, [role="button"], article.group {
+  transition: transform 100ms ease-out, opacity 100ms ease-out, background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+}
+
+a:active,
+button:active,
+[role="button"]:active,
+article.group:active {
+  transform: scale(0.985);
+  opacity: 0.9;
+}
+
+/* Public pages rich-text typography styling (Parity with Tiptap Editor) */
+.prose {
+  font-family: var(--font-serif);
+  color: #36403B;
+  line-height: 1.75;
+}
+
+.prose p {
+  font-family: var(--font-sans);
+  margin-bottom: 1.25rem;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  font-family: var(--font-serif);
+  color: #2E4A3A;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.prose h1 { font-size: 2.25rem; }
+.prose h2 { font-size: 1.75rem; }
+.prose h3 { font-size: 1.25rem; }
+
+.prose blockquote {
+  border-left: 4px solid #8C6921;
+  padding-left: 1.5rem;
+  font-style: italic;
+  color: #36403B;
+  margin: 1.5rem 0;
+}
+
+.prose ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.prose ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+  font-family: var(--font-sans);
+}
+
+.prose table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  margin: 1.5rem 0;
+  overflow: hidden;
+}
+
+.prose td, .prose th {
+  min-width: 1em;
+  border: 1px solid #AEC3B0;
+  padding: 10px 12px;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+.prose th {
+  font-weight: bold;
+  text-align: left;
+  background-color: #E8EFE6;
+  color: #2E4A3A;
+}
+
+.prose pre {
+  background-color: #36403B;
+  color: #FBF8F0;
+  padding: 1rem;
+  border-radius: 4px;
+  font-family: monospace;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.prose code {
+  background-color: #E8EFE6;
+  color: #8C6921;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+.prose p code {
+  background-color: #E8EFE6;
+  color: #8C6921;
+}
+
+
