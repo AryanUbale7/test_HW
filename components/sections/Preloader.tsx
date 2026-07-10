@@ -8,7 +8,7 @@ export const Preloader = () => {
   const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
-    const minLoaderTime = 2800; // Let the animation play fully (2.8s)
+    const minLoaderTime = 3200; // Let the full animation play (3.2s)
     const startTime = Date.now();
 
     const deactivateLoader = () => {
@@ -17,10 +17,9 @@ export const Preloader = () => {
 
       setTimeout(() => {
         setIsExiting(true);
-        // Match exit animation duration (0.8s) before fully unmounting
         setTimeout(() => {
           setIsVisible(false);
-        }, 800);
+        }, 800); // Wait for exit animation
       }, remainingTime);
     };
 
@@ -39,7 +38,6 @@ export const Preloader = () => {
   useEffect(() => {
     if (isVisible) {
       document.body.style.overflow = 'hidden';
-      // Prevent layout shift
       document.body.style.paddingRight = 'var(--removed-body-scroll-width, 0px)';
     } else {
       document.body.style.overflow = '';
@@ -53,20 +51,20 @@ export const Preloader = () => {
 
   if (!isVisible) return null;
 
-  // SVG dimensions & centers
+  // SVG Center Coordinates
   const cx = 150;
   const cy = 150;
 
-  // Concentric rings configuration (radii and custom organic variations)
+  // Exact concentric rings configuration designed to trace the original Honworth logo
   const rings = [
-    { radius: 18, waviness: 0.12, freq: 3, phase: 0.2, delay: 0.2 },
-    { radius: 32, waviness: 0.08, freq: 4, phase: 1.1, delay: 0.5 },
-    { radius: 46, waviness: 0.06, freq: 3, phase: 2.3, delay: 0.8 },
-    { radius: 60, waviness: 0.07, freq: 5, phase: 0.7, delay: 1.1 },
-    { radius: 76, waviness: 0.05, freq: 4, phase: 3.1, delay: 1.4 },
+    { radius: 18, waviness: 0.12, freq: 3, phase: 0.2, delay: 0.2, strokeWidth: 14 },
+    { radius: 31, waviness: 0.08, freq: 4, phase: 1.1, delay: 0.5, strokeWidth: 16 },
+    { radius: 45, waviness: 0.06, freq: 3, phase: 2.3, delay: 0.8, strokeWidth: 18 },
+    { radius: 58, waviness: 0.07, freq: 5, phase: 0.7, delay: 1.1, strokeWidth: 20 },
+    { radius: 74, waviness: 0.05, freq: 4, phase: 3.1, delay: 1.4, strokeWidth: 22 },
   ];
 
-  // Helper to generate a wavy, imperfect organic loop resembling the hand-drawn Honworth logo
+  // Helper to generate the organic path matching the hand-drawn rings
   const generateOrganicPath = (r: number, waviness: number, freq: number, phase: number) => {
     const points = [];
     const steps = 40;
@@ -91,10 +89,10 @@ export const Preloader = () => {
     return d;
   };
 
-  // Generate 25 floating particles
+  // Generate 25 floating gold dust particles
   const particles = Array.from({ length: 25 }).map((_, i) => {
     const angle = (i / 25) * Math.PI * 2;
-    const distance = 80 + Math.random() * 60;
+    const distance = 90 + Math.random() * 60;
     return {
       id: i,
       x: Math.cos(angle) * distance,
@@ -117,14 +115,14 @@ export const Preloader = () => {
           }}
         >
           {/* Ambient radial glow background */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,164,79,0.06)_0%,transparent_70%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,164,79,0.08)_0%,transparent_70%)] pointer-events-none" />
 
-          {/* Core Logo Container */}
+          {/* preloader centerpiece container */}
           <div className="relative w-[300px] h-[300px] flex items-center justify-center">
             
-            {/* Glowing gold backdrops */}
+            {/* Soft backdrop glow */}
             <motion.div 
-              className="absolute w-[180px] h-[180px] rounded-full bg-[#D4A44F]/5 blur-3xl pointer-events-none"
+              className="absolute w-[200px] h-[200px] rounded-full bg-[#D4A44F]/5 blur-3xl pointer-events-none"
               animate={{
                 scale: [1, 1.15, 1],
                 opacity: [0.4, 0.7, 0.4]
@@ -136,132 +134,97 @@ export const Preloader = () => {
               }}
             />
 
-            {/* SVG concentric rings workspace */}
+            {/* SVG Workspace containing emblem image masked by organic drawing strokes */}
             <svg
-              className="w-full h-full drop-shadow-[0_0_20px_rgba(212,164,79,0.25)]"
+              className="w-full h-full drop-shadow-[0_0_25px_rgba(212,164,79,0.3)]"
               viewBox="0 0 300 300"
-              fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs>
-                {/* Premium gold metallic gradient */}
-                <linearGradient id="goldMetallic" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#C59C50" />
-                  <stop offset="25%" stopColor="#F6F2E0" />
-                  <stop offset="50%" stopColor="#D4A44F" />
-                  <stop offset="75%" stopColor="#EFEBDA" />
-                  <stop offset="100%" stopColor="#CD9441" />
-                </linearGradient>
-                
-                {/* Secondary highlight sweep */}
-                <linearGradient id="goldShine" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#D4A44F" />
-                  <stop offset="50%" stopColor="#FFF" stopOpacity={0.8} />
-                  <stop offset="100%" stopColor="#CD9441" />
-                </linearGradient>
+                {/* SVG Mask: concentric strokes draw themselves to reveal the underlying emblem */}
+                <mask id="emblemDrawMask">
+                  {/* Background black to hide everything initially */}
+                  <rect x="0" y="0" width="300" height="300" fill="black" />
+                  
+                  {/* concentric white strokes to progressively reveal emblem rings */}
+                  {rings.map((ring, idx) => {
+                    const pathData = generateOrganicPath(ring.radius, ring.waviness, ring.freq, ring.phase);
+                    return (
+                      <motion.path
+                        key={idx}
+                        d={pathData}
+                        stroke="white"
+                        strokeWidth={ring.strokeWidth}
+                        strokeLinecap="round"
+                        fill="none"
+                        initial={{ pathLength: 0 }}
+                        animate={{
+                          pathLength: 1,
+                          transition: {
+                            delay: ring.delay,
+                            duration: 1.2,
+                            ease: [0.25, 0.1, 0.25, 1]
+                          }
+                        }}
+                      />
+                    );
+                  })}
+                  
+                  {/* Center dot mask reveal */}
+                  <motion.circle
+                    cx={cx}
+                    cy={cy}
+                    r={8}
+                    fill="white"
+                    initial={{ scale: 0 }}
+                    animate={{
+                      scale: 1,
+                      transition: { duration: 0.4, ease: "easeOut" }
+                    }}
+                  />
+                </mask>
 
-                {/* Glow Filter */}
-                <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="4" result="blur" />
-                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                </filter>
+                {/* Shimmer sweep effect */}
+                <linearGradient id="shimmerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#FFF" stopOpacity={0} />
+                  <stop offset="50%" stopColor="#FFF" stopOpacity={0.45} />
+                  <stop offset="100%" stopColor="#FFF" stopOpacity={0} />
+                </linearGradient>
               </defs>
 
-              {/* Concentric Rings */}
-              {rings.map((ring, idx) => {
-                const pathData = generateOrganicPath(ring.radius, ring.waviness, ring.freq, ring.phase);
-                return (
-                  <g key={idx}>
-                    {/* Glow layer underneath */}
-                    <motion.path
-                      d={pathData}
-                      stroke="url(#goldMetallic)"
-                      strokeWidth={1.5}
-                      strokeOpacity={0.35}
-                      filter="url(#goldGlow)"
-                      initial={{ pathLength: 0, opacity: 0 }}
-                      animate={{
-                        pathLength: 1,
-                        opacity: 1,
-                        transition: {
-                          pathLength: { delay: ring.delay, duration: 1.2, ease: [0.25, 0.1, 0.25, 1] },
-                          opacity: { delay: ring.delay, duration: 0.4 }
-                        }
-                      }}
-                      exit={{
-                        pathLength: 0,
-                        opacity: 0,
-                        transition: { duration: 0.6, ease: "easeInOut" }
-                      }}
-                    />
+              {/* The actual high-quality logo emblem, masked by the organic drawing paths */}
+              <g mask="url(#emblemDrawMask)">
+                <image
+                  href="/logo/emblem.png"
+                  x="50"
+                  y="50"
+                  width="200"
+                  height="200"
+                />
+              </g>
 
-                    {/* Main crisp ring layer */}
-                    <motion.path
-                      d={pathData}
-                      stroke="url(#goldMetallic)"
-                      strokeWidth={2}
-                      strokeLinecap="round"
-                      initial={{ pathLength: 0 }}
-                      animate={{
-                        pathLength: 1,
-                        scale: [1, 1.015, 1],
-                        transition: {
-                          pathLength: { delay: ring.delay, duration: 1.2, ease: [0.25, 0.1, 0.25, 1] },
-                          scale: { delay: 1.8 + idx * 0.1, duration: 0.8, ease: "easeOut" }
-                        }
-                      }}
-                      exit={{
-                        pathLength: 0,
-                        scale: 0.01,
-                        transition: { duration: 0.7, ease: [0.43, 0.13, 0.23, 0.96] }
-                      }}
-                      style={{ originX: "150px", originY: "150px" }}
-                    />
-                  </g>
-                );
-              })}
-
-              {/* Center Dot (Start and end anchor) */}
-              <motion.circle
-                cx={cx}
-                cy={cy}
-                r={4}
-                fill="url(#goldMetallic)"
-                initial={{ scale: 0 }}
-                animate={{
-                  scale: [0, 1.5, 1],
-                  transition: { duration: 0.6, ease: "easeOut" }
-                }}
-                exit={{
-                  scale: [1, 2, 0.1],
-                  transition: { duration: 0.6, ease: "easeInOut" }
-                }}
-              />
+              {/* Sweeping premium reflection shimmer overlay (only on top of the logo shape) */}
+              <g mask="url(#emblemDrawMask)">
+                <motion.rect
+                  x="50"
+                  y="50"
+                  width="200"
+                  height="200"
+                  fill="url(#shimmerGrad)"
+                  initial={{ x: -200 }}
+                  animate={{ x: 200 }}
+                  transition={{
+                    delay: 1.8,
+                    duration: 1.8,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatDelay: 3
+                  }}
+                />
+              </g>
             </svg>
 
-            {/* Sweeping premium reflection shimmer overlay */}
-            <motion.div
-              className="absolute inset-0 pointer-events-none"
-              initial={{ opacity: 0 }}
-              animate={{ 
-                opacity: [0, 0.35, 0],
-                rotate: [0, 360]
-              }}
-              transition={{
-                delay: 1.8,
-                duration: 2.2,
-                ease: "easeInOut",
-                repeat: Infinity,
-                repeatDelay: 3
-              }}
-              style={{
-                background: "conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,255,255,0.4) 180deg, transparent 360deg)",
-                mixBlendMode: "overlay",
-                borderRadius: "50%"
-              }}
-            />
-
-            {/* Infinite breathing scale loop */}
+            {/* Breathing scale overlay logic */}
             <motion.div
               className="absolute inset-0 pointer-events-none"
               animate={{
@@ -290,10 +253,10 @@ export const Preloader = () => {
                   top: "50%"
                 }}
                 animate={{
-                  x: [particle.x * 0.15, particle.x * 1.1],
-                  y: [particle.y * 0.15, particle.y * 1.1 - 40],
+                  x: [particle.x * 0.15, particle.x * 1.15],
+                  y: [particle.y * 0.15, particle.y * 1.15 - 40],
                   opacity: [0, 0.8, 0],
-                  scale: [1, 1.2, 0.6]
+                  scale: [1, 1.3, 0.5]
                 }}
                 transition={{
                   duration: particle.duration,
