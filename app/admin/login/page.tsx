@@ -22,13 +22,13 @@ export default function LoginPage() {
           
           {/* Branded Header */}
           <div className="flex flex-col items-center mb-8">
-            <div className="bg-slate-50/50 p-3 rounded-md border border-slate-100 mb-4 flex items-center justify-center shadow-inner">
+            <div className="mb-4 flex items-center justify-center">
               <Image 
                 src="/logo/logo.png" 
                 alt="Honworth Logo" 
-                width={180} 
-                height={60} 
-                className="object-contain h-12 w-auto" 
+                width={200} 
+                height={67} 
+                className="object-contain h-14 w-auto rounded-sm shadow-sm" 
                 priority
               />
             </div>

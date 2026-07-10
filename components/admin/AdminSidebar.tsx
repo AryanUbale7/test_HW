@@ -49,15 +49,15 @@ export function AdminSidebar() {
       <aside className={`fixed left-0 top-0 bottom-0 w-64 bg-slate-900 text-slate-300 p-6 flex flex-col z-50 transition-transform duration-300 md:translate-x-0 ${
         isOpen ? 'translate-x-0' : '-translate-x-full'
       }`}>
-        <div className="mb-10 px-4 flex flex-col gap-3">
+        <div className="mb-10 px-2 flex flex-col gap-2">
           <div className="flex justify-between items-center w-full">
-            <Link href="/" className="bg-white/95 p-2.5 rounded-md flex items-center justify-center shadow-inner hover:opacity-90 transition-opacity w-full">
+            <Link href="/" className="flex items-center justify-start hover:opacity-90 transition-opacity w-full">
               <Image 
                 src="/logo/logo.png" 
                 alt="Honworth Logo" 
-                width={160} 
-                height={53} 
-                className="object-contain w-auto h-9" 
+                width={180} 
+                height={60} 
+                className="object-contain w-auto h-12 rounded-sm" 
                 priority
               />
             </Link>
@@ -70,7 +70,7 @@ export function AdminSidebar() {
               <X size={20} />
             </button>
           </div>
-          <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold select-none px-1">Content Studio</span>
+          <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold select-none px-1">Content Studio</span>
         </div>
 
         <nav className="flex-1 space-y-1">
