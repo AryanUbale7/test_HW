@@ -71,14 +71,13 @@ export const NewsletterSignup = () => {
                 placeholder="Enter your email"
                 className="flex-grow bg-ivory/10 border border-sage/30 rounded-sm px-4 py-3 text-ivory placeholder-ivory/50 focus:outline-none focus:border-gold transition-colors"
               />
-              <Button 
+              <button 
                 type="submit" 
-                variant="primary" 
                 disabled={status === 'submitting'}
-                className="whitespace-nowrap"
+                className="whitespace-nowrap px-8 py-3 bg-gold hover:bg-ivory hover:text-gold text-ivory font-medium border border-gold transition-colors duration-300 rounded-sm text-sm disabled:opacity-50"
               >
                 {status === 'submitting' ? 'Subscribing...' : 'Subscribe'}
-              </Button>
+              </button>
             </form>
           )}
           {status === 'error' && (
