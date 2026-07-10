@@ -201,7 +201,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
               src={post.thumbnailUrl} 
               alt={post.title} 
               fill 
-              sizes="(max-width: 768px) 100vw, 800px" 
+              sizes="(max-width: 768px) 480px, 800px" 
               quality={80}
               className="object-cover" 
               priority 

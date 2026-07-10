@@ -30,14 +30,14 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
     <article 
       className="group flex flex-col h-full bg-ivory rounded-md border border-sage/30 hover:border-sage overflow-hidden transition-all duration-300"
     >
-      <Link href={href} className="flex flex-col h-full">
+      <Link href={href} className="flex flex-col h-full" aria-label={`Read article: ${title}`}>
         {thumbnailUrl && (
           <div className="aspect-[16/9] w-full overflow-hidden bg-sage-mist relative">
             <Image 
               src={thumbnailUrl} 
               alt={title} 
               fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+              sizes="(max-width: 640px) 480px, (max-width: 1024px) 50vw, 400px"
               quality={80}
               className="object-cover transition-transform duration-500 group-hover:scale-105" 
             />

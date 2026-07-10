@@ -103,6 +103,7 @@ export const ArmPageTemplate: React.FC<ArmPageTemplateProps> = ({
                         key={term.slug}
                         href={`/glossary/${term.slug}`}
                         className="p-4 bg-white border border-sage/20 rounded-sm hover:border-gold transition-colors flex flex-col justify-between group"
+                        aria-label={`Read definition of ${term.term}`}
                       >
                         <div>
                           <h3 className="font-serif text-deep-green group-hover:text-gold transition-colors font-semibold">{term.term}</h3>
@@ -126,6 +127,7 @@ export const ArmPageTemplate: React.FC<ArmPageTemplateProps> = ({
                         key={post.slug}
                         href={`/articles/${post.slug}`}
                         className="group flex flex-col"
+                        aria-label={`Read article: ${post.title}`}
                       >
                         {post.thumbnailUrl && (
                           <div className="aspect-[16/9] w-full overflow-hidden bg-sage-mist rounded-sm mb-3 relative">
@@ -133,7 +135,7 @@ export const ArmPageTemplate: React.FC<ArmPageTemplateProps> = ({
                               src={post.thumbnailUrl} 
                               alt={post.title} 
                               fill 
-                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 300px"
+                              sizes="(max-width: 640px) 480px, (max-width: 1024px) 33vw, 300px"
                               quality={80}
                               className="object-cover transition-transform duration-500 group-hover:scale-105" 
                             />

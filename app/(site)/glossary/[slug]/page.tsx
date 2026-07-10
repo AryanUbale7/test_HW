@@ -147,6 +147,7 @@ export default async function GlossaryTermPage(
                   key={rt.slug}
                   href={`/glossary/${rt.slug}`}
                   className="group block border border-sage/30 rounded-sm p-4 hover:border-gold/50 hover:bg-white/70 transition-all duration-200"
+                  aria-label={`Read definition of ${rt.term}`}
                 >
                   <p className="font-serif text-deep-green group-hover:text-gold transition-colors font-medium mb-1">
                     {rt.term}
@@ -170,6 +171,7 @@ export default async function GlossaryTermPage(
                   key={post.slug}
                   href={`/articles/${post.slug}`}
                   className="group flex flex-col"
+                  aria-label={`Read article: ${post.title}`}
                 >
                   {post.thumbnailUrl && (
                     <div className="aspect-[16/9] w-full overflow-hidden bg-sage-mist rounded-sm mb-3 relative">
@@ -177,7 +179,7 @@ export default async function GlossaryTermPage(
                         src={post.thumbnailUrl} 
                         alt={post.title} 
                         fill 
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 250px"
+                        sizes="(max-width: 640px) 480px, (max-width: 1024px) 33vw, 250px"
                         quality={80}
                         className="object-cover transition-transform duration-500 group-hover:scale-105" 
                       />
