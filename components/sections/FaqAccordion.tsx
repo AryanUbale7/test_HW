@@ -34,7 +34,7 @@ export const FaqAccordion: React.FC<FaqAccordionProps> = ({ items }) => {
             <button
               onClick={() => toggleItem(item.id)}
               aria-expanded={isOpen}
-              aria-controls={`faq-answer-${item.id}`}
+              aria-controls={isOpen ? `faq-answer-${item.id}` : undefined}
               className="w-full flex justify-between items-center text-left py-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm group"
             >
               <span id={`faq-question-${item.id}`} className="text-lg md:text-xl font-serif text-deep-green group-hover:text-gold transition-colors pr-8">
