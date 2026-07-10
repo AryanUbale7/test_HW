@@ -12,13 +12,13 @@ export const Footer: React.FC = () => {
           
           {/* Column 1: Logo & Tagline */}
           <div className="flex flex-col items-start gap-5">
-            <Link href="/" className="focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E5C158] rounded-sm block">
+            <Link href="/" className="focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E5C158] rounded-sm block hover:opacity-90 transition-opacity">
               <Image 
-                src="/logo/main_logo.png" 
+                src="/logo/logo.svg" 
                 alt="Honworth Logo" 
                 width={240} 
                 height={80} 
-                className="object-contain h-16 md:h-20 w-auto"
+                className="object-contain h-16 md:h-20 w-auto rounded-sm"
               />
             </Link>
             <p className="text-sm text-[#E5C158]/95 font-light max-w-xs">

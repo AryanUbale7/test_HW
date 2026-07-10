@@ -98,13 +98,13 @@ export const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 w-full bg-ivory/95 backdrop-blur-sm border-b border-sage/20">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full flex items-center justify-between h-20 md:h-24">
-        <Link href="/" className="focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm shrink-0">
+        <Link href="/" className="focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm shrink-0 hover:opacity-90 transition-opacity">
           <Image 
-            src="/logo/main_logo.png" 
+            src="/logo/logo.svg" 
             alt="Honworth Logo" 
             width={240} 
             height={80} 
-            className="object-contain h-14 md:h-16 w-auto"
+            className="object-contain h-14 md:h-16 w-auto rounded-sm"
             priority
           />
         </Link>
