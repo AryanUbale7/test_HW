@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { getPosts } from '@/lib/queries/posts';
-import { IntroStrip } from '@/components/sections/IntroStrip';
+import { Hero } from '@/components/sections/Hero';
 import { ArticlesFeed } from '@/components/sections/ArticlesFeed';
 import { SidebarNewsletter } from '@/components/sections/SidebarNewsletter';
 
@@ -39,7 +39,7 @@ export default async function HomePage(props: {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
       <h1 className="sr-only">Honworth | Wealth Creation, Protection & Legacy Planning</h1>
-      <IntroStrip />
+      <Hero />
 
       <main id="articles" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex flex-col lg:flex-row gap-12 lg:gap-16 scroll-mt-32">
         
