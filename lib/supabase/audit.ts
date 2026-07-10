@@ -33,3 +33,27 @@ export async function writeAuditLog({
     console.error('Error in writeAuditLog utility:', err);
   }
 }
+
+/**
+ * Fetches the most recent audit logs for dashboard view.
+ */
+export async function getRecentAuditLogs(limit = 10): Promise<any[]> {
+  try {
+    const supabase = await createAdminClient();
+    const { data, error } = await supabase
+      .from('admin_activity_log')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(limit);
+
+    if (error) {
+      console.error('Failed to fetch recent audit logs:', error.message);
+      return [];
+    }
+    return data || [];
+  } catch (err) {
+    console.error('Error in getRecentAuditLogs:', err);
+    return [];
+  }
+}
+

@@ -273,3 +273,25 @@ export async function getPrimaryAuthor(): Promise<any | null> {
   }
   return data;
 }
+
+/**
+ * Fetches the count of posts published in the last 7 days.
+ */
+export async function getRecentPublicationsCount(): Promise<number> {
+  const supabase = await createClient();
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+  
+  const { count, error } = await supabase
+    .from('posts')
+    .select('*', { count: 'exact', head: true })
+    .eq('status', 'published')
+    .gte('published_at', sevenDaysAgo.toISOString());
+    
+  if (error) {
+    console.error('Error fetching recent publications count:', error);
+    return 0;
+  }
+  return count || 0;
+}
+

@@ -43,3 +43,24 @@ export async function getAllSubscribers({
   }
   return { subscribers: data || [], total: count || 0 };
 }
+
+/**
+ * Fetches the count of active newsletter subscribers joined in the last 7 days.
+ */
+export async function getRecentSubscribersCount(): Promise<number> {
+  const supabase = await createClient();
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+  
+  const { count, error } = await supabase
+    .from('newsletter_subscribers')
+    .select('*', { count: 'exact', head: true })
+    .gte('subscribed_at', sevenDaysAgo.toISOString());
+
+  if (error) {
+    console.error('Error fetching recent subscribers count:', error);
+    return 0;
+  }
+  return count || 0;
+}
+

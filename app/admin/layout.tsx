@@ -3,6 +3,8 @@ import { AdminSidebar } from '@/components/admin/AdminSidebar'
 import { AdminMain } from '@/components/admin/AdminMain'
 
 export const metadata: Metadata = {
+  title: 'Honworth Admin',
+  description: 'Honworth Content Studio admin panel',
   robots: {
     index: false,
     follow: false,
