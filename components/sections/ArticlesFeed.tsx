@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { formatDate } from '@/lib/utils/formatDate';
 import { ArticleListItem } from './ArticleListItem';
 
@@ -17,20 +18,15 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
   const [currentType, setCurrentType] = useState<string>('');
   const [currentPage, setCurrentPage] = useState<number>(1);
  
-  // Sync state if user clicks browser back/forward buttons and on initial mount
+  const searchParams = useSearchParams();
+ 
+  // Sync state when searchParams changes (handles client-side next/link navigation and browser history)
   useEffect(() => {
-    const syncParams = () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      setCurrentArm(urlParams.get('arm') || 'All');
-      setCurrentType(urlParams.get('type') || '');
-      setCurrentPage(parseInt(urlParams.get('page') || '1', 10));
-    };
-
-    syncParams();
-
-    window.addEventListener('popstate', syncParams);
-    return () => window.removeEventListener('popstate', syncParams);
-  }, []);
+    if (!searchParams) return;
+    setCurrentArm(searchParams.get('arm') || 'All');
+    setCurrentType(searchParams.get('type') || '');
+    setCurrentPage(parseInt(searchParams.get('page') || '1', 10));
+  }, [searchParams]);
 
   const updateUrlAndState = (newArm: string, newType: string, newPage: number) => {
     setCurrentArm(newArm);

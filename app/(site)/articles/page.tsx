@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { getPosts } from '@/lib/queries/posts';
@@ -29,10 +29,12 @@ export default async function ArticlesPage() {
         
         {/* Left Column: Posts Feed */}
         <div className="w-full lg:w-2/3">
-          <ArticlesFeed 
-            initialPosts={posts || []} 
-            basePath="/articles" 
-          />
+          <Suspense fallback={<div className="h-64 flex items-center justify-center font-sans text-charcoal/50">Loading articles...</div>}>
+            <ArticlesFeed 
+              initialPosts={posts || []} 
+              basePath="/articles" 
+            />
+          </Suspense>
         </div>
 
         {/* Right Column: Sidebar */}
