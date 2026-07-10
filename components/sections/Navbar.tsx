@@ -104,7 +104,7 @@ export const Navbar = () => {
             alt="Honworth Logo" 
             width={240} 
             height={80} 
-            className="object-contain h-14 md:h-16 w-auto rounded-sm"
+            className="object-contain h-16 md:h-20 w-auto rounded-sm"
             priority
           />
         </Link>
