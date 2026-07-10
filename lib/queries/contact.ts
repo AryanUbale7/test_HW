@@ -20,16 +20,27 @@ export async function getUnreadLeadsCount(): Promise<number> {
 /**
  * Fetches all contact messages for the admin view.
  */
-export async function getAllContactMessages() {
+export async function getAllContactMessages({
+  page = 1,
+  limit = 20,
+}: {
+  page?: number;
+  limit?: number;
+} = {}) {
   const supabase = await createClient();
-  const { data, error } = await supabase
+  
+  const from = (page - 1) * limit;
+  const to = from + limit - 1;
+
+  const { data, count, error } = await supabase
     .from('contact_messages')
-    .select('*')
-    .order('created_at', { ascending: false });
+    .select('*', { count: 'exact' })
+    .order('created_at', { ascending: false })
+    .range(from, to);
 
   if (error) {
     console.error('Error fetching all contact messages:', error);
-    return [];
+    return { messages: [], total: 0 };
   }
-  return data || [];
+  return { messages: data || [], total: count || 0 };
 }

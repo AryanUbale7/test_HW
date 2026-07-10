@@ -4,6 +4,7 @@ import { useActionState, useState, useRef } from 'react'
 import { createResource, updateResource, deleteResource } from '@/lib/actions/admin'
 import { createClient } from '@/lib/supabase/client'
 import { Plus, Pencil, Trash2, Upload, Loader2, X, FileText } from 'lucide-react'
+import Link from 'next/link'
 
 interface Resource {
   id: string
@@ -14,7 +15,15 @@ interface Resource {
   created_at: string
 }
 
-export function ResourcesAdmin({ resources }: { resources: Resource[] }) {
+export function ResourcesAdmin({ 
+  resources,
+  total = 0,
+  currentPage = 1,
+}: { 
+  resources: Resource[]
+  total?: number
+  currentPage?: number
+}) {
   const [editing, setEditing] = useState<Resource | null>(null)
   const [creating, setCreating] = useState(false)
   const [deleteId, setDeleteId] = useState<string | null>(null)
@@ -46,7 +55,7 @@ export function ResourcesAdmin({ resources }: { resources: Resource[] }) {
         />
       )}
 
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-x-auto">
         <table className="w-full text-left text-sm">
           <thead className="bg-slate-50 border-b border-slate-200 text-slate-600">
             <tr>
@@ -86,6 +95,35 @@ export function ResourcesAdmin({ resources }: { resources: Resource[] }) {
           </tbody>
         </table>
       </div>
+
+      {/* Pagination controls */}
+      {total > 20 && (
+        <div className="flex justify-between items-center bg-white px-6 py-4 border border-t-0 border-slate-200 rounded-b-lg shadow-sm">
+          <div className="text-sm text-slate-500">
+            Showing <span className="font-medium">{(currentPage - 1) * 20 + 1}</span> to{' '}
+            <span className="font-medium">{Math.min(currentPage * 20, total)}</span> of{' '}
+            <span className="font-medium">{total}</span> items
+          </div>
+          <div className="flex gap-2">
+            <Link
+              href={currentPage > 2 ? `/admin/resources?page=${currentPage - 1}` : '/admin/resources'}
+              className={`px-3 py-1 text-sm border border-slate-300 rounded-md hover:bg-slate-50 transition-colors ${
+                currentPage <= 1 ? 'opacity-50 pointer-events-none' : ''
+              }`}
+            >
+              Previous
+            </Link>
+            <Link
+              href={`/admin/resources?page=${currentPage + 1}`}
+              className={`px-3 py-1 text-sm border border-slate-300 rounded-md hover:bg-slate-50 transition-colors ${
+                currentPage * 20 >= total ? 'opacity-50 pointer-events-none' : ''
+              }`}
+            >
+              Next
+            </Link>
+          </div>
+        </div>
+      )}
 
       {/* Delete confirmation */}
       {deleteId && (
@@ -177,8 +215,8 @@ function ResourceForm({ resource, onCancel }: { resource: Resource | null; onCan
         </div>
         <div className="flex justify-end gap-3 pt-2">
           <button type="button" onClick={onCancel} className="px-4 py-2 text-sm bg-slate-100 rounded-md hover:bg-slate-200">Cancel</button>
-          <button type="submit" disabled={isPending} className="px-4 py-2 text-sm text-white bg-blue-600 rounded-md hover:bg-blue-700 disabled:opacity-50">
-            {isPending ? 'Saving…' : (resource ? 'Update' : 'Create')}
+          <button type="submit" disabled={isPending || uploading} className="px-4 py-2 text-sm text-white bg-blue-600 rounded-md hover:bg-blue-700 disabled:opacity-50">
+            {uploading ? 'Uploading…' : (isPending ? 'Saving…' : (resource ? 'Update' : 'Create'))}
           </button>
         </div>
       </form>

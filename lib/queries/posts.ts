@@ -168,11 +168,19 @@ export async function getPostsCount(status?: 'draft' | 'published'): Promise<num
 /**
  * Fetches all posts for the admin table with an optional filter.
  */
-export async function getAdminPosts({ filter }: { filter?: string } = {}) {
+export async function getAdminPosts({
+  filter,
+  page = 1,
+  limit = 20,
+}: {
+  filter?: string;
+  page?: number;
+  limit?: number;
+} = {}) {
   const supabase = await createClient();
   let query = supabase
     .from('posts')
-    .select('id, title, arm, type, status, published_at')
+    .select('id, title, arm, type, status, published_at', { count: 'exact' })
     .order('created_at', { ascending: false });
 
   if (filter === 'draft') {
@@ -181,12 +189,15 @@ export async function getAdminPosts({ filter }: { filter?: string } = {}) {
     query = query.eq('status', 'published');
   }
 
-  const { data, error } = await query;
+  const from = (page - 1) * limit;
+  const to = from + limit - 1;
+
+  const { data, count, error } = await query.range(from, to);
   if (error) {
     console.error('Error fetching admin posts:', error);
-    return [];
+    return { posts: [], total: 0 };
   }
-  return data || [];
+  return { posts: data || [], total: count || 0 };
 }
 
 /**

@@ -9,10 +9,16 @@ import { getCroppedImg } from '@/lib/utils/cropImage'
 interface CoverImageUploadProps {
   value: string
   onChange: (url: string) => void
+  onUploadingChange?: (uploading: boolean) => void
 }
 
-export function CoverImageUpload({ value, onChange }: CoverImageUploadProps) {
+export function CoverImageUpload({ value, onChange, onUploadingChange }: CoverImageUploadProps) {
   const [uploading, setUploading] = useState(false)
+  
+  const changeUploading = (state: boolean) => {
+    setUploading(state)
+    onUploadingChange?.(state)
+  }
   const [error, setError] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -44,7 +50,7 @@ export function CoverImageUpload({ value, onChange }: CoverImageUploadProps) {
   const handleCropAndUpload = async () => {
     if (!imageSrc || !croppedAreaPixels) return
 
-    setUploading(true)
+    changeUploading(true)
     setError('')
     setImageSrc(null) // Close modal
 
@@ -73,7 +79,7 @@ export function CoverImageUpload({ value, onChange }: CoverImageUploadProps) {
     } catch (err: any) {
       setError(err.message || 'Upload failed')
     } finally {
-      setUploading(false)
+      changeUploading(false)
       if (inputRef.current) inputRef.current.value = ''
     }
   }

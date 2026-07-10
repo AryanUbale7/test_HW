@@ -8,10 +8,11 @@ export const dynamic = 'force-dynamic'
 export default async function AdminPostsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ filter?: string }>
+  searchParams: Promise<{ filter?: string; page?: string }>
 }) {
-  const { filter } = await searchParams
-  const posts = await getAdminPosts({ filter })
+  const { filter, page } = await searchParams
+  const currentPage = parseInt(page || '1', 10)
+  const { posts, total } = await getAdminPosts({ filter, page: currentPage, limit: 20 })
 
   const activeFilter = filter || 'all'
 
@@ -51,7 +52,7 @@ export default async function AdminPostsPage({
       </div>
 
       {/* Posts table */}
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-x-auto">
         <table className="w-full text-left text-sm">
           <thead className="bg-slate-50 border-b border-slate-200 text-slate-600">
             <tr>
@@ -118,6 +119,35 @@ export default async function AdminPostsPage({
           </tbody>
         </table>
       </div>
+
+      {/* Pagination controls */}
+      {total > 20 && (
+        <div className="flex justify-between items-center bg-white px-6 py-4 border border-t-0 border-slate-200 rounded-b-lg shadow-sm">
+          <div className="text-sm text-slate-500">
+            Showing <span className="font-medium">{(currentPage - 1) * 20 + 1}</span> to{' '}
+            <span className="font-medium">{Math.min(currentPage * 20, total)}</span> of{' '}
+            <span className="font-medium">{total}</span> items
+          </div>
+          <div className="flex gap-2">
+            <Link
+              href={currentPage > 2 ? `/admin/posts?page=${currentPage - 1}${filter ? `&filter=${filter}` : ''}` : `/admin/posts${filter ? `?filter=${filter}` : ''}`}
+              className={`px-3 py-1 text-sm border border-slate-300 rounded-md hover:bg-slate-50 transition-colors ${
+                currentPage <= 1 ? 'opacity-50 pointer-events-none' : ''
+              }`}
+            >
+              Previous
+            </Link>
+            <Link
+              href={`/admin/posts?page=${currentPage + 1}${filter ? `&filter=${filter}` : ''}`}
+              className={`px-3 py-1 text-sm border border-slate-300 rounded-md hover:bg-slate-50 transition-colors ${
+                currentPage * 20 >= total ? 'opacity-50 pointer-events-none' : ''
+              }`}
+            >
+              Next
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

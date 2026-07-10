@@ -46,16 +46,27 @@ export async function getResourcesCount(): Promise<number> {
 /**
  * Fetches all resources for admin dashboard.
  */
-export async function getAdminResources() {
+export async function getAdminResources({
+  page = 1,
+  limit = 20,
+}: {
+  page?: number;
+  limit?: number;
+} = {}) {
   const supabase = await createClient();
-  const { data, error } = await supabase
+  
+  const from = (page - 1) * limit;
+  const to = from + limit - 1;
+
+  const { data, count, error } = await supabase
     .from('resources')
-    .select('*')
-    .order('created_at', { ascending: false });
+    .select('*', { count: 'exact' })
+    .order('created_at', { ascending: false })
+    .range(from, to);
 
   if (error) {
     console.error('Error fetching admin resources:', error);
-    return [];
+    return { resources: [], total: 0 };
   }
-  return data || [];
+  return { resources: data || [], total: count || 0 };
 }

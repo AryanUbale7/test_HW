@@ -19,16 +19,27 @@ export async function getSubscribersCount(): Promise<number> {
 /**
  * Fetches all newsletter subscribers for the admin view.
  */
-export async function getAllSubscribers() {
+export async function getAllSubscribers({
+  page = 1,
+  limit = 20,
+}: {
+  page?: number;
+  limit?: number;
+} = {}) {
   const supabase = await createClient();
-  const { data, error } = await supabase
+  
+  const from = (page - 1) * limit;
+  const to = from + limit - 1;
+
+  const { data, count, error } = await supabase
     .from('newsletter_subscribers')
-    .select('*')
-    .order('subscribed_at', { ascending: false });
+    .select('*', { count: 'exact' })
+    .order('subscribed_at', { ascending: false })
+    .range(from, to);
 
   if (error) {
     console.error('Error fetching all newsletter subscribers:', error);
-    return [];
+    return { subscribers: [], total: 0 };
   }
-  return data || [];
+  return { subscribers: data || [], total: count || 0 };
 }

@@ -3,7 +3,13 @@ import { FaqsAdmin } from '@/components/admin/FaqsAdmin'
 
 export const dynamic = 'force-dynamic'
 
-export default async function AdminFaqsPage() {
-  const faqs = await getAdminFaqs()
-  return <FaqsAdmin faqs={faqs} />
+export default async function AdminFaqsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>
+}) {
+  const { page } = await searchParams
+  const currentPage = parseInt(page || '1', 10)
+  const { faqs, total } = await getAdminFaqs({ page: currentPage, limit: 20 })
+  return <FaqsAdmin faqs={faqs} total={total} currentPage={currentPage} />
 }

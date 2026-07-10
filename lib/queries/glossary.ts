@@ -101,3 +101,31 @@ export async function getGlossaryTermsByArm(arm: string, limit = 3): Promise<any
   }
   return data || [];
 }
+
+/**
+ * Fetches glossary terms with pagination for the admin view.
+ */
+export async function getAdminGlossaryTerms({
+  page = 1,
+  limit = 20,
+}: {
+  page?: number;
+  limit?: number;
+} = {}) {
+  const supabase = await createClient();
+  
+  const from = (page - 1) * limit;
+  const to = from + limit - 1;
+
+  const { data, count, error } = await supabase
+    .from('glossary_terms')
+    .select('*', { count: 'exact' })
+    .order('term', { ascending: true })
+    .range(from, to);
+
+  if (error) {
+    console.error('Error fetching admin glossary terms:', error);
+    return { terms: [], total: 0 };
+  }
+  return { terms: data || [], total: count || 0 };
+}

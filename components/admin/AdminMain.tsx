@@ -10,7 +10,7 @@ export function AdminMain({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <main className="flex-1 ml-64 p-8">
+    <main className="flex-1 ml-0 md:ml-64 p-4 md:p-8 pt-16 md:pt-8 overflow-x-hidden">
       {children}
     </main>
   )

@@ -1,7 +1,8 @@
 'use client'
 
 import { useActionState, useState, useEffect } from 'react'
-import { RichTextEditor } from './RichTextEditor'
+import dynamic from 'next/dynamic'
+const RichTextEditor = dynamic(() => import('./RichTextEditor').then(mod => mod.RichTextEditor), { ssr: false })
 import { CoverImageUpload } from './CoverImageUpload'
 import { createPost, updatePost, deletePost } from '@/lib/actions/posts'
 import { Trash2, ExternalLink, Save, Loader2 } from 'lucide-react'
@@ -57,6 +58,7 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
   const [status, setStatus] = useState(post?.status || 'draft')
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
   const [deleting, setDeleting] = useState(false)
+  const [imageUploading, setImageUploading] = useState(false)
 
   // Show success toast
   const [showSuccess, setShowSuccess] = useState(false)
@@ -166,11 +168,11 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
           {/* Save button */}
           <button
             type="submit"
-            disabled={isPending}
+            disabled={isPending || imageUploading}
             className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-blue-700 disabled:opacity-50 transition-colors"
           >
-            {isPending ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
-            {isPending ? 'Saving…' : (isEdit ? 'Update Post' : 'Create Post')}
+            {isPending || imageUploading ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
+            {imageUploading ? 'Uploading Image…' : (isPending ? 'Saving…' : (isEdit ? 'Update Post' : 'Create Post'))}
           </button>
         </div>
       </div>
@@ -279,7 +281,7 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
           {/* Cover image */}
           <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
             <label className="block text-sm font-medium text-slate-700 mb-2">Cover Image</label>
-            <CoverImageUpload value={coverUrl} onChange={setCoverUrl} />
+            <CoverImageUpload value={coverUrl} onChange={setCoverUrl} onUploadingChange={setImageUploading} />
           </div>
 
           {/* Taxonomies */}

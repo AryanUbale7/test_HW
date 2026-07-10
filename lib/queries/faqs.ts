@@ -45,16 +45,27 @@ export async function getFaqsCount(): Promise<number> {
 /**
  * Fetches all FAQs for admin dashboard.
  */
-export async function getAdminFaqs() {
+export async function getAdminFaqs({
+  page = 1,
+  limit = 20,
+}: {
+  page?: number;
+  limit?: number;
+} = {}) {
   const supabase = await createClient();
-  const { data, error } = await supabase
+  
+  const from = (page - 1) * limit;
+  const to = from + limit - 1;
+
+  const { data, count, error } = await supabase
     .from('faqs')
-    .select('*')
-    .order('created_at', { ascending: false });
+    .select('*', { count: 'exact' })
+    .order('created_at', { ascending: false })
+    .range(from, to);
 
   if (error) {
     console.error('Error fetching admin FAQs:', error);
-    return [];
+    return { faqs: [], total: 0 };
   }
-  return data || [];
+  return { faqs: data || [], total: count || 0 };
 }
