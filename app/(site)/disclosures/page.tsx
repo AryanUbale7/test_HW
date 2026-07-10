@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Regulatory Disclosures | Honworth',
-  description: 'Read the regulatory disclosures, registration numbers (ARN), and commission structure details for Honworth.',
+  description: 'Read the regulatory disclosures, AMFI registration numbers (ARN), non-advisory disclaimers, risk disclosures, and grievance redressal for Honworth.',
   alternates: {
     canonical: 'https://honworth.in/disclosures',
   },
@@ -13,42 +13,66 @@ export const metadata: Metadata = {
 export default function DisclosuresPage() {
   const currentMonthYear = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
   return (
-    <div className="bg-ivory min-h-screen py-20">
+    <div className="bg-ivory min-h-screen py-20 md:py-32">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
-        <h1 className="text-4xl font-serif text-deep-green mb-4">Regulatory Disclosures</h1>
+        <h1 className="text-4xl font-serif font-bold text-deep-green mb-4">Disclosures</h1>
         <p className="text-sm font-sans text-charcoal/70 mb-12">Last Updated: {currentMonthYear}</p>
 
         {/* Legal Content */}
         <div className="space-y-12 font-sans text-charcoal leading-relaxed">
-          <section id="numbers" className="scroll-mt-32">
-            <h2 className="text-2xl font-serif text-deep-green mb-4">Registration & Empanelment Details</h2>
-            <p>Honworth is a professional financial distribution firm operating under the following regulatory registrations:</p>
-            <ul className="list-disc list-inside mt-3 space-y-2 pl-2">
-              <li><strong>AMFI Mutual Fund Distributor:</strong> ARN–{process.env.NEXT_PUBLIC_ARN_NUMBER || 'XXXXXX'}</li>
-              <li><strong>SIF Empanelment:</strong> Empanelled Strategic Investment Fund Distributor</li>
-              <li><strong>PMS Empanelment:</strong> Empanelled Portfolio Management Services Distributor</li>
-            </ul>
+          
+          <section id="arn" className="scroll-mt-32">
+            <h2 className="text-2xl font-serif font-bold text-deep-green mb-4">Point 1 · ARN / SIFD / APRN numbers</h2>
+            <p className="text-lg font-medium text-deep-green">
+              AMFI Registered Mutual Fund Distributor | ARN–336150
+            </p>
           </section>
 
-          <section id="disclaimer" className="scroll-mt-32 border-t border-sage/20 pt-8">
-            <h2 className="text-2xl font-serif text-deep-green mb-4">Distributor (Non-Advisory) Disclaimer</h2>
-            <p>Honworth acts strictly in a distribution capacity. We are not a registered investment adviser (RIA) under SEBI, and we do not provide fee-based investment advice or comprehensive financial planning services. All materials, tools, calculators, and commentary shared on this site are purely for educational and distribution purposes.</p>
+          <section id="distributor-disclaimer" className="scroll-mt-32 border-t border-sage/20 pt-8">
+            <h2 className="text-2xl font-serif font-bold text-deep-green mb-4">Point 2 · Distributor (non-advisory) disclaimer</h2>
+            <p>
+              Honworth acts solely as an AMFI Registered Mutual Fund Distributor and earns commission from Asset Management Companies for the distribution of Regular Plan mutual fund schemes. Honworth is not a SEBI Registered Investment Adviser and does not provide investment advice for a fee. All content on this website is for general education and awareness only and does not constitute investment advice or a recommendation to buy, sell or hold any security or scheme. Investors should make their own decisions and consult their professional advisers before investing.
+            </p>
           </section>
 
           <section id="no-guarantee" className="scroll-mt-32 border-t border-sage/20 pt-8">
-            <h2 className="text-2xl font-serif text-deep-green mb-4">No Guaranteed-Returns Disclaimer</h2>
-            <p>Mutual fund and securities investments are subject to market risks, and there is no assurance or guarantee that the objectives of any schemes will be achieved. Past performance is not indicative of future results. We make no representations or guarantees regarding future returns or capital safety.</p>
+            <h2 className="text-2xl font-serif font-bold text-deep-green mb-4">Point 3 · No guaranteed-returns disclaimer</h2>
+            <div className="space-y-4">
+              <p>
+                Mutual fund investments do not offer guaranteed or assured returns. The value of investments and the income from them can go up or down depending on factors affecting the securities markets. Past performance is not indicative of future results. Nothing on this website should be construed as a promise, guarantee or forecast of any return.
+              </p>
+              <div className="bg-sage-mist/50 border-l-4 border-gold p-4 mt-4 italic font-medium">
+                "Mutual Fund investments are subject to market risks, read all scheme related documents carefully."
+              </div>
+            </div>
           </section>
 
           <section id="grievance" className="scroll-mt-32 border-t border-sage/20 pt-8">
-            <h2 className="text-2xl font-serif text-deep-green mb-4">Grievance Redressal & SCORES</h2>
-            <p>For any service-related complaints, please reach out to us at <a href="mailto:grievance@honworth.in" className="text-gold hover:underline">grievance@honworth.in</a>. If the grievance is not resolved within 30 days, you can lodge a formal complaint on the SEBI SCORES portal at <a href="https://scores.sebi.gov.in/" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">scores.sebi.gov.in</a>.</p>
+            <h2 className="text-2xl font-serif font-bold text-deep-green mb-4">Point 4 · Grievance redressal & SCORES</h2>
+            <p>
+              For any query or grievance, please contact Honworth at <a href="mailto:rahul.karandikar@honworth.in" className="text-gold underline hover:text-gold/80 transition-colors">rahul.karandikar@honworth.in</a> / <a href="tel:+919923375175" className="text-gold underline hover:text-gold/80 transition-colors">+91 9923375175</a>. If your grievance is not resolved satisfactorily, you may escalate it to the relevant Asset Management Company and its Registrar & Transfer Agent (CAMS / KFintech). Investor grievances may also be lodged on the SEBI Complaints Redress System (SCORES) portal at <a href="https://www.scores.gov.in" target="_blank" rel="noopener noreferrer" className="text-gold underline hover:text-gold/80 transition-colors">www.scores.gov.in</a>, and through the SEBI Online Dispute Resolution (ODR) mechanism. Please note that mutual funds are not exchange-traded products and that transactions in mutual funds do not have access to the exchange investor redressal or arbitration mechanism.
+            </p>
           </section>
 
-          <section id="privacy" className="scroll-mt-32 border-t border-sage/20 pt-8">
-            <h2 className="text-2xl font-serif text-deep-green mb-4">Privacy & Terms of Use Summary</h2>
-            <p>We respect client privacy and confidentiality. Personal data collected through forms, newsletter signups, or calculators is processed solely for compliance, client communication, and service fulfillment in accordance with our <Link href="/privacy-policy" className="text-gold hover:underline">Privacy Policy</Link>.</p>
+          <section id="privacy-terms" className="scroll-mt-32 border-t border-sage/20 pt-8">
+            <h2 className="text-2xl font-serif font-bold text-deep-green mb-4">Point 5 · Privacy Policy & Terms of Use</h2>
+            <p>
+              Please view our dedicated legal pages for details on terms of website use and user data handling:
+            </p>
+            <ul className="list-disc list-inside mt-3 space-y-2 pl-2">
+              <li>
+                <Link href="/privacy-policy" className="text-gold underline hover:text-gold/80 transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/disclaimer" className="text-gold underline hover:text-gold/80 transition-colors">
+                  Terms of Use (Disclaimer)
+                </Link>
+              </li>
+            </ul>
           </section>
+
         </div>
       </div>
     </div>

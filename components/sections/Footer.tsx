@@ -46,12 +46,12 @@ export const Footer: React.FC = () => {
           <div className="flex flex-col gap-5">
             <h4 className="font-serif text-xl text-ivory/90 mb-1">Get in Touch</h4>
             <div className="flex flex-col gap-4 font-sans font-light text-ivory/70">
-              <a href="mailto:contact@honworth.in" className="hover:text-[#E5C158] transition-colors w-fit flex items-center gap-3 focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">
+              <a href="mailto:rahul.karandikar@honworth.in" className="hover:text-[#E5C158] transition-colors w-fit flex items-center gap-3 focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                contact@honworth.in
+                rahul.karandikar@honworth.in
               </a>
               <a 
-                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210'}?text=${encodeURIComponent("Hello, I'd like to start a conversation with Honworth.")}`} 
+                href={`https://wa.me/919923375175?text=${encodeURIComponent("Hello, I'd like to start a conversation with Honworth.")}`} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 aria-label="Contact us on WhatsApp"
@@ -69,18 +69,18 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* 2. Divider */}
-        <hr className="border-t border-sage/20 mb-12" />
+        <hr className="border-t border-slate-700/50 mb-12" />
 
         {/* 3. Compliance Block */}
         <div className="max-w-5xl font-sans font-light text-sm text-ivory/70 leading-relaxed mb-12 space-y-3">
           <p>
-            <strong>Registration Numbers:</strong> AMFI-registered Mutual Fund Distributor ({process.env.NEXT_PUBLIC_ARN_NUMBER || 'ARN-XXXXXX'}) &middot; AMFI-registered SIF Distributor &middot; APMI-registered PMS Distributor.
+            <strong>Registration:</strong> AMFI Registered Mutual Fund Distributor | ARN–336150
           </p>
           <p>
-            <strong>Mutual Fund Disclaimer:</strong> Mutual fund investments are subject to market risks, read all scheme related documents carefully.
+            <strong>Disclaimer:</strong> Honworth acts as an AMFI Registered Mutual Fund Distributor, not a SEBI Registered Investment Adviser. Content is for education only, not investment advice.
           </p>
           <p>
-            <strong>Educational Content Disclaimer:</strong> The content on this website and in our articles is intended for educational and informational purposes only, and should not be construed as investment or financial advice.
+            <strong>Risk Warning:</strong> Mutual Fund investments are subject to market risks, read all scheme related documents carefully.
           </p>
           <p className="pt-2">
             <Link href="/disclosures" className="text-[#E5C158] hover:text-[#E5C158]/80 underline underline-offset-4 transition-colors focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">
