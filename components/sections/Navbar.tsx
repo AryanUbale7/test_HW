@@ -100,7 +100,7 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full flex items-center justify-between h-20 md:h-24">
         <Link href="/" className="focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm shrink-0 hover:opacity-90 transition-opacity">
           <Image 
-            src="/logo/logo.svg" 
+            src="/logo/logo.png" 
             alt="Honworth Logo" 
             width={240} 
             height={80} 
