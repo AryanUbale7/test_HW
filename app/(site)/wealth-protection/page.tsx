@@ -25,7 +25,7 @@ export default async function WealthProtectionPage() {
       author={author}
       posts={posts}
       glossaryTerms={glossaryTerms}
-      philosophyText={`Wealth protection at Honworth is the indispensable defensive foundation of a robust financial architecture. We believe a secure, term-first protective structure is essential to shield your family and assets from unforeseen, catastrophic liabilities.`}
+      philosophyText={`Wealth protection at Honworth is the indispensable defensive foundation of a robust financial journey. We believe a secure, term-first protective structure is essential to shield your family and assets from unforeseen, catastrophic liabilities.`}
       offeringDescription={`Honworth coordinates pure-risk term life and health insurance covers empanelled with leading providers like Bajaj Allianz Life and TATA AIA Life. We navigate the complexities of underwriting to secure maximum coverage limits for high-net-worth families.`}
       disclaimerText="Insurance is the subject matter of solicitation. All commissions and policies are disclosed prior to transactions."
       ctaText="Secure your wealth protection strategy"

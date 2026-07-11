@@ -85,7 +85,7 @@ export default function MyStoryPage() {
             Those early years taught me a lesson that continues to guide me today: successful investing is not built overnight. It requires patience, discipline, continuous learning, and the ability to stay focused on long-term outcomes rather than short-term noise. That philosophy remains at the heart of how I approach financial planning and investing.
           </p>
 
-          <h2 id="leap" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-20 mb-8 scroll-mt-32 border-t border-sage/20 pt-12">The Leap</h2>
+          <h2 id="leap" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8">The Leap</h2>
           <p>
             By 2025, after nearly 26 years in the IT industry and almost a decade of studying and practicing investing, I made the decision to pursue personal finance as a full-time profession.
           </p>
@@ -99,7 +99,7 @@ export default function MyStoryPage() {
             To strengthen my professional foundation, I completed and cleared the AMFI Mutual Fund Distributor Certification, PMS and SIF Distributor Certifications, and the IRDAI examination, ensuring that my guidance and recommendations would be supported by both practical experience and professional credentials.
           </p>
 
-          <h2 id="journey" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-20 mb-8 scroll-mt-32 border-t border-sage/20 pt-12">1. From APEX Financials to Honworth</h2>
+          <h2 id="journey" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-gold mr-2">01-</span> From APEX Financials to Honworth</h2>
           <p>
             I began my practice as APEX Financials, initially focusing on mutual fund distribution. As I worked with more individuals and families, the scope of my work expanded beyond investments alone to include wealth protection and wealth legacy planning.
           </p>
@@ -113,7 +113,7 @@ export default function MyStoryPage() {
             Today, Honworth reflects everything this journey has taught me—and an unwavering commitment to putting clients' interests first. I work with individuals and families who want a thoughtful, long-term approach to building, protecting, and preserving wealth, helping them make informed financial decisions with confidence and clarity.
           </p>
 
-          <h2 id="philosophy" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-20 mb-8 scroll-mt-32 border-t border-sage/20 pt-12">2. How I Work (Philosophy)</h2>
+          <h2 id="philosophy" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-gold mr-2">02-</span> How I Work (Philosophy)</h2>
           <h3 className="text-xl font-serif font-bold text-gold mb-4">Understanding Before Products (***)</h3>
           <p>
             I listen first.
@@ -125,7 +125,7 @@ export default function MyStoryPage() {
             I also have a simple rule: <strong>no one should invest in something they cannot explain back to me in their own words.</strong>
           </p>
 
-          <h2 id="meaning" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-20 mb-8 scroll-mt-32 border-t border-sage/20 pt-12">3. The Name (Identity) – Meaning of Honour + Worth</h2>
+          <h2 id="meaning" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-gold mr-2">03-</span> The Name (Identity) – Meaning of Honour + Worth</h2>
           <p>
             Honworth brings together two words: <strong>honour</strong> and <strong>worth</strong>.
           </p>
@@ -142,14 +142,36 @@ export default function MyStoryPage() {
             It is more than a name. It reflects the kind of practice I aspire to build—one founded on trust, helping families preserve what they have earned and create a legacy that endures.
           </p>
 
-          <h2 id="credentials" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-20 mb-8 scroll-mt-32 border-t border-sage/20 pt-12">4. Credentials:</h2>
-          <ul className="list-none space-y-2 font-mono text-base">
-            <li>MFD - ARN-336150</li>
-            <li>PMS – APRN07678</li>
-            <li>SIF - ARN-336150</li>
-          </ul>
+          <h2 id="credentials" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-gold mr-2">04-</span> Credentials:</h2>
+          <div className="overflow-x-auto mt-6">
+            <table className="w-full border-collapse text-left font-sans text-sm">
+              <thead>
+                <tr className="border-b border-sage/40">
+                  <th className="py-3 font-serif font-bold text-deep-green text-base">Registration Type</th>
+                  <th className="py-3 font-serif font-bold text-deep-green text-base">Number</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-sage/20 text-charcoal/90">
+                <tr>
+                  <td className="py-4">Mutual Fund Distributor (MFD)</td>
+                  <td className="py-4 font-mono">ARN-336150</td>
+                </tr>
+                <tr>
+                  <td className="py-4">Portfolio Management Services (PMS)</td>
+                  <td className="py-4 font-mono">APRN07678</td>
+                </tr>
+                <tr>
+                  <td className="py-4">
+                    Specialised Investment Fund (SIF)<br />
+                    <span className="text-xs text-charcoal/60 italic">(specialised investment fund)</span>
+                  </td>
+                  <td className="py-4 font-mono">ARN-336150</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-          <h2 id="who-i-serve" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-20 mb-8 scroll-mt-32 border-t border-sage/20 pt-12">5. Who you Serve: I work best with two kinds of people.</h2>
+          <h2 id="who-i-serve" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-gold mr-2">05-</span> Who I Serve: I work best with two kinds of people.</h2>
           <p>
             The first are young professionals and young families at the beginning of their wealth-building journey—when good financial habits, established early, can have the greatest impact over a lifetime.
           </p>

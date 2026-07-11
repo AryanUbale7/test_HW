@@ -42,7 +42,7 @@ export default function ReachMePage() {
         <SectionHeader 
           eyebrow="Reach Me"
           heading="Start a Conversation."
-          subtext="Whether you have a specific inquiry or wish to explore a long-term partnership, I am available to discuss your financial architecture."
+          subtext="Whether you have a specific inquiry or wish to explore a long-term partnership, I am available to discuss your financial journey."
           className="mb-16 text-center mx-auto"
           align="center"
           headingTag="h1"
@@ -58,31 +58,38 @@ export default function ReachMePage() {
           {/* Sidebar Area - Direct Contact */}
           <div className="lg:col-span-2">
             <Card id="contact-info" className="bg-sage-mist/50 scroll-mt-32">
-              <h3 className="text-xl font-serif text-deep-green mb-6">Direct Contact</h3>
-              <div className="space-y-4 font-sans text-charcoal">
-                <p id="hours" className="scroll-mt-32">
-                  <strong>Working Hours:</strong><br />
-                  9:30 AM – 6:30 PM IST (Monday to Saturday)<br />
-                  Sunday Holiday
-                </p>
+              <h3 className="text-xl font-serif text-deep-green mb-6">Direct Contact:</h3>
+              <div className="space-y-6 font-sans text-charcoal">
                 <p id="map" className="scroll-mt-32">
                   <strong>Address:</strong><br />
                   Pimple Saudagar,<br />
                   Pune – 411027, Maharashtra, India
                 </p>
-                <p>
-                  <strong>Email:</strong><br />
-                  <a href="mailto:rahul.karandikar@honworth.in" className="underline hover:text-gold transition-colors">
-                    rahul.karandikar@honworth.in
-                  </a>
-                </p>
-                <p>
-                  <strong>Mobile:</strong><br />
-                  <a href="tel:+919923375175" className="underline hover:text-gold transition-colors">
-                    +91 9923375175
-                  </a>
-                </p>
-                <div id="whatsapp" className="pt-4 mt-6 border-t border-sage/30 scroll-mt-32">
+                
+                <div className="flex flex-wrap gap-x-8 gap-y-4 pt-4 border-t border-sage/20">
+                  <div id="hours" className="scroll-mt-32">
+                    <strong className="text-xs uppercase tracking-wider text-charcoal/60">Working Hours</strong>
+                    <p className="text-sm mt-1">9:30 AM – 6:30 PM IST (Mon - Sat)</p>
+                  </div>
+                  <div>
+                    <strong className="text-xs uppercase tracking-wider text-charcoal/60">Email</strong>
+                    <p className="text-sm mt-1">
+                      <a href="mailto:rahul.karandikar@honworth.in" className="underline hover:text-gold transition-colors">
+                        rahul.karandikar@honworth.in
+                      </a>
+                    </p>
+                  </div>
+                  <div>
+                    <strong className="text-xs uppercase tracking-wider text-charcoal/60">Mobile</strong>
+                    <p className="text-sm mt-1">
+                      <a href="tel:+919923375175" className="underline hover:text-gold transition-colors">
+                        +91 9923375175
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <div id="whatsapp" className="pt-4 border-t border-sage/30 scroll-mt-32">
                   <a 
                     href={`https://wa.me/919923375175?text=${encodeURIComponent("Hello, I'd like to start a conversation with Honworth.")}`}
                     target="_blank" 

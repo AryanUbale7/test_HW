@@ -37,35 +37,13 @@ export default async function HomePage() {
       <h1 className="sr-only">Honworth | Wealth Creation, Protection & Legacy Planning</h1>
       <IntroStrip />
 
-      <main id="articles" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex flex-col lg:flex-row gap-12 lg:gap-16 scroll-mt-32">
-        
-        {/* Left Column: Posts Feed */}
-        <div className="w-full lg:w-2/3">
-          <Suspense fallback={<div className="h-64 flex items-center justify-center font-sans text-charcoal/50">Loading articles...</div>}>
-            <ArticlesFeed 
-              initialPosts={posts || []} 
-              basePath="/" 
-            />
-          </Suspense>
-        </div>
-
-        {/* Right Column: Sidebar */}
-        <aside className="w-full lg:w-1/3 flex flex-col gap-10">
-          {/* Author / "Start Here" Widget */}
-          <div className="bg-sage-mist/20 border border-sage/20 p-8 rounded-sm">
-            <h2 className="text-xl font-serif text-deep-green mb-4">About Honworth</h2>
-            <p className="text-sm font-sans text-charcoal/80 mb-6 leading-relaxed">
-              We help high-net-worth families, professionals, and business owners architect robust financial strategies. Welcome to our journal on wealth creation, protection, and legacy.
-            </p>
-            <Link href="/how-i-work" className="inline-block bg-deep-green text-ivory px-6 py-2 rounded-sm text-sm font-medium hover:bg-gold transition-colors w-full text-center">
-              Work With Us
-            </Link>
-          </div>
-
-          {/* Newsletter Widget */}
-          <SidebarNewsletter />
-        </aside>
-
+      <main id="articles" className="max-w-4xl mx-auto px-6 md:px-12 lg:px-16 py-16 scroll-mt-32">
+        <Suspense fallback={<div className="h-64 flex items-center justify-center font-sans text-charcoal/50">Loading articles...</div>}>
+          <ArticlesFeed 
+            initialPosts={posts || []} 
+            basePath="/" 
+          />
+        </Suspense>
       </main>
     </div>
   );

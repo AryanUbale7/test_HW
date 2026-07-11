@@ -21,9 +21,6 @@ export const Footer: React.FC = () => {
                 className="object-contain h-16 md:h-20 w-auto rounded-sm"
               />
             </Link>
-            <p className="text-sm text-[#E5C158]/95 font-light max-w-xs">
-              Your wealth, honoured for generations.
-            </p>
           </div>
 
           {/* Column 2: Explore */}

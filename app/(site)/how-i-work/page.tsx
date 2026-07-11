@@ -1,7 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
 import { SectionHeader } from '@/components/ui/SectionHeader';
-import { Card } from '@/components/ui/Card';
 import { CtaBlock } from '@/components/sections/CtaBlock';
 
 export const metadata: Metadata = {
@@ -30,8 +29,7 @@ export default function HowIWorkPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <span id="approach" className="scroll-mt-32 text-gold font-serif text-6xl opacity-50 block mb-4">01</span>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8">1. Your approach to working with families:</h2>
+              <h2 id="approach" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">01-</span> My approach to working with families:</h2>
               <p className="font-sans text-charcoal leading-relaxed space-y-4">
                 <span>I believe people make better financial decisions when they understand how things work and why they matter.</span>
                 <br /><br />
@@ -58,8 +56,8 @@ export default function HowIWorkPage() {
           </div>
 
           {/* Why Legacy Planning Matters to Me Section */}
-          <div className="max-w-3xl mx-auto border-t border-sage/20 pt-16">
-            <h3 className="text-2xl md:text-3xl font-serif font-bold text-deep-green mb-6">Why Legacy Planning Matters to Me</h3>
+          <div className="max-w-3xl border-t border-sage/20 pt-16">
+            <h3 className="text-2xl md:text-3xl font-serif font-bold text-deep-green mb-6">Why Legacy Planning Matters to Me:</h3>
             <div className="space-y-4 font-sans text-charcoal leading-relaxed">
               <p>
                 Over the past few years, I have developed a deep interest in succession and wealth legacy planning. Through conversations with industry experts and time spent at financial forums, I came to appreciate how often families overlook this important aspect of financial well-being.
@@ -81,25 +79,26 @@ export default function HowIWorkPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center md:flex-row-reverse">
             <div className="md:order-2">
-              <span id="three-arms" className="scroll-mt-32 text-gold font-serif text-6xl opacity-50 block mb-4">02</span>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8">2. The three Pillars (Offerings):</h2>
+              <h2 id="three-arms" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">02-</span> The three Pillars (Offerings):</h2>
               <p className="font-sans text-charcoal leading-relaxed mb-6">
                 My work spans three connected pillars, and most families come to need all of them in time.
               </p>
-              <ul className="space-y-6 font-sans text-charcoal leading-relaxed">
-                <li>
-                  <h3 className="font-serif font-bold text-deep-green text-lg">Wealth Creation</h3>
-                  <p className="text-sm mt-1">Helping your money grow steadily towards the goals that matter most.</p>
-                </li>
-                <li>
-                  <h3 className="font-serif font-bold text-deep-green text-lg">Wealth Protection</h3>
-                  <p className="text-sm mt-1">Safeguarding what you've built—making sure the right cover is in place so that an unexpected event does not undo years of effort.</p>
-                </li>
-                <li>
-                  <h3 className="font-serif font-bold text-deep-green text-lg">Wealth Legacy</h3>
-                  <p className="text-sm mt-1">Thinking ahead about how wealth passes on within a family, clearly, efficiently, and without unnecessary confusion.</p>
-                </li>
-              </ul>
+              
+              <div className="space-y-6 font-sans text-charcoal leading-relaxed">
+                <div className="border border-sage/30 p-6 rounded-sm bg-sage-mist/10 shadow-sm">
+                  <h3 className="font-serif font-bold text-deep-green text-lg">Wealth Creation:</h3>
+                  <p className="text-sm mt-2">Helping your money grow steadily towards the goals that matter most.</p>
+                </div>
+                <div className="border border-sage/30 p-6 rounded-sm bg-sage-mist/10 shadow-sm">
+                  <h3 className="font-serif font-bold text-deep-green text-lg">Wealth Protection:</h3>
+                  <p className="text-sm mt-2">Safeguarding what you've built—making sure the right cover is in place so that an unexpected event does not undo years of effort.</p>
+                </div>
+                <div className="border border-sage/30 p-6 rounded-sm bg-sage-mist/10 shadow-sm">
+                  <h3 className="font-serif font-bold text-deep-green text-lg">Wealth Legacy:</h3>
+                  <p className="text-sm mt-2">Thinking ahead about how wealth passes on within a family, clearly, efficiently, and without unnecessary confusion.</p>
+                </div>
+              </div>
+
               <p className="font-sans text-charcoal leading-relaxed mt-6">
                 These are not three separate services. They are three parts of one picture, and I believe they work best when viewed together.
               </p>
@@ -128,8 +127,7 @@ export default function HowIWorkPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <span id="onboarding" className="scroll-mt-32 text-gold font-serif text-6xl opacity-50 block mb-4">03</span>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8">3. How you Engage:</h2>
+              <h2 id="onboarding" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">03-</span> How I Engage:</h2>
               <p className="font-sans text-charcoal leading-relaxed space-y-4">
                 <span>No pressure. No jargon.</span>
                 <br /><br />
@@ -163,52 +161,55 @@ export default function HowIWorkPage() {
             </div>
           </div>
 
-        </div>
+          {/* How I'm Compensated Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start pt-16 border-t border-sage/20">
+            <div className="md:col-span-2 max-w-3xl">
+              <h2 id="compensation" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">04-</span> How I'm Compensated:</h2>
+              <div className="space-y-4 font-sans text-charcoal leading-relaxed">
+                <p>
+                  I believe compensation should never be a mystery, and I'm happy to explain how it works before any decision is made.
+                </p>
+                <p>
+                  For mutual funds and SIF products, I am compensated through the products themselves. Asset management companies pay a trail commission from the scheme's expense ratio, so you do not receive a separate bill from me, and I do not charge a separate fee for my services.
+                </p>
+                <p>
+                  Portfolio Management Services (PMS) have their own fee structure, including management and other charges outlined by the provider. I'll always explain these costs upfront so that you understand exactly what you're paying and why.
+                </p>
+                <p>
+                  For insurance, I am compensated through a commission paid by the insurance company when you buy a policy through me. This is built into the policy and set as per IRDAI regulations, so you do not pay me anything separately for arranging your cover.
+                </p>
+                <p>
+                  Transparency matters. Before you make any decision, you'll have a clear understanding of both the benefits and the costs involved.
+                </p>
+              </div>
+            </div>
+          </div>
 
-        {/* How I'm Compensated - Card Callout */}
-        <Card className="max-w-3xl mx-auto scroll-mt-32 space-y-12" id="compensation">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-deep-green mb-8">4. How I'm Compensated:</h2>
-            <div className="space-y-4 font-sans text-charcoal leading-relaxed">
-              <p>
-                I believe compensation should never be a mystery, and I'm happy to explain how it works before any decision is made.
-              </p>
-              <p>
-                For mutual funds and SIF products, I am compensated through the products themselves. Asset management companies pay a trail commission from the scheme's expense ratio, so you do not receive a separate bill from me, and I do not charge a separate fee for my services.
-              </p>
-              <p>
-                Portfolio Management Services (PMS) have their own fee structure, including management and other charges outlined by the provider. I'll always explain these costs upfront so that you understand exactly what you're paying and why.
-              </p>
-              <p>
-                For insurance, I am compensated through a commission paid by the insurance company when you buy a policy through me. This is built into the policy and set as per IRDAI regulations, so you do not pay me anything separately for arranging your cover.
-              </p>
-              <p>
-                Transparency matters. Before you make any decision, you'll have a clear understanding of both the benefits and the costs involved.
-              </p>
+          {/* What I Do - and Don't Do Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start pt-16 border-t border-sage/20">
+            <div className="md:col-span-2 max-w-3xl">
+              <h2 id="do-and-dont" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">05-</span> What I Do—and Don't Do (Boundaries):</h2>
+              <div className="space-y-4 font-sans text-charcoal leading-relaxed">
+                <p>
+                  I educate before I suggest.
+                </p>
+                <p>
+                  I work across wealth creation, wealth protection, and wealth legacy planning. I aim to build long-term relationships and help families make informed financial decisions they can stand behind.
+                </p>
+                <p>
+                  What I don't do matters just as much.
+                </p>
+                <p>
+                  I don't push products for the sake of it. I don't promise or chase quick returns. And I won't suggest anything that you cannot explain back to me in your own words.
+                </p>
+                <p>
+                  I work as a distributor and guide, not a Registered Investment Adviser, and I'll always be transparent about that distinction.
+                </p>
+              </div>
             </div>
           </div>
-          
-          <div id="do-and-dont" className="scroll-mt-32 border-t border-sage/20 pt-10">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-deep-green mb-8">5. What I Do—and Don't Do (Boundaries)</h2>
-            <div className="space-y-4 font-sans text-charcoal leading-relaxed">
-              <p>
-                I educate before I suggest.
-              </p>
-              <p>
-                I work across wealth creation, wealth protection, and wealth legacy planning. I aim to build long-term relationships and help families make informed financial decisions they can stand behind.
-              </p>
-              <p>
-                What I don't do matters just as much.
-              </p>
-              <p>
-                I don't push products for the sake of it. I don't promise or chase quick returns. And I won't suggest anything that you cannot explain back to me in your own words.
-              </p>
-              <p>
-                I work as a distributor and guide, not a Registered Investment Adviser, and I'll always be transparent about that distinction.
-              </p>
-            </div>
-          </div>
-        </Card>
+
+        </div>
       </div>
 
       <CtaBlock />

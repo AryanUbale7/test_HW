@@ -14,22 +14,26 @@ import {
 
 const NAV_LINKS = [
   { 
-    label: 'My Story', 
-    href: '/my-story',
+    label: 'The Journey', 
+    href: '/my-story#journey',
     dropdown: [
       { label: 'From APEX to Honworth — the journey', href: '/my-story#journey', icon: Map },
-      { label: 'Why this work / your philosophy', href: '/my-story#philosophy', icon: Lightbulb },
+      { label: 'Why this work / my philosophy', href: '/my-story#philosophy', icon: Lightbulb },
       { label: 'Meaning of Honour + Worth', href: '/my-story#meaning', icon: Shield },
       { label: 'Credentials: AMFI MFD, PMS, SIF', href: '/my-story#credentials', icon: Award },
-      { label: 'Who you serve (families, HNI)', href: '/my-story#who-i-serve', icon: Users },
+      { label: 'Who I serve (families, HNI)', href: '/my-story#who-i-serve', icon: Users },
     ]
+  },
+  { 
+    label: 'My Story', 
+    href: '/my-story'
   },
   { 
     label: 'How I Work', 
     href: '/how-i-work',
     dropdown: [
       { label: 'Your approach to working with families', href: '/how-i-work#approach', icon: Handshake },
-      { label: 'The three arms: Creation · Protection · Legacy', href: '/how-i-work#three-arms', icon: Network },
+      { label: 'The three pillars: Creation · Protection · Legacy', href: '/how-i-work#three-arms', icon: Network },
       { label: 'Onboarding / how you engage', href: '/how-i-work#onboarding', icon: Coffee },
       { label: "How you're compensated (distributor model)", href: '/how-i-work#compensation', icon: Coins },
       { label: "What you do — and don't — do", href: '/how-i-work#do-and-dont', icon: CheckSquare },
@@ -40,7 +44,7 @@ const NAV_LINKS = [
     href: '/articles',
     dropdown: [
       { label: 'Educational personal-finance posts', href: '/articles?type=Insight', icon: BookOpen },
-      { label: 'Filed by arm: Creation/Protection/Legacy', href: '/articles', icon: Library },
+      { label: 'Filed by pillar: Creation/Protection/Legacy', href: '/articles', icon: Library },
       { label: 'Economy & policy commentary', href: '/articles?type=News', icon: TrendingUp },
       { label: 'Behavioural finance / investor mindset', href: '/articles?type=Insight', icon: Brain },
       { label: 'Search + category archive', href: '/articles', icon: Search },
@@ -56,7 +60,6 @@ const NAV_LINKS = [
       { label: 'Recommended reading', href: '/library#reading', icon: BookMarked },
       { label: 'Email lead-capture for resources', href: '/library#resources', icon: Mail },
       { label: 'FAQs', href: '/library#faqs', icon: MessageCircleQuestion },
-      { label: 'Glossary', href: '/glossary', icon: BookA },
     ]
   },
   { 
@@ -118,32 +121,36 @@ export const Navbar = () => {
                 className="text-sm font-medium tracking-wide text-charcoal hover:text-gold transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm flex items-center gap-2"
               >
                 {link.label}
-                <div className="relative w-2 h-2 flex items-center justify-center">
-                  <div className="absolute w-1.5 h-1.5 border border-sage rotate-45 group-hover:rotate-[225deg] group-hover:bg-gold group-hover:border-gold transition-all duration-500 ease-out" />
-                  <div className="absolute w-0.5 h-0.5 bg-sage rotate-45 opacity-100 group-hover:opacity-0 transition-opacity duration-300" />
-                </div>
+                {link.dropdown && (
+                  <div className="relative w-2 h-2 flex items-center justify-center">
+                    <div className="absolute w-1.5 h-1.5 border border-sage rotate-45 group-hover:rotate-[225deg] group-hover:bg-gold group-hover:border-gold transition-all duration-500 ease-out" />
+                    <div className="absolute w-0.5 h-0.5 bg-sage rotate-45 opacity-100 group-hover:opacity-0 transition-opacity duration-300" />
+                  </div>
+                )}
               </Link>
               
               {/* Desktop Dropdown */}
-              <div className="absolute top-[80px] left-1/2 -translate-x-1/2 w-[320px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
-                <div className="bg-ivory border border-sage/20 shadow-2xl rounded-md p-3 flex flex-col gap-1">
-                  {link.dropdown.map((dropItem, idx) => {
-                    const Icon = dropItem.icon;
-                    return (
-                      <Link
-                        key={idx}
-                        href={dropItem.href}
-                        className="group/item flex items-start gap-4 text-charcoal/80 hover:text-deep-green hover:bg-sage-mist px-4 py-3 rounded-md transition-colors duration-200"
-                      >
-                        <div className="mt-0.5 bg-sage-mist/50 p-1.5 rounded-md group-hover/item:bg-gold/10 transition-colors">
-                          <Icon className="w-4 h-4 text-sage group-hover/item:text-gold transition-colors" />
-                        </div>
-                        <span className="text-sm font-medium leading-snug">{dropItem.label}</span>
-                      </Link>
-                    );
-                  })}
+              {link.dropdown && (
+                <div className="absolute top-[80px] left-1/2 -translate-x-1/2 w-[320px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
+                  <div className="bg-ivory border border-sage/20 shadow-2xl rounded-md p-3 flex flex-col gap-1">
+                    {link.dropdown.map((dropItem, idx) => {
+                      const Icon = dropItem.icon;
+                      return (
+                        <Link
+                          key={idx}
+                          href={dropItem.href}
+                          className="group/item flex items-start gap-4 text-charcoal/80 hover:text-deep-green hover:bg-sage-mist px-4 py-3 rounded-md transition-colors duration-200"
+                        >
+                          <div className="mt-0.5 bg-sage-mist/50 p-1.5 rounded-md group-hover/item:bg-gold/10 transition-colors">
+                            <Icon className="w-4 h-4 text-sage group-hover/item:text-gold transition-colors" />
+                          </div>
+                          <span className="text-sm font-medium leading-snug">{dropItem.label}</span>
+                        </Link>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           ))}
         </nav>
@@ -177,7 +184,7 @@ export const Navbar = () => {
               <li key={link.label} className="border-b border-sage/10 pb-4 last:border-0">
                 <div 
                   className="flex items-center justify-between cursor-pointer group"
-                  onClick={() => toggleDropdown(link.label)}
+                  onClick={() => link.dropdown && toggleDropdown(link.label)}
                 >
                   <Link
                     href={link.href}
@@ -186,18 +193,20 @@ export const Navbar = () => {
                   >
                     {link.label}
                   </Link>
-                  <button 
-                    aria-label={`Toggle ${link.label} submenu`}
-                    aria-expanded={activeDropdown === link.label}
-                    className="p-4 text-sage focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm relative flex items-center justify-center w-12 h-12"
-                  >
-                    <div className={`absolute w-2 h-2 border border-sage rotate-45 transition-all duration-500 ease-out ${activeDropdown === link.label ? 'rotate-[225deg] bg-gold border-gold' : ''}`} />
-                    <div className={`absolute w-1 h-1 bg-sage rotate-45 transition-opacity duration-300 ${activeDropdown === link.label ? 'opacity-0' : 'opacity-100'}`} />
-                  </button>
+                  {link.dropdown && (
+                    <button 
+                      aria-label={`Toggle ${link.label} submenu`}
+                      aria-expanded={activeDropdown === link.label}
+                      className="p-4 text-sage focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm relative flex items-center justify-center w-12 h-12"
+                    >
+                      <div className={`absolute w-2 h-2 border border-sage rotate-45 transition-all duration-500 ease-out ${activeDropdown === link.label ? 'rotate-[225deg] bg-gold border-gold' : ''}`} />
+                      <div className={`absolute w-1 h-1 bg-sage rotate-45 transition-opacity duration-300 ${activeDropdown === link.label ? 'opacity-0' : 'opacity-100'}`} />
+                    </button>
+                  )}
                 </div>
                 
                 {/* Mobile Dropdown Sub-items */}
-                {activeDropdown === link.label && (
+                {link.dropdown && activeDropdown === link.label && (
                   <ul className="mt-4 flex flex-col gap-2 pl-2">
                     {link.dropdown.map((dropItem, idx) => {
                       const Icon = dropItem.icon;

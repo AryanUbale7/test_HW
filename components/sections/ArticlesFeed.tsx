@@ -43,8 +43,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
     window.history.pushState({}, '', newUrl);
   };
 
-  const arms = ['All', 'Creation', 'Protection', 'Legacy', 'Pers.Fin', 'Economy'];
-  const types = ['Insight', 'News'];
+  const arms = ['All', 'Pers.Fin', 'Economy'];
 
   // Filter posts on the client side
   const filteredPosts = initialPosts.filter((post) => {
@@ -68,49 +67,25 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
 
   return (
     <div>
-      {/* Filters (Text underline style restored) */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 py-6 border-b border-sage/30 mb-8">
-        {/* Primary Category Filters */}
-        <div className="flex items-center gap-6">
-          <span className="text-charcoal font-serif italic text-lg mr-2">Filter by</span>
-          <div className="flex flex-wrap gap-4">
+      {/* Filters (Bordered pill style) */}
+      <div className="flex items-center justify-between mb-8 py-2">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <span className="text-charcoal font-serif italic text-lg">Filter by:</span>
+          <div className="flex flex-wrap gap-3 border border-sage/40 rounded-full px-4 py-1.5 bg-transparent">
             {arms.map((arm) => (
               <button
                 key={arm}
                 onClick={() => updateUrlAndState(arm, currentType, 1)}
-                className={`text-sm font-sans tracking-wide transition-all duration-300 relative pb-1 ${
+                className={`text-sm font-sans tracking-wide transition-all duration-300 px-3 py-1 rounded-full ${
                   currentArm === arm
-                    ? 'text-gold font-medium'
+                    ? 'text-gold font-medium bg-sage-mist/40'
                     : 'text-charcoal/85 hover:text-deep-green'
                 }`}
               >
                 {arm}
-                {currentArm === arm && (
-                  <span className="absolute bottom-0 left-0 w-full h-px bg-gold" />
-                )}
               </button>
             ))}
           </div>
-        </div>
-
-        {/* Secondary Type Filters (Insight vs News) */}
-        <div className="flex gap-4 border-l border-sage/30 pl-6">
-          {types.map((type) => {
-            const isActive = currentType === type;
-            return (
-              <button
-                key={type}
-                onClick={() => updateUrlAndState(currentArm, isActive ? '' : type, 1)}
-                className={`text-xs font-sans uppercase tracking-[0.15em] px-3 py-1.5 border transition-colors ${
-                  isActive
-                    ? 'border-gold text-gold bg-gold/5'
-                    : 'border-sage/30 text-charcoal/85 hover:border-deep-green hover:text-deep-green'
-                }`}
-              >
-                {type}
-              </button>
-            );
-          })}
         </div>
       </div>
 
