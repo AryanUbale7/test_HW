@@ -149,7 +149,7 @@ export default async function LibraryPage() {
   };
 
   return (
-    <div className="bg-ivory min-h-screen py-20">
+    <div className="bg-ivory min-h-screen pt-10 pb-20">
       {/* Schemas */}
       <script
         type="application/ld+json"

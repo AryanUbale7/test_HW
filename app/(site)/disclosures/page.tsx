@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function DisclosuresPage() {
   const currentMonthYear = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
   return (
-    <div className="bg-ivory min-h-screen py-20 md:py-32">
+    <div className="bg-ivory min-h-screen pt-10 md:pt-16 pb-20 md:pb-32">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <h1 className="text-4xl font-serif font-bold text-deep-green mb-4">Disclosures</h1>
         <p className="text-sm font-sans text-charcoal/70 mb-12">Last Updated: {currentMonthYear}</p>

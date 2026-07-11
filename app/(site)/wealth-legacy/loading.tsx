@@ -3,7 +3,7 @@ import React from 'react';
 export default function ArmPageLoading() {
   return (
     <div className="bg-ivory min-h-screen">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-20 md:py-32 animate-pulse">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-10 md:pt-16 pb-20 md:pb-32 animate-pulse">
         {/* Section header skeleton */}
         <div className="text-center mb-8">
           <div className="h-4 w-20 bg-sage/30 rounded-sm mx-auto mb-4" />

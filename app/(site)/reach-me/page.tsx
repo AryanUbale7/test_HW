@@ -33,7 +33,7 @@ export default function ReachMePage() {
   };
 
   return (
-    <div className="bg-ivory min-h-screen py-20 md:py-32">
+    <div className="bg-ivory min-h-screen pt-10 md:pt-16 pb-20 md:pb-32">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
