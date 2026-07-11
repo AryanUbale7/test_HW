@@ -60,19 +60,13 @@ export default function ReachMePage() {
             <Card id="contact-info" className="bg-sage-mist/50 scroll-mt-32">
               <h3 className="text-xl font-serif text-deep-green mb-6">Direct Contact:</h3>
               <div className="space-y-6 font-sans text-charcoal">
-                <p id="map" className="scroll-mt-32">
-                  <strong>Address:</strong><br />
-                  Pimple Saudagar,<br />
-                  Pune – 411027, Maharashtra, India
-                </p>
-                
-                <div className="flex flex-wrap gap-x-8 gap-y-4 pt-4 border-t border-sage/20">
+                <div className="flex flex-wrap gap-x-8 gap-y-4">
                   <div id="hours" className="scroll-mt-32">
-                    <strong className="text-xs uppercase tracking-wider text-charcoal/60">Working Hours</strong>
+                    <strong className="text-xs uppercase tracking-wider text-charcoal/60">Working Hours:</strong>
                     <p className="text-sm mt-1">9:30 AM – 6:30 PM IST (Mon - Sat)</p>
                   </div>
                   <div>
-                    <strong className="text-xs uppercase tracking-wider text-charcoal/60">Email</strong>
+                    <strong className="text-xs uppercase tracking-wider text-charcoal/60">Email:</strong>
                     <p className="text-sm mt-1">
                       <a href="mailto:rahul.karandikar@honworth.in" className="underline hover:text-gold transition-colors">
                         rahul.karandikar@honworth.in
@@ -80,7 +74,7 @@ export default function ReachMePage() {
                     </p>
                   </div>
                   <div>
-                    <strong className="text-xs uppercase tracking-wider text-charcoal/60">Mobile</strong>
+                    <strong className="text-xs uppercase tracking-wider text-charcoal/60">Mobile:</strong>
                     <p className="text-sm mt-1">
                       <a href="tel:+919923375175" className="underline hover:text-gold transition-colors">
                         +91 9923375175
@@ -110,7 +104,7 @@ export default function ReachMePage() {
           {/* Map Card */}
           <Card className="bg-sage-mist/30">
             <h3 className="text-xl font-serif text-deep-green mb-4">Find the Office</h3>
-            <p className="font-sans text-charcoal text-sm mb-6">
+            <p className="font-sans text-charcoal text-base mb-6">
               Honworth is located in Pimple Saudagar, Pune. View the interactive map below.
             </p>
             <div className="w-full h-[320px] rounded-sm overflow-hidden border border-sage/30 shadow-sm">
@@ -130,7 +124,7 @@ export default function ReachMePage() {
           {/* Calendly Card */}
           <Card className="bg-ivory border-gold/30">
             <h3 className="text-xl font-serif text-deep-green mb-4">Schedule a Call</h3>
-            <p className="font-sans text-charcoal text-sm mb-6">
+            <p className="font-sans text-charcoal text-base mb-6">
               Book a 30-minute introductory discovery session directly on my calendar.
             </p>
             <div className="h-[320px] w-full bg-sage-mist border border-sage/30 rounded-sm flex items-center justify-center">

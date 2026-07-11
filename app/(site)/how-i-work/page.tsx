@@ -29,7 +29,7 @@ export default function HowIWorkPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 id="approach" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">01-</span> My approach to working with families:</h2>
+              <h2 id="approach" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">01-</span> My Approach</h2>
               <p className="font-sans text-charcoal leading-relaxed space-y-4">
                 <span>I believe people make better financial decisions when they understand how things work and why they matter.</span>
                 <br /><br />
@@ -127,7 +127,7 @@ export default function HowIWorkPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 id="onboarding" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">03-</span> How I Engage:</h2>
+              <h2 id="onboarding" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">03-</span> Working Together:</h2>
               <p className="font-sans text-charcoal leading-relaxed space-y-4">
                 <span>No pressure. No jargon.</span>
                 <br /><br />
@@ -188,7 +188,7 @@ export default function HowIWorkPage() {
           {/* What I Do - and Don't Do Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start pt-16 border-t border-sage/20">
             <div className="md:col-span-2 max-w-3xl">
-              <h2 id="do-and-dont" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">05-</span> What I Do—and Don't Do (Boundaries):</h2>
+              <h2 id="do-and-dont" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">05-</span> What You Can Expect:</h2>
               <div className="space-y-4 font-sans text-charcoal leading-relaxed">
                 <p>
                   I educate before I suggest.

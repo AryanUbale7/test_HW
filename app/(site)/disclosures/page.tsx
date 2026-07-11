@@ -37,14 +37,11 @@ export default function DisclosuresPage() {
                     <td className="py-4 font-mono">ARN-336150</td>
                   </tr>
                   <tr>
-                    <td className="py-4">Portfolio Management Services (PMS)</td>
+                    <td className="py-4">Portfolio Management Services (PMS) Distributor</td>
                     <td className="py-4 font-mono">APRN07678</td>
                   </tr>
                   <tr>
-                    <td className="py-4">
-                      Specialised Investment Fund (SIF)<br />
-                      <span className="text-xs text-charcoal/60 italic">(specialised investment fund)</span>
-                    </td>
+                    <td className="py-4">Specialised Investment Fund (SIF) Distributor</td>
                     <td className="py-4 font-mono">ARN-336150</td>
                   </tr>
                 </tbody>

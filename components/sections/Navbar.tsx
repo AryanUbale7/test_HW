@@ -15,9 +15,9 @@ import {
 const NAV_LINKS = [
   { 
     label: 'The Journey', 
-    href: '/my-story#journey',
+    href: '/my-story',
     dropdown: [
-      { label: 'From APEX to Honworth — the journey', href: '/my-story#journey', icon: Map },
+      { label: 'My Journey', href: '/my-story#journey', icon: Map },
       { label: 'Why this work / my philosophy', href: '/my-story#philosophy', icon: Lightbulb },
       { label: 'Meaning of Honour + Worth', href: '/my-story#meaning', icon: Shield },
       { label: 'Credentials: AMFI MFD, PMS, SIF', href: '/my-story#credentials', icon: Award },
@@ -25,18 +25,14 @@ const NAV_LINKS = [
     ]
   },
   { 
-    label: 'My Story', 
-    href: '/my-story'
-  },
-  { 
     label: 'How I Work', 
     href: '/how-i-work',
     dropdown: [
-      { label: 'Your approach to working with families', href: '/how-i-work#approach', icon: Handshake },
+      { label: 'My Approach', href: '/how-i-work#approach', icon: Handshake },
       { label: 'The three pillars: Creation · Protection · Legacy', href: '/how-i-work#three-arms', icon: Network },
-      { label: 'Onboarding / how you engage', href: '/how-i-work#onboarding', icon: Coffee },
+      { label: 'Working Together', href: '/how-i-work#onboarding', icon: Coffee },
       { label: "How you're compensated (distributor model)", href: '/how-i-work#compensation', icon: Coins },
-      { label: "What you do — and don't — do", href: '/how-i-work#do-and-dont', icon: CheckSquare },
+      { label: 'What You Can Expect', href: '/how-i-work#do-and-dont', icon: CheckSquare },
     ]
   },
   { 
