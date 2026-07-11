@@ -43,7 +43,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
     window.history.pushState({}, '', newUrl);
   };
 
-  const arms = ['All', 'Pers.Fin', 'Economy'];
+  const arms = ['All', 'Creation', 'Protection', 'Legacy', 'Pers.Fin', 'Economy'];
 
   // Filter posts on the client side
   const filteredPosts = initialPosts.filter((post) => {

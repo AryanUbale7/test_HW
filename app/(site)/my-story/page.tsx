@@ -53,18 +53,7 @@ export default function MyStoryPage() {
             headingTag="h1"
           />
 
-          {/* Credentials Badge Row */}
-          <div className="flex flex-wrap gap-4 mb-16 border-y border-sage/30 py-6">
-            <span className="inline-flex items-center px-4 py-2 bg-sage-mist text-deep-green font-sans text-sm font-medium rounded-sm">
-              AMFI Registered Mutual Fund Distributor
-            </span>
-            <span className="inline-flex items-center px-4 py-2 bg-sage-mist text-deep-green font-sans text-sm font-medium rounded-sm">
-              NISM Certified
-            </span>
-            <span className="inline-flex items-center px-4 py-2 bg-sage-mist text-deep-green font-sans text-sm font-medium rounded-sm">
-              IRDAI Certified
-            </span>
-          </div>
+
 
           {/* Prose Blocks */}
           {/* Prose Blocks */}
@@ -114,7 +103,7 @@ export default function MyStoryPage() {
           </p>
 
           <h2 id="philosophy" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-gold mr-2">02-</span> How I Work (Philosophy)</h2>
-          <h3 className="text-xl font-serif font-bold text-gold mb-4">Understanding Before Products (***)</h3>
+          <h3 className="text-xl font-serif font-bold text-gold mb-4">Understanding Before Products</h3>
           <p>
             I listen first.
           </p>
