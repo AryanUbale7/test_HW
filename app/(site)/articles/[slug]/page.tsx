@@ -253,13 +253,13 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
         {/* Author Byline */}
         {post.author && (
           <div className="mt-16 pt-8 border-t border-sage/30 flex items-center gap-6">
-            <div className="relative w-16 h-16 shrink-0">
+            <div className="relative w-16 h-16 shrink-0 rounded-lg overflow-hidden border border-sage/20 shadow-sm">
               <Image 
                 src="/profile.png" 
                 alt={post.author.name} 
                 fill 
                 sizes="64px" 
-                className="rounded-full object-cover" 
+                className="object-cover" 
               />
             </div>
             <div>

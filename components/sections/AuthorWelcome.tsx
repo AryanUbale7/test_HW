@@ -8,7 +8,7 @@ export const AuthorWelcome: React.FC = () => {
       {/* Decorative accent */}
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold to-sage" />
 
-      <div className="w-40 h-40 md:w-48 md:h-48 shrink-0 relative rounded-full overflow-hidden border-4 border-white shadow-sm">
+      <div className="w-40 h-40 md:w-48 md:h-48 shrink-0 relative rounded-2xl overflow-hidden border-4 border-white shadow-md">
         <Image 
           src="/profile.png"
           alt="Honworth Advisor"

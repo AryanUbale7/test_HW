@@ -46,11 +46,7 @@ export default function MyStoryPage() {
       />
       <article className="max-w-3xl mx-auto px-6 md:px-8 pt-10 md:pt-16 pb-20 md:pb-32">
         <div className="w-full">
-          <SectionHeader 
-            heading="A decade of stewardship, guided discretion and discipline."
-            className="mb-12"
-            headingTag="h1"
-          />
+
 
           {/* Prose Blocks */}
           <div className="space-y-8 font-sans text-charcoal text-lg leading-relaxed max-w-3xl">
