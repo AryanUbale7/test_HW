@@ -2,7 +2,7 @@
 @config "../tailwind.config.ts";
 
 @theme inline {
-  --color-ivory: #FBF8F0;
+  --color-ivory: #FFFFFF;
   --color-sage: #AEC3B0;
   --color-sage-mist: #E8EFE6;
   --color-gold: #8C6921;
@@ -112,7 +112,7 @@ article.group:active {
 
 .prose pre {
   background-color: #36403B;
-  color: #FBF8F0;
+  color: #FFFFFF;
   padding: 1rem;
   border-radius: 4px;
   font-family: monospace;

@@ -26,7 +26,7 @@ export default async function Image() {
         <div
           style={{
             fontSize: '72px',
-            color: '#FBF8F0',
+            color: '#FFFFFF',
             fontWeight: 'bold',
             letterSpacing: '0.05em',
             marginBottom: '20px',

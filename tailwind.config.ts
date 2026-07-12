@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ivory: "#FBF8F0",
+        ivory: "#FFFFFF",
         sage: "#AEC3B0",
         "sage-mist": "#E8EFE6",
         gold: "#8C6921",

@@ -170,7 +170,7 @@ export function RichTextEditor({ content, onChange, error }: RichTextEditorProps
     { name: 'Deep Green', value: '#2E4A3A' },
     { name: 'Sage', value: '#AEC3B0' },
     { name: 'Sage Mist', value: '#E8EFE6' },
-    { name: 'Ivory', value: '#FBF8F0' },
+    { name: 'Ivory', value: '#FFFFFF' },
     { name: 'Black', value: '#000000' },
     { name: 'Gray', value: '#64748B' },
     { name: 'White', value: '#FFFFFF' },
@@ -440,7 +440,7 @@ export function RichTextEditor({ content, onChange, error }: RichTextEditorProps
         }
         .ProseMirror pre {
           background-color: #36403B;
-          color: #FBF8F0;
+          color: #FFFFFF;
           padding: 1rem;
           border-radius: 4px;
           font-family: monospace;
