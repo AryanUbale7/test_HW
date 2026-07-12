@@ -54,77 +54,83 @@ export default function MyStoryPage() {
 
           {/* Prose Blocks */}
           <div className="space-y-8 font-sans text-charcoal text-lg leading-relaxed max-w-3xl">
-            <h2 id="journey" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mb-8 scroll-mt-32"><span className="text-gold mr-2">01-</span> My Journey</h2>
+            <h2 id="journey" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mb-8 scroll-mt-32"><span className="text-gold mr-2">01-</span> From IT to Personal Finance</h2>
             
             <p className="text-xl leading-relaxed font-serif text-deep-green/90">
               My journey into investing began in 2016, almost by accident.
             </p>
             <p>
-              By then, I had spent close to two decades building a career in IT—a world of structure, analytical thinking, and disciplined processes. At a family gathering that year, I reconnected with a close friend after many years, and our conversation turned to equity investing—building wealth by owning a share in the growth of good businesses. I spent most of the discussion listening, fascinated by what I was hearing and quietly realising how little I understood about a subject that intrigued me deeply.
+              By then, I had spent close to two decades building a career in IT—a world of structure, analytical thinking, and disciplined processes. That year, at a family gathering, I reconnected with a close friend after many years. Our conversation drifted towards investing—not stock tips or market predictions, but the idea of building wealth by owning good businesses. I spent most of the discussion listening, fascinated by what I was hearing and quietly realising how little I understood about a subject that immediately caught my interest.
             </p>
             <p>
-              Before we parted, he recommended a few books on investing. I ordered them the same week, eager to learn—and within days, the density of the material got the better of me. I set them aside. The journey, it turned out, would be longer than I expected. I later enrolled in a technical analysis course with a few friends and spent countless hours reading, studying businesses, following experienced investors and market participants. Progress was gradual, but each step deepened my understanding.
+              Before we parted, he recommended a few books on investing. I ordered them the same week, eager to learn. Within a few days, I realised I had underestimated just how demanding the subject was, and the books found their way back onto the shelf.
             </p>
             <p>
-              The turning point came in 2019, when I found a mentor whose approach to investing resonated strongly with me. For the first time, I had a clear framework to guide my learning and decision-making. What began as curiosity gradually evolved into genuine interest, and eventually, a lasting passion for investing and wealth creation.
+              For a while.
             </p>
             <p>
-              Those early years taught me a lesson that continues to guide me today: successful investing is not built overnight. It requires patience, discipline, continuous learning, and the ability to stay focused on long-term outcomes rather than short-term noise. That philosophy remains at the heart of how I approach financial planning and investing.
+              Curiosity, however, has a way of returning.
+            </p>
+            <p>
+              A technical analysis course followed, along with countless evenings spent reading, studying businesses, and learning from experienced investors and market participants. Progress was gradual, but every step added another layer of understanding.
+            </p>
+            <p>
+              The turning point came in 2019, when I found a mentor whose approach to investing resonated deeply with me. For the first time, I had a clear framework that brought structure to my learning and decision-making. Curiosity gradually became conviction. Investing was no longer just an interest—it had become something I genuinely wanted to pursue.
+            </p>
+            <p>
+              Those early years taught me that successful investing is rarely about finding the next opportunity. More often, it is about patience, discipline, continuous learning, and staying focused on the long term when markets become noisy. That belief continues to shape the way I work with clients today.
             </p>
 
-            <h2 id="leap" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8">The Leap</h2>
+            <h2 id="leap" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8">The Decision</h2>
             <p>
-              By 2025, after nearly 26 years in the IT industry and almost a decade of studying and practicing investing, I made the decision to pursue personal finance as a full-time profession.
+              By 2025, after nearly twenty-six years in the IT industry and almost a decade of studying and practising investing, the decision to pursue personal finance as a full-time profession felt like a natural next step.
             </p>
             <p>
-              It was a significant transition, and leaving the comfort of a long-established career was not easy. I spent considerable time reflecting on the decision and preparing for the move. Throughout that period, my family and parents supported me wholeheartedly, giving me the confidence to take the next step. I felt strongly that I could combine my passion for investing with a meaningful opportunity to help individuals and families make better financial decisions.
+              Leaving a long-established career was not an easy decision. It came with uncertainty, but also with the conviction that I could combine my passion for investing with meaningful work—helping individuals and families make better financial decisions. Throughout that transition, my family stood firmly behind me, giving me the confidence to take the leap.
             </p>
             <p>
-              My background in technology had taught me the value of structured thinking, disciplined execution, and problem-solving—skills that translate naturally into financial planning and wealth management.
+              My years in technology shaped the way I think—structured, analytical, and disciplined. Those qualities continue to influence the way I approach financial planning and wealth management today.
             </p>
             <p>
-              To strengthen my professional foundation, I completed and cleared the AMFI Mutual Fund Distributor Certification, PMS and SIF Distributor Certifications, and the IRDAI examination, ensuring that my guidance and recommendations would be supported by both practical experience and professional credentials.
-            </p>
-            <p>
-              I began my practice as APEX Financials, initially focusing on mutual fund distribution. As I worked with more individuals and families, the scope of my work expanded beyond investments alone to include wealth protection and wealth legacy planning.
-            </p>
-            <p>
-              Over time, I realised the name no longer reflected the broader purpose of the practice.
-            </p>
-            <p>
-              That led to the creation of Honworth—a name built on two values I consider fundamental: honour and worth. It represents my belief that financial guidance should not merely help create wealth, but should do so with integrity, trust, and a long-term perspective.
-            </p>
-            <p>
-              Today, Honworth reflects everything this journey has taught me—and an unwavering commitment to putting clients' interests first. I work with individuals and families who want a thoughtful, long-term approach to building, protecting, and preserving wealth, helping them make informed financial decisions with confidence and clarity.
+              To strengthen my professional foundation, I completed AMFI — Mutual Fund Distributor Certification, Specialised Investment Funds (SIF) Distributor Certification & Portfolio management services (PMS) distribution from APMI, along with the IRDAI examination. These qualifications complement the practical experience gained over years of studying markets and continue to support the work I do with individuals and families.
             </p>
 
             <h2 id="philosophy" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-gold mr-2">02-</span> How I Work (Philosophy)</h2>
             <h3 className="text-xl font-serif font-bold text-gold mb-4">Understanding Before Products</h3>
             <p className="text-xl md:text-2xl font-serif font-bold text-deep-green/90 my-6">
-              I listen first.
+              Listening comes first.
             </p>
             <p>
-              Before any discussion of funds or policies, I want to understand where a family is—their goals, their worries, and what they're working towards. Money decisions rarely rest with one person, so I work with the family, not just one member of it. The relationships I value most are those that grow over years.
+              Before discussing funds, insurance, or any financial product, it's important to understand where a family stands today—their goals, their concerns, and what they're working towards. Financial decisions rarely belong to one individual, which is why the focus is always on the family as a whole, not just one member.
+            </p>
+            <p>
+              The most meaningful relationships are those that are built over years, not transactions.
             </p>
             <p className="text-xl leading-relaxed text-charcoal/90">
-              I also have a simple rule: <strong>no one should invest in something they cannot explain back to me in their own words.</strong>
+              There is one simple principle that guides every suggestion: <strong>never invest in something you cannot explain in your own words.</strong> If an investment isn't understood, it probably isn't the right investment.
             </p>
 
-            <h2 id="meaning" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-gold mr-2">03-</span> The Name (Identity) – Meaning of Honour + Worth</h2>
+            <h2 id="meaning" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-gold mr-2">03-</span> The Meaning Behind Honworth</h2>
             <p>
-              Honworth brings together two words: <strong>honour</strong> and <strong>worth</strong>.
+              Honworth brings together two timeless ideas: <strong>Honour</strong> and <strong>Worth</strong>.
+            </p>
+            <p className="text-xl md:text-2xl font-serif font-bold text-deep-green/90 my-6">
+              Honour comes first.
             </p>
             <p>
-              <strong>Honour</strong> comes first. It represents honesty, trust, and doing right by the families I work with. It is the foundation on which every client relationship is built.
+              It stands for integrity, trust, and doing what is right for the families who place their confidence in me. Every relationship begins there.
             </p>
             <p>
-              <strong>Worth</strong> speaks to value in its fullest sense—not just financial worth, but worthiness. It reflects wealth that is built thoughtfully, looked after carefully, and intended to endure. The word also carries an Old English meaning: a homestead or settlement—a place that lasts and is passed down through generations. That idea of creating something that outlasts us resonates deeply with me.
+              Worth goes beyond financial value. It speaks to wealth built with patience, cared for with responsibility, and preserved with purpose. It also carries an Old English meaning—a homestead or settlement, a place built to endure and passed from one generation to the next.
+            </p>
+            <p>
+              That idea resonates deeply with me. True wealth is rarely measured only by what we accumulate, but by what we protect, preserve, and leave behind.
             </p>
             <p className="text-xl leading-relaxed text-charcoal/90">
-              Together, Honworth expresses a simple belief: <strong>wealth should be built with integrity, protected with care, and passed on with purpose.</strong>
+              Together, these two ideas shape the philosophy behind Honworth: <strong>wealth should be built with integrity, protected with care, and passed on with purpose.</strong>
             </p>
             <p>
-              It is more than a name. It reflects the kind of practice I aspire to build—one founded on trust, helping families preserve what they have earned and create a legacy that endures.
+              More than a name, Honworth reflects the kind of practice I hope to build—one grounded in trust, dedicated to helping families make thoughtful financial decisions and create a legacy that endures.
             </p>
 
             <h2 id="credentials" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-gold mr-2">04-</span> Credentials:</h2>
@@ -153,15 +159,18 @@ export default function MyStoryPage() {
               </table>
             </div>
 
-            <h2 id="who-i-serve" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-gold mr-2">05-</span> Who I Serve: I work best with two kinds of people.</h2>
+            <h2 id="who-i-serve" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-gold mr-2">05-</span> Whom I Serve</h2>
             <p>
-              The first are young professionals and young families at the beginning of their wealth-building journey—when good financial habits, established early, can have the greatest impact over a lifetime.
+              Over the time, I have realised that meaningful financial relationships aren't defined by age, profession, or the size of a portfolio. They are built on a shared mindset.
             </p>
             <p>
-              The second are individuals and families who want to bring structure and clarity to their financial lives. Whether it's planning for a child's education, buying a home, preparing for retirement, protecting their family's future, or thinking about the legacy they hope to leave behind, they value a thoughtful and disciplined approach to wealth.
+              Some clients are just beginning their wealth-building journey. Others are planning for a child's education, buying a home, preparing for retirement, protecting what they've built, or thinking about the legacy they hope to leave behind.
             </p>
             <p>
-              What connects them is not their age or income, but their mindset. They are looking to build steadily, make informed decisions, and protect what matters most—rather than chase the latest trend or the promise of quick returns.
+              What connects them is a desire to make thoughtful financial decisions, build wealth steadily, and stay focused on long-term outcomes rather than short-term market noise.
+            </p>
+            <p>
+              If you value clarity over complexity, discipline over speculation, and relationships built on trust, we'll likely work well together.
             </p>
           </div>
         </div>
