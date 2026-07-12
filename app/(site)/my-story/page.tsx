@@ -28,7 +28,7 @@ export default function MyStoryPage() {
       {
         "@type": "Person",
         "@id": "https://honworth.in/#person",
-        "name": "Aryan Ubale",
+        "name": "Rahul Karandikar",
         "jobTitle": "AMFI-registered Mutual Fund Distributor",
         "worksFor": {
           "@id": "https://honworth.in/#organization"
