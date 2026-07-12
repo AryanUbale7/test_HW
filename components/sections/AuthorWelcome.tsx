@@ -14,7 +14,7 @@ export const AuthorWelcome: React.FC = () => {
           alt="Honworth Advisor"
           fill
           sizes="(max-width: 768px) 160px, 192px"
-          className="object-cover"
+          className="object-cover object-top"
         />
       </div>
 

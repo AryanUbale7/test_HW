@@ -259,7 +259,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
                 alt={post.author.name} 
                 fill 
                 sizes="64px" 
-                className="object-cover" 
+                className="object-cover object-top" 
               />
             </div>
             <div>
