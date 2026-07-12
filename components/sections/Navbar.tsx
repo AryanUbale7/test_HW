@@ -39,10 +39,9 @@ const NAV_LINKS = [
     label: 'Articles', 
     href: '/articles',
     dropdown: [
-      { label: 'Educational personal-finance posts', href: '/articles?type=Insight', icon: BookOpen },
+      { label: 'Educational personal-finance posts', href: '/articles?arm=Pers.Fin', icon: BookOpen },
       { label: 'Filed by pillar: Creation/Protection/Legacy', href: '/articles', icon: Library },
-      { label: 'Economy & policy commentary', href: '/articles?type=News', icon: TrendingUp },
-      { label: 'Behavioural finance / investor mindset', href: '/articles?type=Insight', icon: Brain },
+      { label: 'Economy & policy commentary', href: '/articles?arm=Economy', icon: TrendingUp },
       { label: 'Search + category archive', href: '/articles', icon: Search },
     ]
   },
