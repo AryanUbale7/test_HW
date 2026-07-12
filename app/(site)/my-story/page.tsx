@@ -33,7 +33,7 @@ export default function MyStoryPage() {
         "worksFor": {
           "@id": "https://honworth.in/#organization"
         },
-        "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a"
+        "image": "https://honworth.in/profile.png"
       }
     ]
   };
