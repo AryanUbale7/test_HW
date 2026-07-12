@@ -134,29 +134,42 @@ export default function MyStoryPage() {
             </p>
 
             <h2 id="credentials" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-gold mr-2">04-</span> Credentials:</h2>
-            <div className="overflow-x-auto mt-6">
-              <table className="w-full border-collapse text-left font-sans text-sm">
-                <thead>
-                  <tr className="border-b border-sage/40">
-                    <th className="py-3 font-serif font-bold text-deep-green text-base">Registration Type</th>
-                    <th className="py-3 font-serif font-bold text-deep-green text-base">Number</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-sage/20 text-charcoal/90">
-                  <tr>
-                    <td className="py-4">Mutual Fund Distributor (MFD)</td>
-                    <td className="py-4 font-mono">ARN-336150</td>
-                  </tr>
-                  <tr>
-                    <td className="py-4">Portfolio Management Services (PMS) Distributor</td>
-                    <td className="py-4 font-mono">APRN07678</td>
-                  </tr>
-                  <tr>
-                    <td className="py-4">Specialised Investment Fund (SIF) Distributor</td>
-                    <td className="py-4 font-mono">ARN-336150</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div className="mt-8 space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-5 rounded-lg border border-sage/20 bg-white/50 shadow-sm hover:border-gold/30 hover:bg-white transition-all duration-300">
+                <div>
+                  <h3 className="font-serif font-bold text-deep-green text-lg">Mutual Fund Distributor (MFD)</h3>
+                  <p className="text-xs text-charcoal/60 font-sans mt-0.5">AMFI Registered Mutual Fund Distributor</p>
+                </div>
+                <div className="mt-3 sm:mt-0">
+                  <span className="inline-block bg-sage-mist/60 text-gold font-mono font-bold px-3.5 py-1.5 rounded border border-sage/20 text-sm tracking-wider">
+                    ARN-336150
+                  </span>
+                </div>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-5 rounded-lg border border-sage/20 bg-white/50 shadow-sm hover:border-gold/30 hover:bg-white transition-all duration-300">
+                <div>
+                  <h3 className="font-serif font-bold text-deep-green text-lg">Portfolio Management Services (PMS) Distributor</h3>
+                  <p className="text-xs text-charcoal/60 font-sans mt-0.5">PMS Distributor Certification (APMI)</p>
+                </div>
+                <div className="mt-3 sm:mt-0">
+                  <span className="inline-block bg-sage-mist/60 text-gold font-mono font-bold px-3.5 py-1.5 rounded border border-sage/20 text-sm tracking-wider">
+                    APRN07678
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-5 rounded-lg border border-sage/20 bg-white/50 shadow-sm hover:border-gold/30 hover:bg-white transition-all duration-300">
+                <div>
+                  <h3 className="font-serif font-bold text-deep-green text-lg">Specialised Investment Fund (SIF) Distributor</h3>
+                  <p className="text-xs text-charcoal/60 font-sans mt-0.5">SIF Distributor Certification</p>
+                </div>
+                <div className="mt-3 sm:mt-0">
+                  <span className="inline-block bg-sage-mist/60 text-gold font-mono font-bold px-3.5 py-1.5 rounded border border-sage/20 text-sm tracking-wider">
+                    ARN-336150
+                  </span>
+                </div>
+              </div>
             </div>
 
             <h2 id="who-i-serve" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-gold mr-2">05-</span> Whom I Serve</h2>
