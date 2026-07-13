@@ -43,14 +43,13 @@ async function updateAuthorName() {
   const authors = await fetchResponse.json()
   console.log('Current authors in database:', authors)
 
-  const targetAuthor = authors.find((a: any) => a.name === 'Aryan Ubale')
+  const targetAuthor = authors.find((a: any) => a.name === 'Aryan Ubale' || a.name === 'Rahul Karandikar' || a.name === 'Rahul A Karandikar')
   
   if (!targetAuthor) {
-    console.log('⚠️ Could not find author named "Aryan Ubale".')
+    console.log('⚠️ Could not find author.')
     
-    // Let's try updating any author just in case, or report if none found
     if (authors.length > 0) {
-      console.log(`Updating the first author (${authors[0].name}) to "Rahul Karandikar"...`)
+      console.log(`Updating the first author (${authors[0].name}) to "Rahul A Karandikar"...`)
       await performUpdate(authors[0].id)
     } else {
       console.log('❌ No authors found in the database to update.')
@@ -58,7 +57,7 @@ async function updateAuthorName() {
     return
   }
 
-  console.log(`Found author "Aryan Ubale" with ID: ${targetAuthor.id}. Updating to "Rahul Karandikar"...`)
+  console.log(`Found author "${targetAuthor.name}" with ID: ${targetAuthor.id}. Updating to "Rahul A Karandikar"...`)
   await performUpdate(targetAuthor.id)
 }
 
@@ -73,8 +72,9 @@ async function performUpdate(id: string) {
       'Prefer': 'return=representation'
     },
     body: JSON.stringify({
-      name: 'Rahul Karandikar',
-      bio: 'AMFI-registered Mutual Fund Distributor in Pimple Saudagar, Pune, Maharashtra. helping families create, protect, and pass on wealth.'
+      name: 'Rahul A Karandikar',
+      bio: 'After twenty-six years in technology, Rahul now works with individuals and families who want to think about money with clarity, patience, and a long-term perspective.',
+      credentials: ['AMFI-registered Mutual Fund Distributor', 'PMS & SIF Distributor']
     })
   })
 

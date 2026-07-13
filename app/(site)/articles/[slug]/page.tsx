@@ -152,15 +152,6 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
         
         {/* Header */}
         <header className="mb-12 text-center">
-          <div className="flex justify-center items-center gap-4 mb-6">
-            <span className={`text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-sm border ${catColor}`}>
-              {post.arm}
-            </span>
-            <span className="text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-sm border border-sage text-charcoal">
-              {post.type}
-            </span>
-          </div>
-          
           <h1 className="text-4xl md:text-5xl font-serif text-deep-green leading-tight mb-6">
             {post.title}
           </h1>
@@ -169,32 +160,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
             <time>
               {post.publishedAt ? formatDate(post.publishedAt, { year: 'numeric', month: 'long', day: 'numeric' }) : 'Draft'}
             </time>
-            {post.author && (
-              <>
-                <span className="text-sage">|</span>
-                <span>By {post.author.name}</span>
-              </>
-            )}
           </div>
-
-          {/* Credentials/E-E-A-T Strip (AI & E-E-A-T Discoverability) */}
-          <div className="mt-6 py-2.5 px-4 bg-sage-mist/20 border border-sage/20 rounded-sm text-xs font-sans text-charcoal/80 inline-flex flex-wrap items-center justify-center gap-2 max-w-xl mx-auto">
-            <span className="font-semibold text-deep-green">Stewardship:</span>
-            <span>{post.author ? post.author.name : 'Honworth Advisor'}</span>
-            {post.author?.credentials && post.author.credentials.length > 0 && (
-              <span className="text-charcoal/60">({post.author.credentials.join(', ')})</span>
-            )}
-            <span className="text-sage">|</span>
-            <span>AMFI-registered Mutual Fund Distributor</span>
-          </div>
-
-          {armInfo && (
-            <div className="mt-6">
-              <Link href={armInfo.href} className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-sage-mist/40 text-deep-green border border-sage/30 hover:border-gold hover:text-gold transition-colors text-xs font-sans font-medium uppercase tracking-wider rounded-sm">
-                Related to: {armInfo.label} <span className="text-[10px]">→</span>
-              </Link>
-            </div>
-          )}
           
           {post.type === 'News' && post.sourceUrl && (
             <div className="mt-4 text-sm font-sans text-charcoal/70">
@@ -263,14 +229,12 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
               />
             </div>
             <div>
-              <h3 className="font-serif text-lg text-deep-green">{post.author.name}</h3>
-              <p className="font-sans text-sm text-charcoal">{post.author.bio}</p>
-              {post.author.credentials && (
-                <div className="flex gap-2 mt-2">
-                  {post.author.credentials.map((cred: string) => (
-                    <span key={cred} className="text-xs bg-sage-mist px-2 py-1 rounded-sm text-charcoal">{cred}</span>
-                  ))}
-                </div>
+              <h3 className="font-serif text-lg text-deep-green">{post.author.name} — Founder, Honworth</h3>
+              <p className="font-sans text-sm text-charcoal mt-1 leading-relaxed">{post.author.bio}</p>
+              {post.author.credentials && post.author.credentials.length > 0 && (
+                <p className="text-xs text-charcoal/80 mt-2.5 font-sans">
+                  {post.author.credentials.join(' · ')}
+                </p>
               )}
             </div>
           </div>

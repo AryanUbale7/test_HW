@@ -17,8 +17,8 @@ export default function HowIWorkPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-10 md:pt-16 pb-20 md:pb-32">
         <SectionHeader 
           eyebrow="How I Work"
-          heading="A structured, transparent approach to wealth stewardship."
-          subtext="Clarity and alignment are the foundations of our relationship. Here is what you can expect when we partner together."
+          heading="A structured, transparent approach to your wealth journey"
+          subtext="Built on clarity, thoughtful conversations, and a long-term perspective. Here's what you can expect when we work together"
           className="mb-20 text-center mx-auto"
           align="center"
           headingTag="h1"
@@ -127,7 +127,7 @@ export default function HowIWorkPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 id="onboarding" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">03-</span> Working Together:</h2>
+              <h2 id="onboarding" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">03-</span> How I Engage:</h2>
               <p className="font-sans text-charcoal leading-relaxed space-y-4">
                 <span>No pressure. No jargon.</span>
                 <br /><br />

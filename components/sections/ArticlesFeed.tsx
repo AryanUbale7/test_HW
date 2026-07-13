@@ -82,7 +82,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
                     : 'text-charcoal/85 hover:text-deep-green'
                 }`}
               >
-                {arm}
+                {arm === 'Pers.Fin' ? 'Personal Finance' : arm}
               </button>
             ))}
           </div>

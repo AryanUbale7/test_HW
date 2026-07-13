@@ -25,7 +25,7 @@ export const ArticleListItem: React.FC<ArticleListItemProps> = ({ title, excerpt
             <div className="flex items-center gap-3 text-xs font-sans text-charcoal/80 uppercase tracking-[0.2em] mb-4">
               <time>{date}</time>
               <span className="w-4 h-px bg-sage/50" />
-              <span className="text-gold font-medium">{category}</span>
+              <span className="text-gold font-medium">{category === 'Pers.Fin' ? 'Personal Finance' : category}</span>
             </div>
 
             <div className="flex justify-between items-baseline gap-8">

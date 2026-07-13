@@ -30,8 +30,8 @@ const NAV_LINKS = [
     dropdown: [
       { label: 'My Approach', href: '/how-i-work#approach', icon: Handshake },
       { label: 'The three pillars: Creation · Protection · Legacy', href: '/how-i-work#three-arms', icon: Network },
-      { label: 'Working Together', href: '/how-i-work#onboarding', icon: Coffee },
-      { label: "How you're compensated (distributor model)", href: '/how-i-work#compensation', icon: Coins },
+      { label: 'How I Engage', href: '/how-i-work#onboarding', icon: Coffee },
+      { label: "Compensation (distributor model)", href: '/how-i-work#compensation', icon: Coins },
       { label: 'What You Can Expect', href: '/how-i-work#do-and-dont', icon: CheckSquare },
     ]
   },

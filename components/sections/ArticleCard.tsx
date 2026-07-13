@@ -6,7 +6,7 @@ interface ArticleCardProps {
   title: string;
   excerpt: string;
   date: string;
-  category: 'Creation' | 'Protection' | 'Legacy' | 'General';
+  category: string;
   href: string;
   thumbnailUrl?: string;
 }
@@ -19,12 +19,18 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   href, 
   thumbnailUrl 
 }) => {
-  const categoryColors = {
+  const categoryColors: Record<string, string> = {
     Creation: 'bg-sage-mist text-deep-green border-sage',
     Protection: 'bg-ivory text-gold border-gold/30',
     Legacy: 'bg-deep-green text-ivory border-deep-green',
+    'Pers.Fin': 'bg-sage-mist text-deep-green border-sage',
+    'Personal Finance': 'bg-sage-mist text-deep-green border-sage',
+    Economy: 'bg-sage-mist text-deep-green border-gold/30',
     General: 'bg-transparent text-charcoal border-sage',
   };
+
+  const displayCategory = category === 'Pers.Fin' ? 'Personal Finance' : category;
+  const colorClass = categoryColors[category] || categoryColors['General'];
 
   return (
     <article 
@@ -46,8 +52,8 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         
         <div className="p-6 md:p-8 flex flex-col flex-grow">
           <div className="flex justify-between items-start mb-4">
-            <span className={`text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-sm border ${categoryColors[category]}`}>
-              {category}
+            <span className={`text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-sm border ${colorClass}`}>
+              {displayCategory}
             </span>
             <time className="text-sm font-sans text-charcoal/80">{date}</time>
           </div>

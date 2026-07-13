@@ -92,7 +92,7 @@ export default function MyStoryPage() {
             </p>
 
             <h2 id="philosophy" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-gold mr-2">02-</span> How I Work (Philosophy)</h2>
-            <h3 className="text-xl font-serif font-bold text-gold mb-4">Understanding Before Products</h3>
+
             <p className="text-xl md:text-2xl font-serif font-bold text-deep-green/90 my-6">
               Listening comes first.
             </p>

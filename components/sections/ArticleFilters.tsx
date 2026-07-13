@@ -69,7 +69,7 @@ export const ArticleFilters: React.FC<ArticleFiltersProps> = ({ basePath = '/art
                   : 'text-charcoal/85 hover:text-deep-green'
               }`}
             >
-              {arm}
+              {arm === 'Pers.Fin' ? 'Personal Finance' : arm}
               {currentArm === arm && (
                 <span className="absolute bottom-0 left-0 w-full h-px bg-gold" />
               )}
