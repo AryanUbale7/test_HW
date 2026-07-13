@@ -27,53 +27,56 @@ export default function HowIWorkPage() {
         {/* Alternating Text Blocks */}
         <div className="space-y-24 mb-32">
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 id="approach" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">01-</span> My Approach</h2>
-              <p className="font-sans text-charcoal leading-relaxed space-y-4">
-                <span>I believe people make better financial decisions when they understand how things work and why they matter.</span>
-                <br /><br />
-                <span>So, we begin with the basics. We talk about how mutual funds, Portfolio management services, SIF (Specialised Investment funds) products work, how bonds can play a role in a portfolio, and how insurance can help protect a family's financial future. Only when that foundation is in place do we discuss solutions that align with a person's goals, priorities, and stage of life.</span>
-                <br /><br />
-                <span>The same philosophy applies to insurance. My focus is not on recommending the most expensive cover, but on helping people choose protection that is appropriate for their circumstances. Every recommendation should come with a clear explanation of its purpose and value.</span>
-              </p>
-            </div>
-            <div className="bg-sage-mist/40 aspect-square rounded-md border border-sage/30 flex items-center justify-center p-8 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-tr from-sage/10 to-gold/5" />
-              <div className="relative w-full h-full flex flex-col items-center justify-center gap-4">
-                <div className="w-24 h-24 rounded-full border border-deep-green/30 flex items-center justify-center relative">
-                  <div className="w-16 h-16 rounded-full border border-gold/40 flex items-center justify-center absolute -top-4 -left-4 bg-ivory/80 backdrop-blur-sm" />
-                  <div className="w-12 h-12 rounded-full bg-deep-green/10 flex items-center justify-center">
-                    <span className="text-deep-green font-serif text-lg">01</span>
+          {/* Section 01: My Approach & Legacy Sub-section */}
+          <div className="space-y-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 id="approach" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">01-</span> My Approach</h2>
+                <p className="font-sans text-charcoal leading-relaxed space-y-4">
+                  <span>I believe people make better financial decisions when they understand how things work and why they matter.</span>
+                  <br /><br />
+                  <span>So, we begin with the basics. We talk about how mutual funds, Portfolio management services, SIF (Specialised Investment funds) products work, how bonds can play a role in a portfolio, and how insurance can help protect a family's financial future. Only when that foundation is in place do we discuss solutions that align with a person's goals, priorities, and stage of life.</span>
+                  <br /><br />
+                  <span>The same philosophy applies to insurance. My focus is not on recommending the most expensive cover, but on helping people choose protection that is appropriate for their circumstances. Every recommendation should come with a clear explanation of its purpose and value.</span>
+                </p>
+              </div>
+              <div className="bg-sage-mist/40 aspect-square rounded-md border border-sage/30 flex items-center justify-center p-8 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-tr from-sage/10 to-gold/5" />
+                <div className="relative w-full h-full flex flex-col items-center justify-center gap-4">
+                  <div className="w-24 h-24 rounded-full border border-deep-green/30 flex items-center justify-center relative">
+                    <div className="w-16 h-16 rounded-full border border-gold/40 flex items-center justify-center absolute -top-4 -left-4 bg-ivory/80 backdrop-blur-sm" />
+                    <div className="w-12 h-12 rounded-full bg-deep-green/10 flex items-center justify-center">
+                      <span className="text-deep-green font-serif text-lg">01</span>
+                    </div>
                   </div>
-                </div>
-                <div className="text-center">
-                  <p className="font-serif text-deep-green font-medium">Stewardship First</p>
-                  <p className="text-xs text-charcoal/70 mt-1 max-w-xs">Listening, understanding, and aligning before recommending.</p>
+                  <div className="text-center">
+                    <p className="font-serif text-deep-green font-medium">Stewardship First</p>
+                    <p className="text-xs text-charcoal/70 mt-1 max-w-xs">Listening, understanding, and aligning before recommending.</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Why Legacy Planning Matters to Me Section */}
-          <div className="max-w-3xl border-t border-sage/20 pt-16">
-            <h3 className="text-2xl md:text-3xl font-serif font-bold text-deep-green mb-6">Why Legacy Planning Matters to Me:</h3>
-            <div className="space-y-4 font-sans text-charcoal leading-relaxed">
-              <p>
-                Over the past few years, I have developed a deep interest in succession and wealth legacy planning. Through conversations with industry experts and time spent at financial forums, I came to appreciate how often families overlook this important aspect of financial well-being.
-              </p>
-              <p>
-                That understanding became more personal when I reflected on a tragic experience involving a friend's family. The emotional loss was compounded by the challenges of untangling financial and legal matters that had never been properly organised or documented. It reinforced a simple but powerful lesson: planning ahead is one of the most valuable gifts we can leave for the people we care about.
-              </p>
-              <p>
-                For me, wealth management is not just about creating wealth. It is equally about protecting it, transferring it smoothly, and ensuring that the values behind it endure across generations.
-              </p>
-              <p>
-                Whether we are discussing investments, insurance, or legacy planning, my role is to bring clarity to important financial decisions—so that you can move forward with confidence and peace of mind.
-              </p>
-              <p>
-                Where specialised legal work such as wills, trusts, or estate documentation is required, I work alongside with trusted legal professionals for assistance and facilitation services in relation to succession and estate planning for clients.
-              </p>
+            {/* Why Legacy Planning Matters to Me Section */}
+            <div className="max-w-3xl border-t border-sage/20 pt-8">
+              <h3 className="text-2xl md:text-3xl font-serif font-bold text-deep-green mb-6">Why Legacy Planning Matters to Me:</h3>
+              <div className="space-y-4 font-sans text-charcoal leading-relaxed">
+                <p>
+                  Over the past few years, I have developed a deep interest in succession and wealth legacy planning. Through conversations with industry experts and time spent at financial forums, I came to appreciate how often families overlook this important aspect of financial well-being.
+                </p>
+                <p>
+                  That understanding became more personal when I reflected on a tragic experience involving a friend's family. The emotional loss was compounded by the challenges of untangling financial and legal matters that had never been properly organised or documented. It reinforced a simple but powerful lesson: planning ahead is one of the most valuable gifts we can leave for the people we care about.
+                </p>
+                <p>
+                  For me, wealth management is not just about creating wealth. It is equally about protecting it, transferring it smoothly, and ensuring that the values behind it endure across generations.
+                </p>
+                <p>
+                  Whether we are discussing investments, insurance, or legacy planning, my role is to bring clarity to important financial decisions—so that you can move forward with confidence and peace of mind.
+                </p>
+                <p>
+                  Where specialised legal work such as wills, trusts, or estate documentation is required, I work alongside with trusted legal professionals for assistance and facilitation services in relation to succession and estate planning for clients.
+                </p>
+              </div>
             </div>
           </div>
 
