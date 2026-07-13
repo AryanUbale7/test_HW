@@ -8,13 +8,7 @@ export const IntroStrip = () => {
         <p className="text-charcoal font-sans font-semibold tracking-wide text-sm text-center sm:text-left">
           Helping families create, protect & pass on wealth
         </p>
-        <Link 
-          href="/my-story" 
-          className="group flex items-center gap-2 text-gold font-sans font-medium text-sm transition-colors hover:text-deep-green shrink-0"
-        >
-          About Honworth
-          <span className="transform group-hover:translate-x-1 transition-transform">→</span>
-        </Link>
+
       </div>
     </div>
   );
