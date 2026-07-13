@@ -67,19 +67,19 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
 
   return (
     <div>
-      {/* Filters (Bordered pill style) */}
-      <div className="flex items-center justify-between mb-8 py-2">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-          <span className="text-charcoal font-serif italic text-lg">Filter by:</span>
-          <div className="flex flex-wrap gap-3 border border-sage/40 rounded-full px-4 py-1.5 bg-transparent">
+      {/* Filters (Individual premium pill style) */}
+      <div className="flex items-center justify-between mb-8 py-2 w-full">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full">
+          <span className="text-charcoal font-serif italic text-lg shrink-0">Filter by:</span>
+          <div className="flex gap-2.5 overflow-x-auto w-full sm:w-auto sm:flex-wrap py-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {arms.map((arm) => (
               <button
                 key={arm}
                 onClick={() => updateUrlAndState(arm, currentType, 1)}
-                className={`text-sm font-sans tracking-wide transition-all duration-300 px-3 py-1 rounded-full ${
+                className={`text-xs sm:text-sm font-sans tracking-wide transition-all duration-300 px-4 py-2 rounded-full border whitespace-nowrap ${
                   currentArm === arm
-                    ? 'text-gold font-medium bg-sage-mist/40'
-                    : 'text-charcoal/85 hover:text-deep-green'
+                    ? 'text-gold font-medium bg-sage-mist/40 border-gold/40 shadow-sm'
+                    : 'text-charcoal/80 border-sage/30 hover:border-deep-green hover:text-deep-green bg-sage-mist/5'
                 }`}
               >
                 {arm === 'Pers.Fin' ? 'Personal Finance' : arm}
