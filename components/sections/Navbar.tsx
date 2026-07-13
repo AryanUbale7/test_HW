@@ -51,7 +51,6 @@ const NAV_LINKS = [
     dropdown: [
       { label: 'Downloadable guides & checklists', href: '/library#guides', icon: Download },
       { label: 'SIP Calculator', href: '/calculators/sip', icon: Calculator },
-      { label: 'Life Cover Estimator', href: '/calculators/life-cover', icon: HeartPulse },
       { label: 'Recommended reading', href: '/library#reading', icon: BookMarked },
       { label: 'Email lead-capture for resources', href: '/library#resources', icon: Mail },
       { label: 'FAQs', href: '/library#faqs', icon: MessageCircleQuestion },
