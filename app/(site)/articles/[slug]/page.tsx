@@ -218,24 +218,19 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
 
         {/* Author Byline */}
         {post.author && (
-          <div className="mt-6 pt-6 border-t border-sage/30 flex flex-col gap-4">
-            <div className="flex items-center gap-4">
-              <div className="relative w-16 h-16 shrink-0 rounded-lg overflow-hidden border border-sage/20 shadow-sm">
-                <Image 
-                  src="/profile.png" 
-                  alt={post.author.name} 
-                  fill 
-                  sizes="64px" 
-                  className="object-cover object-top" 
-                />
-              </div>
-              <div>
-                <h3 className="font-serif text-lg text-deep-green leading-snug">{post.author.name} — Founder, Honworth</h3>
-              </div>
+          <div className="mt-6 pt-6 border-t border-sage/30 flex gap-4 items-start">
+            <div className="relative w-16 h-16 shrink-0 rounded-lg overflow-hidden border border-sage/20 shadow-sm">
+              <Image 
+                src="/profile.png" 
+                alt={post.author.name} 
+                fill 
+                sizes="64px" 
+                className="object-cover object-top" 
+              />
             </div>
-            
-            <div className="mt-2">
-              <p className="font-sans text-sm text-charcoal leading-relaxed">{post.author.bio}</p>
+            <div className="flex-1 min-w-0">
+              <h3 className="font-serif text-lg text-deep-green leading-snug">{post.author.name} — Founder, Honworth</h3>
+              <p className="font-sans text-sm text-charcoal leading-relaxed mt-1.5">{post.author.bio}</p>
               {post.author.credentials && post.author.credentials.length > 0 && (
                 <p className="text-xs text-charcoal/80 mt-2.5 font-sans">
                   {post.author.credentials.join(' · ')}
