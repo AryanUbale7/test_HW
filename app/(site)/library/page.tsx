@@ -186,7 +186,7 @@ export default async function LibraryPage() {
       </section>
 
       {/* Recommended Reading Section */}
-      <section className="bg-sage-mist border-y border-sage/30 py-32 mb-32">
+      <section className="bg-sage-mist border-y border-sage/30 py-16 md:py-32 mb-16 md:mb-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader 
             eyebrow="Curated List"
@@ -213,12 +213,12 @@ export default async function LibraryPage() {
       </section>
 
       {/* Newsletter / Lead capture signup */}
-      <div id="resources" className="max-w-7xl mx-auto scroll-mt-32 mb-32">
+      <div id="resources" className="max-w-7xl mx-auto scroll-mt-32 mb-16 md:mb-32">
         <NewsletterSignup />
       </div>
 
       {/* FAQ Section */}
-      <section id="faqs" className="bg-sage-mist border-y border-sage/30 py-32 scroll-mt-32">
+      <section id="faqs" className="bg-sage-mist border-y border-sage/30 py-16 md:py-32 scroll-mt-32">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <SectionHeader 
             heading="5. FAQs:"

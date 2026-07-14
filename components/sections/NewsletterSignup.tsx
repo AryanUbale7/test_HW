@@ -43,7 +43,7 @@ export const NewsletterSignup = () => {
   };
 
   return (
-    <section className="bg-deep-green py-16 px-4 sm:px-6 lg:px-8 my-20">
+    <section className="bg-deep-green py-10 md:py-16 px-4 sm:px-6 lg:px-8 my-12 md:my-20">
       <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
         <div className="md:w-1/2">
           <h3 className="text-2xl md:text-3xl font-serif text-ivory mb-4">

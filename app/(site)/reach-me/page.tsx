@@ -65,17 +65,15 @@ export default function ReachMePage() {
                     <strong className="text-xs uppercase tracking-wider text-charcoal/60">Working Hours:</strong>
                     <p className="text-sm mt-1">9:30 AM – 6:30 PM IST (Mon - Sat)</p>
                   </div>
-                  <div>
-                    <strong className="text-xs uppercase tracking-wider text-charcoal/60">Email:</strong>
-                    <p className="text-sm mt-1">
+                  <div className="flex flex-col gap-2">
+                    <p className="text-sm">
+                      <strong className="text-xs uppercase tracking-wider text-charcoal/60 mr-1.5">Email:</strong>
                       <a href="mailto:rahul.karandikar@honworth.in" className="underline hover:text-gold transition-colors">
                         rahul.karandikar@honworth.in
                       </a>
                     </p>
-                  </div>
-                  <div>
-                    <strong className="text-xs uppercase tracking-wider text-charcoal/60">Mobile:</strong>
-                    <p className="text-sm mt-1">
+                    <p className="text-sm">
+                      <strong className="text-xs uppercase tracking-wider text-charcoal/60 mr-1.5">Mobile:</strong>
                       <a href="tel:+919923375175" className="underline hover:text-gold transition-colors">
                         +91 9923375175
                       </a>

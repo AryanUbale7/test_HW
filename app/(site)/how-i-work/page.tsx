@@ -25,7 +25,7 @@ export default function HowIWorkPage() {
         />
 
         {/* Alternating Text Blocks */}
-        <div className="space-y-24 mb-32">
+        <div className="space-y-12 md:space-y-24 mb-16 md:mb-32">
           
           {/* Section 01: My Approach & Legacy Sub-section */}
           <div className="space-y-12">

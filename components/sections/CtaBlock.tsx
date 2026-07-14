@@ -14,7 +14,7 @@ export const CtaBlock: React.FC<CtaBlockProps> = ({
   subtext = "Whether you're looking to create, protect, or plan the legacy of your wealth, we are here to provide tailored guidance."
 }) => {
   return (
-    <section className="bg-sage-mist border-y border-sage/30 py-20 md:py-32">
+    <section className="bg-sage-mist border-y border-sage/30 py-12 md:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         <SectionHeader 
           eyebrow={eyebrow}
