@@ -32,7 +32,7 @@ const NAV_LINKS = [
       { label: 'The three pillars: Creation · Protection · Legacy', href: '/how-i-work#three-arms', icon: Network },
       { label: 'How I Engage', href: '/how-i-work#onboarding', icon: Coffee },
       { label: "Compensation (distributor model)", href: '/how-i-work#compensation', icon: Coins },
-      { label: 'What You Can Expect', href: '/how-i-work#do-and-dont', icon: CheckSquare },
+      { label: "What I Do—and Don't Do (Boundaries)", href: '/how-i-work#do-and-dont', icon: CheckSquare },
     ]
   },
   { 
