@@ -44,7 +44,7 @@ export default function MyStoryPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
-      <article className="max-w-3xl mx-auto px-6 md:px-8 pt-10 md:pt-16 pb-20 md:pb-32">
+      <article className="max-w-3xl mx-auto px-6 md:px-8 pt-10 md:pt-16 pb-6 md:pb-8">
         <div className="w-full">
 
 
