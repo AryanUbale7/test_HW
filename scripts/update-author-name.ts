@@ -73,7 +73,7 @@ async function performUpdate(id: string) {
     },
     body: JSON.stringify({
       name: 'Rahul A Karandikar',
-      bio: 'After twenty-six years in technology, Rahul now works with individuals and families who want to think about money with clarity, patience, and a long-term perspective.',
+      bio: 'After two decades in technology, Rahul now works with individuals and families who want to think about money with clarity, patience, and a long-term perspective.',
       credentials: ['AMFI-registered Mutual Fund Distributor', 'PMS & SIF Distributor']
     })
   })

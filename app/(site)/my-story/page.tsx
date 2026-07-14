@@ -79,7 +79,7 @@ export default function MyStoryPage() {
 
             <h2 id="leap" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8">The Decision</h2>
             <p>
-              By 2025, after nearly twenty-six years in the IT industry and almost a decade of studying and practising investing, the decision to pursue personal finance as a full-time profession felt like a natural next step.
+              By 2025, after nearly two decades in the IT industry and almost a decade of studying and practising investing, the decision to pursue personal finance as a full-time profession felt like a natural next step.
             </p>
             <p>
               Leaving a long-established career was not an easy decision. It came with uncertainty, but also with the conviction that I could combine my passion for investing with meaningful work—helping individuals and families make better financial decisions. Throughout that transition, my family stood firmly behind me, giving me the confidence to take the leap.

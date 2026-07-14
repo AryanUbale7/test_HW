@@ -234,7 +234,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
               </div>
             </div>
             
-            <div className="pl-0 sm:pl-20">
+            <div className="mt-2">
               <p className="font-sans text-sm text-charcoal leading-relaxed">{post.author.bio}</p>
               {post.author.credentials && post.author.credentials.length > 0 && (
                 <p className="text-xs text-charcoal/80 mt-2.5 font-sans">
