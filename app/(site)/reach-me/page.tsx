@@ -55,8 +55,8 @@ export default function ReachMePage() {
             <ContactForm />
           </div>
 
-          {/* Sidebar Area - Direct Contact */}
-          <div className="lg:col-span-2">
+          {/* Sidebar Area - Direct Contact & Schedule a Call */}
+          <div className="lg:col-span-2 flex flex-col gap-8">
             <Card id="contact-info" className="bg-sage-mist/50 scroll-mt-32">
               <h3 className="text-xl font-serif text-deep-green mb-6">Direct Contact:</h3>
               <div className="space-y-6 font-sans text-charcoal">
@@ -94,13 +94,35 @@ export default function ReachMePage() {
                 </div>
               </div>
             </Card>
+
+            <Card className="bg-ivory border-gold/30">
+              <h3 className="text-xl font-serif text-deep-green mb-4">Schedule a Call</h3>
+              <p className="font-sans text-charcoal text-base mb-6">
+                Book a 30-minute introductory discovery session directly on my calendar.
+              </p>
+              <div className="h-[250px] w-full bg-sage-mist border border-sage/30 rounded-sm flex items-center justify-center">
+                <div className="text-center p-6">
+                  <p className="text-deep-green font-serif mb-2">[Calendly Calendar]</p>
+                  <p className="text-xs font-sans text-charcoal">
+                    Click below to open the scheduling link or book a slot.
+                  </p>
+                  <a 
+                    href="https://calendly.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-block text-sm text-deep-green font-medium hover:text-gold underline focus-visible:ring-2 focus-visible:ring-gold rounded-sm"
+                  >
+                    Open calendar scheduling link
+                  </a>
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
 
-        {/* Row 2: Location Map & Calendar Scheduling */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 pt-12 border-t border-sage/20">
-          {/* Map Card */}
-          <Card className="bg-sage-mist/30">
+        {/* Row 2: Location Map (Centered, clean layout) */}
+        <div className="pt-12 border-t border-sage/20">
+          <Card className="bg-sage-mist/30 max-w-4xl mx-auto">
             <h3 className="text-xl font-serif text-deep-green mb-4">Find the Office</h3>
             <p className="font-sans text-charcoal text-base mb-6">
               Honworth is located in Pimple Saudagar, Pune. View the interactive map below.
@@ -116,30 +138,6 @@ export default function ReachMePage() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
-            </div>
-          </Card>
-
-          {/* Calendly Card */}
-          <Card className="bg-ivory border-gold/30">
-            <h3 className="text-xl font-serif text-deep-green mb-4">Schedule a Call</h3>
-            <p className="font-sans text-charcoal text-base mb-6">
-              Book a 30-minute introductory discovery session directly on my calendar.
-            </p>
-            <div className="h-[320px] w-full bg-sage-mist border border-sage/30 rounded-sm flex items-center justify-center">
-              <div className="text-center p-6">
-                <p className="text-deep-green font-serif mb-2">[Calendly Calendar]</p>
-                <p className="text-xs font-sans text-charcoal">
-                  Click below to open the scheduling link or book a slot.
-                </p>
-                <a 
-                  href="https://calendly.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-block text-sm text-deep-green font-medium hover:text-gold underline focus-visible:ring-2 focus-visible:ring-gold rounded-sm"
-                >
-                  Open calendar scheduling link
-                </a>
-              </div>
             </div>
           </Card>
         </div>

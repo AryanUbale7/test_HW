@@ -40,9 +40,7 @@ export const Footer: React.FC = () => {
             <p className="font-serif text-xl text-ivory/90 mb-1 font-semibold">Resources</p>
             <nav className="flex flex-col gap-3 font-sans font-light text-ivory/70 text-sm">
               <Link href="/library" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">Library</Link>
-              <Link href="/glossary" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">Glossary</Link>
               <Link href="/calculators/sip" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">SIP Calculator</Link>
-              <Link href="/calculators/life-cover" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">Life Cover Estimator</Link>
             </nav>
           </div>
 

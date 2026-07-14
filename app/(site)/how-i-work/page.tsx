@@ -35,9 +35,13 @@ export default function HowIWorkPage() {
                 <p className="font-sans text-charcoal leading-relaxed space-y-4">
                   <span>I believe people make better financial decisions when they understand how things work and why they matter.</span>
                   <br /><br />
-                  <span>So, we begin with the basics. We talk about how mutual funds, Portfolio management services, SIF (Specialised Investment funds) products work, how bonds can play a role in a portfolio, and how insurance can help protect a family's financial future. Only when that foundation is in place do we discuss solutions that align with a person's goals, priorities, and stage of life.</span>
+                  <span>That's why every relationship begins with a conversation—not a recommendation.</span>
                   <br /><br />
-                  <span>The same philosophy applies to insurance. My focus is not on recommending the most expensive cover, but on helping people choose protection that is appropriate for their circumstances. Every recommendation should come with a clear explanation of its purpose and value.</span>
+                  <span>Before discussing investments or insurance, we take the time to build a clear understanding of the options available, how they work, and where they fit into your financial journey. Only then do we explore solutions that align with your goals, priorities, and stage of life.</span>
+                  <br /><br />
+                  <span>The same approach applies to insurance. The objective isn't to recommend the largest cover or the most complex solution, but to help you choose protection that's appropriate for your family's circumstances.</span>
+                  <br /><br />
+                  <span>Every recommendation should be easy to understand, have a clear purpose, and help you make decisions with confidence.</span>
                 </p>
               </div>
               <div className="bg-sage-mist/40 aspect-square rounded-md border border-sage/30 flex items-center justify-center p-8 relative overflow-hidden group">
@@ -62,16 +66,22 @@ export default function HowIWorkPage() {
               <h3 className="text-2xl md:text-3xl font-serif font-bold text-deep-green mb-6">Why Legacy Planning Matters to Me:</h3>
               <div className="space-y-4 font-sans text-charcoal leading-relaxed">
                 <p>
-                  Over the past few years, I have developed a deep interest in succession and wealth legacy planning. Through conversations with industry experts and time spent at financial forums, I came to appreciate how often families overlook this important aspect of financial well-being.
+                  Over time, one aspect of financial planning began to stand out more than any other—legacy planning.
                 </p>
                 <p>
-                  That understanding became more personal when I reflected on a tragic experience involving a friend's family. The emotional loss was compounded by the challenges of untangling financial and legal matters that had never been properly organised or documented. It reinforced a simple but powerful lesson: planning ahead is one of the most valuable gifts we can leave for the people we care about.
+                  Conversations with professionals and time spent at industry forums made one thing increasingly clear: while many families work hard to build wealth, far fewer take the time to prepare for how it will be managed and passed on when the time comes.
                 </p>
                 <p>
-                  For me, wealth management is not just about creating wealth. It is equally about protecting it, transferring it smoothly, and ensuring that the values behind it endure across generations.
+                  That understanding became deeply personal after witnessing the experience of a close friend's family. Alongside the emotional loss they were coping with came the unexpected burden of sorting through financial and legal matters that had never been properly organised. It was a difficult reminder that the absence of a plan can place an unnecessary burden on the very people we hope to protect.
                 </p>
                 <p>
-                  Whether we are discussing investments, insurance, or legacy planning, my role is to bring clarity to important financial decisions—so that you can move forward with confidence and peace of mind.
+                  That experience reinforced a belief I carry into every client relationship: planning ahead is one of the greatest acts of care we can leave behind.
+                </p>
+                <p>
+                  To me, wealth management is about far more than growing wealth. It is about protecting it during your lifetime, ensuring it can be transferred smoothly, and helping preserve the values and purpose behind it for future generations.
+                </p>
+                <p>
+                  Whether the conversation is about investments, insurance, or legacy planning, the objective remains the same—to bring clarity to important financial decisions, so you and your family can move forward with confidence.
                 </p>
                 <p>
                   Where specialised legal work such as wills, trusts, or estate documentation is required, I work alongside with trusted legal professionals for assistance and facilitation services in relation to succession and estate planning for clients.
@@ -89,15 +99,15 @@ export default function HowIWorkPage() {
               
               <div className="space-y-6 font-sans text-charcoal leading-relaxed">
                 <div className="border border-sage/30 p-6 rounded-sm bg-sage-mist/10 shadow-sm">
-                  <h3 className="font-serif font-bold text-deep-green text-lg">Wealth Creation:</h3>
+                  <h3 className="font-serif font-bold text-deep-green text-lg">Wealth Creation</h3>
                   <p className="text-sm mt-2">Helping your money grow steadily towards the goals that matter most.</p>
                 </div>
                 <div className="border border-sage/30 p-6 rounded-sm bg-sage-mist/10 shadow-sm">
-                  <h3 className="font-serif font-bold text-deep-green text-lg">Wealth Protection:</h3>
+                  <h3 className="font-serif font-bold text-deep-green text-lg">Wealth Protection</h3>
                   <p className="text-sm mt-2">Safeguarding what you've built—making sure the right cover is in place so that an unexpected event does not undo years of effort.</p>
                 </div>
                 <div className="border border-sage/30 p-6 rounded-sm bg-sage-mist/10 shadow-sm">
-                  <h3 className="font-serif font-bold text-deep-green text-lg">Wealth Legacy:</h3>
+                  <h3 className="font-serif font-bold text-deep-green text-lg">Wealth Legacy</h3>
                   <p className="text-sm mt-2">Thinking ahead about how wealth passes on within a family, clearly, efficiently, and without unnecessary confusion.</p>
                 </div>
               </div>
