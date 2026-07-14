@@ -191,22 +191,25 @@ export default function HowIWorkPage() {
           {/* What I Do - and Don't Do Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start pt-16 border-t border-sage/20">
             <div className="md:col-span-2 max-w-3xl">
-              <h2 id="do-and-dont" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">05-</span> What You Can Expect:</h2>
+              <h2 id="do-and-dont" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">05-</span> What I Do—and Don't Do (Boundaries):</h2>
               <div className="space-y-4 font-sans text-charcoal leading-relaxed">
                 <p>
-                  I educate before I suggest.
+                  Education comes before evaluation.
                 </p>
                 <p>
-                  I work across wealth creation, wealth protection, and wealth legacy planning. I aim to build long-term relationships and help families make informed financial decisions they can stand behind.
+                  My role is to help individuals and families navigate three important aspects of their financial lives—building wealth, protecting it, and preparing it to be passed on with clarity and purpose. The focus is always on building long-term relationships and helping clients make informed financial decisions with confidence.
                 </p>
                 <p>
-                  What I don't do matters just as much.
+                  That also means being clear about what you can expect from me.
                 </p>
                 <p>
-                  I don't push products for the sake of it. I don't promise or chase quick returns. And I won't suggest anything that you cannot explain back to me in your own words.
+                  You'll never be encouraged to invest simply because a product is available or markets are fashionable. Suggestions are made only when they are appropriate for your circumstances, and only after you understand how they work and why they are being considered.
                 </p>
                 <p>
-                  I work as a distributor and guide, not a Registered Investment Adviser, and I'll always be transparent about that distinction.
+                  I also believe that no one should invest in something they cannot explain in their own words. Understanding should always come before action.
+                </p>
+                <p>
+                  As an AMFI-registered Mutual Fund Distributor, my role is to facilitate investments and provide distribution-related guidance. I am not a SEBI-registered Investment Adviser (RIA), and that distinction will always be communicated clearly and transparently.
                 </p>
               </div>
             </div>
