@@ -170,19 +170,19 @@ export default function HowIWorkPage() {
               <h2 id="compensation" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">04-</span> How I'm Compensated:</h2>
               <div className="space-y-4 font-sans text-charcoal leading-relaxed">
                 <p>
-                  I believe compensation should never be a mystery, and I'm happy to explain how it works before any decision is made.
+                  Transparency is an important part of every client relationship. Before any investment or insurance decision is made, you'll have a clear understanding of how I'm compensated and what costs, if any, are involved.
                 </p>
                 <p>
-                  For mutual funds and SIF products, I am compensated through the products themselves. Asset management companies pay a trail commission from the scheme's expense ratio, so you do not receive a separate bill from me, and I do not charge a separate fee for my services.
+                  For mutual funds and Specialised Investment Funds (SIF), I am compensated through a trail commission paid by the respective Asset Management Company from the scheme's expense ratio. You do not pay me a separate advisory fee for these services.
                 </p>
                 <p>
-                  Portfolio Management Services (PMS) have their own fee structure, including management and other charges outlined by the provider. I'll always explain these costs upfront so that you understand exactly what you're paying and why.
+                  Portfolio Management Services (PMS) follow their own fee structure, as determined by the respective provider. Where applicable, these charges are explained upfront, so you understand both the costs and the services they relate to.
                 </p>
                 <p>
-                  For insurance, I am compensated through a commission paid by the insurance company when you buy a policy through me. This is built into the policy and set as per IRDAI regulations, so you do not pay me anything separately for arranging your cover.
+                  For insurance, the insurance company pays a commission when a policy is purchased through me. This commission forms part of the product structure and is governed by IRDAI regulations. There is no separate fee payable to me for arranging your cover.
                 </p>
                 <p>
-                  Transparency matters. Before you make any decision, you'll have a clear understanding of both the benefits and the costs involved.
+                  Regardless of the product, the approach remains the same, costs are explained clearly, questions are always welcome, and recommendations should be understood before any decision is made.
                 </p>
               </div>
             </div>
