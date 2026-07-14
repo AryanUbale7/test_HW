@@ -1,3 +1,4 @@
+// Theme configuration for Honworth - Reverted mustard color accent changes
 import type { Config } from "tailwindcss";
 
 const config: Config = {
