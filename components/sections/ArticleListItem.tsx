@@ -15,7 +15,7 @@ interface ArticleListItemProps {
 export const ArticleListItem: React.FC<ArticleListItemProps> = ({ title, excerpt, date, category, href, thumbnailUrl, priority }) => {
   return (
     <Link href={href} className="block group" aria-label={`Read article: ${title}`}>
-      <div className="py-10 border-b border-sage/20 transition-all duration-500 relative overflow-hidden">
+      <div className="py-6 md:py-8 border-b border-sage/20 transition-all duration-500 relative overflow-hidden">
         {/* Subtle hover accent line */}
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
         

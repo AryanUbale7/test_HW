@@ -148,7 +148,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
 
-      <article className="max-w-3xl mx-auto px-4 sm:px-6 pt-6 md:pt-10 pb-8 md:pb-12">
+      <article className="max-w-3xl mx-auto px-4 sm:px-6 pt-6 md:pt-10 pb-4 md:pb-6">
         
         {/* Header */}
         <header className="mb-6 md:mb-8 text-center">
@@ -218,7 +218,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
 
         {/* Author Byline */}
         {post.author && (
-          <div className="mt-10 md:mt-12 pt-8 border-t border-sage/30 flex flex-col gap-4">
+          <div className="mt-6 pt-6 border-t border-sage/30 flex flex-col gap-4">
             <div className="flex items-center gap-4">
               <div className="relative w-16 h-16 shrink-0 rounded-lg overflow-hidden border border-sage/20 shadow-sm">
                 <Image 
@@ -263,7 +263,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
 
       {/* Related Posts Strip */}
       {relatedPosts && relatedPosts.length > 0 && (
-        <section className="bg-sage-mist border-y border-sage/30 pt-10 pb-16 md:py-16">
+        <section className="bg-sage-mist border-y border-sage/30 pt-6 pb-12 md:pt-8 md:pb-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-serif text-deep-green mb-8 md:mb-12 text-center">Related Insights</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

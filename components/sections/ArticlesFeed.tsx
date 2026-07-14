@@ -68,7 +68,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
   return (
     <div>
       {/* Filters (Individual premium pill style) */}
-      <div className="flex items-center justify-between mb-8 py-2 w-full">
+      <div className="flex items-center justify-between mb-4 py-1 w-full">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full">
           <span className="text-charcoal font-serif italic text-lg shrink-0">Filter by:</span>
           <div className="flex gap-2.5 overflow-x-auto w-full sm:w-auto sm:flex-wrap py-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -91,7 +91,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
 
       {/* Posts List */}
       {paginatedPosts.length > 0 ? (
-        <div className="flex flex-col mt-4">
+        <div className="flex flex-col mt-2">
           {paginatedPosts.map((post: any, idx: number) => (
             <ArticleListItem
               key={post.slug}

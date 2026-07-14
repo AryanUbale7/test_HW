@@ -25,7 +25,7 @@ export default async function ArticlesPage() {
       <h1 className="sr-only">Articles and Insights | Honworth</h1>
       <IntroStrip />
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 md:pt-8 md:pb-16">
         
         {/* Posts Feed */}
         <div className="w-full">

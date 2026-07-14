@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full pt-12 md:pt-16">
         
         {/* 1. Top Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 pb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 pb-6">
           
           {/* Column 1: Logo & Tagline */}
           <div className="flex flex-col items-start gap-5">
@@ -73,10 +73,10 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* 2. Divider */}
-        <hr className="border-t border-slate-700/50 mb-8" />
+        <hr className="border-t border-slate-700/50 my-6" />
 
         {/* 3. Compliance Block */}
-        <div className="max-w-5xl font-sans font-light text-sm text-ivory/70 leading-relaxed mb-8 space-y-3">
+        <div className="max-w-5xl font-sans font-light text-sm text-ivory/70 leading-relaxed mb-5 space-y-2">
           <p>
             <strong>Registration:</strong> AMFI Registered Mutual Fund Distributor | ARN–336150
           </p>
@@ -86,7 +86,7 @@ export const Footer: React.FC = () => {
           <p>
             <strong>Risk Warning:</strong> Mutual Fund investments are subject to market risks, read all scheme related documents carefully.
           </p>
-          <p className="pt-2">
+          <p className="mt-1">
             <Link href="/disclosures" className="text-[#E5C158] hover:text-[#E5C158]/80 underline underline-offset-4 transition-colors focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">
               Read our full Disclosures &rarr;
             </Link>
