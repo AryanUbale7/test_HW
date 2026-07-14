@@ -132,21 +132,21 @@ export default function HowIWorkPage() {
             <div>
               <h2 id="onboarding" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">03-</span> How I Engage:</h2>
               <p className="font-sans text-charcoal leading-relaxed space-y-4">
-                <span>No pressure. No jargon.</span>
+                <span>No pressure. No jargon. More thoughtful conversations.</span>
                 <br /><br />
-                <span>We start with a conversation—your goals, your circumstances, and where you stand today. From there, we explore what you may need across wealth creation, wealth protection, and wealth legacy.</span>
+                <span>Every relationship begins with understanding where you are today—your goals, priorities, and the life you're working towards. From there, we explore what may be appropriate across wealth creation, wealth protection, and wealth legacy.</span>
                 <br /><br />
-                <span>My role is to help families make sound financial decisions through changing market conditions and different stages of life.</span>
+                <span>The objective is simple: to help you make informed financial decisions through different stages of life and changing market conditions.</span>
                 <br /><br />
-                <span>I explain options in plain language and encourage questions at every step. Decisions should be understood, not rushed. Once you're comfortable moving forward, I handle the paperwork and formalities so you can focus on the decisions that matter.</span>
+                <span>Options are explained in plain language, and questions are always encouraged. Financial decisions should never feel rushed or confusing. Once you're comfortable moving forward, I take care of the paperwork and the process, leaving you free to focus on the decisions themselves.</span>
                 <br /><br />
-                <span>One more thing worth knowing, your money never sits with me. All investments are made directly in your name with the respective asset management companies and registrars — I facilitate the process, but I never hold or handle your funds.</span>
+                <span>One important point worth knowing: your money is never held by me. Investments are made directly in your name with the respective Asset Management Companies and registrars. My role is to facilitate the process—not to receive or handle your funds.</span>
                 <br /><br />
-                <span>Throughout the process, you'll know what's happening, why it's being done, and how it fits into your broader financial picture.</span>
+                <span>You'll always know what is being done, why it matters, and how it fits into your overall financial plan.</span>
                 <br /><br />
                 <span>Getting started is only the beginning.</span>
                 <br /><br />
-                <span>We'll review your investments together periodically—tracking progress against your goals, reviewing asset allocation, adjusting where appropriate, and ensuring your financial plan continues to reflect your changing life circumstances.</span>
+                <span>As life evolves, so should your financial plan. That's why we review your investments periodically—tracking progress towards your goals, reviewing asset allocation where appropriate, and ensuring your financial strategy continues to reflect your changing circumstances.</span>
               </p>
             </div>
             <div className="bg-sage-mist/40 aspect-square rounded-md border border-sage/30 flex items-center justify-center p-8 relative overflow-hidden group">
