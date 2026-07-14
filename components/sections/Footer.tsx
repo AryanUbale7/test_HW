@@ -5,10 +5,10 @@ import Image from 'next/image';
 export const Footer: React.FC = () => {
   return (
     <footer className="bg-deep-green text-ivory">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full pt-16 md:pt-24">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full pt-12 md:pt-16">
         
         {/* 1. Top Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 pb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 pb-10">
           
           {/* Column 1: Logo & Tagline */}
           <div className="flex flex-col items-start gap-5">
@@ -73,10 +73,10 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* 2. Divider */}
-        <hr className="border-t border-slate-700/50 mb-12" />
+        <hr className="border-t border-slate-700/50 mb-8" />
 
         {/* 3. Compliance Block */}
-        <div className="max-w-5xl font-sans font-light text-sm text-ivory/70 leading-relaxed mb-12 space-y-3">
+        <div className="max-w-5xl font-sans font-light text-sm text-ivory/70 leading-relaxed mb-8 space-y-3">
           <p>
             <strong>Registration:</strong> AMFI Registered Mutual Fund Distributor | ARN–336150
           </p>
@@ -94,7 +94,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* 4. Copyright Row */}
-        <div className="font-sans font-light text-sm text-ivory/60 pb-16 flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+        <div className="font-sans font-light text-sm text-ivory/60 pb-10 flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
           <p>&copy; {new Date().getFullYear()} Honworth.</p>
           <div className="hidden md:block">&middot;</div>
           <div className="flex flex-wrap items-center gap-2 md:gap-4">
