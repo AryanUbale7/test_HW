@@ -231,21 +231,6 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
               </div>
               <div>
                 <h3 className="font-serif text-lg text-deep-green leading-snug">{post.author.name} — Founder, Honworth</h3>
-                <div className="flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-1 mt-1.5 text-xs sm:text-sm font-sans text-charcoal/80">
-                  <p>
-                    <span className="font-medium text-charcoal/70">Email:</span>{' '}
-                    <a href="mailto:rahul.karandikar@honworth.in" className="underline hover:text-gold transition-colors">
-                      rahul.karandikar@honworth.in
-                    </a>
-                  </p>
-                  <span className="hidden sm:inline text-sage/60">&middot;</span>
-                  <p>
-                    <span className="font-medium text-charcoal/70">Mobile:</span>{' '}
-                    <a href="tel:+919923375175" className="underline hover:text-gold transition-colors">
-                      +91 9923375175
-                    </a>
-                  </p>
-                </div>
               </div>
             </div>
             
