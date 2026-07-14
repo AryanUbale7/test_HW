@@ -148,10 +148,10 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
 
-      <article className="max-w-3xl mx-auto px-4 sm:px-6 pt-8 md:pt-20 pb-8 md:pb-12">
+      <article className="max-w-3xl mx-auto px-4 sm:px-6 pt-6 md:pt-10 pb-8 md:pb-12">
         
         {/* Header */}
-        <header className="mb-12 text-center">
+        <header className="mb-6 md:mb-8 text-center">
           <h1 className="text-4xl md:text-5xl font-serif text-deep-green leading-tight mb-6">
             {post.title}
           </h1>
@@ -171,7 +171,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
 
         {/* Thumbnail */}
         {post.thumbnailUrl && (
-          <div className="aspect-[21/9] w-full overflow-hidden bg-sage-mist rounded-md mb-16 relative">
+          <div className="aspect-[21/9] w-full overflow-hidden bg-sage-mist rounded-md mb-8 md:mb-12 relative">
             <Image 
               src={post.thumbnailUrl} 
               alt={post.title} 
