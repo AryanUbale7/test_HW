@@ -5,7 +5,7 @@ import Image from 'next/image';
 export const Footer: React.FC = () => {
   return (
     <footer className="bg-deep-green text-ivory">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full pt-12 md:pt-16">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full pt-6 md:pt-8">
         
         {/* 1. Top Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 pb-6">
