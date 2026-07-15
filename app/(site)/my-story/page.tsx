@@ -124,7 +124,7 @@ export default function MyStoryPage() {
               That idea resonates deeply with me. True wealth is rarely measured only by what we accumulate, but by what we protect, preserve, and leave behind.
             </p>
             <p className="text-xl leading-relaxed text-charcoal/90">
-              Together, these two ideas shape the philosophy behind Honworth: <strong className="font-bold">wealth should be built with integrity, protected with care, and passed on with purpose.</strong>
+              Together, these two ideas shape the philosophy behind Honworth: wealth should be built with integrity, protected with care, and passed on with purpose.
             </p>
             <p>
               More than a name, Honworth reflects the kind of practice I hope to build—one grounded in trust, dedicated to helping families make thoughtful financial decisions and create a legacy that endures.
