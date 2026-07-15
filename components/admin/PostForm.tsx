@@ -220,7 +220,7 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
 
             <div>
               <label htmlFor="excerpt" className="block text-sm font-medium text-slate-700 mb-1">
-                Excerpt {status === 'published' && '*'}
+                Excerpt (Optional)
               </label>
               <textarea
                 id="excerpt"

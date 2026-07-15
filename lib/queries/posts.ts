@@ -46,7 +46,7 @@ export async function getPosts({
     data?.map((post) => ({
       title: post.title,
       slug: post.slug,
-      excerpt: post.excerpt,
+      excerpt: post.excerpt || '',
       publishedAt: post.published_at,
       thumbnailUrl: post.cover_image_url,
       arm: post.arm,
@@ -87,7 +87,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   return {
     title: data.title,
     slug: data.slug,
-    excerpt: data.excerpt,
+    excerpt: data.excerpt || '',
     body: data.body,
     publishedAt: data.published_at,
     thumbnailUrl: data.cover_image_url,
@@ -120,7 +120,7 @@ export async function getRelatedPosts(currentSlug: string, arm?: string, limit =
     data?.map((post) => ({
       title: post.title,
       slug: post.slug,
-      excerpt: post.excerpt,
+      excerpt: post.excerpt || '',
       publishedAt: post.published_at,
       thumbnailUrl: post.cover_image_url,
       arm: post.arm,

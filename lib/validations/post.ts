@@ -16,13 +16,6 @@ export const postSchema = z.object({
   status: z.enum(['draft', 'published']),
 }).superRefine((data, ctx) => {
   if (data.status === 'published') {
-    if (!data.excerpt || data.excerpt.trim() === '') {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        path: ['excerpt'],
-        message: 'Excerpt is required to publish',
-      });
-    }
     if (!data.body || data.body.trim() === '') {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,

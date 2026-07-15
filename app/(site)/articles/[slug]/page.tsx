@@ -30,15 +30,19 @@ export async function generateMetadata(
   if (!post) {
     return {};
   }
+  const stripHtml = (html: string) => html.replace(/<[^>]*>/g, '');
+  const rawDescription = post.excerpt || (post.body ? stripHtml(post.body) : '') || post.title;
+  const cleanDescription = rawDescription.substring(0, 155).trim();
+
   return {
     title: `${post.title} | Honworth`,
-    description: post.excerpt.substring(0, 155),
+    description: cleanDescription,
     alternates: {
       canonical: `https://honworth.in/articles/${post.slug}`,
     },
     openGraph: {
       title: `${post.title} | Honworth`,
-      description: post.excerpt,
+      description: cleanDescription,
       url: `https://honworth.in/articles/${post.slug}`,
       images: post.thumbnailUrl ? [{ url: post.thumbnailUrl }] : [],
       type: 'article',
@@ -48,7 +52,7 @@ export async function generateMetadata(
     twitter: {
       card: 'summary_large_image',
       title: `${post.title} | Honworth`,
-      description: post.excerpt,
+      description: cleanDescription,
       images: post.thumbnailUrl ? [post.thumbnailUrl] : [],
     },
   };
