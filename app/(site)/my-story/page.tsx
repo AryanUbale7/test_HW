@@ -171,7 +171,7 @@ export default function MyStoryPage() {
 
             <h2 id="who-i-serve" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-gold mr-2">05-</span> Whom I Serve</h2>
             <p>
-              Over the time, I have realised that meaningful financial relationships aren't defined by age, profession, or the size of a portfolio. They are built on a shared mindset.
+              Over the time, I have realised that lasting financial relationships aren't defined by age, profession, or the size of a portfolio. They are built on a shared mindset.
             </p>
             <p>
               Some clients are just beginning their wealth-building journey. Others are planning for a child's education, buying a home, preparing for retirement, protecting what they've built, or thinking about the legacy they hope to leave behind.
