@@ -37,7 +37,7 @@ export default async function HomePage() {
       <h1 className="sr-only">Honworth | Wealth Creation, Protection & Legacy Planning</h1>
       <IntroStrip />
 
-      <main id="articles" className="max-w-4xl mx-auto px-6 md:px-12 lg:px-16 pt-2 pb-12 md:py-16 scroll-mt-32">
+      <main id="articles" className="max-w-4xl mx-auto px-6 md:px-12 lg:px-16 pt-4 pb-12 md:py-16 scroll-mt-32">
         <Suspense fallback={<div className="h-64 flex items-center justify-center font-sans text-charcoal/50">Loading articles...</div>}>
           <ArticlesFeed 
             initialPosts={posts || []} 
