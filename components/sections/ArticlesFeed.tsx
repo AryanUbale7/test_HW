@@ -71,7 +71,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
       <div className="flex items-center justify-between mb-4 py-1 w-full">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full">
           <span className="text-charcoal font-serif italic text-lg shrink-0">Filter by:</span>
-          <div className="flex gap-2.5 overflow-x-auto w-full sm:w-auto sm:flex-wrap py-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex flex-wrap gap-2.5 w-full py-1">
             {arms.map((arm) => (
               <button
                 key={arm}
