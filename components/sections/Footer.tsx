@@ -71,7 +71,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* 2. Divider */}
-        <hr className="border-t border-slate-700/50 my-6" />
+        <hr className="border-t border-slate-700/50 my-3" />
 
         {/* 3. Compliance Block */}
         <div className="max-w-5xl font-sans font-light text-sm text-ivory/70 leading-relaxed mb-5 space-y-2">
