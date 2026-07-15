@@ -21,7 +21,7 @@ const NAV_LINKS = [
       { label: 'Why this work / my philosophy', href: '/my-story#philosophy', icon: Lightbulb },
       { label: 'Meaning of Honour + Worth', href: '/my-story#meaning', icon: Shield },
       { label: 'Credentials: AMFI MFD, PMS, SIF', href: '/my-story#credentials', icon: Award },
-      { label: 'Who I serve (families, HNI)', href: '/my-story#who-i-serve', icon: Users },
+      { label: 'Whom I serve (families, HNI)', href: '/my-story#who-i-serve', icon: Users },
     ]
   },
   { 
