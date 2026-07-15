@@ -92,6 +92,7 @@ export default function MyStoryPage() {
             </p>
 
             <h2 id="philosophy" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-gold mr-2">02-</span> How I Work (Philosophy)</h2>
+            <h3 className="text-xl font-serif font-bold text-gold mb-4">Understanding Before Products.</h3>
 
             <p className="text-xl md:text-2xl font-serif font-bold text-deep-green/90 my-6">
               Listening comes first.
@@ -123,7 +124,7 @@ export default function MyStoryPage() {
               That idea resonates deeply with me. True wealth is rarely measured only by what we accumulate, but by what we protect, preserve, and leave behind.
             </p>
             <p className="text-xl leading-relaxed text-charcoal/90">
-              Together, these two ideas shape the philosophy behind Honworth: <strong>wealth should be built with integrity, protected with care, and passed on with purpose.</strong>
+              Together, these two ideas shape the philosophy behind Honworth: <strong className="font-bold">wealth should be built with integrity, protected with care, and passed on with purpose.</strong>
             </p>
             <p>
               More than a name, Honworth reflects the kind of practice I hope to build—one grounded in trust, dedicated to helping families make thoughtful financial decisions and create a legacy that endures.
