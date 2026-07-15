@@ -185,7 +185,7 @@ export default async function LibraryPage() {
       </section>
 
       {/* Recommended Reading Section */}
-      <section className="bg-sage-mist border-y border-sage/30 py-12 md:py-20 mb-12 md:mb-16">
+      <section className="bg-sage-mist border-y border-sage/30 py-12 md:py-20 mb-2 md:mb-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader 
             eyebrow="Curated List"
@@ -212,11 +212,11 @@ export default async function LibraryPage() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faqs" className="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-20 scroll-mt-32">
+      <section id="faqs" className="max-w-3xl mx-auto px-4 sm:px-6 pt-6 pb-8 md:pt-10 md:pb-12 scroll-mt-32">
         <SectionHeader 
           heading="3. FAQs:"
           align="center"
-          className="mb-16"
+          className="mb-8 md:mb-12"
         />
         <FaqAccordion items={libraryFaqs} />
       </section>
