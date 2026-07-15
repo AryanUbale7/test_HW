@@ -68,7 +68,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
   return (
     <div>
       {/* Filters (Individual premium pill style) */}
-      <div className="flex items-center justify-between mb-4 py-1 w-full">
+      <div className="flex items-center justify-between mb-2 py-1 w-full">
         <div className="flex flex-row items-center flex-wrap gap-x-4 gap-y-2.5 w-full">
           <span className="text-charcoal font-serif italic text-lg shrink-0">Filter by:</span>
           <div className="flex flex-wrap gap-2.5">
