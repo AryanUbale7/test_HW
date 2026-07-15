@@ -50,7 +50,7 @@ export default function MyStoryPage() {
 
           {/* Prose Blocks */}
           <div className="space-y-8 font-sans text-charcoal text-lg leading-relaxed max-w-3xl">
-            <h2 id="journey" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mb-8 scroll-mt-32"><span className="text-[#E5C158] mr-2">01-</span> From IT to Personal Finance</h2>
+            <h2 id="journey" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mb-8 scroll-mt-32"><span className="text-[#CBA32E] mr-2">01-</span> From IT to Personal Finance</h2>
             
             <p className="text-xl leading-relaxed font-serif text-deep-green/90">
               My journey into investing began in 2016, almost by accident.
@@ -91,7 +91,7 @@ export default function MyStoryPage() {
               To strengthen my professional foundation, I completed AMFI — Mutual Fund Distributor Certification, Specialised Investment Funds (SIF) Distributor Certification & Portfolio management services (PMS) distribution from APMI, along with the IRDAI examination. These qualifications complement the practical experience gained over years of studying markets and continue to support the work I do with individuals and families.
             </p>
 
-            <h2 id="philosophy" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-[#E5C158] mr-2">02-</span> How I Work (Philosophy)</h2>
+            <h2 id="philosophy" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-[#CBA32E] mr-2">02-</span> How I Work (Philosophy)</h2>
             <h3 className="text-xl font-serif font-bold text-gold mb-4">Understanding Before Products.</h3>
 
             <p className="text-xl md:text-2xl font-serif font-bold text-deep-green/90 my-6">
@@ -107,7 +107,7 @@ export default function MyStoryPage() {
               There is one simple principle that guides every suggestion: <strong>never invest in something you cannot explain in your own words.</strong> If an investment isn't understood, it probably isn't the right investment.
             </p>
 
-            <h2 id="meaning" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-[#E5C158] mr-2">03-</span> The Meaning Behind Honworth</h2>
+            <h2 id="meaning" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-[#CBA32E] mr-2">03-</span> The Meaning Behind Honworth</h2>
             <p>
               Honworth brings together two timeless ideas: <strong>Honour</strong> and <strong>Worth</strong>.
             </p>
@@ -130,7 +130,7 @@ export default function MyStoryPage() {
               More than a name, Honworth reflects the kind of practice I hope to build—one grounded in trust, dedicated to helping families make thoughtful financial decisions and create a legacy that endures.
             </p>
 
-            <h2 id="credentials" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-[#E5C158] mr-2">04-</span> Credentials:</h2>
+            <h2 id="credentials" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-[#CBA32E] mr-2">04-</span> Credentials:</h2>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="flex flex-col justify-between p-5 rounded-lg border border-sage/20 bg-white/50 shadow-sm hover:border-gold/30 hover:bg-white transition-all duration-300">
                 <div>
@@ -169,7 +169,7 @@ export default function MyStoryPage() {
               </div>
             </div>
 
-            <h2 id="who-i-serve" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-[#E5C158] mr-2">05-</span> Whom I Serve</h2>
+            <h2 id="who-i-serve" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-[#CBA32E] mr-2">05-</span> Whom I Serve</h2>
             <p>
               Over the time, I have realised that lasting financial relationships aren't defined by age, profession, or the size of a portfolio. They are built on a shared mindset.
             </p>
