@@ -75,7 +75,7 @@ export default function HowIWorkPage() {
                   That understanding became deeply personal after witnessing the experience of a close friend's family. Alongside the emotional loss they were coping with came the unexpected burden of sorting through financial and legal matters that had never been properly organised. It was a difficult reminder that the absence of a plan can place an unnecessary burden on the very people we hope to protect.
                 </p>
                 <p>
-                  That experience reinforced a belief I carry into every client relationship: planning ahead is one of the greatest acts of care we can leave behind.
+                  That experience deepened a belief I carry into every client relationship: planning ahead is one of the greatest acts of care we can leave behind.
                 </p>
                 <p>
                   To me, wealth management is about far more than growing wealth. It is about protecting it during your lifetime, ensuring it can be transferred smoothly, and helping preserve the values and purpose behind it for future generations.
