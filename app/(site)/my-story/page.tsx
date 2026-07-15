@@ -103,7 +103,7 @@ export default function MyStoryPage() {
             <p>
               The most meaningful relationships are those that are built over years, not transactions.
             </p>
-            <p className="text-xl leading-relaxed text-charcoal/90">
+            <p className="text-xl leading-relaxed text-charcoal">
               There is one simple principle that guides every suggestion: <strong>never invest in something you cannot explain in your own words.</strong> If an investment isn't understood, it probably isn't the right investment.
             </p>
 
@@ -123,7 +123,7 @@ export default function MyStoryPage() {
             <p>
               That idea resonates deeply with me. True wealth is rarely measured only by what we accumulate, but by what we protect, preserve, and leave behind.
             </p>
-            <p className="text-xl leading-relaxed text-charcoal/90">
+            <p className="text-xl leading-relaxed text-charcoal">
               Together, these two ideas shape the philosophy behind Honworth: wealth should be built with integrity, protected with care, and passed on with purpose.
             </p>
             <p>
