@@ -100,7 +100,7 @@ export default function HowIWorkPage() {
               <div className="space-y-6 font-sans text-charcoal leading-relaxed">
                 <div className="border border-sage/30 p-6 rounded-sm bg-sage-mist/10 shadow-sm">
                   <h3 className="font-serif font-bold text-deep-green text-lg">Wealth Creation</h3>
-                  <p className="text-sm mt-2">Helping your money grow steadily towards the goals that matter most.</p>
+                  <p className="text-sm mt-2">Helping your money work towards the goals that matter most.</p>
                 </div>
                 <div className="border border-sage/30 p-6 rounded-sm bg-sage-mist/10 shadow-sm">
                   <h3 className="font-serif font-bold text-deep-green text-lg">Wealth Protection</h3>
