@@ -68,24 +68,22 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
   return (
     <div>
       {/* Filters (Individual premium pill style) */}
-      <div className="flex items-center justify-between mb-2 py-1 w-full">
-        <div className="flex flex-row items-center flex-wrap gap-x-4 gap-y-2.5 w-full">
-          <span className="text-charcoal font-serif italic text-lg shrink-0">Filter by:</span>
-          <div className="flex flex-wrap gap-2.5">
-            {arms.map((arm) => (
-              <button
-                key={arm}
-                onClick={() => updateUrlAndState(arm, currentType, 1)}
-                className={`text-xs sm:text-sm font-sans tracking-wide transition-all duration-300 px-4 py-2 rounded-full border whitespace-nowrap ${
-                  currentArm === arm
-                    ? 'text-gold font-medium bg-sage-mist/40 border-gold/40 shadow-sm'
-                    : 'text-charcoal/80 border-sage/30 hover:border-deep-green hover:text-deep-green bg-sage-mist/5'
-                }`}
-              >
-                {arm === 'Pers.Fin' ? 'Personal Finance' : arm}
-              </button>
-            ))}
-          </div>
+      <div className="mb-2 w-full">
+        <span className="text-charcoal font-serif italic text-lg">Filter by:</span>
+        <div className="flex flex-wrap gap-2 mt-1.5">
+          {arms.map((arm) => (
+            <button
+              key={arm}
+              onClick={() => updateUrlAndState(arm, currentType, 1)}
+              className={`text-xs sm:text-sm font-sans tracking-wide transition-all duration-300 px-4 py-2 rounded-full border whitespace-nowrap ${
+                currentArm === arm
+                  ? 'text-gold font-medium bg-sage-mist/40 border-gold/40 shadow-sm'
+                  : 'text-charcoal/80 border-sage/30 hover:border-deep-green hover:text-deep-green bg-sage-mist/5'
+              }`}
+            >
+              {arm === 'Pers.Fin' ? 'Personal Finance' : arm}
+            </button>
+          ))}
         </div>
       </div>
 
