@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ResourceCard } from '@/components/sections/ResourceCard';
 import { FaqAccordion } from '@/components/sections/FaqAccordion';
-import { NewsletterSignup } from '@/components/sections/NewsletterSignup';
 
 export const revalidate = 60;
 
@@ -190,7 +189,7 @@ export default async function LibraryPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader 
             eyebrow="Curated List"
-            heading="3. Recommended reading: Few of my favorite books:"
+            heading="2. Recommended reading: Few of my favorite books:"
             subtext="Literature that has deeply shaped our approach to patience, behavior, and investment discipline."
             className="mb-16"
           />
@@ -212,21 +211,14 @@ export default async function LibraryPage() {
         </div>
       </section>
 
-      {/* Newsletter / Lead capture signup */}
-      <div id="resources" className="max-w-7xl mx-auto scroll-mt-32 mb-12 md:mb-16">
-        <NewsletterSignup />
-      </div>
-
       {/* FAQ Section */}
-      <section id="faqs" className="bg-sage-mist border-y border-sage/30 py-12 md:py-20 scroll-mt-32">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <SectionHeader 
-            heading="5. FAQs:"
-            align="center"
-            className="mb-16"
-          />
-          <FaqAccordion items={libraryFaqs} />
-        </div>
+      <section id="faqs" className="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-20 scroll-mt-32">
+        <SectionHeader 
+          heading="3. FAQs:"
+          align="center"
+          className="mb-16"
+        />
+        <FaqAccordion items={libraryFaqs} />
       </section>
 
     </div>
