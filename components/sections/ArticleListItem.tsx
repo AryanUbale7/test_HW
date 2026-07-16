@@ -49,7 +49,7 @@ export const ArticleListItem: React.FC<ArticleListItemProps> = ({ title, excerpt
                 alt={title}
                 fill
                 priority={priority}
-                sizes="(max-width: 768px) 480px, (max-width: 1024px) 30vw, 290px"
+                sizes="(max-width: 768px) 90vw, (max-width: 1024px) 30vw, 290px"
                 quality={80}
                 className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
               />

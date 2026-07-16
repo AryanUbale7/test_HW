@@ -7,7 +7,7 @@ import "./globals.css";
 const merriweather = Merriweather({
   variable: "--font-merriweather",
   subsets: ["latin"],
-  weight: ["300", "400", "700", "900"],
+  weight: ["300", "400", "700"],
   style: ["normal", "italic"],
   display: "swap",
 });
