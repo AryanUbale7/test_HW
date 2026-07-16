@@ -81,15 +81,18 @@ export default function ReachMePage() {
                   </div>
                 </div>
 
-                <div id="whatsapp" className="pt-4 border-t border-sage/30 scroll-mt-32">
+                <div id="whatsapp" className="pt-6 border-t border-sage/30 scroll-mt-32">
                   <a 
                     href={`https://wa.me/919923375175?text=${encodeURIComponent("Hello, I'd like to start a conversation with Honworth.")}`}
                     target="_blank" 
                     rel="noopener noreferrer"
                     aria-label="Contact us on WhatsApp"
-                    className="inline-flex items-center text-deep-green font-medium hover:text-gold transition-colors focus-visible:ring-2 focus-visible:ring-gold rounded-sm"
+                    className="inline-flex items-center justify-center w-full px-5 py-3 bg-[#25D366] hover:bg-[#20ba56] text-white font-sans font-medium rounded-md shadow-sm hover:shadow transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#25D366]/50 focus:ring-offset-2"
                   >
-                    Chat on WhatsApp →
+                    <svg className="w-5 h-5 mr-2.5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.019-5.117-2.876-6.979C16.596 1.897 14.116.879 11.48.879 6.042.879 1.62 5.3 1.615 10.74c-.002 1.673.441 3.303 1.288 4.747l-.999 3.648 3.743-.981zm11.376-7.254c-.3-.15-1.771-.875-2.028-.969-.258-.094-.446-.14-.633.14-.187.281-.726.912-.889 1.097-.164.186-.328.21-.628.06-1.192-.596-2.073-1.04-2.893-2.44-.22-.379.22-.351.628-1.161.094-.188.047-.353-.024-.503-.071-.15-.633-1.526-.867-2.09-.228-.547-.46-.473-.633-.482-.164-.008-.352-.01-.54-.01-.188 0-.493.07-.75.352-.259.282-.988.966-.988 2.357 0 1.39.1 2.732.114 2.92.015.188 2.017 3.08 4.887 4.316.682.294 1.214.47 1.629.601.686.218 1.312.187 1.806.114.551-.081 1.771-.724 2.018-1.39.248-.667.248-1.238.174-1.39-.074-.15-.271-.24-.571-.39z"/>
+                    </svg>
+                    Chat on WhatsApp
                   </a>
                 </div>
               </div>
