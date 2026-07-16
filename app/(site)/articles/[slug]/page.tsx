@@ -4,22 +4,18 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { getPostBySlug, getRelatedPosts } from '@/lib/queries/posts';
+import { getPostBySlug, getRelatedPosts, getAllPostSlugs } from '@/lib/queries/posts';
 import { getGlossaryTermsList } from '@/lib/queries/glossary';
 import { autoLinkGlossary } from '@/lib/utils/autoLinkGlossary';
 import { generateTocAndInjectIds } from '@/lib/utils/toc';
 import { formatDate } from '@/lib/utils/formatDate';
 import { ArticleCard } from '@/components/sections/ArticleCard';
-import { supabaseAdmin } from '@/lib/supabase/admin';
 
 export const revalidate = 60;
 
 export async function generateStaticParams() {
-  const { data } = await supabaseAdmin
-    .from('posts')
-    .select('slug')
-    .eq('status', 'published');
-  return (data || []).map(post => ({ slug: post.slug }));
+  const posts = await getAllPostSlugs();
+  return posts.map(post => ({ slug: post.slug }));
 }
 
 export async function generateMetadata(

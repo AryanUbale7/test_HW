@@ -1,46 +1,37 @@
-import { createClient, createReadOnlyClient } from '@/lib/supabase/server';
+import { query } from '@/lib/mysql';
 import { Resource } from '@/types/resource';
 
 /**
  * Fetches all available resources ordered by creation date.
  */
 export async function getResources(): Promise<Resource[]> {
-  const supabase = createReadOnlyClient();
-  const { data, error } = await supabase
-    .from('resources')
-    .select('id, title, description, file_url, gated_by_email')
-    .order('created_at', { ascending: false });
+  try {
+    const data = await query<any[]>('SELECT id, title, description, file_url, gated_by_email FROM resources ORDER BY created_at DESC');
 
-  if (error) {
-    console.error('Error fetching resources:', error);
-    return [];
-  }
-
-  return (
-    data?.map((r) => ({
+    return data.map((r) => ({
       _id: r.id,
       title: r.title,
       description: r.description,
       fileUrl: r.file_url,
-      gatedByEmail: r.gated_by_email,
-    })) || []
-  );
+      gatedByEmail: Boolean(r.gated_by_email),
+    }));
+  } catch (error) {
+    console.error('Error fetching resources:', error);
+    return [];
+  }
 }
 
 /**
  * Fetches the count of resources.
  */
 export async function getResourcesCount(): Promise<number> {
-  const supabase = createReadOnlyClient();
-  const { count, error } = await supabase
-    .from('resources')
-    .select('*', { count: 'exact', head: true });
-
-  if (error) {
+  try {
+    const rows = await query<any[]>('SELECT COUNT(*) as count FROM resources');
+    return rows[0]?.count || 0;
+  } catch (error) {
     console.error('Error fetching resources count:', error);
     return 0;
   }
-  return count || 0;
 }
 
 /**
@@ -53,20 +44,25 @@ export async function getAdminResources({
   page?: number;
   limit?: number;
 } = {}) {
-  const supabase = await createClient();
-  
-  const from = (page - 1) * limit;
-  const to = from + limit - 1;
+  try {
+    const offset = (page - 1) * limit;
 
-  const { data, count, error } = await supabase
-    .from('resources')
-    .select('*', { count: 'exact' })
-    .order('created_at', { ascending: false })
-    .range(from, to);
+    const resources = await query<any[]>(
+      'SELECT * FROM resources ORDER BY created_at DESC LIMIT ? OFFSET ?',
+      [limit, offset]
+    );
 
-  if (error) {
+    const countRows = await query<any[]>('SELECT COUNT(*) as count FROM resources');
+    const total = countRows[0]?.count || 0;
+
+    const formattedResources = resources.map((r) => ({
+      ...r,
+      gated_by_email: Boolean(r.gated_by_email),
+    }));
+
+    return { resources: formattedResources, total };
+  } catch (error) {
     console.error('Error fetching admin resources:', error);
     return { resources: [], total: 0 };
   }
-  return { resources: data || [], total: count || 0 };
 }

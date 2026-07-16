@@ -1,14 +1,15 @@
 import { NextResponse } from 'next/server';
-import { supabaseAdmin } from '@/lib/supabase/admin';
 import { sendEmail } from '@/lib/mail';
 import { checkRateLimit, contactFormLimiter } from '@/lib/rate-limit';
+import { query } from '@/lib/mysql';
+import crypto from 'crypto';
 
 export async function POST(request: Request) {
   try {
     // 1. Rate Limiting check
     const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || '127.0.0.1';
     const rateLimitResult = await checkRateLimit(ip, contactFormLimiter);
-    
+
     if (!rateLimitResult.allowed) {
       return NextResponse.json(
         { error: 'Too many requests. Please try again in a few minutes.' },
@@ -36,23 +37,15 @@ export async function POST(request: Request) {
     }
 
     const fullName = `${firstName} ${lastName}`.trim();
+    const id = crypto.randomUUID();
 
-    // Insert into correct Supabase contact_messages table
-    const { error: dbError } = await supabaseAdmin
-      .from('contact_messages')
-      .insert({
-        name: fullName,
-        email,
-        phone: phone || null,
-        message,
-        contacted: false,
-      });
+    // Insert into MySQL contact_messages table
+    await query(
+      'INSERT INTO contact_messages (id, name, email, phone, message, contacted) VALUES (?, ?, ?, ?, ?, ?)',
+      [id, fullName, email, phone || null, message, 0]
+    );
 
-    if (dbError) {
-      console.error('Failed to insert contact message:', dbError);
-    }
-
-    // Send email notification to business owner via SMTP (without external paid tool APIs)
+    // Send email notification to business owner via SMTP
     const recipient = process.env.CONTACT_EMAIL || process.env.SMTP_USER || 'contact@honworth.com';
     const emailSubject = `New Inquiry: ${inquiryType || 'Contact'} from ${fullName}`;
     const emailHtml = `

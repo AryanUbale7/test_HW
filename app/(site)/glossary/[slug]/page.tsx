@@ -3,9 +3,8 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getGlossaryTermBySlug, getAllGlossaryTerms } from '@/lib/queries/glossary';
+import { getGlossaryTermBySlug, getAllGlossaryTerms, getAllGlossarySlugs } from '@/lib/queries/glossary';
 import { getPosts } from '@/lib/queries/posts';
-import { supabaseAdmin } from '@/lib/supabase/admin';
 
 export const revalidate = 60;
 
@@ -17,11 +16,8 @@ const ARM_PAGE: Record<string, { href: string; label: string }> = {
 };
 
 export async function generateStaticParams() {
-  // Use admin client (no cookies) so this runs safely at build time
-  const { data } = await supabaseAdmin
-    .from('glossary_terms')
-    .select('slug');
-  return (data || []).map(t => ({ slug: t.slug }));
+  const terms = await getAllGlossarySlugs();
+  return terms.map(t => ({ slug: t.slug }));
 }
 
 export async function generateMetadata(

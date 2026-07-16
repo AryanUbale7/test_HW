@@ -3,7 +3,7 @@
 import { useTransition } from 'react'
 import { toggleContactedStatus } from '../actions'
 
-export function ContactedToggle({ id, contacted }: { id: number; contacted: boolean }) {
+export function ContactedToggle({ id, contacted }: { id: string | number; contacted: boolean }) {
   const [isPending, startTransition] = useTransition()
 
   return (

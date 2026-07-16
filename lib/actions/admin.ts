@@ -1,88 +1,76 @@
 'use server'
 
-import { createAdminClient } from '@/lib/supabase/server'
-import { revalidatePath } from 'next/cache'
-import { redirect } from 'next/navigation'
-import { verifyAdminSession } from '@/lib/supabase/auth-check'
-import { resourceSchema, faqSchema } from '@/lib/validations/admin'
-import { validateUploadedFile } from '@/lib/utils/magicBytes'
-import { writeAuditLog } from '@/lib/supabase/audit'
-import { sanitizeRichText } from '@/lib/utils/sanitize'
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
+import { verifyAdminSession } from '@/lib/supabase/auth-check';
+import { resourceSchema, faqSchema } from '@/lib/validations/admin';
+import { validateUploadedFile } from '@/lib/utils/magicBytes';
+import { writeAuditLog } from '@/lib/supabase/audit';
+import { sanitizeRichText } from '@/lib/utils/sanitize';
+import { query } from '@/lib/mysql';
+import crypto from 'crypto';
+import { promises as fs } from 'fs';
+import path from 'path';
 
 export async function createResource(prevState: any, formData: FormData) {
   try {
-    const adminUser = await verifyAdminSession()
+    const adminUser = await verifyAdminSession();
 
-    const title = formData.get('title') as string
-    const description = formData.get('description') as string
-    const file_url = formData.get('file_url') as string
-    const gated_by_email = formData.get('gated_by_email') === 'on'
+    const title = formData.get('title') as string;
+    const description = formData.get('description') as string;
+    const file_url = formData.get('file_url') as string;
+    const gated_by_email = formData.get('gated_by_email') === 'on';
 
     // Zod validation
-    const validation = resourceSchema.safeParse({ title, description, file_url, gated_by_email })
+    const validation = resourceSchema.safeParse({ title, description, file_url, gated_by_email });
     if (!validation.success) {
-      return { error: validation.error.issues[0].message }
+      return { error: validation.error.issues[0].message };
     }
 
-    const supabase = await createAdminClient()
-    const { data, error } = await supabase.from('resources').insert({
-      title: title.trim(),
-      description: description?.trim() || null,
-      file_url: file_url || null,
-      gated_by_email,
-    }).select('id').single()
-
-    if (error) {
-      console.error('Resource creation failed:', error.message)
-      return { error: 'Database save failed. Please try again.' }
-    }
+    const id = crypto.randomUUID();
+    await query(
+      'INSERT INTO resources (id, title, description, file_url, gated_by_email) VALUES (?, ?, ?, ?, ?)',
+      [id, title.trim(), description?.trim() || null, file_url || null, gated_by_email ? 1 : 0]
+    );
 
     // Write audit log
     await writeAuditLog({
       adminEmail: adminUser.email || 'unknown',
       action: 'CREATE_RESOURCE',
-      targetId: data.id,
+      targetId: id,
       details: { title },
-    })
+    });
 
-    revalidatePath('/admin/resources')
-    revalidatePath('/library')
+    revalidatePath('/admin/resources');
+    revalidatePath('/library');
   } catch (err: any) {
-    if (err && err.message === 'NEXT_REDIRECT') throw err
-    console.error('Error creating resource:', err)
-    return { error: err.message || 'An unexpected error occurred.' }
+    if (err && err.message === 'NEXT_REDIRECT') throw err;
+    console.error('Error creating resource:', err);
+    return { error: err.message || 'An unexpected error occurred.' };
   }
 
-  redirect('/admin/resources')
+  redirect('/admin/resources');
 }
 
 export async function updateResource(id: string, prevState: any, formData: FormData) {
   try {
-    const adminUser = await verifyAdminSession()
+    const adminUser = await verifyAdminSession();
 
-    const title = formData.get('title') as string
-    const description = formData.get('description') as string
-    const file_url = formData.get('file_url') as string
-    const gated_by_email = formData.get('gated_by_email') === 'on'
+    const title = formData.get('title') as string;
+    const description = formData.get('description') as string;
+    const file_url = formData.get('file_url') as string;
+    const gated_by_email = formData.get('gated_by_email') === 'on';
 
     // Zod validation
-    const validation = resourceSchema.safeParse({ title, description, file_url, gated_by_email })
+    const validation = resourceSchema.safeParse({ title, description, file_url, gated_by_email });
     if (!validation.success) {
-      return { error: validation.error.issues[0].message }
+      return { error: validation.error.issues[0].message };
     }
 
-    const supabase = await createAdminClient()
-    const { error } = await supabase.from('resources').update({
-      title: title.trim(),
-      description: description?.trim() || null,
-      file_url: file_url || null,
-      gated_by_email,
-    }).eq('id', id)
-
-    if (error) {
-      console.error('Resource update failed:', error.message)
-      return { error: 'Database update failed. Please try again.' }
-    }
+    await query(
+      'UPDATE resources SET title = ?, description = ?, file_url = ?, gated_by_email = ? WHERE id = ?',
+      [title.trim(), description?.trim() || null, file_url || null, gated_by_email ? 1 : 0, id]
+    );
 
     // Write audit log
     await writeAuditLog({
@@ -90,150 +78,131 @@ export async function updateResource(id: string, prevState: any, formData: FormD
       action: 'UPDATE_RESOURCE',
       targetId: id,
       details: { title },
-    })
+    });
 
-    revalidatePath('/admin/resources')
-    revalidatePath('/library')
+    revalidatePath('/admin/resources');
+    revalidatePath('/library');
   } catch (err: any) {
-    if (err && err.message === 'NEXT_REDIRECT') throw err
-    console.error('Error updating resource:', err)
-    return { error: err.message || 'An unexpected error occurred.' }
+    if (err && err.message === 'NEXT_REDIRECT') throw err;
+    console.error('Error updating resource:', err);
+    return { error: err.message || 'An unexpected error occurred.' };
   }
 
-  redirect('/admin/resources')
+  redirect('/admin/resources');
 }
 
 export async function deleteResource(id: string) {
   try {
-    const adminUser = await verifyAdminSession()
+    const adminUser = await verifyAdminSession();
 
-    const supabase = await createAdminClient()
-    const { error } = await supabase.from('resources').delete().eq('id', id)
-
-    if (error) {
-      console.error('Resource deletion failed:', error.message)
-      return { error: 'Database delete failed. Please try again.' }
-    }
+    await query('DELETE FROM resources WHERE id = ?', [id]);
 
     // Write audit log
     await writeAuditLog({
       adminEmail: adminUser.email || 'unknown',
       action: 'DELETE_RESOURCE',
       targetId: id,
-    })
+    });
 
-    revalidatePath('/admin/resources')
-    revalidatePath('/library')
+    revalidatePath('/admin/resources');
+    revalidatePath('/library');
   } catch (err: any) {
-    if (err && err.message === 'NEXT_REDIRECT') throw err
-    console.error('Error deleting resource:', err)
-    return { error: err.message || 'An unexpected error occurred.' }
+    if (err && err.message === 'NEXT_REDIRECT') throw err;
+    console.error('Error deleting resource:', err);
+    return { error: err.message || 'An unexpected error occurred.' };
   }
 
-  redirect('/admin/resources')
+  redirect('/admin/resources');
 }
 
 export async function uploadResourceFile(formData: FormData) {
   try {
-    await verifyAdminSession()
+    await verifyAdminSession();
 
-    const file = formData.get('file') as File
-    if (!file || file.size === 0) return { error: 'No file provided' }
+    const file = formData.get('file') as File;
+    if (!file || file.size === 0) return { error: 'No file provided' };
 
     // Magic-byte check and size checks (PDF up to 20MB)
-    const fileCheck = await validateUploadedFile(file, ['pdf'], 20 * 1024 * 1024)
+    const fileCheck = await validateUploadedFile(file, ['pdf'], 20 * 1024 * 1024);
     if (!fileCheck.isValid) {
-      return { error: fileCheck.error }
+      return { error: fileCheck.error };
     }
 
-    const supabase = await createAdminClient()
-    const ext = file.name.split('.').pop()
-    const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 8)}.${ext}`
+    const ext = file.name.split('.').pop();
+    const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 8)}.${ext}`;
 
-    const { error } = await supabase.storage.from('resources').upload(fileName, file)
-    if (error) {
-      console.error('File storage upload failed:', error.message)
-      return { error: 'Upload failed. Please try again.' }
-    }
+    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+    await fs.mkdir(uploadDir, { recursive: true });
 
-    const { data: { publicUrl } } = supabase.storage.from('resources').getPublicUrl(fileName)
-    return { url: publicUrl }
+    const filePath = path.join(uploadDir, fileName);
+    const bytes = await file.arrayBuffer();
+    const buffer = Buffer.from(bytes);
+    await fs.writeFile(filePath, buffer);
+
+    return { url: `/uploads/${fileName}` };
   } catch (err: any) {
-    console.error('Error uploading resource file:', err)
-    return { error: err.message || 'An unexpected error occurred.' }
+    console.error('Error uploading resource file:', err);
+    return { error: err.message || 'An unexpected error occurred.' };
   }
 }
 
 export async function createFaq(prevState: any, formData: FormData) {
   try {
-    const adminUser = await verifyAdminSession()
+    const adminUser = await verifyAdminSession();
 
-    const question = formData.get('question') as string
-    const answer = formData.get('answer') as string
-    const arm = formData.get('arm') as string
+    const question = formData.get('question') as string;
+    const answer = formData.get('answer') as string;
+    const arm = formData.get('arm') as string;
 
     // Zod validation
-    const validation = faqSchema.safeParse({ question, answer, arm })
+    const validation = faqSchema.safeParse({ question, answer, arm });
     if (!validation.success) {
-      return { error: validation.error.issues[0].message }
+      return { error: validation.error.issues[0].message };
     }
 
-    const supabase = await createAdminClient()
-    const { data, error } = await supabase.from('faqs').insert({
-      question: question.trim(),
-      answer: answer.trim(),
-      arm: arm || null,
-    }).select('id').single()
-
-    if (error) {
-      console.error('FAQ creation failed:', error.message)
-      return { error: 'Database save failed. Please try again.' }
-    }
+    const id = crypto.randomUUID();
+    await query(
+      'INSERT INTO faqs (id, question, answer, arm) VALUES (?, ?, ?, ?)',
+      [id, question.trim(), answer.trim(), arm || null]
+    );
 
     // Write audit log
     await writeAuditLog({
       adminEmail: adminUser.email || 'unknown',
       action: 'CREATE_FAQ',
-      targetId: String(data.id),
+      targetId: id,
       details: { question },
-    })
+    });
 
-    revalidatePath('/admin/faqs')
-    revalidatePath('/library')
+    revalidatePath('/admin/faqs');
+    revalidatePath('/library');
   } catch (err: any) {
-    if (err && err.message === 'NEXT_REDIRECT') throw err
-    console.error('Error creating FAQ:', err)
-    return { error: err.message || 'An unexpected error occurred.' }
+    if (err && err.message === 'NEXT_REDIRECT') throw err;
+    console.error('Error creating FAQ:', err);
+    return { error: err.message || 'An unexpected error occurred.' };
   }
 
-  redirect('/admin/faqs')
+  redirect('/admin/faqs');
 }
 
 export async function updateFaq(id: string, prevState: any, formData: FormData) {
   try {
-    const adminUser = await verifyAdminSession()
+    const adminUser = await verifyAdminSession();
 
-    const question = formData.get('question') as string
-    const answer = formData.get('answer') as string
-    const arm = formData.get('arm') as string
+    const question = formData.get('question') as string;
+    const answer = formData.get('answer') as string;
+    const arm = formData.get('arm') as string;
 
     // Zod validation
-    const validation = faqSchema.safeParse({ question, answer, arm })
+    const validation = faqSchema.safeParse({ question, answer, arm });
     if (!validation.success) {
-      return { error: validation.error.issues[0].message }
+      return { error: validation.error.issues[0].message };
     }
 
-    const supabase = await createAdminClient()
-    const { error } = await supabase.from('faqs').update({
-      question: question.trim(),
-      answer: answer.trim(),
-      arm: arm || null,
-    }).eq('id', id)
-
-    if (error) {
-      console.error('FAQ update failed:', error.message)
-      return { error: 'Database update failed. Please try again.' }
-    }
+    await query(
+      'UPDATE faqs SET question = ?, answer = ?, arm = ? WHERE id = ?',
+      [question.trim(), answer.trim(), arm || null, id]
+    );
 
     // Write audit log
     await writeAuditLog({
@@ -241,171 +210,137 @@ export async function updateFaq(id: string, prevState: any, formData: FormData) 
       action: 'UPDATE_FAQ',
       targetId: id,
       details: { question },
-    })
+    });
 
-    revalidatePath('/admin/faqs')
-    revalidatePath('/library')
+    revalidatePath('/admin/faqs');
+    revalidatePath('/library');
   } catch (err: any) {
-    if (err && err.message === 'NEXT_REDIRECT') throw err
-    console.error('Error updating FAQ:', err)
-    return { error: err.message || 'An unexpected error occurred.' }
+    if (err && err.message === 'NEXT_REDIRECT') throw err;
+    console.error('Error updating FAQ:', err);
+    return { error: err.message || 'An unexpected error occurred.' };
   }
 
-  redirect('/admin/faqs')
+  redirect('/admin/faqs');
 }
 
 export async function deleteFaq(id: string) {
   try {
-    const adminUser = await verifyAdminSession()
+    const adminUser = await verifyAdminSession();
 
-    const supabase = await createAdminClient()
-    const { error } = await supabase.from('faqs').delete().eq('id', id)
-
-    if (error) {
-      console.error('FAQ deletion failed:', error.message)
-      return { error: 'Database delete failed. Please try again.' }
-    }
+    await query('DELETE FROM faqs WHERE id = ?', [id]);
 
     // Write audit log
     await writeAuditLog({
       adminEmail: adminUser.email || 'unknown',
       action: 'DELETE_FAQ',
       targetId: id,
-    })
+    });
 
-    revalidatePath('/admin/faqs')
-    revalidatePath('/library')
+    revalidatePath('/admin/faqs');
+    revalidatePath('/library');
   } catch (err: any) {
-    if (err && err.message === 'NEXT_REDIRECT') throw err
-    console.error('Error deleting FAQ:', err)
-    return { error: err.message || 'An unexpected error occurred.' }
+    if (err && err.message === 'NEXT_REDIRECT') throw err;
+    console.error('Error deleting FAQ:', err);
+    return { error: err.message || 'An unexpected error occurred.' };
   }
 
-  redirect('/admin/faqs')
+  redirect('/admin/faqs');
 }
 
 export async function toggleLeadContacted(id: string, contacted: boolean) {
   try {
-    await verifyAdminSession()
+    await verifyAdminSession();
 
-    const supabase = await createAdminClient()
-    const { error } = await supabase
-      .from('contact_messages')
-      .update({ contacted })
-      .eq('id', id)
+    await query(
+      'UPDATE contact_messages SET contacted = ? WHERE id = ?',
+      [contacted ? 1 : 0, id]
+    );
 
-    if (error) {
-      console.error('Toggle lead status failed:', error.message)
-      return { error: 'Failed to update lead status. Please try again.' }
-    }
-
-    revalidatePath('/admin/leads')
-    return { success: true }
+    revalidatePath('/admin/leads');
+    return { success: true };
   } catch (err: any) {
-    console.error('Error toggling lead status:', err)
-    return { error: err.message || 'An unexpected error occurred.' }
+    console.error('Error toggling lead status:', err);
+    return { error: err.message || 'An unexpected error occurred.' };
   }
 }
 
 export async function saveGlossaryTerm(id: string | null, payload: any) {
   try {
-    const adminUser = await verifyAdminSession()
+    const adminUser = await verifyAdminSession();
 
-    // Import schema
-    const { glossarySchema } = await import('@/lib/validations/admin')
+    const { glossarySchema } = await import('@/lib/validations/admin');
 
-    const validation = glossarySchema.safeParse(payload)
+    const validation = glossarySchema.safeParse(payload);
     if (!validation.success) {
-      return { error: validation.error.issues[0].message }
+      return { error: validation.error.issues[0].message };
     }
 
-    const supabase = await createAdminClient()
-    const glossaryPayload = {
-      term: payload.term.trim(),
-      slug: payload.slug.trim(),
-      short_definition: payload.short_definition.trim(),
-      full_explanation: payload.full_explanation ? sanitizeRichText(payload.full_explanation.trim()) : null,
-      arm: payload.arm,
-      related_term_slugs: payload.related_term_slugs || [],
-    }
+    const slugsStr = JSON.stringify(payload.related_term_slugs || []);
+
+    const term = payload.term.trim();
+    const slug = payload.slug.trim();
+    const short_definition = payload.short_definition.trim();
+    const full_explanation = payload.full_explanation ? sanitizeRichText(payload.full_explanation.trim()) : null;
+    const arm = payload.arm;
 
     if (id) {
-      const { data, error } = await supabase
-        .from('glossary_terms')
-        .update(glossaryPayload)
-        .eq('id', id)
-        .select()
-        .single()
-
-      if (error) {
-        console.error('Glossary update failed:', error.message)
-        return { error: 'Database update failed. Please try again.' }
-      }
+      await query(
+        'UPDATE glossary_terms SET term = ?, slug = ?, short_definition = ?, full_explanation = ?, arm = ?, related_term_slugs = ? WHERE id = ?',
+        [term, slug, short_definition, full_explanation, arm, slugsStr, id]
+      );
 
       await writeAuditLog({
         adminEmail: adminUser.email || 'unknown',
         action: 'UPDATE_GLOSSARY',
         targetId: id,
-        details: { term: payload.term },
-      })
+        details: { term },
+      });
 
-      revalidatePath('/admin/glossary')
-      revalidatePath('/glossary')
-      revalidatePath(`/glossary/${payload.slug}`)
-      return { success: true, data }
+      revalidatePath('/admin/glossary');
+      revalidatePath('/glossary');
+      revalidatePath(`/glossary/${slug}`);
+      return { success: true, data: { id, term, slug, short_definition, full_explanation, arm, related_term_slugs: payload.related_term_slugs, updated_at: new Date().toISOString() } };
     } else {
-      const { data, error } = await supabase
-        .from('glossary_terms')
-        .insert(glossaryPayload)
-        .select()
-        .single()
-
-      if (error) {
-        console.error('Glossary insert failed:', error.message)
-        return { error: 'Database insert failed. Please try again.' }
-      }
+      const newId = crypto.randomUUID();
+      await query(
+        'INSERT INTO glossary_terms (id, term, slug, short_definition, full_explanation, arm, related_term_slugs) VALUES (?, ?, ?, ?, ?, ?, ?)',
+        [newId, term, slug, short_definition, full_explanation, arm, slugsStr]
+      );
 
       await writeAuditLog({
         adminEmail: adminUser.email || 'unknown',
         action: 'CREATE_GLOSSARY',
-        targetId: data.id,
-        details: { term: payload.term },
-      })
+        targetId: newId,
+        details: { term },
+      });
 
-      revalidatePath('/admin/glossary')
-      revalidatePath('/glossary')
-      return { success: true, data }
+      revalidatePath('/admin/glossary');
+      revalidatePath('/glossary');
+      return { success: true, data: { id: newId, term, slug, short_definition, full_explanation, arm, related_term_slugs: payload.related_term_slugs, updated_at: new Date().toISOString() } };
     }
   } catch (err: any) {
-    console.error('Error saving glossary term:', err)
-    return { error: err.message || 'An unexpected error occurred.' }
+    console.error('Error saving glossary term:', err);
+    return { error: err.message || 'An unexpected error occurred.' };
   }
 }
 
 export async function deleteGlossaryTerm(id: string) {
   try {
-    const adminUser = await verifyAdminSession()
+    const adminUser = await verifyAdminSession();
 
-    const supabase = await createAdminClient()
-    const { error } = await supabase.from('glossary_terms').delete().eq('id', id)
-
-    if (error) {
-      console.error('Glossary delete failed:', error.message)
-      return { error: 'Database delete failed. Please try again.' }
-    }
+    await query('DELETE FROM glossary_terms WHERE id = ?', [id]);
 
     await writeAuditLog({
       adminEmail: adminUser.email || 'unknown',
       action: 'DELETE_GLOSSARY',
       targetId: id,
-    })
+    });
 
-    revalidatePath('/admin/glossary')
-    revalidatePath('/glossary')
-    return { success: true }
+    revalidatePath('/admin/glossary');
+    revalidatePath('/glossary');
+    return { success: true };
   } catch (err: any) {
-    console.error('Error deleting glossary term:', err)
-    return { error: err.message || 'An unexpected error occurred.' }
+    console.error('Error deleting glossary term:', err);
+    return { error: err.message || 'An unexpected error occurred.' };
   }
 }
-

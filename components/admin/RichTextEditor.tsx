@@ -29,7 +29,7 @@ import {
   Palette, Highlighter, Heading1, Heading2, Heading3, Loader2, Plus, Trash
 } from 'lucide-react'
 import { useCallback, useState, useRef, useEffect } from 'react'
-import { createClient } from '@/lib/supabase/client'
+import { uploadImage } from '@/lib/actions/posts'
 
 // --- Custom Indent Extension ---
 export interface IndentOptions {
@@ -286,22 +286,15 @@ export function RichTextEditor({ content, onChange, error }: RichTextEditorProps
 
       try {
         setIsUploadingImage(true)
-        const supabase = createClient()
-        const ext = file.name.split('.').pop()
-        const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 8)}.${ext}`
-        const filePath = `posts/${fileName}`
+        const formData = new FormData()
+        formData.append('file', file)
 
-        const { error: uploadError } = await supabase.storage
-          .from('media')
-          .upload(filePath, file)
+        const result = await uploadImage(formData)
+        if (result.error) throw new Error(result.error)
 
-        if (uploadError) throw uploadError
-
-        const { data: { publicUrl } } = supabase.storage
-          .from('media')
-          .getPublicUrl(filePath)
-
-        editor.chain().focus().setImage({ src: publicUrl, alt: file.name }).run()
+        if (result.url) {
+          editor.chain().focus().setImage({ src: result.url, alt: file.name }).run()
+        }
       } catch (err: any) {
         alert(err.message || 'Upload failed')
       } finally {

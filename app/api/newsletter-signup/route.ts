@@ -1,14 +1,15 @@
 import { NextResponse } from 'next/server';
-import { supabaseAdmin } from '@/lib/supabase/admin';
 import { sendEmail } from '@/lib/mail';
 import { checkRateLimit, newsletterLimiter } from '@/lib/rate-limit';
+import { query } from '@/lib/mysql';
+import crypto from 'crypto';
 
 export async function POST(request: Request) {
   try {
     // Rate Limiting check (max 10 signups per 10 mins)
     const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || '127.0.0.1';
     const rateLimitResult = await checkRateLimit(ip, newsletterLimiter);
-    
+
     if (!rateLimitResult.allowed) {
       return NextResponse.json(
         { error: 'Too many requests. Please try again in a few minutes.' },
@@ -30,28 +31,22 @@ export async function POST(request: Request) {
     }
 
     // Check if already subscribed in newsletter_subscribers
-    const { data: existing } = await supabaseAdmin
-      .from('newsletter_subscribers')
-      .select('id')
-      .eq('email', email)
-      .single();
+    const existing = await query<any[]>(
+      'SELECT id FROM newsletter_subscribers WHERE email = ? LIMIT 1',
+      [email]
+    );
 
-    if (existing) {
+    if (existing.length > 0) {
       return NextResponse.json({ success: true, message: 'Already subscribed' }, { status: 200 });
     }
 
-    // Insert new subscriber into newsletter_subscribers
-    const { error: dbError } = await supabaseAdmin
-      .from('newsletter_subscribers')
-      .insert({
-        email,
-        source: source || 'website',
-      });
+    const id = crypto.randomUUID();
 
-    if (dbError) {
-      console.error('Failed to insert subscriber:', dbError);
-      return NextResponse.json({ error: 'Failed to subscribe' }, { status: 500 });
-    }
+    // Insert new subscriber into newsletter_subscribers
+    await query(
+      'INSERT INTO newsletter_subscribers (id, email, source) VALUES (?, ?, ?)',
+      [id, email, source || 'website']
+    );
 
     // Send Welcome Email to the Subscriber
     const welcomeSubject = 'Welcome to the Honworth Inner Circle';

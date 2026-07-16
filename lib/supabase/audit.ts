@@ -1,4 +1,5 @@
-import { createAdminClient } from '@/lib/supabase/server';
+import { query } from '@/lib/mysql';
+import crypto from 'crypto';
 
 export interface AuditLogPayload {
   adminEmail: string;
@@ -8,7 +9,7 @@ export interface AuditLogPayload {
 }
 
 /**
- * Inserts a log record into the public.admin_activity_log table.
+ * Inserts a log record into the admin_activity_log table.
  * Used to audit administrative actions, especially destructive operations.
  */
 export async function writeAuditLog({
@@ -18,17 +19,12 @@ export async function writeAuditLog({
   details,
 }: AuditLogPayload): Promise<void> {
   try {
-    const supabase = await createAdminClient();
-    const { error } = await supabase.from('admin_activity_log').insert({
-      admin_email: adminEmail,
-      action,
-      target_id: targetId,
-      details: details || {},
-    });
-
-    if (error) {
-      console.error('Failed to write admin audit log:', error.message);
-    }
+    const id = crypto.randomUUID();
+    const detailsStr = JSON.stringify(details || {});
+    await query(
+      'INSERT INTO admin_activity_log (id, admin_email, action, target_id, details) VALUES (?, ?, ?, ?, ?)',
+      [id, adminEmail, action, targetId, detailsStr]
+    );
   } catch (err) {
     console.error('Error in writeAuditLog utility:', err);
   }
@@ -39,21 +35,26 @@ export async function writeAuditLog({
  */
 export async function getRecentAuditLogs(limit = 10): Promise<any[]> {
   try {
-    const supabase = await createAdminClient();
-    const { data, error } = await supabase
-      .from('admin_activity_log')
-      .select('*')
-      .order('created_at', { ascending: false })
-      .limit(limit);
-
-    if (error) {
-      console.error('Failed to fetch recent audit logs:', error.message);
-      return [];
-    }
-    return data || [];
+    const rows = await query<any[]>(
+      'SELECT * FROM admin_activity_log ORDER BY created_at DESC LIMIT ?',
+      [limit]
+    );
+    return rows.map(r => {
+      let details = {};
+      if (r.details) {
+        try {
+          details = typeof r.details === 'string' ? JSON.parse(r.details) : r.details;
+        } catch {
+          details = {};
+        }
+      }
+      return {
+        ...r,
+        details
+      };
+    });
   } catch (err) {
     console.error('Error in getRecentAuditLogs:', err);
     return [];
   }
 }
-

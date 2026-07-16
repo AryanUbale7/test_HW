@@ -1,45 +1,36 @@
-import { createClient, createReadOnlyClient } from '@/lib/supabase/server';
+import { query } from '@/lib/mysql';
 import { FAQ } from '@/types/faq';
 
 /**
  * Fetches all FAQs ordered by creation date.
  */
 export async function getFaqs(): Promise<FAQ[]> {
-  const supabase = createReadOnlyClient();
-  const { data, error } = await supabase
-    .from('faqs')
-    .select('id, question, answer, arm')
-    .order('created_at', { ascending: false });
+  try {
+    const data = await query<any[]>('SELECT id, question, answer, arm FROM faqs ORDER BY created_at DESC');
 
-  if (error) {
-    console.error('Error fetching FAQs:', error);
-    return [];
-  }
-
-  return (
-    data?.map((f) => ({
+    return data.map((f) => ({
       _id: f.id,
       question: f.question,
       answer: f.answer,
       arm: f.arm,
-    })) || []
-  );
+    }));
+  } catch (error) {
+    console.error('Error fetching FAQs:', error);
+    return [];
+  }
 }
 
 /**
  * Fetches the count of FAQs.
  */
 export async function getFaqsCount(): Promise<number> {
-  const supabase = createReadOnlyClient();
-  const { count, error } = await supabase
-    .from('faqs')
-    .select('*', { count: 'exact', head: true });
-
-  if (error) {
+  try {
+    const rows = await query<any[]>('SELECT COUNT(*) as count FROM faqs');
+    return rows[0]?.count || 0;
+  } catch (error) {
     console.error('Error fetching FAQs count:', error);
     return 0;
   }
-  return count || 0;
 }
 
 /**
@@ -52,20 +43,20 @@ export async function getAdminFaqs({
   page?: number;
   limit?: number;
 } = {}) {
-  const supabase = await createClient();
-  
-  const from = (page - 1) * limit;
-  const to = from + limit - 1;
+  try {
+    const offset = (page - 1) * limit;
 
-  const { data, count, error } = await supabase
-    .from('faqs')
-    .select('*', { count: 'exact' })
-    .order('created_at', { ascending: false })
-    .range(from, to);
+    const faqs = await query<any[]>(
+      'SELECT * FROM faqs ORDER BY created_at DESC LIMIT ? OFFSET ?',
+      [limit, offset]
+    );
 
-  if (error) {
+    const countRows = await query<any[]>('SELECT COUNT(*) as count FROM faqs');
+    const total = countRows[0]?.count || 0;
+
+    return { faqs, total };
+  } catch (error) {
     console.error('Error fetching admin FAQs:', error);
     return { faqs: [], total: 0 };
   }
-  return { faqs: data || [], total: count || 0 };
 }

@@ -1,19 +1,16 @@
-import { createClient } from '@/lib/supabase/server';
+import { query } from '@/lib/mysql';
 
 /**
  * Fetches the count of active newsletter subscribers.
  */
 export async function getSubscribersCount(): Promise<number> {
-  const supabase = await createClient();
-  const { count, error } = await supabase
-    .from('newsletter_subscribers')
-    .select('*', { count: 'exact', head: true });
-
-  if (error) {
+  try {
+    const rows = await query<any[]>('SELECT COUNT(*) as count FROM newsletter_subscribers');
+    return rows[0]?.count || 0;
+  } catch (error) {
     console.error('Error fetching subscribers count:', error);
     return 0;
   }
-  return count || 0;
 }
 
 /**
@@ -26,41 +23,39 @@ export async function getAllSubscribers({
   page?: number;
   limit?: number;
 } = {}) {
-  const supabase = await createClient();
-  
-  const from = (page - 1) * limit;
-  const to = from + limit - 1;
+  try {
+    const offset = (page - 1) * limit;
 
-  const { data, count, error } = await supabase
-    .from('newsletter_subscribers')
-    .select('*', { count: 'exact' })
-    .order('subscribed_at', { ascending: false })
-    .range(from, to);
+    const subscribers = await query<any[]>(
+      'SELECT id, email, source, created_at as subscribed_at FROM newsletter_subscribers ORDER BY created_at DESC LIMIT ? OFFSET ?',
+      [limit, offset]
+    );
 
-  if (error) {
+    const countRows = await query<any[]>('SELECT COUNT(*) as count FROM newsletter_subscribers');
+    const total = countRows[0]?.count || 0;
+
+    return { subscribers, total };
+  } catch (error) {
     console.error('Error fetching all newsletter subscribers:', error);
     return { subscribers: [], total: 0 };
   }
-  return { subscribers: data || [], total: count || 0 };
 }
 
 /**
  * Fetches the count of active newsletter subscribers joined in the last 7 days.
  */
 export async function getRecentSubscribersCount(): Promise<number> {
-  const supabase = await createClient();
-  const sevenDaysAgo = new Date();
-  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
-  
-  const { count, error } = await supabase
-    .from('newsletter_subscribers')
-    .select('*', { count: 'exact', head: true })
-    .gte('subscribed_at', sevenDaysAgo.toISOString());
+  try {
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
 
-  if (error) {
+    const rows = await query<any[]>(
+      'SELECT COUNT(*) as count FROM newsletter_subscribers WHERE created_at >= ?',
+      [sevenDaysAgo]
+    );
+    return rows[0]?.count || 0;
+  } catch (error) {
     console.error('Error fetching recent subscribers count:', error);
     return 0;
   }
-  return count || 0;
 }
-

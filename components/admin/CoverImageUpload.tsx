@@ -2,9 +2,9 @@
 
 import { useState, useRef } from 'react'
 import { Upload, X, Loader2, Crop } from 'lucide-react'
-import { createClient } from '@/lib/supabase/client'
 import Cropper from 'react-easy-crop'
 import { getCroppedImg } from '@/lib/utils/cropImage'
+import { uploadImage } from '@/lib/actions/posts'
 
 interface CoverImageUploadProps {
   value: string
@@ -57,25 +57,22 @@ export function CoverImageUpload({ value, onChange, onUploadingChange }: CoverIm
     try {
       const croppedImageBlob = await getCroppedImg(imageSrc, croppedAreaPixels)
       
-      const supabase = createClient()
       const ext = originalFileName.split('.').pop() || 'jpg'
       const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 8)}.${ext}`
-      const filePath = `posts/${fileName}`
 
       // Convert Blob to File
       const fileToUpload = new File([croppedImageBlob], fileName, { type: 'image/jpeg' })
+      const formData = new FormData()
+      formData.append('file', fileToUpload)
 
-      const { error: uploadError } = await supabase.storage
-        .from('media')
-        .upload(filePath, fileToUpload)
+      const result = await uploadImage(formData)
+      if (result.error) {
+        throw new Error(result.error)
+      }
 
-      if (uploadError) throw uploadError
-
-      const { data: { publicUrl } } = supabase.storage
-        .from('media')
-        .getPublicUrl(filePath)
-
-      onChange(publicUrl)
+      if (result.url) {
+        onChange(result.url)
+      }
     } catch (err: any) {
       setError(err.message || 'Upload failed')
     } finally {

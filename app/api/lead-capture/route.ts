@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { supabaseAdmin } from '@/lib/supabase/admin';
+import { query } from '@/lib/mysql';
+import crypto from 'crypto';
 
 export async function POST(request: Request) {
   try {
@@ -21,19 +22,17 @@ export async function POST(request: Request) {
     }
 
     // Insert lead into newsletter_subscribers table (for gated resource downloads)
-    const { data: existing } = await supabaseAdmin
-      .from('newsletter_subscribers')
-      .select('id')
-      .eq('email', email)
-      .single();
+    const existing = await query<any[]>(
+      'SELECT id FROM newsletter_subscribers WHERE email = ? LIMIT 1',
+      [email]
+    );
 
-    if (!existing) {
-      await supabaseAdmin
-        .from('newsletter_subscribers')
-        .insert({
-          email,
-          source: `resource_download:${resourceId}`,
-        });
+    if (existing.length === 0) {
+      const id = crypto.randomUUID();
+      await query(
+        'INSERT INTO newsletter_subscribers (id, email, source) VALUES (?, ?, ?)',
+        [id, email, `resource_download:${resourceId}`]
+      );
     }
 
     return NextResponse.json({ success: true }, { status: 200 });

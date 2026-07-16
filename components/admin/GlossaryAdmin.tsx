@@ -100,12 +100,12 @@ export function GlossaryAdmin({
     if (editingId) {
       const result = await saveGlossaryTerm(editingId, payload);
       if (result.error) { setError(result.error); setSaving(false); return; }
-      const data = result.data;
+      const data = result.data as any;
       setTerms(prev => prev.map(t => t.id === editingId ? data : t).sort((a, b) => a.term.localeCompare(b.term)));
     } else {
       const result = await saveGlossaryTerm(null, payload);
       if (result.error) { setError(result.error); setSaving(false); return; }
-      const data = result.data;
+      const data = result.data as any;
       setTerms(prev => [...prev, data].sort((a, b) => a.term.localeCompare(b.term)));
     }
 

@@ -24,9 +24,6 @@ export const metadata: Metadata = {
   description: "Premium wealth-advisory brochure + blog site",
 };
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://gimmekpwypvlkbisygzz.supabase.co';
-const supabaseOrigin = new URL(supabaseUrl).origin;
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -35,8 +32,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="preconnect" href={supabaseOrigin} />
-        <link rel="dns-prefetch" href={supabaseOrigin} />
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
       </head>

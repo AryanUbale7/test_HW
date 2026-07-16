@@ -1,8 +1,7 @@
 'use client'
 
 import { useActionState, useState, useRef } from 'react'
-import { createResource, updateResource, deleteResource } from '@/lib/actions/admin'
-import { createClient } from '@/lib/supabase/client'
+import { createResource, updateResource, deleteResource, uploadResourceFile } from '@/lib/actions/admin'
 import { Plus, Pencil, Trash2, Upload, Loader2, X, FileText } from 'lucide-react'
 import Link from 'next/link'
 
@@ -156,21 +155,15 @@ function ResourceForm({ resource, onCancel }: { resource: Resource | null; onCan
     if (!file) return
     setUploading(true)
     try {
-      const supabase = createClient()
-      const ext = file.name.split('.').pop()
-      const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 8)}.${ext}`
-      
-      const { error: uploadError } = await supabase.storage
-        .from('resources')
-        .upload(fileName, file)
+      const formData = new FormData()
+      formData.append('file', file)
 
-      if (uploadError) throw uploadError
+      const result = await uploadResourceFile(formData)
+      if (result.error) throw new Error(result.error)
 
-      const { data: { publicUrl } } = supabase.storage
-        .from('resources')
-        .getPublicUrl(fileName)
-
-      setFileUrl(publicUrl)
+      if (result.url) {
+        setFileUrl(result.url)
+      }
     } catch (err: any) {
       alert(err.message || 'Upload failed')
     }
