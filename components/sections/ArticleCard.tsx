@@ -58,7 +58,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             <time className="text-sm font-sans text-[#CBA32E] font-medium">{date}</time>
           </div>
           
-          <h3 className="text-xl md:text-2xl font-serif text-deep-green mb-3 group-hover:text-gold transition-colors line-clamp-2">
+          <h3 className="text-xl md:text-2xl font-serif text-deep-green mb-3 line-clamp-2">
             {title}
           </h3>
           

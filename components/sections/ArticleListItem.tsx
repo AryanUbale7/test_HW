@@ -29,7 +29,7 @@ export const ArticleListItem: React.FC<ArticleListItemProps> = ({ title, excerpt
             </div>
 
             <div className="flex justify-between items-baseline gap-8">
-              <h3 className="text-2xl md:text-3xl lg:text-4xl font-serif text-deep-green mb-4 group-hover:text-gold transition-colors duration-300 leading-tight">
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-serif text-deep-green mb-4 leading-tight">
                 {title}
               </h3>
               <span className="hidden md:block opacity-0 group-hover:opacity-100 transform -translate-x-4 group-hover:translate-x-0 transition-all duration-500 text-gold text-2xl">
