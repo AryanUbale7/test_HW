@@ -98,51 +98,25 @@ export default function ReachMePage() {
               </div>
             </Card>
 
-            <Card className="bg-ivory border-gold/30">
-              <h3 className="text-xl font-serif text-deep-green mb-4">Schedule a Call</h3>
+            <Card className="bg-sage-mist/30">
+              <h3 className="text-xl font-serif text-deep-green mb-4">Find the Office</h3>
               <p className="font-sans text-charcoal text-base mb-6">
-                Book a 30-minute introductory discovery session directly on my calendar.
+                Honworth is located in Pimple Saudagar, Pune. View the interactive map below.
               </p>
-              <div className="h-[250px] w-full bg-sage-mist border border-sage/30 rounded-sm flex items-center justify-center">
-                <div className="text-center p-6">
-                  <p className="text-deep-green font-serif mb-2">[Calendly Calendar]</p>
-                  <p className="text-xs font-sans text-charcoal">
-                    Click below to open the scheduling link or book a slot.
-                  </p>
-                  <a 
-                    href="https://calendly.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="mt-4 inline-block text-sm text-deep-green font-medium hover:text-gold underline focus-visible:ring-2 focus-visible:ring-gold rounded-sm"
-                  >
-                    Open calendar scheduling link
-                  </a>
-                </div>
+              <div className="w-full h-[320px] rounded-sm overflow-hidden border border-sage/30 shadow-sm">
+                <iframe
+                  title="Honworth Office Location Map"
+                  src="https://maps.google.com/maps?q=Pimple%20Saudagar,%20Pune%20-%20411027,%20Maharashtra,%20India&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={false}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
             </Card>
           </div>
-        </div>
-
-        {/* Row 2: Location Map (Centered, clean layout) */}
-        <div className="pt-12 border-t border-sage/20">
-          <Card className="bg-sage-mist/30 max-w-4xl mx-auto">
-            <h3 className="text-xl font-serif text-deep-green mb-4">Find the Office</h3>
-            <p className="font-sans text-charcoal text-base mb-6">
-              Honworth is located in Pimple Saudagar, Pune. View the interactive map below.
-            </p>
-            <div className="w-full h-[320px] rounded-sm overflow-hidden border border-sage/30 shadow-sm">
-              <iframe
-                title="Honworth Office Location Map"
-                src="https://maps.google.com/maps?q=Pimple%20Saudagar,%20Pune%20-%20411027,%20Maharashtra,%20India&t=&z=14&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={false}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-          </Card>
         </div>
       </div>
     </div>
