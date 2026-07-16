@@ -160,7 +160,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
             {post.title}
           </h1>
           
-          <div className="flex justify-center items-center gap-4 text-sm font-sans text-charcoal">
+          <div className="flex justify-center items-center gap-4 text-sm font-sans text-[#CBA32E] font-medium">
             <time>
               {post.publishedAt ? formatDate(post.publishedAt, { year: 'numeric', month: 'long', day: 'numeric' }) : 'Draft'}
             </time>

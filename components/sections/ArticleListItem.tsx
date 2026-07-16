@@ -23,7 +23,7 @@ export const ArticleListItem: React.FC<ArticleListItemProps> = ({ title, excerpt
           
           <div className="flex-1 w-full order-2 md:order-1">
             <div className="flex items-center gap-3 text-xs font-sans text-charcoal/80 uppercase tracking-[0.2em] mb-4">
-              <time>{date}</time>
+              <time className="text-[#CBA32E] font-medium">{date}</time>
               <span className="w-4 h-px bg-sage/50" />
               <span className="text-gold font-medium">{category === 'Pers.Fin' ? 'Personal Finance' : category}</span>
             </div>
