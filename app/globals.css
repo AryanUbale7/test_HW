@@ -10,7 +10,7 @@
   --color-charcoal: #36403B;
   
   --font-serif: var(--font-merriweather), serif;
-  --font-sans: var(--font-merriweather), sans-serif;
+  --font-sans: var(--font-inter), sans-serif;
 }
 
 html, body {
