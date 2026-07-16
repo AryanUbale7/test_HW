@@ -33,7 +33,7 @@ export default function ReachMePage() {
   };
 
   return (
-    <div className="bg-ivory min-h-screen pt-10 md:pt-16 pb-20 md:pb-32">
+    <div className="bg-ivory min-h-screen pt-10 md:pt-16 pb-8 md:pb-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -48,7 +48,7 @@ export default function ReachMePage() {
           headingTag="h1"
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20 mb-0">
           {/* Main Form Area */}
           <div id="form" className="lg:col-span-3 scroll-mt-32">
             <h2 className="text-2xl font-serif text-deep-green mb-8">Send an Inquiry</h2>
