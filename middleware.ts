@@ -1,17 +1,62 @@
 import { NextResponse, NextRequest } from 'next/server';
-import { updateSession } from '@/lib/supabase/middleware';
+import { verifySession } from '@/lib/session';
 
 export async function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
   const host = request.headers.get('host') || '';
+  const pathname = url.pathname;
 
-  // Redirect www.honworth.in to honworth.in (canonical consistency)
+  // 1. Canonical Redirect: www.honworth.in to honworth.in
   if (host === 'www.honworth.in') {
-    return NextResponse.redirect(`https://honworth.in${url.pathname}${url.search}`, 308);
+    return NextResponse.redirect(`https://honworth.in${pathname}${url.search}`, 308);
   }
 
-  // Handle session updates and route protection for /admin paths
-  return await updateSession(request);
+  // 2. Determine if it is the admin subdomain (e.g. admin.honworth.in or admin.localhost:3000)
+  const isAdminSubdomain = host === 'admin.honworth.in' || host.startsWith('admin.');
+
+  if (isAdminSubdomain) {
+    // Prevent accessing raw /admin paths on the subdomain (e.g. admin.honworth.in/admin/dashboard -> redirect to admin.honworth.in/dashboard)
+    if (pathname.startsWith('/admin')) {
+      const cleanPath = pathname.replace(/^\/admin/, '') || '/';
+      return NextResponse.redirect(`https://${host}${cleanPath}${url.search}`);
+    }
+
+    // Authenticate session for the admin subdomain
+    const token = request.cookies.get('admin_session')?.value;
+    const secret = process.env.SESSION_SECRET || 'fallback-secret-key-12345';
+    const user = token ? await verifySession(token, secret) : null;
+
+    const isLoginPage = pathname === '/login' || pathname === '/';
+
+    if (!user && !isLoginPage) {
+      // Not logged in, redirect to login page (subdomain root)
+      const redirectUrl = request.nextUrl.clone();
+      redirectUrl.pathname = '/';
+      return NextResponse.redirect(redirectUrl);
+    }
+
+    if (user && isLoginPage) {
+      // Logged in, redirect to dashboard
+      const redirectUrl = request.nextUrl.clone();
+      redirectUrl.pathname = '/dashboard';
+      return NextResponse.redirect(redirectUrl);
+    }
+
+    // Rewrite internally: E.g., admin.honworth.in/dashboard -> /admin/dashboard
+    // admin.honworth.in/ -> /admin
+    const targetPath = pathname === '/' ? '/admin' : `/admin${pathname}`;
+    return NextResponse.rewrite(new URL(targetPath, request.url));
+  } else {
+    // Main domain: honworth.in
+    // If trying to access /admin paths on main domain, redirect to subdomain
+    if (pathname.startsWith('/admin')) {
+      const cleanPath = pathname.replace(/^\/admin/, '') || '/';
+      const adminHost = host.includes('localhost') ? 'admin.localhost:3000' : 'admin.honworth.in';
+      return NextResponse.redirect(`https://${adminHost}${cleanPath}${url.search}`);
+    }
+  }
+
+  return NextResponse.next();
 }
 
 export const config = {
