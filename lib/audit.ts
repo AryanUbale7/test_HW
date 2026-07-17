@@ -3,7 +3,7 @@ import crypto from 'crypto';
 
 export interface AuditLogPayload {
   adminEmail: string;
-  action: 'CREATE_POST' | 'UPDATE_POST' | 'DELETE_POST' | 'CREATE_RESOURCE' | 'UPDATE_RESOURCE' | 'DELETE_RESOURCE' | 'CREATE_FAQ' | 'UPDATE_FAQ' | 'DELETE_FAQ' | 'CREATE_GLOSSARY' | 'UPDATE_GLOSSARY' | 'DELETE_GLOSSARY';
+  action: 'CREATE_POST' | 'UPDATE_POST' | 'DELETE_POST' | 'CREATE_RESOURCE' | 'UPDATE_RESOURCE' | 'DELETE_RESOURCE' | 'CREATE_FAQ' | 'UPDATE_FAQ' | 'DELETE_FAQ' | 'CREATE_GLOSSARY' | 'UPDATE_GLOSSARY' | 'DELETE_GLOSSARY' | 'UPDATE_SITE_MODE' | 'LAUNCH_NOW';
   targetId: string;
   details?: Record<string, any>;
 }

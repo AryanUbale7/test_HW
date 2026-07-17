@@ -10,6 +10,8 @@ import { getFaqsCount } from '@/lib/queries/faqs'
 import { getUnreadLeadsCount, getRecentLeadsCount } from '@/lib/queries/contact'
 import { getSubscribersCount, getRecentSubscribersCount } from '@/lib/queries/newsletter'
 import { getRecentAuditLogs } from '@/lib/audit'
+import { getLaunchSettings } from '@/lib/queries/site-settings'
+import { LaunchControlCard } from '@/components/admin/LaunchControlCard'
 
 export const dynamic = 'force-dynamic'
 
@@ -57,6 +59,10 @@ function getActivityMessage(log: any) {
       return `Updated glossary term ${displayTitle}`
     case 'DELETE_GLOSSARY':
       return `Deleted glossary term`
+    case 'UPDATE_SITE_MODE':
+      return `Changed site mode to ${log.details?.mode || 'unknown'}`
+    case 'LAUNCH_NOW':
+      return `Launched website (set to LIVE)`
     default:
       return `${log.action} action completed`
   }
@@ -73,7 +79,8 @@ export default async function AdminDashboardPage() {
     recentLeadsCount,
     subscribers,
     recentSubscribersCount,
-    recentActivityLogs
+    recentActivityLogs,
+    launchSettings
   ] = await Promise.all([
     getPostsCount('draft'),
     getPostsCount('published'),
@@ -84,7 +91,8 @@ export default async function AdminDashboardPage() {
     getRecentLeadsCount(),
     getSubscribersCount(),
     getRecentSubscribersCount(),
-    getRecentAuditLogs(8)
+    getRecentAuditLogs(8),
+    getLaunchSettings()
   ])
 
   const stats = [
@@ -194,6 +202,12 @@ export default async function AdminDashboardPage() {
               </Link>
             </div>
           </div>
+
+          {/* Website Launch Control */}
+          <LaunchControlCard
+            initialMode={launchSettings.siteMode}
+            initialLaunchDate={launchSettings.launchDate}
+          />
 
           {/* System Metrics Grid */}
           <div className="space-y-4">

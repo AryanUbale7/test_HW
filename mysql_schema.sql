@@ -119,6 +119,20 @@ CREATE TABLE IF NOT EXISTS admins (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- 10. Site Settings Table (Key-Value Store for Launch Control)
+CREATE TABLE IF NOT EXISTS site_settings (
+  id VARCHAR(36) PRIMARY KEY,
+  setting_key VARCHAR(100) UNIQUE NOT NULL,
+  setting_value TEXT NOT NULL,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Default site settings
+INSERT INTO site_settings (id, setting_key, setting_value) VALUES
+  (UUID(), 'site_mode', 'live'),
+  (UUID(), 'launch_date', '')
+ON DUPLICATE KEY UPDATE setting_value=setting_value;
+
 -- ============================================================
 -- INDEXES FOR PERFORMANCE
 -- ============================================================
