@@ -70,7 +70,7 @@ export function AdminSidebar() {
               <X size={20} />
             </button>
           </div>
-          <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold select-none px-1">Content Studio</span>
+          <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold select-none px-1">Management System</span>
         </div>
 
         <nav className="flex-1 space-y-1">
@@ -96,18 +96,6 @@ export function AdminSidebar() {
             )
           })}
         </nav>
-
-        <div className="pt-6 border-t border-slate-800 mt-auto">
-          <form action={logout}>
-            <button 
-              type="submit"
-              className="w-full flex items-center gap-3 px-4 py-2.5 text-slate-400 hover:bg-slate-800 hover:text-red-400 rounded-md transition-colors"
-            >
-              <LogOut size={18} />
-              <span className="text-sm">Logout</span>
-            </button>
-          </form>
-        </div>
       </aside>
     </>
   )

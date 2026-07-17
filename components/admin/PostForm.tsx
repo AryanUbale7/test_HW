@@ -100,31 +100,12 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
         </div>
       )}
 
-      {/* Top bar: status toggle + actions */}
+      {/* Top bar: actions */}
       <div className="flex items-center justify-between bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
         <div className="flex items-center gap-4">
-          {/* Status toggle */}
-          <div className="flex items-center gap-3">
-            <span className="text-sm font-medium text-slate-600">Status:</span>
-            <button
-              type="button"
-              onClick={() => setStatus(status === 'published' ? 'draft' : 'published')}
-              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                status === 'published' ? 'bg-green-500' : 'bg-slate-300'
-              }`}
-            >
-              <span
-                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                  status === 'published' ? 'translate-x-6' : 'translate-x-1'
-                }`}
-              />
-            </button>
-            <span className={`text-sm font-medium ${
-              status === 'published' ? 'text-green-700' : 'text-amber-700'
-            }`}>
-              {status === 'published' ? 'Published' : 'Draft'}
-            </span>
-          </div>
+          <span className="text-sm font-semibold text-slate-500 uppercase tracking-wider">
+            Status: <span className={status === 'published' ? 'text-green-600' : 'text-amber-600'}>{status === 'published' ? 'Published' : 'Draft'}</span>
+          </span>
         </div>
 
         <div className="flex items-center gap-3">
@@ -158,21 +139,41 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
             <button
               type="button"
               onClick={() => setShowDeleteConfirm(true)}
-              className="flex items-center gap-1.5 text-sm text-red-500 hover:text-red-700 px-3 py-1.5 rounded-md hover:bg-red-50 transition-colors"
+              className="flex items-center gap-1.5 text-sm text-red-500 hover:text-red-700 px-3 py-1.5 rounded-md hover:bg-red-50 transition-colors cursor-pointer"
             >
               <Trash2 size={14} />
               Delete
             </button>
           )}
 
-          {/* Save button */}
+          {/* Draft button */}
           <button
             type="submit"
+            onClick={() => setStatus('draft')}
             disabled={isPending || imageUploading}
-            className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-blue-700 disabled:opacity-50 transition-colors"
+            className="flex items-center gap-1.5 border border-slate-350 text-slate-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-slate-50 hover:border-slate-400 disabled:opacity-50 transition-colors cursor-pointer"
           >
-            {isPending || imageUploading ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
-            {imageUploading ? 'Uploading Image…' : (isPending ? 'Saving…' : (isEdit ? 'Update Post' : 'Create Post'))}
+            {isPending && status === 'draft' ? (
+              <Loader2 size={14} className="animate-spin" />
+            ) : (
+              <Save size={14} />
+            )}
+            <span>{imageUploading ? 'Uploading Image…' : (isEdit ? 'Save Draft' : 'Save as Draft')}</span>
+          </button>
+
+          {/* Publish/Update button */}
+          <button
+            type="submit"
+            onClick={() => setStatus('published')}
+            disabled={isPending || imageUploading}
+            className="flex items-center gap-1.5 bg-blue-600 text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-blue-700 disabled:opacity-50 transition-colors cursor-pointer shadow-sm"
+          >
+            {isPending && status === 'published' ? (
+              <Loader2 size={14} className="animate-spin" />
+            ) : (
+              <Save size={14} />
+            )}
+            <span>{imageUploading ? 'Uploading Image…' : (isEdit ? 'Update Post' : 'Publish Post')}</span>
           </button>
         </div>
       </div>

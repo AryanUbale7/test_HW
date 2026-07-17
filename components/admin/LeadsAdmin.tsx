@@ -69,18 +69,13 @@ export function LeadsAdmin({
             {messages.map((m) => (
               <tr key={m.id} className={`hover:bg-slate-50 transition-colors ${m.contacted ? 'bg-slate-50/50 opacity-75' : ''}`}>
                 <td className="px-6 py-4 text-center">
-                  <button
-                    type="button"
+                  <input
+                    type="checkbox"
+                    checked={m.contacted}
                     disabled={updatingId === m.id}
-                    onClick={() => handleToggleContacted(m.id, m.contacted)}
-                    className="text-slate-500 hover:text-blue-600 focus:outline-none transition-colors disabled:opacity-50"
-                  >
-                    {m.contacted ? (
-                      <CheckSquare className="w-5 h-5 text-blue-600" />
-                    ) : (
-                      <Square className="w-5 h-5 text-slate-400 hover:text-slate-600" />
-                    )}
-                  </button>
+                    onChange={() => handleToggleContacted(m.id, m.contacted)}
+                    className="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500 cursor-pointer disabled:opacity-50 transition-all"
+                  />
                 </td>
                 <td className="px-6 py-4 space-y-1">
                   <div className="flex items-center gap-2 font-medium text-slate-900">

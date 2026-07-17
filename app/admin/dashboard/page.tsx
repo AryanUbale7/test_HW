@@ -156,16 +156,16 @@ export default async function AdminDashboardPage() {
     },
   ]
 
-  const prominentStats = stats.filter(s => s.prominent)
-  const regularStats = stats.filter(s => !s.prominent)
+  const audienceStats = stats.filter(s => s.name === 'Unread Leads' || s.name === 'Subscribers')
+  const contentStats = stats.filter(s => s.name !== 'Unread Leads' && s.name !== 'Subscribers')
 
   return (
     <div className="space-y-8 pb-10">
       
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Dashboard Overview</h1>
-        <p className="text-slate-500 mt-1">Publish content, audit activity, and manage incoming leads.</p>
+        <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Management System Overview</h1>
+        <p className="text-slate-500 mt-1">Monitor portal statistics, audit actions, and process customer leads.</p>
       </div>
 
       {/* Quick Actions */}
@@ -207,70 +207,76 @@ export default async function AdminDashboardPage() {
         </div>
       </div>
 
-      {/* Prominent Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {prominentStats.map((stat) => {
-          const Icon = stat.icon
-          return (
-            <div 
-              key={stat.name} 
-              className={`bg-white p-6 rounded-lg shadow-sm border border-slate-200 ${stat.borderClass} ${
-                stat.attention ? 'bg-red-50/10 border-r-red-150' : ''
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <p className="text-sm font-semibold text-slate-500">{stat.name}</p>
-                    {stat.attention && (
-                      <span className="h-2 w-2 rounded-full bg-red-600 animate-pulse" />
+      {/* Audience & Inquiries Section */}
+      <div className="space-y-4">
+        <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400">Audience & Inquiries</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {audienceStats.map((stat) => {
+            const Icon = stat.icon
+            return (
+              <div 
+                key={stat.name} 
+                className={`bg-white p-6 rounded-lg shadow-sm border border-slate-200 ${stat.borderClass} ${
+                  stat.attention ? 'bg-red-50/10' : ''
+                } hover:shadow-md hover:-translate-y-0.5 transition-all duration-300`}
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <p className="text-sm font-semibold text-slate-500">{stat.name}</p>
+                      {stat.attention && (
+                        <span className="h-2 w-2 rounded-full bg-red-600 animate-pulse" />
+                      )}
+                    </div>
+                    <p className="text-4xl font-bold text-slate-900 mt-2">{stat.value}</p>
+                    {stat.trend && (
+                      <p className="text-xs text-slate-400 mt-1 font-medium">{stat.trend}</p>
                     )}
                   </div>
-                  <p className="text-4xl font-bold text-slate-900 mt-2">{stat.value}</p>
-                  {stat.trend && (
-                    <p className="text-xs text-slate-400 mt-1 font-medium">{stat.trend}</p>
-                  )}
-                </div>
-                <div className={`p-4 rounded-md ${stat.bg} ${stat.color}`}>
-                  <Icon size={28} />
+                  <div className={`p-4 rounded-md ${stat.bg} ${stat.color}`}>
+                    <Icon size={28} />
+                  </div>
                 </div>
               </div>
-            </div>
-          )
-        })}
+            )
+          })}
+        </div>
       </div>
 
-      {/* Regular Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {regularStats.map((stat) => {
-          const Icon = stat.icon
-          return (
-            <div 
-              key={stat.name} 
-              className={`bg-white p-5 rounded-lg shadow-sm border border-slate-200 ${stat.borderClass} ${
-                stat.attention ? 'bg-amber-50/10' : ''
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <p className="text-xs font-semibold text-slate-500">{stat.name}</p>
-                    {stat.attention && (
-                      <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+      {/* Content Statistics Section */}
+      <div className="space-y-4">
+        <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400">Content Statistics</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          {contentStats.map((stat) => {
+            const Icon = stat.icon
+            return (
+              <div 
+                key={stat.name} 
+                className={`bg-white p-5 rounded-lg shadow-sm border border-slate-200 ${stat.borderClass} ${
+                  stat.attention ? 'bg-amber-50/10' : ''
+                } hover:shadow-md hover:-translate-y-0.5 transition-all duration-300`}
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <p className="text-xs font-semibold text-slate-500">{stat.name}</p>
+                      {stat.attention && (
+                        <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                      )}
+                    </div>
+                    <p className="text-2xl font-bold text-slate-900 mt-2">{stat.value}</p>
+                    {stat.trend && (
+                      <p className="text-[10px] text-slate-400 mt-1">{stat.trend}</p>
                     )}
                   </div>
-                  <p className="text-2xl font-bold text-slate-900 mt-2">{stat.value}</p>
-                  {stat.trend && (
-                    <p className="text-[10px] text-slate-400 mt-1">{stat.trend}</p>
-                  )}
-                </div>
-                <div className={`p-2.5 rounded ${stat.bg} ${stat.color}`}>
-                  <Icon size={20} />
+                  <div className={`p-2.5 rounded ${stat.bg} ${stat.color}`}>
+                    <Icon size={20} />
+                  </div>
                 </div>
               </div>
-            </div>
-          )
-        })}
+            )
+          })}
+        </div>
       </div>
 
       {/* Recent Activity Panel */}
@@ -323,6 +329,11 @@ export default async function AdminDashboardPage() {
           )}
         </div>
       </div>
+
+      {/* Branded Footer */}
+      <footer className="mt-12 pt-6 border-t border-slate-200 text-center text-xs text-slate-400 font-sans">
+        © {new Date().getFullYear()} Honworth Advisory · Management System · Internal use only
+      </footer>
 
     </div>
   )
