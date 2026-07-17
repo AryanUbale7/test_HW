@@ -5,26 +5,26 @@ import path from 'path';
 
 export const dynamic = 'force-dynamic';
 
-function readLastLines(filePath: string, lineCount = 50): string {
-  try {
-    if (!fs.existsSync(filePath)) return `File not found: ${filePath}`;
-    const content = fs.readFileSync(filePath, 'utf8');
-    const lines = content.split('\n');
-    return lines.slice(-lineCount).join('\n');
-  } catch (e: any) {
-    return `Error reading file ${filePath}: ${e.message}`;
-  }
-}
-
 export async function GET() {
-  const consoleLogPath = '/home/u321533764/domains/honworth.in/nodejs/console.log';
-  const stderrLogPath = '/home/u321533764/domains/honworth.in/nodejs/stderr.log';
+  const uploadsDir = '/home/u321533764/domains/honworth.in/nodejs/public/uploads';
+  let files: string[] = [];
+  let dirExists = false;
+  let dirError = '';
+
+  try {
+    if (fs.existsSync(uploadsDir)) {
+      dirExists = true;
+      files = fs.readdirSync(uploadsDir);
+    }
+  } catch (e: any) {
+    dirError = e.message;
+  }
 
   const diagnostics: any = {
-    testConnection: null,
-    error: null,
-    consoleLog: readLastLines(consoleLogPath),
-    stderrLog: readLastLines(stderrLogPath),
+    uploadsDir,
+    dirExists,
+    files,
+    dirError,
   };
 
   try {
