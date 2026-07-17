@@ -218,23 +218,34 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
 
         {/* Author Byline */}
         {post.author && (
-          <div className="mt-6 pt-6 border-t border-sage/30 flex gap-4 items-start">
-            <div className="relative w-16 h-16 shrink-0 rounded-lg overflow-hidden border border-sage/20 shadow-sm">
+          <div className="mt-12 pt-8 border-t border-sage/30 flex gap-5 items-start">
+            <div className="relative w-20 h-20 shrink-0 rounded-xl overflow-hidden border border-sage/20 shadow-sm">
               <Image 
                 src="/profile.png" 
                 alt={post.author.name} 
                 fill 
-                sizes="64px" 
+                sizes="80px" 
                 className="object-cover object-top" 
               />
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-serif text-lg text-deep-green leading-snug">{post.author.name} — Founder, Honworth</h3>
-              <p className="font-sans text-sm text-charcoal leading-relaxed mt-1.5">{post.author.bio}</p>
+              <h3 className="font-serif text-xl font-bold text-deep-green leading-snug">
+                {post.author.name}
+              </h3>
+              <p className="font-sans text-base text-charcoal/90 leading-relaxed mt-2">
+                {post.author.bio}
+              </p>
               {post.author.credentials && post.author.credentials.length > 0 && (
-                <p className="text-xs text-charcoal/80 mt-2.5 font-sans">
-                  {post.author.credentials.join(' · ')}
-                </p>
+                <div className="flex flex-wrap gap-2.5 mt-4">
+                  {post.author.credentials.map((cred: string, idx: number) => (
+                    <span 
+                      key={idx} 
+                      className="px-3.5 py-1 text-xs font-sans font-medium text-charcoal bg-[#E8EFE6] border border-[#D0DDD0]/30 rounded-md"
+                    >
+                      {cred}
+                    </span>
+                  ))}
+                </div>
               )}
             </div>
           </div>
