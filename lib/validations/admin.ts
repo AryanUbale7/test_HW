@@ -10,7 +10,7 @@ export const loginSchema = z.object({
 export const resourceSchema = z.object({
   title: z.string().trim().min(1, 'Title is required.'),
   description: z.string().trim().optional().nullable(),
-  file_url: z.string().trim().url('Invalid file URL').or(z.literal('')).optional().nullable(),
+  file_url: z.string().trim().optional().nullable(),
   gated_by_email: z.boolean().default(false),
 });
 
