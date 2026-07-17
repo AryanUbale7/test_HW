@@ -1,28 +1,35 @@
 import { NextResponse } from 'next/server';
 import { query } from '@/lib/mysql';
-import React from 'react';
+import fs from 'fs';
+import path from 'path';
 
 export const dynamic = 'force-dynamic';
 
+function readLastLines(filePath: string, lineCount = 50): string {
+  try {
+    if (!fs.existsSync(filePath)) return `File not found: ${filePath}`;
+    const content = fs.readFileSync(filePath, 'utf8');
+    const lines = content.split('\n');
+    return lines.slice(-lineCount).join('\n');
+  } catch (e: any) {
+    return `Error reading file ${filePath}: ${e.message}`;
+  }
+}
+
 export async function GET() {
+  const consoleLogPath = '/home/u321533764/domains/honworth.in/nodejs/console.log';
+  const stderrLogPath = '/home/u321533764/domains/honworth.in/nodejs/stderr.log';
+
   const diagnostics: any = {
-    env: {
-      DB_HOST: process.env.DB_HOST ? 'SET (hidden)' : 'MISSING',
-      DB_USER: process.env.DB_USER ? 'SET (hidden)' : 'MISSING',
-      DB_NAME: process.env.DB_NAME ? 'SET (hidden)' : 'MISSING',
-      DB_PORT: process.env.DB_PORT || '3306',
-      DB_HOST_VALUE: process.env.DB_HOST || '127.0.0.1',
-      NODE_ENV: process.env.NODE_ENV,
-    },
-    reactVersion: React.version,
     testConnection: null,
     error: null,
+    consoleLog: readLastLines(consoleLogPath),
+    stderrLog: readLastLines(stderrLogPath),
   };
 
   try {
     const result = await query('SELECT 1 + 1 AS result');
     diagnostics.testConnection = 'SUCCESS';
-    diagnostics.result = result;
   } catch (err: any) {
     diagnostics.testConnection = 'FAILED';
     diagnostics.error = err.message;
