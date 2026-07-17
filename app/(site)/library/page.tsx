@@ -4,6 +4,9 @@ import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ResourceCard } from '@/components/sections/ResourceCard';
 import { FaqAccordion } from '@/components/sections/FaqAccordion';
 
+import { getResources } from '@/lib/queries/resources';
+import { getFaqs } from '@/lib/queries/faqs';
+
 export const revalidate = 60;
 
 export const metadata: Metadata = {
@@ -15,10 +18,13 @@ export const metadata: Metadata = {
 };
 
 export default async function LibraryPage() {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://gimmekpwypvlkbisygzz.supabase.co';
+  const [dbResources, dbFaqs] = await Promise.all([
+    getResources(),
+    getFaqs(),
+  ]);
 
   // Exact 3 downloadable guides and checklists from the document
-  const resources = [
+  const defaultResources = [
     {
       _id: 'guide-1',
       title: 'Questions Before Your First Insurance Policy',
@@ -43,7 +49,7 @@ export default async function LibraryPage() {
   ];
 
   // Exact 8 FAQs from the document
-  const libraryFaqs = [
+  const defaultFaqs = [
     {
       id: 'faq-a',
       question: "What's the minimum amount I can start investing with?",
@@ -85,6 +91,11 @@ export default async function LibraryPage() {
       answer: "It's more necessary than most people realise. Without a Will, the law decides how your assets are distributed — which may not match your wishes, and often leaves families tangled in delays and disputes at the worst possible time. A nominee, importantly, is only a custodian, not the final owner. A clear Will is one of the kindest, simplest things you can do for the people you leave behind."
     }
   ];
+
+  const resources = dbResources && dbResources.length > 0 ? dbResources : defaultResources;
+  const libraryFaqs = dbFaqs && dbFaqs.length > 0 
+    ? dbFaqs.map(f => ({ id: f._id, question: f.question, answer: f.answer }))
+    : defaultFaqs;
 
   // Books list
   const books = [
@@ -176,8 +187,8 @@ export default async function LibraryPage() {
               key={resource._id}
               id={resource._id}
               title={resource.title}
-              description={resource.description}
-              fileUrl={resource.fileUrl}
+              description={resource.description || ''}
+              fileUrl={resource.fileUrl || ''}
               gatedByEmail={resource.gatedByEmail}
             />
           ))}
