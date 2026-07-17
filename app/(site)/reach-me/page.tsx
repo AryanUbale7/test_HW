@@ -68,8 +68,8 @@ export default function ReachMePage() {
                   <div className="flex flex-col gap-2">
                     <p className="text-sm">
                       <strong className="text-xs uppercase tracking-wider text-charcoal/60 mr-1.5">Email:</strong>
-                      <a href="mailto:rahul.karandikar@honworth.in" className="underline hover:text-gold transition-colors">
-                        rahul.karandikar@honworth.in
+                      <a href="mailto:aryanubale318@gmail.com" className="underline hover:text-gold transition-colors">
+                        aryanubale318@gmail.com
                       </a>
                     </p>
                     <p className="text-sm">
