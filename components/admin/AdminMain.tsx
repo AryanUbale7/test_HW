@@ -13,18 +13,18 @@ export function AdminMain({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <main className="flex-1 ml-0 md:ml-64 p-4 md:p-8 pt-16 md:pt-8 overflow-x-hidden">
+    <main className="flex-1 ml-0 md:ml-64 p-4 md:p-8 pt-16 md:pt-8 overflow-x-hidden min-h-screen bg-[#FDFBF7]">
       {/* Top Header Bar */}
-      <header className="flex items-center justify-between border-b border-slate-200 pb-4 mb-6">
+      <header className="flex items-center justify-between border-b border-sage/20 pb-4 mb-6">
         <div>
-          <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Honworth Management Suite</span>
+          <span className="text-xs font-bold text-charcoal/50 uppercase tracking-widest font-sans">Honworth Management Suite</span>
         </div>
         <form action={logout}>
           <button 
             type="submit" 
-            className="flex items-center gap-2 px-3 py-1.5 text-sm text-slate-500 hover:text-red-600 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:border-slate-300 shadow-sm transition-all active:scale-95 cursor-pointer"
+            className="flex items-center gap-2 px-4 py-2 text-xs text-charcoal/80 hover:text-white bg-white border border-sage/30 rounded-md hover:bg-gold hover:border-gold shadow-sm transition-all active:scale-95 cursor-pointer font-semibold font-sans uppercase tracking-wider"
           >
-            <LogOut size={16} />
+            <LogOut size={14} />
             <span>Logout</span>
           </button>
         </form>

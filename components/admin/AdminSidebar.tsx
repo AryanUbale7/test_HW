@@ -30,7 +30,7 @@ export function AdminSidebar() {
       {!isOpen && (
         <button 
           onClick={() => setIsOpen(true)}
-          className="fixed top-4 left-4 z-40 p-2 bg-slate-900 text-white rounded-md md:hidden shadow-md hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="fixed top-4 left-4 z-40 p-2 bg-deep-green text-white rounded-md md:hidden shadow-md hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-gold"
           aria-label="Open Navigation Menu"
         >
           <Menu size={20} />
@@ -41,14 +41,14 @@ export function AdminSidebar() {
       {isOpen && (
         <div 
           onClick={() => setIsOpen(false)}
-          className="fixed inset-0 bg-black/50 z-40 md:hidden transition-opacity duration-300"
+          className="fixed inset-0 bg-black/60 z-40 md:hidden transition-opacity duration-300"
         />
       )}
 
-      <aside className={`fixed left-0 top-0 bottom-0 w-64 bg-slate-900 text-slate-300 p-6 flex flex-col z-50 transition-transform duration-300 md:translate-x-0 ${
+      <aside className={`fixed left-0 top-0 bottom-0 w-64 bg-deep-green text-slate-100 p-6 flex flex-col z-50 transition-transform duration-300 md:translate-x-0 ${
         isOpen ? 'translate-x-0' : '-translate-x-full'
       }`}>
-        <div className="mb-10 px-2 flex flex-col gap-2">
+        <div className="mb-10 px-2 flex flex-col gap-1.5">
           <div className="flex justify-between items-center w-full">
             <Link href="/" className="flex items-center justify-start hover:opacity-90 transition-opacity w-full">
               <Image 
@@ -63,16 +63,16 @@ export function AdminSidebar() {
             {/* Close button on mobile */}
             <button 
               onClick={() => setIsOpen(false)}
-              className="text-slate-400 hover:text-white md:hidden focus:outline-none ml-2"
+              className="text-slate-300 hover:text-white md:hidden focus:outline-none ml-2"
               aria-label="Close Navigation Menu"
             >
               <X size={20} />
             </button>
           </div>
-          <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold select-none px-1">Management System</span>
+          <span className="text-[10px] uppercase tracking-widest text-sage-mist/40 font-bold select-none px-1">Management System</span>
         </div>
 
-        <nav className="flex-1 space-y-1">
+        <nav className="flex-1 space-y-1.5">
           {navItems.map((item) => {
             const isActive = pathname === item.href || (item.href !== '/admin/dashboard' && pathname.startsWith(item.href))
             const Icon = item.icon
@@ -83,13 +83,13 @@ export function AdminSidebar() {
                 href={item.href}
                 prefetch={false}
                 onClick={() => setIsOpen(false)}
-                className={`flex items-center gap-3 px-4 py-2.5 rounded-md transition-colors ${
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-md transition-all ${
                   isActive 
-                    ? 'bg-blue-600 text-white font-medium shadow-sm' 
-                    : 'hover:bg-slate-800 hover:text-white'
+                    ? 'bg-gold text-white font-semibold shadow-md hover:bg-gold/90' 
+                    : 'hover:bg-white/10 hover:text-white text-white/80'
                 }`}
               >
-                <Icon size={18} />
+                <Icon size={18} className={isActive ? 'text-white' : 'text-slate-300'} />
                 <span className="text-sm">{item.name}</span>
               </Link>
             )

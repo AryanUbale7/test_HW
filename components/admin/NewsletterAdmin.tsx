@@ -51,60 +51,62 @@ export function NewsletterAdmin({
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
+    <div className="space-y-6 font-sans">
+      <div className="flex justify-between items-center pb-2 border-b border-sage/10">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Newsletter Subscribers</h1>
-          <p className="text-slate-500 mt-1">View and manage newsletter sign-ups.</p>
+          <h1 className="text-2xl font-serif text-deep-green font-bold tracking-tight">Newsletter Subscribers</h1>
+          <p className="text-xs text-charcoal/60 mt-0.5">View, track, and export newsletter subscription sign-ups.</p>
         </div>
         <button
           onClick={exportToCSV}
           disabled={subscribers.length === 0}
-          className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed transition-colors shadow-sm"
+          className="flex items-center gap-2 bg-gold hover:bg-gold/90 disabled:bg-[#FAF6EE]/80 disabled:text-charcoal/30 disabled:border-sage/10 disabled:cursor-not-allowed text-white px-4 py-2 border border-transparent rounded-md text-sm font-semibold shadow-sm transition-all duration-200"
         >
           <Download size={16} />
           Export as CSV
         </button>
       </div>
 
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-x-auto">
+      <div className="bg-white rounded-lg border border-sage/20 shadow-sm overflow-hidden">
         <table className="w-full text-left text-sm">
-          <thead className="bg-slate-50 border-b border-slate-200 text-slate-600">
+          <thead className="bg-[#FAF6EE] border-b border-sage/20 text-deep-green font-semibold">
             <tr>
-              <th className="px-6 py-3 font-medium">Email</th>
-              <th className="px-6 py-3 font-medium">Subscribed At</th>
-              <th className="px-6 py-3 font-medium">Source</th>
+              <th className="px-6 py-3.5 font-semibold">Email Address</th>
+              <th className="px-6 py-3.5 font-semibold">Subscribed Date</th>
+              <th className="px-6 py-3.5 font-semibold">Source</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100">
+          <tbody className="divide-y divide-sage/10 text-charcoal">
             {subscribers.map((s) => (
-              <tr key={s.id} className="hover:bg-slate-50 transition-colors">
-                <td className="px-6 py-4 font-medium text-slate-900">
+              <tr key={s.id} className="hover:bg-[#FAF6EE]/10 transition-colors">
+                <td className="px-6 py-4 font-semibold">
                   <div className="flex items-center gap-2">
-                    <Mail className="w-4 h-4 text-slate-400" />
-                    <a href={`mailto:${s.email}`} className="hover:underline hover:text-blue-600">
+                    <Mail className="w-4 h-4 text-sage" />
+                    <a href={`mailto:${s.email}`} className="hover:underline hover:text-gold transition-colors">
                       {s.email}
                     </a>
                   </div>
                 </td>
-                <td className="px-6 py-4 text-slate-500">
+                <td className="px-6 py-4 text-charcoal/60 text-xs">
                   <div className="flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-slate-400" />
-                    {new Date(s.subscribed_at).toLocaleDateString()} {new Date(s.subscribed_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    <Calendar className="w-3.5 h-3.5 text-sage" />
+                    <span>{new Date(s.subscribed_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+                    <span className="text-charcoal/30">|</span>
+                    <span>{new Date(s.subscribed_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                   </div>
                 </td>
-                <td className="px-6 py-4 text-slate-600">
+                <td className="px-6 py-4 text-charcoal/70 text-xs">
                   <div className="flex items-center gap-1.5">
-                    <Info className="w-3.5 h-3.5 text-slate-400" />
-                    {s.source || 'Website Footer'}
+                    <Info className="w-3.5 h-3.5 text-sage" />
+                    <span>{s.source || 'Website Footer'}</span>
                   </div>
                 </td>
               </tr>
             ))}
             {subscribers.length === 0 && (
               <tr>
-                <td colSpan={3} className="px-6 py-12 text-center text-slate-400">
-                  No subscribers yet.
+                <td colSpan={3} className="px-6 py-12 text-center text-charcoal/40 font-sans">
+                  No subscribers added yet.
                 </td>
               </tr>
             )}
@@ -114,16 +116,16 @@ export function NewsletterAdmin({
 
       {/* Pagination controls */}
       {total > 20 && (
-        <div className="flex justify-between items-center bg-white px-6 py-4 border border-t-0 border-slate-200 rounded-b-lg shadow-sm">
-          <div className="text-sm text-slate-500">
-            Showing <span className="font-medium">{(currentPage - 1) * 20 + 1}</span> to{' '}
-            <span className="font-medium">{Math.min(currentPage * 20, total)}</span> of{' '}
-            <span className="font-medium">{total}</span> items
+        <div className="flex justify-between items-center bg-white px-6 py-4 border border-t-0 border-sage/20 rounded-b-lg shadow-sm">
+          <div className="text-sm text-charcoal/60">
+            Showing <span className="font-semibold">{(currentPage - 1) * 20 + 1}</span> to{' '}
+            <span className="font-semibold">{Math.min(currentPage * 20, total)}</span> of{' '}
+            <span className="font-semibold">{total}</span> items
           </div>
           <div className="flex gap-2">
             <Link
               href={currentPage > 2 ? `/admin/newsletter?page=${currentPage - 1}` : '/admin/newsletter'}
-              className={`px-3 py-1 text-sm border border-slate-300 rounded-md hover:bg-slate-50 transition-colors ${
+              className={`px-4 py-1.5 text-xs font-semibold uppercase tracking-wider border border-sage/35 rounded-md hover:bg-[#FAF6EE]/20 transition-colors ${
                 currentPage <= 1 ? 'opacity-50 pointer-events-none' : ''
               }`}
             >
@@ -131,7 +133,7 @@ export function NewsletterAdmin({
             </Link>
             <Link
               href={`/admin/newsletter?page=${currentPage + 1}`}
-              className={`px-3 py-1 text-sm border border-slate-300 rounded-md hover:bg-slate-50 transition-colors ${
+              className={`px-4 py-1.5 text-xs font-semibold uppercase tracking-wider border border-sage/35 rounded-md hover:bg-[#FAF6EE]/20 transition-colors ${
                 currentPage * 20 >= total ? 'opacity-50 pointer-events-none' : ''
               }`}
             >
