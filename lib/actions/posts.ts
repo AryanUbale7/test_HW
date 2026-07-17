@@ -46,12 +46,24 @@ export async function createPost(prevState: any, formData: FormData): Promise<{ 
     });
 
     if (Object.keys(errors).length > 0) {
+      await writeAuditLog({
+        adminEmail: adminUser.email || 'unknown',
+        action: 'CREATE_POST',
+        targetId: 'VALIDATION_FAILED',
+        details: { errors, title },
+      });
       return { errors, success: false };
     }
 
     // Check if slug is already taken
     const existing = await query<any[]>('SELECT id FROM posts WHERE slug = ? LIMIT 1', [slug.trim()]);
     if (existing.length > 0) {
+      await writeAuditLog({
+        adminEmail: adminUser.email || 'unknown',
+        action: 'CREATE_POST',
+        targetId: 'SLUG_TAKEN',
+        details: { slug: slug.trim(), title },
+      });
       return { errors: { slug: 'This slug is already taken. Please choose another.' }, success: false };
     }
 
@@ -95,6 +107,14 @@ export async function createPost(prevState: any, formData: FormData): Promise<{ 
   } catch (err: any) {
     if (err && err.message === 'NEXT_REDIRECT') throw err;
     console.error('Error in createPost action:', err);
+    try {
+      await writeAuditLog({
+        adminEmail: 'error-catcher',
+        action: 'CREATE_POST',
+        targetId: 'DB_ERROR',
+        details: { message: err.message, stack: err.stack },
+      });
+    } catch {}
     return { errors: { _form: err.message || 'An unexpected error occurred.' }, success: false };
   }
 
