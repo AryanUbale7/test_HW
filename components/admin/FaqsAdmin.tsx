@@ -30,7 +30,17 @@ export function FaqsAdmin({
   const handleDelete = async () => {
     if (!deleteId) return
     setDeleting(true)
-    await deleteFaq(deleteId)
+    try {
+      await deleteFaq(deleteId)
+    } catch (err: any) {
+      if (err && err.message === 'NEXT_REDIRECT') {
+        throw err
+      }
+      console.error(err)
+    } finally {
+      setDeleting(false)
+      setDeleteId(null)
+    }
   }
 
   // Group by arm

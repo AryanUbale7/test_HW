@@ -31,7 +31,17 @@ export function ResourcesAdmin({
   const handleDelete = async () => {
     if (!deleteId) return
     setDeleting(true)
-    await deleteResource(deleteId)
+    try {
+      await deleteResource(deleteId)
+    } catch (err: any) {
+      if (err && err.message === 'NEXT_REDIRECT') {
+        throw err
+      }
+      console.error(err)
+    } finally {
+      setDeleting(false)
+      setDeleteId(null)
+    }
   }
 
   return (
