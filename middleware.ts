@@ -5,6 +5,7 @@ export async function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
   const host = request.headers.get('host') || '';
   const pathname = url.pathname;
+  const isRewritten = url.searchParams.get('rewritten') === 'true';
 
   // 1. Canonical Redirect: www.honworth.in to honworth.in
   if (host === 'www.honworth.in') {
@@ -15,8 +16,8 @@ export async function middleware(request: NextRequest) {
   const isAdminSubdomain = host === 'admin.honworth.in' || host.startsWith('admin.');
 
   if (isAdminSubdomain) {
-    // Prevent accessing raw /admin paths on the subdomain (e.g. admin.honworth.in/admin/dashboard -> redirect to admin.honworth.in/dashboard)
-    if (pathname.startsWith('/admin')) {
+    // If it's an admin path and NOT internally rewritten, redirect to clean subdomain URL
+    if (pathname.startsWith('/admin') && !isRewritten) {
       const cleanPath = pathname.replace(/^\/admin/, '') || '/';
       return NextResponse.redirect(`https://${host}${cleanPath}${url.search}`);
     }
@@ -28,14 +29,14 @@ export async function middleware(request: NextRequest) {
 
     const isLoginPage = pathname === '/login' || pathname === '/';
 
-    if (!user && !isLoginPage) {
+    if (!user && !isLoginPage && !isRewritten) {
       // Not logged in, redirect to login page (subdomain root)
       const redirectUrl = request.nextUrl.clone();
       redirectUrl.pathname = '/';
       return NextResponse.redirect(redirectUrl);
     }
 
-    if (user && isLoginPage) {
+    if (user && isLoginPage && !isRewritten) {
       // Logged in, redirect to dashboard
       const redirectUrl = request.nextUrl.clone();
       redirectUrl.pathname = '/dashboard';
@@ -43,13 +44,16 @@ export async function middleware(request: NextRequest) {
     }
 
     // Rewrite internally: E.g., admin.honworth.in/dashboard -> /admin/dashboard
-    // admin.honworth.in/ -> /admin
-    const targetPath = pathname === '/' ? '/admin' : `/admin${pathname}`;
-    return NextResponse.rewrite(new URL(targetPath, request.url));
+    if (!isRewritten) {
+      const targetPath = pathname === '/' ? '/admin' : `/admin${pathname}`;
+      const rewriteUrl = new URL(targetPath, request.url);
+      rewriteUrl.searchParams.set('rewritten', 'true');
+      return NextResponse.rewrite(rewriteUrl);
+    }
   } else {
     // Main domain: honworth.in
     // If trying to access /admin paths on main domain, redirect to subdomain
-    if (pathname.startsWith('/admin')) {
+    if (pathname.startsWith('/admin') && !isRewritten) {
       const cleanPath = pathname.replace(/^\/admin/, '') || '/';
       const adminHost = host.includes('localhost') ? 'admin.localhost:3000' : 'admin.honworth.in';
       return NextResponse.redirect(`https://${adminHost}${cleanPath}${url.search}`);
