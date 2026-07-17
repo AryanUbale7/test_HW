@@ -49,7 +49,7 @@ export function validatePost(data: Partial<AdminPost>): Record<string, string> {
     arm: data.arm ?? undefined,
     type: data.type ?? undefined,
     source_url: (data.source_url && data.source_url !== '') ? data.source_url : null,
-    author_id: (data.author_id && data.author_id !== '') ? data.author_id : null,
+    author_id: (data.author_id && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(data.author_id)) ? data.author_id : null,
     seo_title: data.seo_title ?? null,
     seo_description: data.seo_description ?? null,
     status: data.status ?? 'draft',
