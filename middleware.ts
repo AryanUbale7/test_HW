@@ -18,7 +18,10 @@ export async function middleware(request: NextRequest) {
     // If they access the root subdomain (admin.honworth.in/), redirect to dashboard or login
     if (pathname === '/') {
       const token = request.cookies.get('admin_session')?.value;
-      const secret = process.env.SESSION_SECRET || 'fallback-secret-key-12345';
+      const secret = process.env.SESSION_SECRET;
+      if (!secret) {
+        throw new Error('CRITICAL CONFIGURATION ERROR: SESSION_SECRET environment variable is missing.');
+      }
       const user = token ? await verifySession(token, secret) : null;
 
       const redirectUrl = request.nextUrl.clone();
@@ -33,7 +36,10 @@ export async function middleware(request: NextRequest) {
     // Protect /admin routes on the subdomain
     if (pathname.startsWith('/admin')) {
       const token = request.cookies.get('admin_session')?.value;
-      const secret = process.env.SESSION_SECRET || 'fallback-secret-key-12345';
+      const secret = process.env.SESSION_SECRET;
+      if (!secret) {
+        throw new Error('CRITICAL CONFIGURATION ERROR: SESSION_SECRET environment variable is missing.');
+      }
       const user = token ? await verifySession(token, secret) : null;
 
       const isLoginRoute = pathname === '/admin/login';

@@ -73,18 +73,22 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
 
   const handleDelete = async () => {
     if (!post?.id) return
-    setDeleting(true)
-    await deletePost(post.id)
+    try {
+      setDeleting(true)
+      await deletePost(post.id)
+    } catch (err) {
+      console.error('Failed to delete post:', err)
+      setDeleting(false)
+    }
   }
 
   const errors = state.errors || {}
 
   return (
     <form action={formAction} className="space-y-8">
-      {/* Hidden fields for body, cover_image_url, status */}
+      {/* Hidden fields for body, cover_image_url */}
       <input type="hidden" name="body" value={body} />
       <input type="hidden" name="cover_image_url" value={coverUrl} />
-      <input type="hidden" id="post-status-input" name="status" value={status} />
 
       {/* Success banner */}
       {showSuccess && (
@@ -149,13 +153,13 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
           {/* Draft button */}
           <button
             type="submit"
+            name="status"
+            value="draft"
             onClick={() => {
-              const input = document.getElementById('post-status-input') as HTMLInputElement;
-              if (input) input.value = 'draft';
               setStatus('draft');
             }}
             disabled={isPending || imageUploading}
-            className="flex items-center gap-1.5 border border-slate-355 text-slate-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-slate-50 hover:border-slate-400 disabled:opacity-50 transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 border border-slate-300 text-slate-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-slate-50 hover:border-slate-400 disabled:opacity-50 transition-colors cursor-pointer"
           >
             {isPending && status === 'draft' ? (
               <Loader2 size={14} className="animate-spin" />
@@ -168,9 +172,9 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
           {/* Publish/Update button */}
           <button
             type="submit"
+            name="status"
+            value="published"
             onClick={() => {
-              const input = document.getElementById('post-status-input') as HTMLInputElement;
-              if (input) input.value = 'published';
               setStatus('published');
             }}
             disabled={isPending || imageUploading}

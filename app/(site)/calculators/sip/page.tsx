@@ -7,6 +7,17 @@ export const metadata: Metadata = {
   title: 'SIP Calculator | Honworth',
   description: 'Free illustrative SIP calculator — estimate how a monthly investment could grow over time. Not a guarantee of returns.',
   alternates: { canonical: 'https://honworth.in/calculators/sip' },
+  openGraph: {
+    title: 'SIP Calculator | Honworth',
+    description: 'Free illustrative SIP calculator — estimate how a monthly investment could grow over time. Not a guarantee of returns.',
+    url: 'https://honworth.in/calculators/sip',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SIP Calculator | Honworth',
+    description: 'Free illustrative SIP calculator — estimate how a monthly investment could grow over time. Not a guarantee of returns.',
+  },
 };
 
 const schema = {

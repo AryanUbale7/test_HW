@@ -28,7 +28,7 @@ export function GlossaryIndex({ terms }: { terms: GlossaryTerm[] }) {
   const grouped = useMemo(() => {
     const map: Record<string, GlossaryTerm[]> = {};
     for (const t of filtered) {
-      const letter = t.term[0].toUpperCase();
+      const letter = (t.term?.[0] || '?').toUpperCase();
       if (!map[letter]) map[letter] = [];
       map[letter].push(t);
     }

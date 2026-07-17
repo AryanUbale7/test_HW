@@ -309,7 +309,7 @@ export async function getAdminPostBySlug(slug: string): Promise<any> {
  */
 export async function getPrimaryAuthor(): Promise<any | null> {
   try {
-    const rows = await query<any[]>("SELECT name, bio, photo_url, credentials FROM authors LIMIT 1");
+    const rows = await query<any[]>("SELECT name, bio, photo_url, credentials FROM authors ORDER BY created_at ASC LIMIT 1");
     if (rows.length === 0) return null;
     
     const row = rows[0];

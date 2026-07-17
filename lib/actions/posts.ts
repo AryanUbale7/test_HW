@@ -2,11 +2,11 @@
 
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { verifyAdminSession } from '@/lib/supabase/auth-check';
+import { verifyAdminSession } from '@/lib/auth-check';
 import { validatePost } from '@/lib/validations/post';
 import { sanitizeRichText } from '@/lib/utils/sanitize';
 import { validateUploadedFile } from '@/lib/utils/magicBytes';
-import { writeAuditLog } from '@/lib/supabase/audit';
+import { writeAuditLog } from '@/lib/audit';
 import { query } from '@/lib/mysql';
 import crypto from 'crypto';
 import { promises as fs } from 'fs';

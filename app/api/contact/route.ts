@@ -7,7 +7,8 @@ import crypto from 'crypto';
 export async function POST(request: Request) {
   try {
     // 1. Rate Limiting check
-    const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || '127.0.0.1';
+    const rawIp = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || '127.0.0.1';
+    const ip = rawIp.split(',')[0].trim();
     const rateLimitResult = await checkRateLimit(ip, contactFormLimiter);
 
     if (!rateLimitResult.allowed) {
@@ -51,12 +52,12 @@ export async function POST(request: Request) {
     const emailHtml = `
       <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; rounded-md;">
         <h2 style="color: #1e3e30; border-b: 1px solid #e2e8f0; pb: 10px;">New Contact Inquiry</h2>
-        <p><strong>Name:</strong> ${fullName}</p>
-        <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-        <p><strong>Inquiry Type:</strong> ${inquiryType || 'General Inquiry'}</p>
+        <p><strong>Name:</strong> ${escapeHtml(fullName)}</p>
+        <p><strong>Email:</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
+        <p><strong>Phone:</strong> ${escapeHtml(phone || 'Not provided')}</p>
+        <p><strong>Inquiry Type:</strong> ${escapeHtml(inquiryType || 'General Inquiry')}</p>
         <p style="margin-top: 20px;"><strong>Message:</strong></p>
-        <div style="background-color: #f8fafc; padding: 15px; border-radius: 4px; border: 1px solid #e2e8f0; white-space: pre-wrap;">${message}</div>
+        <div style="background-color: #f8fafc; padding: 15px; border-radius: 4px; border: 1px solid #e2e8f0; white-space: pre-wrap;">${escapeHtml(message)}</div>
       </div>
     `;
 
@@ -78,4 +79,14 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
+}
+
+function escapeHtml(str: string): string {
+  if (!str) return '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }

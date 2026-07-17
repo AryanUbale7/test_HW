@@ -1,16 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
 import { 
-  FileText, FolderOpen, HelpCircle, Mail, Send, BookA, 
-  PlusCircle, FolderPlus, Inbox, ArrowRight, Loader2, Clock, User
+  FileText, FolderOpen, HelpCircle, Mail, Send, 
+  PlusCircle, FolderPlus, Inbox, Clock, User
 } from 'lucide-react'
 import { getPostsCount, getRecentPublicationsCount } from '@/lib/queries/posts'
 import { getResourcesCount } from '@/lib/queries/resources'
 import { getFaqsCount } from '@/lib/queries/faqs'
-import { getGlossaryTermsCount } from '@/lib/queries/glossary'
 import { getUnreadLeadsCount, getRecentLeadsCount } from '@/lib/queries/contact'
 import { getSubscribersCount, getRecentSubscribersCount } from '@/lib/queries/newsletter'
-import { getRecentAuditLogs } from '@/lib/supabase/audit'
+import { getRecentAuditLogs } from '@/lib/audit'
 
 export const dynamic = 'force-dynamic'
 
@@ -146,9 +145,6 @@ export default async function AdminDashboardPage() {
     },
   ]
 
-  const audienceStats = stats.filter(s => s.name === 'Unread Leads' || s.name === 'Subscribers')
-  const contentStats = stats.filter(s => s.name !== 'Unread Leads' && s.name !== 'Subscribers')
-
   return (
     <div className="space-y-8 pb-10">
       
@@ -191,7 +187,7 @@ export default async function AdminDashboardPage() {
                 <Inbox size={16} className="text-gold" />
                 View Leads
                 {unreadLeads > 0 && (
-                  <span className="absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-red-650 text-[10px] font-bold text-white shadow-sm ring-2 ring-white">
+                  <span className="absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[10px] font-bold text-white shadow-sm ring-2 ring-white">
                     {unreadLeads}
                   </span>
                 )}

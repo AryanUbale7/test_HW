@@ -14,10 +14,9 @@ export async function sendEmail({
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
 
-  // If credentials are not configured, log to console instead of throwing an error
   if (!host || !user || !pass) {
     console.warn('SMTP credentials are not fully configured in environment variables.');
-    console.log(`Sending Mock Email to ${to}:\nSubject: ${subject}\nBody:\n${html}`);
+    console.log(`Sending Mock Email to ${to}:\nSubject: ${subject}\n[Body content omitted in logs for privacy]`);
     return { mockSent: true };
   }
 

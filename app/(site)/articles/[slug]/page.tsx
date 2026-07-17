@@ -10,6 +10,7 @@ import { autoLinkGlossary } from '@/lib/utils/autoLinkGlossary';
 import { generateTocAndInjectIds } from '@/lib/utils/toc';
 import { formatDate } from '@/lib/utils/formatDate';
 import { ArticleCard } from '@/components/sections/ArticleCard';
+import { Post } from '@/types/post';
 
 export const revalidate = 60;
 
@@ -157,7 +158,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
           </h1>
           
           <div className="flex justify-center items-center gap-4 text-sm font-sans text-[#CBA32E] font-medium">
-            <time>
+            <time dateTime={post.publishedAt ? new Date(post.publishedAt).toISOString() : undefined}>
               {post.publishedAt ? formatDate(post.publishedAt, { year: 'numeric', month: 'long', day: 'numeric' }) : 'Draft'}
             </time>
           </div>
@@ -194,7 +195,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
         {/* Table of Contents for Guides */}
         {post.type === 'Guide' && headings.length > 0 && (
           <nav className="mb-12 p-6 bg-sage-mist/10 border border-sage/20 rounded-sm" aria-label="Table of Contents">
-            <h2 className="font-serif text-lg text-deep-green font-semibold mb-4 uppercase tracking-wider text-xs">Table of Contents</h2>
+            <h2 className="font-serif text-deep-green font-semibold mb-4 uppercase tracking-wider text-xs">Table of Contents</h2>
             <ul className="space-y-2.5 font-sans text-sm text-charcoal/90">
               {headings.map((heading) => (
                 <li key={heading.id}>
@@ -258,15 +259,15 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-serif text-deep-green mb-8 md:mb-12 text-center">Related Insights</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {relatedPosts.map((rel: any) => (
+              {relatedPosts.map((rel: Post) => (
                 <ArticleCard 
                   key={rel.slug}
                   title={rel.title}
-                  excerpt={rel.excerpt}
-                  date={formatDate(rel.publishedAt, { year: 'numeric', month: 'long', day: 'numeric' })}
+                  excerpt={rel.excerpt || ''}
+                  date={rel.publishedAt ? formatDate(rel.publishedAt, { year: 'numeric', month: 'long', day: 'numeric' }) : 'Draft'}
                   category={rel.arm || 'General'}
                   href={`/articles/${rel.slug}`}
-                  thumbnailUrl={rel.thumbnailUrl}
+                  thumbnailUrl={rel.thumbnailUrl || undefined}
                 />
               ))}
             </div>

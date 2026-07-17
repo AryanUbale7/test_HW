@@ -55,6 +55,20 @@ export async function signSession(payload: Record<string, any>, secret: string):
 }
 
 /**
+ * Constant-time string comparison helper to prevent timing attacks.
+ */
+function timingSafeEqual(a: string, b: string): boolean {
+  if (a.length !== b.length) {
+    return false;
+  }
+  let result = 0;
+  for (let i = 0; i < a.length; i++) {
+    result |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  }
+  return result === 0;
+}
+
+/**
  * Verify and decode a session token. Returns payload if valid, else null.
  */
 export async function verifySession(token: string, secret: string): Promise<any | null> {
@@ -64,7 +78,7 @@ export async function verifySession(token: string, secret: string): Promise<any 
     const [header, body, signature] = parts;
 
     const expectedSignature = await generateSignature(`${header}.${body}`, secret);
-    if (signature !== expectedSignature) return null;
+    if (!timingSafeEqual(signature, expectedSignature)) return null;
 
     const decodedBody = JSON.parse(base64urlDecode(body));
 

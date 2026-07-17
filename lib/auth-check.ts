@@ -9,7 +9,10 @@ import { verifySession } from '@/lib/session';
 export async function verifyAdminSession(): Promise<{ email: string; id: string }> {
   const cookieStore = await cookies();
   const token = cookieStore.get('admin_session')?.value;
-  const secret = process.env.SESSION_SECRET || 'fallback-secret-key-12345';
+  const secret = process.env.SESSION_SECRET;
+  if (!secret) {
+    throw new Error('CRITICAL CONFIGURATION ERROR: SESSION_SECRET environment variable is missing.');
+  }
 
   if (!token) {
     throw new Error('Unauthorized access. Session invalid or expired.');

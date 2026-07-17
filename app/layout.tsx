@@ -20,8 +20,24 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://honworth.in'),
-  title: "Honworth",
-  description: "Premium wealth-advisory brochure + blog site",
+  title: {
+    default: "Honworth",
+    template: "%s | Honworth"
+  },
+  description: "Bespoke wealth management, risk protection, and legacy structuring for high-net-worth families.",
+  openGraph: {
+    title: "Honworth",
+    description: "Bespoke wealth management, risk protection, and legacy structuring for high-net-worth families.",
+    url: 'https://honworth.in',
+    siteName: 'Honworth',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Honworth",
+    description: "Bespoke wealth management, risk protection, and legacy structuring for high-net-worth families.",
+  },
 };
 
 export default function RootLayout({

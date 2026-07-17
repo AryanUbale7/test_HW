@@ -7,7 +7,8 @@ import crypto from 'crypto';
 export async function POST(request: Request) {
   try {
     // Rate Limiting check (max 10 signups per 10 mins)
-    const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || '127.0.0.1';
+    const rawIp = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || '127.0.0.1';
+    const ip = rawIp.split(',')[0].trim();
     const rateLimitResult = await checkRateLimit(ip, newsletterLimiter);
 
     if (!rateLimitResult.allowed) {
@@ -76,8 +77,8 @@ export async function POST(request: Request) {
     const adminNotificationHtml = `
       <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 6px;">
         <h3 style="color: #1e3e30; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-top: 0;">New Newsletter Signup</h3>
-        <p><strong>Email Address:</strong> <a href="mailto:${email}">${email}</a></p>
-        <p><strong>Source:</strong> ${source || 'Website Sidebar/Footer'}</p>
+        <p><strong>Email Address:</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
+        <p><strong>Source:</strong> ${escapeHtml(source || 'Website Sidebar/Footer')}</p>
         <p><strong>Signed Up At:</strong> ${new Date().toLocaleString()}</p>
       </div>
     `;
@@ -110,4 +111,14 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
+}
+
+function escapeHtml(str: string): string {
+  if (!str) return '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }

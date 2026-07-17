@@ -1,10 +1,8 @@
 import React, { Suspense } from 'react';
-import Link from 'next/link';
 import { Metadata } from 'next';
 import { getPosts } from '@/lib/queries/posts';
 import { IntroStrip } from '@/components/sections/IntroStrip';
 import { ArticlesFeed } from '@/components/sections/ArticlesFeed';
-import { SidebarNewsletter } from '@/components/sections/SidebarNewsletter';
 
 export const revalidate = 60;
 
@@ -14,6 +12,19 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://honworth.in',
   },
+  openGraph: {
+    title: 'Honworth | Wealth Creation, Protection & Legacy Planning',
+    description: 'We help high-net-worth families, professionals, and business owners architect robust financial strategies. Welcome to our journal.',
+    url: 'https://honworth.in',
+    siteName: 'Honworth',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Honworth | Wealth Creation, Protection & Legacy Planning',
+    description: 'We help high-net-worth families, professionals, and business owners architect robust financial strategies. Welcome to our journal.',
+  },
 };
 
 export default async function HomePage() {
@@ -22,10 +33,27 @@ export default async function HomePage() {
 
   const websiteSchema = {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Honworth",
-    "url": "https://honworth.in",
-    "description": "We help high-net-worth families, professionals, and business owners architect robust financial strategies."
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://honworth.in/#website",
+        "name": "Honworth",
+        "url": "https://honworth.in",
+        "description": "We help high-net-worth families, professionals, and business owners architect robust financial strategies."
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://honworth.in/#service",
+        "name": "Honworth Wealth Advisory",
+        "url": "https://honworth.in",
+        "image": "https://honworth.in/logo.png",
+        "description": "Bespoke wealth management, risk protection, and legacy structuring for high-net-worth families.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "IN"
+        }
+      }
+    ]
   };
 
   return (
@@ -37,14 +65,14 @@ export default async function HomePage() {
       <h1 className="sr-only">Honworth | Wealth Creation, Protection & Legacy Planning</h1>
       <IntroStrip />
 
-      <main id="articles" className="max-w-4xl mx-auto px-6 md:px-12 lg:px-16 pt-7 pb-12 md:py-16 scroll-mt-32">
+      <div id="articles" className="max-w-4xl mx-auto px-6 md:px-12 lg:px-16 pt-7 pb-12 md:py-16 scroll-mt-32">
         <Suspense fallback={<div className="h-64 flex items-center justify-center font-sans text-charcoal/50">Loading articles...</div>}>
           <ArticlesFeed 
             initialPosts={posts || []} 
             basePath="/" 
           />
         </Suspense>
-      </main>
+      </div>
     </div>
   );
 }

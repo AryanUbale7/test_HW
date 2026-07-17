@@ -9,6 +9,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://honworth.in/my-story',
   },
+  openGraph: {
+    title: 'My Story | Honworth',
+    description: 'Learn about the journey of Honworth, APEX financials transition, our core philosophy of Honour and Worth, and credentials as an AMFI registered distributor.',
+    url: 'https://honworth.in/my-story',
+    type: 'profile',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'My Story | Honworth',
+    description: 'Learn about the journey of Honworth, APEX financials transition, our core philosophy of Honour and Worth, and credentials as an AMFI registered distributor.',
+  },
 };
 
 export default function MyStoryPage() {
@@ -44,6 +55,7 @@ export default function MyStoryPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
+      <h1 className="sr-only">My Story & Journey | Honworth</h1>
       <article className="max-w-3xl mx-auto px-6 md:px-8 pt-10 md:pt-16 pb-6 md:pb-8">
         <div className="w-full">
 

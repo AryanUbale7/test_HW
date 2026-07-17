@@ -10,6 +10,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://honworth.in/reach-me',
   },
+  openGraph: {
+    title: 'Reach Me | Honworth',
+    description: 'Start a conversation with Honworth. Book a discovery call via Calendly, submit our contact form, or connect via WhatsApp.',
+    url: 'https://honworth.in/reach-me',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Reach Me | Honworth',
+    description: 'Start a conversation with Honworth. Book a discovery call via Calendly, submit our contact form, or connect via WhatsApp.',
+  },
 };
 
 export default function ReachMePage() {

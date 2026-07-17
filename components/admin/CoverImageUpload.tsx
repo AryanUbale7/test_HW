@@ -60,8 +60,7 @@ export function CoverImageUpload({ value, onChange, onUploadingChange }: CoverIm
       const ext = originalFileName.split('.').pop() || 'jpg'
       const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 8)}.${ext}`
 
-      // Convert Blob to File
-      const fileToUpload = new File([croppedImageBlob], fileName, { type: 'image/jpeg' })
+      const fileToUpload = new File([croppedImageBlob], fileName, { type: croppedImageBlob.type })
       const formData = new FormData()
       formData.append('file', fileToUpload)
 

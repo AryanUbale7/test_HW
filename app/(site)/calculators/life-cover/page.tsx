@@ -7,6 +7,17 @@ export const metadata: Metadata = {
   title: 'Life Cover Estimator | Honworth',
   description: 'Free illustrative life cover estimator — get a rough sense of how much term insurance cover your family might need. Not personalised advice.',
   alternates: { canonical: 'https://honworth.in/calculators/life-cover' },
+  openGraph: {
+    title: 'Life Cover Estimator | Honworth',
+    description: 'Free illustrative life cover estimator — get a rough sense of how much term insurance cover your family might need. Not personalised advice.',
+    url: 'https://honworth.in/calculators/life-cover',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Life Cover Estimator | Honworth',
+    description: 'Free illustrative life cover estimator — get a rough sense of how much term insurance cover your family might need. Not personalised advice.',
+  },
 };
 
 const schema = {

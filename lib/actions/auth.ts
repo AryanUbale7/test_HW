@@ -62,7 +62,10 @@ export async function login(prevState: any, formData: FormData) {
     await resetFailedLogin(ip)
 
     // Sign session token
-    const secret = process.env.SESSION_SECRET || 'fallback-secret-key-12345'
+    const secret = process.env.SESSION_SECRET;
+    if (!secret) {
+      throw new Error('CRITICAL CONFIGURATION ERROR: SESSION_SECRET environment variable is missing.');
+    }
     const exp = Date.now() + 24 * 60 * 60 * 1000 // 1 day
     const token = await signSession({ id: admin.id, email: admin.email, exp }, secret)
 
@@ -73,7 +76,7 @@ export async function login(prevState: any, formData: FormData) {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       path: '/',
-      expires: exp,
+      expires: new Date(exp),
     })
 
     // Send security notification email (non-blocking)
