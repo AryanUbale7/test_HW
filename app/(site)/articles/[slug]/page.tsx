@@ -137,7 +137,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
   };
 
   return (
-    <div className="bg-ivory min-h-screen">
+    <div className="bg-ivory pb-8 md:pb-16">
       {/* Dynamic JSON-LD Schemas */}
       <script
         type="application/ld+json"
