@@ -20,7 +20,6 @@ export function AdminSidebar() {
     { name: 'Posts', href: '/admin/posts', icon: FileText },
     { name: 'Resources', href: '/admin/resources', icon: FolderOpen },
     { name: 'FAQs', href: '/admin/faqs', icon: HelpCircle },
-    { name: 'Glossary', href: '/admin/glossary', icon: BookOpen },
     { name: 'Leads', href: '/admin/leads', icon: Mail },
     { name: 'Newsletter', href: '/admin/newsletter', icon: Send },
   ]

@@ -70,7 +70,6 @@ export default async function AdminDashboardPage() {
     recentPublications,
     resources,
     faqs,
-    glossaryTerms,
     unreadLeads,
     recentLeadsCount,
     subscribers,
@@ -82,7 +81,6 @@ export default async function AdminDashboardPage() {
     getRecentPublicationsCount(),
     getResourcesCount(),
     getFaqsCount(),
-    getGlossaryTermsCount(),
     getUnreadLeadsCount(),
     getRecentLeadsCount(),
     getSubscribersCount(),
@@ -145,14 +143,6 @@ export default async function AdminDashboardPage() {
       color: 'text-purple-700', 
       bg: 'bg-purple-50',
       borderClass: 'border-l-4 border-l-purple-600'
-    },
-    { 
-      name: 'Glossary Terms', 
-      value: glossaryTerms, 
-      icon: BookA, 
-      color: 'text-teal-700', 
-      bg: 'bg-teal-50',
-      borderClass: 'border-l-4 border-l-teal-600'
     },
   ]
 
@@ -246,7 +236,7 @@ export default async function AdminDashboardPage() {
       {/* Content Statistics Section */}
       <div className="space-y-4">
         <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400">Content Statistics</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {contentStats.map((stat) => {
             const Icon = stat.icon
             return (
