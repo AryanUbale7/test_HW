@@ -81,10 +81,9 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
 
   return (
     <form action={formAction} className="space-y-8">
-      {/* Hidden fields for body, cover_image_url, status */}
+      {/* Hidden fields for body, cover_image_url */}
       <input type="hidden" name="body" value={body} />
       <input type="hidden" name="cover_image_url" value={coverUrl} />
-      <input type="hidden" name="status" value={status} />
 
       {/* Success banner */}
       {showSuccess && (
@@ -149,9 +148,11 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
           {/* Draft button */}
           <button
             type="submit"
+            name="status"
+            value="draft"
             onClick={() => setStatus('draft')}
             disabled={isPending || imageUploading}
-            className="flex items-center gap-1.5 border border-slate-350 text-slate-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-slate-50 hover:border-slate-400 disabled:opacity-50 transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 border border-slate-355 text-slate-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-slate-50 hover:border-slate-400 disabled:opacity-50 transition-colors cursor-pointer"
           >
             {isPending && status === 'draft' ? (
               <Loader2 size={14} className="animate-spin" />
@@ -164,6 +165,8 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
           {/* Publish/Update button */}
           <button
             type="submit"
+            name="status"
+            value="published"
             onClick={() => setStatus('published')}
             disabled={isPending || imageUploading}
             className="flex items-center gap-1.5 bg-blue-600 text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-blue-700 disabled:opacity-50 transition-colors cursor-pointer shadow-sm"
