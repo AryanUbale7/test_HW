@@ -7,7 +7,7 @@ import { FaqAccordion } from '@/components/sections/FaqAccordion';
 import { getResources } from '@/lib/queries/resources';
 import { getFaqs } from '@/lib/queries/faqs';
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'My Library | Honworth',
