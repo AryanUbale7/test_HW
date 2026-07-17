@@ -97,13 +97,7 @@ export async function login(prevState: any, formData: FormData) {
     }).catch(err => console.error('Failed to send login notification email:', err))
 
     // Redirect to dashboard
-    const host = (await headers()).get('host') || ''
-    const isAdminSubdomain = host === 'admin.honworth.in' || host.startsWith('admin.')
-    if (isAdminSubdomain) {
-      redirect('/dashboard')
-    } else {
-      redirect('/admin/dashboard')
-    }
+    redirect('/admin/dashboard')
   } catch (err: any) {
     if (err && err.message === 'NEXT_REDIRECT') {
       throw err
@@ -123,11 +117,5 @@ export async function logout() {
   } catch (err) {
     console.error('Signout failed:', err)
   }
-  const host = (await headers()).get('host') || ''
-  const isAdminSubdomain = host === 'admin.honworth.in' || host.startsWith('admin.')
-  if (isAdminSubdomain) {
-    redirect('/')
-  } else {
-    redirect('/admin/login')
-  }
+  redirect('/admin/login')
 }

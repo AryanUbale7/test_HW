@@ -5,7 +5,6 @@ export async function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
   const host = request.headers.get('host') || '';
   const pathname = url.pathname;
-  const isRewritten = url.searchParams.get('rewritten') === 'true';
 
   // 1. Canonical Redirect: www.honworth.in to honworth.in
   if (host === 'www.honworth.in') {
@@ -16,47 +15,47 @@ export async function middleware(request: NextRequest) {
   const isAdminSubdomain = host === 'admin.honworth.in' || host.startsWith('admin.');
 
   if (isAdminSubdomain) {
-    // If it's an admin path and NOT internally rewritten, redirect to clean subdomain URL
-    if (pathname.startsWith('/admin') && !isRewritten) {
-      const cleanPath = pathname.replace(/^\/admin/, '') || '/';
-      return NextResponse.redirect(`https://${host}${cleanPath}${url.search}`);
-    }
+    // If they access the root subdomain (admin.honworth.in/), redirect to dashboard or login
+    if (pathname === '/') {
+      const token = request.cookies.get('admin_session')?.value;
+      const secret = process.env.SESSION_SECRET || 'fallback-secret-key-12345';
+      const user = token ? await verifySession(token, secret) : null;
 
-    // Authenticate session for the admin subdomain
-    const token = request.cookies.get('admin_session')?.value;
-    const secret = process.env.SESSION_SECRET || 'fallback-secret-key-12345';
-    const user = token ? await verifySession(token, secret) : null;
-
-    const isLoginPage = pathname === '/login' || pathname === '/';
-
-    if (!user && !isLoginPage && !isRewritten) {
-      // Not logged in, redirect to login page (subdomain root)
       const redirectUrl = request.nextUrl.clone();
-      redirectUrl.pathname = '/';
+      if (user) {
+        redirectUrl.pathname = '/admin/dashboard';
+      } else {
+        redirectUrl.pathname = '/admin/login';
+      }
       return NextResponse.redirect(redirectUrl);
     }
 
-    if (user && isLoginPage && !isRewritten) {
-      // Logged in, redirect to dashboard
-      const redirectUrl = request.nextUrl.clone();
-      redirectUrl.pathname = '/dashboard';
-      return NextResponse.redirect(redirectUrl);
-    }
+    // Protect /admin routes on the subdomain
+    if (pathname.startsWith('/admin')) {
+      const token = request.cookies.get('admin_session')?.value;
+      const secret = process.env.SESSION_SECRET || 'fallback-secret-key-12345';
+      const user = token ? await verifySession(token, secret) : null;
 
-    // Rewrite internally: E.g., admin.honworth.in/dashboard -> /admin/dashboard
-    if (!isRewritten) {
-      const targetPath = pathname === '/' ? '/admin' : `/admin${pathname}`;
-      const rewriteUrl = new URL(targetPath, request.url);
-      rewriteUrl.searchParams.set('rewritten', 'true');
-      return NextResponse.rewrite(rewriteUrl);
+      const isLoginRoute = pathname === '/admin/login';
+
+      if (!user && !isLoginRoute) {
+        const redirectUrl = request.nextUrl.clone();
+        redirectUrl.pathname = '/admin/login';
+        return NextResponse.redirect(redirectUrl);
+      }
+
+      if (user && isLoginRoute) {
+        const redirectUrl = request.nextUrl.clone();
+        redirectUrl.pathname = '/admin/dashboard';
+        return NextResponse.redirect(redirectUrl);
+      }
     }
   } else {
     // Main domain: honworth.in
-    // If trying to access /admin paths on main domain, redirect to subdomain
-    if (pathname.startsWith('/admin') && !isRewritten) {
-      const cleanPath = pathname.replace(/^\/admin/, '') || '/';
+    // If they try to access /admin paths on the main domain, redirect them to the subdomain
+    if (pathname.startsWith('/admin')) {
       const adminHost = host.includes('localhost') ? 'admin.localhost:3000' : 'admin.honworth.in';
-      return NextResponse.redirect(`https://${adminHost}${cleanPath}${url.search}`);
+      return NextResponse.redirect(`https://${adminHost}${pathname}${url.search}`);
     }
   }
 
