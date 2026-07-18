@@ -1,41 +1,19 @@
 'use client'
 
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 
-interface TimeLeft {
-  days: number
-  hours: number
-  minutes: number
-  seconds: number
-}
-
-function calculateTimeLeft(targetDate: string): TimeLeft {
-  const diff = new Date(targetDate).getTime() - Date.now()
-  if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 }
-  return {
-    days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-    hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-    minutes: Math.floor((diff / (1000 * 60)) % 60),
-    seconds: Math.floor((diff / 1000) % 60),
-  }
-}
-
 export default function ComingSoonPage() {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-  const [launchDate, setLaunchDate] = useState<string | null>(null)
-  const [siteMode, setSiteMode] = useState<string>('coming_soon')
   const [mounted, setMounted] = useState(false)
-  const intervalRef = useRef<NodeJS.Timeout | null>(null)
+  const [siteMode, setSiteMode] = useState<string>('coming_soon')
 
   const fetchSettings = useCallback(async () => {
     try {
       const res = await fetch('/api/site-settings', { cache: 'no-store' })
       const data = await res.json()
       setSiteMode(data.siteMode)
-      setLaunchDate(data.launchDate)
     } catch {
-      // fallback - stay on coming soon
+      // fallback
     }
   }, [])
 
@@ -47,30 +25,14 @@ export default function ComingSoonPage() {
   useEffect(() => {
     if (siteMode === 'live') {
       window.location.href = '/'
-      return
     }
-    if (!launchDate) return
+  }, [siteMode])
 
-    const tick = () => {
-      const tl = calculateTimeLeft(launchDate)
-      setTimeLeft(tl)
-      if (tl.days === 0 && tl.hours === 0 && tl.minutes === 0 && tl.seconds === 0) {
-        // Countdown reached zero - check server
-        fetchSettings()
-      }
-    }
-    tick()
-    intervalRef.current = setInterval(tick, 1000)
-    return () => { if (intervalRef.current) clearInterval(intervalRef.current) }
-  }, [launchDate, siteMode, fetchSettings])
-
-  // Also poll server every 30 seconds for admin changes
+  // Poll server every 30 seconds to check if site goes live
   useEffect(() => {
     const poll = setInterval(fetchSettings, 30000)
     return () => clearInterval(poll)
   }, [fetchSettings])
-
-  const pad = (n: number) => String(n).padStart(2, '0')
 
   return (
     <div className="min-h-screen bg-[#0A1A0F] relative overflow-hidden flex flex-col items-center justify-center px-4">
@@ -106,47 +68,13 @@ export default function ComingSoonPage() {
 
         {/* Heading */}
         <div className="space-y-4 mb-12">
-          <p className="text-[#CBA32E] text-xs font-semibold tracking-[0.35em] uppercase">
-            Something Extraordinary Is Coming
-          </p>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif text-white font-bold leading-tight tracking-tight">
-            We&apos;re Crafting
-            <br />
-            <span className="bg-gradient-to-r from-[#CBA32E] via-[#E5C76B] to-[#CBA32E] bg-clip-text text-transparent">
-              Your Future
-            </span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white font-medium leading-tight tracking-tight max-w-lg mx-auto">
+            Some things are worth building slowly.
           </h1>
-          <p className="text-white/50 text-sm sm:text-base max-w-md mx-auto leading-relaxed font-sans">
-            A premium wealth advisory experience designed with honour and worth.
-            Our platform launches soon.
+          <p className="text-[#CBA32E] text-xs sm:text-sm font-semibold tracking-[0.35em] uppercase mt-6">
+            Coming Soon
           </p>
         </div>
-
-        {/* Countdown */}
-        {launchDate && (
-          <div className="mb-14">
-            <div className="grid grid-cols-4 gap-3 sm:gap-5 max-w-lg mx-auto">
-              {[
-                { value: timeLeft.days, label: 'Days' },
-                { value: timeLeft.hours, label: 'Hours' },
-                { value: timeLeft.minutes, label: 'Minutes' },
-                { value: timeLeft.seconds, label: 'Seconds' },
-              ].map((unit) => (
-                <div key={unit.label} className="group">
-                  <div className="relative bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-xl p-4 sm:p-5 hover:border-[#CBA32E]/30 transition-all duration-500">
-                    <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent rounded-xl" />
-                    <span className="relative block text-3xl sm:text-4xl md:text-5xl font-bold text-white font-serif tabular-nums">
-                      {pad(unit.value)}
-                    </span>
-                  </div>
-                  <span className="block text-[10px] sm:text-xs text-white/40 uppercase tracking-widest mt-2 font-sans font-medium">
-                    {unit.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* Divider */}
         <div className="flex items-center gap-3 mb-8 max-w-xs mx-auto">
