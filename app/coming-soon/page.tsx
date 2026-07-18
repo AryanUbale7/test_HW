@@ -67,7 +67,7 @@ export default function ComingSoonPage() {
         </div>
 
         {/* Heading */}
-        <div className="space-y-4 mb-12">
+        <div className="space-y-4">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white font-medium leading-tight tracking-tight max-w-lg mx-auto">
             Some things are worth building slowly.
           </h1>
@@ -75,28 +75,6 @@ export default function ComingSoonPage() {
             Coming Soon
           </p>
         </div>
-
-        {/* Divider */}
-        <div className="flex items-center gap-3 mb-8 max-w-xs mx-auto">
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent to-[#CBA32E]/30" />
-          <div className="h-1.5 w-1.5 rounded-full bg-[#CBA32E]/50" />
-          <div className="flex-1 h-px bg-gradient-to-l from-transparent to-[#CBA32E]/30" />
-        </div>
-
-        {/* Footer */}
-        <p className="text-white/20 text-[10px] uppercase tracking-[0.3em] font-sans">
-          © {new Date().getFullYear()} Honworth Wealth Advisory
-        </p>
-      </div>
-
-      {/* Animated corner accents */}
-      <div className="absolute top-0 left-0 w-32 h-32">
-        <div className="absolute top-6 left-6 w-12 h-px bg-gradient-to-r from-[#CBA32E]/30 to-transparent" />
-        <div className="absolute top-6 left-6 w-px h-12 bg-gradient-to-b from-[#CBA32E]/30 to-transparent" />
-      </div>
-      <div className="absolute bottom-0 right-0 w-32 h-32">
-        <div className="absolute bottom-6 right-6 w-12 h-px bg-gradient-to-l from-[#CBA32E]/30 to-transparent" />
-        <div className="absolute bottom-6 right-6 w-px h-12 bg-gradient-to-t from-[#CBA32E]/30 to-transparent" />
       </div>
     </div>
   )
