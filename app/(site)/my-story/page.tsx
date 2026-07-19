@@ -142,39 +142,45 @@ export default function MyStoryPage() {
 
             <h2 id="credentials" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-[#CBA32E] mr-2">04-</span> Credentials:</h2>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="flex flex-col justify-between h-full p-5 rounded-lg border border-sage/20 bg-white/50 shadow-sm hover:border-gold/30 hover:bg-white transition-all duration-300">
-                <div>
-                  <h3 className="font-serif font-bold text-deep-green text-base">Mutual Fund Distributor (MFD)</h3>
-                  <p className="text-xs text-charcoal/60 font-sans mt-0.5">AMFI Registered Mutual Fund Distributor</p>
-                </div>
-                <div className="mt-4">
-                  <span className="inline-block bg-sage-mist/60 text-gold font-mono font-bold px-3.5 py-1.5 rounded border border-sage/20 text-xs tracking-wider">
-                    ARN-336150
-                  </span>
+              <div>
+                <div className="flex flex-col justify-between h-full p-5 rounded-lg border border-sage/20 bg-white/50 shadow-sm hover:border-gold/30 hover:bg-white transition-all duration-300">
+                  <div>
+                    <h3 className="font-serif font-bold text-deep-green text-base">Mutual Fund Distributor (MFD)</h3>
+                    <p className="text-xs text-charcoal/60 font-sans mt-0.5">AMFI Registered Mutual Fund Distributor</p>
+                  </div>
+                  <div className="mt-4">
+                    <span className="inline-block bg-sage-mist/60 text-gold font-mono font-bold px-3.5 py-1.5 rounded border border-sage/20 text-xs tracking-wider">
+                      ARN-336150
+                    </span>
+                  </div>
                 </div>
               </div>
               
-              <div className="flex flex-col justify-between h-full p-5 rounded-lg border border-sage/20 bg-white/50 shadow-sm hover:border-gold/30 hover:bg-white transition-all duration-300">
-                <div>
-                  <h3 className="font-serif font-bold text-deep-green text-base">PMS Distributor</h3>
-                  <p className="text-xs text-charcoal/60 font-sans mt-0.5">PMS Distributor Certification (APMI)</p>
-                </div>
-                <div className="mt-4">
-                  <span className="inline-block bg-sage-mist/60 text-gold font-mono font-bold px-3.5 py-1.5 rounded border border-sage/20 text-xs tracking-wider">
-                    APRN07678
-                  </span>
+              <div>
+                <div className="flex flex-col justify-between h-full p-5 rounded-lg border border-sage/20 bg-white/50 shadow-sm hover:border-gold/30 hover:bg-white transition-all duration-300">
+                  <div>
+                    <h3 className="font-serif font-bold text-deep-green text-base">PMS Distributor</h3>
+                    <p className="text-xs text-charcoal/60 font-sans mt-0.5">PMS Distributor Certification (APMI)</p>
+                  </div>
+                  <div className="mt-4">
+                    <span className="inline-block bg-sage-mist/60 text-gold font-mono font-bold px-3.5 py-1.5 rounded border border-sage/20 text-xs tracking-wider">
+                      APRN07678
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              <div className="flex flex-col justify-between h-full p-5 rounded-lg border border-sage/20 bg-white/50 shadow-sm hover:border-gold/30 hover:bg-white transition-all duration-300">
-                <div>
-                  <h3 className="font-serif font-bold text-deep-green text-base">SIF Distributor</h3>
-                  <p className="text-xs text-charcoal/60 font-sans mt-0.5">SIF Distributor Certification</p>
-                </div>
-                <div className="mt-4">
-                  <span className="inline-block bg-sage-mist/60 text-gold font-mono font-bold px-3.5 py-1.5 rounded border border-sage/20 text-xs tracking-wider">
-                    ARN-336150
-                  </span>
+              <div>
+                <div className="flex flex-col justify-between h-full p-5 rounded-lg border border-sage/20 bg-white/50 shadow-sm hover:border-gold/30 hover:bg-white transition-all duration-300">
+                  <div>
+                    <h3 className="font-serif font-bold text-deep-green text-base">SIF Distributor</h3>
+                    <p className="text-xs text-charcoal/60 font-sans mt-0.5">SIF Distributor Certification</p>
+                  </div>
+                  <div className="mt-4">
+                    <span className="inline-block bg-sage-mist/60 text-gold font-mono font-bold px-3.5 py-1.5 rounded border border-sage/20 text-xs tracking-wider">
+                      ARN-336150
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
