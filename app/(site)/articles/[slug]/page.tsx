@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { getPostBySlug, getRelatedPosts, getAllPostSlugs } from '@/lib/queries/posts';
+import { getPostBySlug, getRelatedPosts, getAllPostSlugs, getPrimaryAuthor } from '@/lib/queries/posts';
 import { getGlossaryTermsList } from '@/lib/queries/glossary';
 import { autoLinkGlossary } from '@/lib/utils/autoLinkGlossary';
 import { generateTocAndInjectIds } from '@/lib/utils/toc';
@@ -63,11 +63,13 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
     notFound();
   }
 
-  // Fetch related posts and glossary terms in parallel (not sequentially)
-  const [relatedPosts, glossaryTermsList] = await Promise.all([
+  // Fetch related posts, glossary terms, and primary author in parallel
+  const [relatedPosts, glossaryTermsList, primaryAuthor] = await Promise.all([
     getRelatedPosts(post.slug, post.arm),
     getGlossaryTermsList(),
+    getPrimaryAuthor(),
   ]);
+  const author = post.author || primaryAuthor;
   const autoLinkedBody = post.body ? autoLinkGlossary(post.body, glossaryTermsList) : '';
   const { html: processedBody, headings } = generateTocAndInjectIds(autoLinkedBody);
 
@@ -218,12 +220,12 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
         </div>
 
         {/* Author Byline */}
-        {post.author && (
+        {author && (
           <div className="mt-12 pt-8 border-t border-sage/30 flex gap-5 items-start">
             <div className="relative w-20 h-20 shrink-0 rounded-xl overflow-hidden border border-sage/20 shadow-sm">
               <Image 
                 src="/profile.png" 
-                alt={post.author.name} 
+                alt={author.name} 
                 fill 
                 sizes="80px" 
                 className="object-cover object-top" 
@@ -231,14 +233,14 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
             </div>
             <div className="flex-1 min-w-0">
               <h3 className="font-serif text-xl font-bold text-deep-green leading-snug">
-                {post.author.name}
+                {author.name}
               </h3>
               <p className="font-sans text-base text-charcoal/90 leading-relaxed mt-2">
-                {post.author.bio}
+                {author.bio}
               </p>
-              {post.author.credentials && post.author.credentials.length > 0 && (
+              {author.credentials && author.credentials.length > 0 && (
                 <div className="flex flex-wrap gap-2.5 mt-4">
-                  {post.author.credentials.map((cred: string, idx: number) => (
+                  {author.credentials.map((cred: string, idx: number) => (
                     <span 
                       key={idx} 
                       className="px-3.5 py-1 text-xs font-sans font-medium text-charcoal bg-[#E8EFE6] border border-[#D0DDD0]/30 rounded-md"
