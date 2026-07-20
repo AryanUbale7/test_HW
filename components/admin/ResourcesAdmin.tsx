@@ -217,22 +217,27 @@ function ResourceForm({ resource, onCancel }: { resource: Resource | null; onCan
           />
         </div>
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-charcoal/60 mb-1">Downloadable PDF File</label>
-          {fileUrl ? (
-            <div className="flex items-center gap-3 p-3 bg-sage-mist/20 rounded-md border border-sage/20 w-fit text-sm">
-              <span className="text-gold font-medium truncate max-w-xs">{fileUrl.split('/').pop()}</span>
-              <button type="button" onClick={() => setFileUrl('')} className="text-red-500 hover:text-red-700 transition-colors" title="Remove"><X size={15} /></button>
-            </div>
-          ) : (
+          <label className="block text-xs font-bold uppercase tracking-wider text-charcoal/60 mb-1">Downloadable PDF Link / File *</label>
+          <div className="flex items-center gap-2">
+            <input 
+              name="file_url_input" 
+              value={fileUrl}
+              onChange={(e) => setFileUrl(e.target.value)}
+              placeholder="e.g. https://... or /resources/filename.pdf"
+              className="flex-grow px-3.5 py-2.5 border border-sage/30 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-gold focus:border-gold text-charcoal bg-[#FAF6EE]/10" 
+            />
             <button 
               type="button" 
               onClick={() => fileRef.current?.click()} 
               disabled={uploading}
-              className="flex items-center gap-2 px-4 py-2.5 border border-dashed border-sage/40 hover:border-gold hover:text-gold rounded-md text-sm text-charcoal/60 hover:bg-[#FAF6EE]/20 transition-all disabled:opacity-50 font-semibold"
+              className="flex items-center gap-2 px-3.5 py-2.5 border border-sage/30 hover:border-gold hover:text-gold rounded-md text-xs text-charcoal/70 bg-sage-mist/20 hover:bg-[#FAF6EE]/40 transition-all disabled:opacity-50 font-semibold shrink-0"
+              title="Upload file from computer"
             >
-              {uploading ? <><Loader2 size={15} className="animate-spin" /> Uploading…</> : <><Upload size={15} /> Choose File</>}
+              {uploading ? <Loader2 size={15} className="animate-spin" /> : <Upload size={15} />}
+              Upload
             </button>
-          )}
+          </div>
+          <p className="text-[11px] text-charcoal/50 mt-1">Paste a direct PDF URL (e.g., Google Drive / Supabase link) or click Upload to select a file.</p>
           <input ref={fileRef} type="file" accept=".pdf,.doc,.docx,.xls,.xlsx" className="hidden" onChange={handleFileUpload} />
         </div>
         <div className="flex items-center gap-3 pt-1">
