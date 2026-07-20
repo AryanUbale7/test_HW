@@ -18,8 +18,8 @@ const config: Config = {
         charcoal: "#36403B",
       },
       fontFamily: {
-        serif: ["var(--font-cormorant-garamond)", "serif"],
-        sans: ["var(--font-inter)", "sans-serif"],
+        serif: ["var(--font-kameron)", "serif"],
+        sans: ["var(--font-kameron)", "sans-serif"],
       },
     },
   },
