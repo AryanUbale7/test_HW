@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
-import { Kameron } from "next/font/google";
+import { Merriweather, Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
-const kameron = Kameron({
-  variable: "--font-kameron",
+const merriweather = Merriweather({
+  variable: "--font-merriweather",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "700"],
+  style: ["normal"],
+  display: "swap",
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
   display: "swap",
 });
 
@@ -45,7 +52,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
       </head>
       <body
-        className={`${kameron.variable} font-sans antialiased`}
+        className={`${merriweather.variable} ${inter.variable} font-sans antialiased`}
       >
         {children}
         <SpeedInsights />
