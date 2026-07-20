@@ -32,7 +32,7 @@ function SliderWithInput({
             type="text"
             inputMode="numeric"
             aria-label={label}
-            className="w-24 text-right border-b border-sage bg-transparent text-sm font-semibold text-deep-green focus:outline-none focus:border-gold py-0.5"
+            className="w-24 text-right border-b border-sage bg-transparent text-sm font-semibold text-deep-green focus:outline-none focus:border-black py-0.5"
             value={editing ? raw : value.toLocaleString('en-IN')}
             onFocus={() => { setEditing(true); setRaw(String(value)); }}
             onBlur={() => { setEditing(false); const n = parseFloat(raw.replace(/,/g, '')); if (!isNaN(n)) onChange(clamp(n, min, max)); }}
@@ -44,7 +44,7 @@ function SliderWithInput({
       <input
         type="range" min={min} max={max} step={step} value={value}
         onChange={e => onChange(Number(e.target.value))}
-        className="w-full accent-gold h-2 cursor-pointer"
+        className="w-full accent-black h-2 cursor-pointer"
         aria-label={label}
       />
       <div className="flex justify-between text-xs text-charcoal/40 font-sans">

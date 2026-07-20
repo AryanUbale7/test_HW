@@ -161,7 +161,7 @@ export default function MyStoryPage() {
               {/* Card 2 */}
               <div className="p-5 rounded-xl border border-sage/30 bg-sage-mist/20 shadow-sm hover:shadow-md hover:border-gold/40 hover:bg-white transition-all duration-300 flex flex-col justify-between">
                 <div>
-                  <div className="w-8 h-8 rounded-full bg-gold/15 text-gold flex items-center justify-center font-serif text-xs font-bold mb-3">
+                  <div className="w-8 h-8 rounded-full bg-deep-green/10 text-deep-green flex items-center justify-center font-serif text-xs font-bold mb-3">
                     02
                   </div>
                   <h3 className="font-serif font-bold text-deep-green text-base leading-snug">PMS Distributor</h3>
