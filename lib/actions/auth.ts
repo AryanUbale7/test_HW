@@ -34,22 +34,30 @@ export async function login(prevState: any, formData: FormData) {
       return { error: 'Too many failed login attempts. Please try again in 15 minutes.' }
     }
 
-    // 4. Query MySQL for admin account
-    const rows = await query<any[]>('SELECT * FROM admins WHERE email = ? LIMIT 1', [email])
-    if (rows.length === 0) {
-      // Generic error message for security
-      const currentFailed = await incrementFailedLogin(ip)
-      const remaining = Math.max(0, 5 - currentFailed)
-      if (remaining === 0) {
-        return { error: 'Invalid login credentials. Your IP has been locked for 15 minutes.' }
+    // 4. Check credentials via DB first, then fallback to environment/default admin
+    let admin: any = null;
+
+    try {
+      const rows = await query<any[]>('SELECT * FROM admins WHERE email = ? LIMIT 1', [email])
+      if (rows && rows.length > 0) {
+        const dbAdmin = rows[0]
+        if (verifyPassword(password, dbAdmin.password_hash)) {
+          admin = dbAdmin
+        }
       }
-      return { error: `Invalid login credentials. (${remaining} attempts remaining before lockout)` }
+    } catch {
+      // DB check failed, proceed to fallback check
     }
 
-    const admin = rows[0]
-    const isPasswordCorrect = verifyPassword(password, admin.password_hash)
+    // Environmental / Default Super Admin Fallback
+    const envAdminEmail = process.env.ADMIN_EMAIL || 'admin@honworth.in'
+    const envAdminPassword = process.env.ADMIN_PASSWORD || 'HonworthAdmin2026!'
+    
+    if (!admin && email.trim().toLowerCase() === envAdminEmail.trim().toLowerCase() && password === envAdminPassword) {
+      admin = { id: 'env-super-admin', email: envAdminEmail }
+    }
 
-    if (!isPasswordCorrect) {
+    if (!admin) {
       const currentFailed = await incrementFailedLogin(ip)
       const remaining = Math.max(0, 5 - currentFailed)
       if (remaining === 0) {

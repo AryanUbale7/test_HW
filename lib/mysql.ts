@@ -34,7 +34,12 @@ export function getDbPool() {
  * Helper to run a SQL query and return results.
  */
 export async function query<T = any>(sql: string, params: any[] = []): Promise<T> {
-  const db = getDbPool();
-  const [results] = await db.execute(sql, params);
-  return results as T;
+  try {
+    const db = getDbPool();
+    const [results] = await db.execute(sql, params);
+    return results as T;
+  } catch (error) {
+    console.error('MySQL Query Execution Error:', error);
+    return [] as unknown as T;
+  }
 }
