@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Metadata } from 'next';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { CtaBlock } from '@/components/sections/CtaBlock';
@@ -44,20 +45,14 @@ export default function HowIWorkPage() {
                   <span>Every recommendation should be easy to understand, have a clear purpose, and help you make decisions with confidence.</span>
                 </p>
               </div>
-              <div className="bg-sage-mist/40 aspect-square rounded-md border border-sage/30 flex items-center justify-center p-8 relative overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-tr from-sage/10 to-gold/5" />
-                <div className="relative w-full h-full flex flex-col items-center justify-center gap-4">
-                  <div className="w-24 h-24 rounded-full border border-deep-green/30 flex items-center justify-center relative">
-                    <div className="w-16 h-16 rounded-full border border-gold/40 flex items-center justify-center absolute -top-4 -left-4 bg-ivory/80 backdrop-blur-sm" />
-                    <div className="w-12 h-12 rounded-full bg-deep-green/10 flex items-center justify-center">
-                      <span className="text-deep-green font-serif text-lg">01</span>
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <p className="font-serif text-deep-green font-medium">Service First</p>
-                    <p className="text-xs text-charcoal/70 mt-1 max-w-xs">Listening, understanding, and aligning before recommending.</p>
-                  </div>
-                </div>
+              <div className="aspect-square w-full rounded-md border border-sage/30 overflow-hidden relative shadow-sm bg-[#EBF3ED] flex items-center justify-center">
+                <Image 
+                  src="/my-approach.jpg"
+                  alt="My Approach - Conversation, Understanding, Decision process"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 500px"
+                  className="object-contain p-2"
+                />
               </div>
             </div>
 
