@@ -15,47 +15,40 @@ export async function middleware(request: NextRequest) {
   const isAdminSubdomain = host === 'admin.honworth.in' || host.startsWith('admin.');
   const secret = process.env.SESSION_SECRET || 'honworth_secure_admin_session_secret_key_2026_prod';
 
-  if (isAdminSubdomain) {
-    // If they access the root subdomain (admin.honworth.in/), redirect to dashboard or login
-    if (pathname === '/') {
-      const token = request.cookies.get('admin_session')?.value;
-      const user = token ? await verifySession(token, secret) : null;
+  // Subdomain root redirect (e.g. admin.honworth.in/ -> /admin/dashboard or /admin/login)
+  if (isAdminSubdomain && pathname === '/') {
+    const token = request.cookies.get('admin_session')?.value;
+    const user = token ? await verifySession(token, secret) : null;
 
+    const redirectUrl = request.nextUrl.clone();
+    if (user) {
+      redirectUrl.pathname = '/admin/dashboard';
+    } else {
+      redirectUrl.pathname = '/admin/login';
+    }
+    return NextResponse.redirect(redirectUrl);
+  }
+
+  // Protect /admin routes across both main domain and subdomains
+  if (pathname.startsWith('/admin')) {
+    const token = request.cookies.get('admin_session')?.value;
+    const user = token ? await verifySession(token, secret) : null;
+    const isLoginRoute = pathname === '/admin/login';
+
+    if (!user && !isLoginRoute) {
       const redirectUrl = request.nextUrl.clone();
-      if (user) {
-        redirectUrl.pathname = '/admin/dashboard';
-      } else {
-        redirectUrl.pathname = '/admin/login';
-      }
+      redirectUrl.pathname = '/admin/login';
       return NextResponse.redirect(redirectUrl);
     }
 
-    // Protect /admin routes on the subdomain
-    if (pathname.startsWith('/admin')) {
-      const token = request.cookies.get('admin_session')?.value;
-      const user = token ? await verifySession(token, secret) : null;
-
-      const isLoginRoute = pathname === '/admin/login';
-
-      if (!user && !isLoginRoute) {
-        const redirectUrl = request.nextUrl.clone();
-        redirectUrl.pathname = '/admin/login';
-        return NextResponse.redirect(redirectUrl);
-      }
-
-      if (user && isLoginRoute) {
-        const redirectUrl = request.nextUrl.clone();
-        redirectUrl.pathname = '/admin/dashboard';
-        return NextResponse.redirect(redirectUrl);
-      }
+    if (user && isLoginRoute) {
+      const redirectUrl = request.nextUrl.clone();
+      redirectUrl.pathname = '/admin/dashboard';
+      return NextResponse.redirect(redirectUrl);
     }
-  } else {
-    // Main domain: honworth.in
-    // If they try to access /admin paths on the main domain, redirect them to the subdomain
-    if (pathname.startsWith('/admin')) {
-      const adminHost = host.includes('localhost') ? 'admin.localhost:3000' : 'admin.honworth.in';
-      return NextResponse.redirect(`https://${adminHost}${pathname}${url.search}`);
-    }
+
+    return NextResponse.next();
+  }
 
     // 3. Coming Soon Mode: Block public site access when site_mode = coming_soon
     const isExcludedPath = 
@@ -110,7 +103,6 @@ export async function middleware(request: NextRequest) {
         }
       }
     }
-  }
 
   return NextResponse.next();
 }
