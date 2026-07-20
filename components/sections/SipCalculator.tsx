@@ -123,16 +123,16 @@ export const SipCalculator = ({ embedded = false }: { embedded?: boolean }) => {
           <div className="bg-sage-mist/30 border border-sage/20 rounded-sm p-6 space-y-4">
             <div className="flex justify-between items-center">
               <span className="font-sans text-sm text-charcoal/70">Total Amount Invested</span>
-              <span className="font-sans font-semibold text-deep-green">{formatCurrency(results.invested)}</span>
+              <span className="font-sans font-bold text-black">{formatCurrency(results.invested)}</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="font-sans text-sm text-charcoal/70">Estimated Wealth Gained</span>
-              <span className="font-sans font-semibold text-sage">{formatCurrency(results.gained)}</span>
+              <span className="font-sans font-bold text-[#1E3A8A]">{formatCurrency(results.gained)}</span>
             </div>
             <div className="border-t border-sage/30 pt-4">
               <div className="flex justify-between items-center">
                 <span className="font-serif text-lg text-deep-green">Estimated Total Value</span>
-                <span className="font-sans font-bold text-2xl text-gold">{formatCurrency(results.fv)}</span>
+                <span className="font-sans font-bold text-2xl text-deep-green">{formatCurrency(results.fv)}</span>
               </div>
               <p className="text-xs text-charcoal/50 mt-2 font-sans">
                 Estimated value based on your inputs — not a guaranteed outcome.
@@ -145,7 +145,7 @@ export const SipCalculator = ({ embedded = false }: { embedded?: boolean }) => {
       {/* Chart */}
       <div>
         <p className="text-xs text-charcoal/50 font-sans mb-3 uppercase tracking-wide">Year-by-year growth (illustrative)</p>
-        <ResponsiveContainer width="100%" height={260}>
+        <ResponsiveContainer width="100%" height={380}>
           <AreaChart data={chartData} margin={{ top: 4, right: 4, left: 0, bottom: 0 }}>
             <defs>
               <linearGradient id="sipInvested" x1="0" y1="0" x2="0" y2="1">
