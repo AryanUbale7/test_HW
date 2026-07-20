@@ -131,7 +131,7 @@ export async function uploadResourceFile(formData: FormData) {
     const ext = file.name.split('.').pop();
     const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 8)}.${ext}`;
 
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+    const uploadDir = path.join(process.cwd(), 'public', 'resources');
     await fs.mkdir(uploadDir, { recursive: true });
 
     const filePath = path.join(uploadDir, fileName);
@@ -139,7 +139,7 @@ export async function uploadResourceFile(formData: FormData) {
     const buffer = Buffer.from(bytes);
     await fs.writeFile(filePath, buffer);
 
-    return { url: `/uploads/${fileName}` };
+    return { url: `/resources/${fileName}` };
   } catch (err: any) {
     console.error('Error uploading resource file:', err);
     return { error: err.message || 'An unexpected error occurred.' };

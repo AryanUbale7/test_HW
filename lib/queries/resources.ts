@@ -2,10 +2,8 @@ import { query } from '@/lib/mysql';
 import { Resource } from '@/types/resource';
 
 function resolveFileUrl(title: string, rawUrl?: string): string {
-  if (rawUrl && rawUrl.startsWith('/resources/')) {
-    return rawUrl;
-  }
-  if (rawUrl && rawUrl.startsWith('http')) {
+  // Valid external URLs (http/https) or static public resource URLs (/resources/...)
+  if (rawUrl && (rawUrl.startsWith('http://') || rawUrl.startsWith('https://') || rawUrl.startsWith('/resources/'))) {
     return rawUrl;
   }
   
@@ -13,14 +11,14 @@ function resolveFileUrl(title: string, rawUrl?: string): string {
   if (lowerTitle.includes('insurance')) {
     return '/resources/Honworth_Questions_Before_First_Insurance.pdf';
   }
-  if (lowerTitle.includes('mutual fund') || lowerTitle.includes('mf')) {
+  if (lowerTitle.includes('mutual fund') || lowerTitle.includes('mf') || lowerTitle.includes('first')) {
     return '/resources/Honworth_Questions_Before_First_MF.pdf';
   }
-  if (lowerTitle.includes('checklist') || lowerTitle.includes('family')) {
+  if (lowerTitle.includes('checklist') || lowerTitle.includes('family') || lowerTitle.includes('financial')) {
     return '/resources/Honworth_Family_Financial_Checklist.pdf';
   }
 
-  return rawUrl || '/resources/Honworth_Family_Financial_Checklist.pdf';
+  return '/resources/Honworth_Family_Financial_Checklist.pdf';
 }
 
 /**
