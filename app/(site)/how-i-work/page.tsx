@@ -47,8 +47,8 @@ export default function HowIWorkPage() {
               </div>
               <div className="aspect-square w-full rounded-md border border-sage/30 overflow-hidden relative shadow-sm bg-[#EBF3ED] flex items-center justify-center">
                 <Image 
-                  src="/my-approach.jpg"
-                  alt="My Approach - Conversation, Understanding, Decision process"
+                  src="/my-approach.jpeg"
+                  alt="01 - My Approach"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
                   className="object-contain p-2"
@@ -111,25 +111,14 @@ export default function HowIWorkPage() {
                 These are not three separate services. They are three parts of one picture, and I believe they work best when viewed together.
               </p>
             </div>
-            <div className="bg-sage-mist/40 aspect-square rounded-md border border-sage/30 flex items-center justify-center p-8 relative overflow-hidden group md:order-1">
-              <div className="absolute inset-0 bg-gradient-to-br from-sage/10 to-gold/5" />
-              <div className="relative w-full h-full flex flex-col items-center justify-center gap-6">
-                <div className="flex gap-4 items-center justify-center">
-                  <div className="w-12 h-12 rounded-sm border border-deep-green/20 flex flex-col items-center justify-center bg-white shadow-sm">
-                    <span className="text-[10px] uppercase font-sans text-deep-green font-semibold">Build</span>
-                  </div>
-                  <div className="w-12 h-12 rounded-sm border border-gold/20 flex flex-col items-center justify-center bg-white shadow-sm">
-                    <span className="text-[10px] uppercase font-sans text-gold font-semibold">Shield</span>
-                  </div>
-                  <div className="w-12 h-12 rounded-sm border border-deep-green/20 flex flex-col items-center justify-center bg-white shadow-sm">
-                    <span className="text-[10px] uppercase font-sans text-deep-green font-semibold">Pass</span>
-                  </div>
-                </div>
-                <div className="text-center">
-                  <p className="font-serif text-deep-green font-medium">The Three Pillars</p>
-                  <p className="text-xs text-charcoal/70 mt-1 max-w-xs">Three stages of one financial lifecycle.</p>
-                </div>
-              </div>
+            <div className="aspect-square w-full rounded-md border border-sage/30 overflow-hidden relative shadow-sm bg-[#EBF3ED] flex items-center justify-center md:order-1">
+              <Image 
+                src="/three-pillars.jpeg"
+                alt="02 - The Three Pillars"
+                fill
+                sizes="(max-width: 768px) 100vw, 500px"
+                className="object-contain p-2"
+              />
             </div>
           </div>
 
@@ -154,18 +143,14 @@ export default function HowIWorkPage() {
                 <span>As life evolves, so should your financial plan. That's why we review your investments periodically—tracking progress towards your goals, reviewing asset allocation where appropriate, and ensuring your financial strategy continues to reflect your changing circumstances.</span>
               </p>
             </div>
-            <div className="bg-sage-mist/40 aspect-square rounded-md border border-sage/30 flex items-center justify-center p-8 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-bl from-sage/10 to-gold/5" />
-              <div className="relative w-full h-full flex flex-col items-center justify-center gap-4">
-                <div className="w-20 h-20 rounded-md border border-sage/40 flex items-center justify-center bg-white/50 backdrop-blur-sm relative">
-                  <div className="w-3 h-3 rounded-full bg-gold animate-pulse absolute -top-1 -right-1" />
-                  <span className="text-2xl font-serif text-deep-green">🤝</span>
-                </div>
-                <div className="text-center">
-                  <p className="font-serif text-deep-green font-medium">The Initial Conversation</p>
-                  <p className="text-xs text-charcoal/70 mt-1 max-w-xs">A transparent roadmap starting with alignment.</p>
-                </div>
-              </div>
+            <div className="aspect-square w-full rounded-md border border-sage/30 overflow-hidden relative shadow-sm bg-[#EBF3ED] flex items-center justify-center">
+              <Image 
+                src="/how-i-engage.jpeg"
+                alt="03 - How I Engage"
+                fill
+                sizes="(max-width: 768px) 100vw, 500px"
+                className="object-contain p-2"
+              />
             </div>
           </div>
 
