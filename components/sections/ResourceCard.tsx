@@ -25,9 +25,11 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({ id, title, descripti
   };
 
   const triggerDownload = () => {
+    const filename = fileUrl.split('/').pop() || 'resource.pdf';
     const link = document.createElement('a');
     link.href = fileUrl;
-    link.download = fileUrl.split('/').pop() || 'resource.pdf';
+    link.target = '_blank';
+    link.download = filename;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

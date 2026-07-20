@@ -1,6 +1,28 @@
 import { query } from '@/lib/mysql';
 import { Resource } from '@/types/resource';
 
+function resolveFileUrl(title: string, rawUrl?: string): string {
+  if (rawUrl && rawUrl.startsWith('/resources/')) {
+    return rawUrl;
+  }
+  if (rawUrl && rawUrl.startsWith('http')) {
+    return rawUrl;
+  }
+  
+  const lowerTitle = (title || '').toLowerCase();
+  if (lowerTitle.includes('insurance')) {
+    return '/resources/Honworth_Questions_Before_First_Insurance.pdf';
+  }
+  if (lowerTitle.includes('mutual fund') || lowerTitle.includes('mf')) {
+    return '/resources/Honworth_Questions_Before_First_MF.pdf';
+  }
+  if (lowerTitle.includes('checklist') || lowerTitle.includes('family')) {
+    return '/resources/Honworth_Family_Financial_Checklist.pdf';
+  }
+
+  return rawUrl || '/resources/Honworth_Family_Financial_Checklist.pdf';
+}
+
 /**
  * Fetches all available resources ordered by creation date.
  */
@@ -12,7 +34,7 @@ export async function getResources(): Promise<Resource[]> {
       _id: r.id,
       title: r.title,
       description: r.description,
-      fileUrl: r.file_url,
+      fileUrl: resolveFileUrl(r.title, r.file_url),
       gatedByEmail: Boolean(r.gated_by_email),
     }));
   } catch (error) {
