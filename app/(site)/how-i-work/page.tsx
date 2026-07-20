@@ -45,13 +45,13 @@ export default function HowIWorkPage() {
                   <span>Every recommendation should be easy to understand, have a clear purpose, and help you make decisions with confidence.</span>
                 </p>
               </div>
-              <div className="aspect-square w-full rounded-md border border-sage/30 overflow-hidden relative shadow-sm bg-[#EBF3ED] flex items-center justify-center">
+              <div className="w-full rounded-xl border border-sage/30 overflow-hidden shadow-sm bg-[#EBF3ED] p-2 flex items-center justify-center">
                 <Image 
                   src="/my-approach.jpeg"
                   alt="01 - My Approach"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 500px"
-                  className="object-contain p-2"
+                  width={800}
+                  height={450}
+                  className="w-full h-auto object-contain rounded-lg"
                 />
               </div>
             </div>
@@ -111,13 +111,13 @@ export default function HowIWorkPage() {
                 These are not three separate services. They are three parts of one picture, and I believe they work best when viewed together.
               </p>
             </div>
-            <div className="aspect-square w-full rounded-md border border-sage/30 overflow-hidden relative shadow-sm bg-[#EBF3ED] flex items-center justify-center md:order-1">
+            <div className="w-full rounded-xl border border-sage/30 overflow-hidden shadow-sm bg-[#EBF3ED] p-2 flex items-center justify-center md:order-1">
               <Image 
                 src="/three-pillars.jpeg"
                 alt="02 - The Three Pillars"
-                fill
-                sizes="(max-width: 768px) 100vw, 500px"
-                className="object-contain p-2"
+                width={800}
+                height={450}
+                className="w-full h-auto object-contain rounded-lg"
               />
             </div>
           </div>
@@ -143,13 +143,13 @@ export default function HowIWorkPage() {
                 <span>As life evolves, so should your financial plan. That's why we review your investments periodically—tracking progress towards your goals, reviewing asset allocation where appropriate, and ensuring your financial strategy continues to reflect your changing circumstances.</span>
               </p>
             </div>
-            <div className="aspect-square w-full rounded-md border border-sage/30 overflow-hidden relative shadow-sm bg-[#EBF3ED] flex items-center justify-center">
+            <div className="w-full rounded-xl border border-sage/30 overflow-hidden shadow-sm bg-[#EBF3ED] p-2 flex items-center justify-center">
               <Image 
                 src="/how-i-engage.jpeg"
                 alt="03 - How I Engage"
-                fill
-                sizes="(max-width: 768px) 100vw, 500px"
-                className="object-contain p-2"
+                width={800}
+                height={600}
+                className="w-full h-auto object-contain rounded-lg"
               />
             </div>
           </div>
