@@ -44,10 +44,10 @@ export default async function WealthCreationPage() {
         "@type": "Service",
         "@id": "https://honworth.in/wealth-creation/#service",
         "name": "Wealth Creation & Asset Allocation",
-        "serviceType": "Financial Advisory",
+        "serviceType": "Financial Services",
         "provider": {
           "@type": "ProfessionalService",
-          "name": "Honworth Wealth Advisory",
+          "name": "Honworth",
           "url": "https://honworth.in"
         },
         "description": "Customized investment allocation utilizing Mutual Funds, PMS, and SIF frameworks for long-term compound growth."

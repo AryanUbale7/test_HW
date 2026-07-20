@@ -11,7 +11,7 @@ export const AuthorWelcome: React.FC = () => {
       <div className="w-40 h-40 md:w-48 md:h-48 shrink-0 relative rounded-2xl overflow-hidden border-4 border-white shadow-md">
         <Image 
           src="/profile.png"
-          alt="Honworth Advisor"
+          alt="Honworth Founder"
           fill
           sizes="(max-width: 768px) 160px, 192px"
           className="object-cover object-top"
@@ -23,7 +23,7 @@ export const AuthorWelcome: React.FC = () => {
           Welcome to Honworth. Let&apos;s Build Your Legacy.
         </h2>
         <p className="text-base md:text-lg text-charcoal/80 mb-6 max-w-2xl leading-relaxed">
-          Hi, I&apos;m the principal advisor at Honworth. I help high-net-worth families, professionals, and business owners architect robust financial strategies. Whether you&apos;re looking to create, protect, or transition wealth, you&apos;re in the right place.
+          Hi, I&apos;m the founder of Honworth. I help high-net-worth families, professionals, and business owners architect robust financial strategies. Whether you&apos;re looking to create, protect, or transition wealth, you&apos;re in the right place.
         </p>
         <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
           <Link 

@@ -47,7 +47,7 @@ export const NewsletterSignup = () => {
       <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
         <div className="md:w-1/2">
           <h3 className="text-2xl md:text-3xl font-serif text-ivory mb-4">
-            Stewardship in your inbox.
+            Insights in your inbox.
           </h3>
           <p className="font-sans text-sage-mist/80">
             Join founders and families receiving our latest insights on wealth architecture, risk mitigation, and generational transfer.

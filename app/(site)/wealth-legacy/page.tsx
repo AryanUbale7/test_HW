@@ -47,7 +47,7 @@ export default async function WealthLegacyPage() {
         "serviceType": "Estate Planning Facilitation",
         "provider": {
           "@type": "ProfessionalService",
-          "name": "Honworth Wealth Advisory",
+          "name": "Honworth",
           "url": "https://honworth.in"
         },
         "description": "Coordination and facilitation of private family trusts, wills, nominations, and asset succession structuring."

@@ -3,8 +3,8 @@ import { Metadata } from 'next'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Coming Soon | Honworth Wealth Advisory',
-  description: 'Honworth Wealth Advisory is launching soon. A premium wealth advisory experience designed with honour and worth.',
+  title: 'Coming Soon | Honworth',
+  description: 'Honworth is launching soon. A premium wealth experience designed with honour and worth.',
   robots: { index: false, follow: false },
 }
 

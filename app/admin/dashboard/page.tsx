@@ -308,7 +308,7 @@ export default async function AdminDashboardPage() {
 
       {/* Branded Footer */}
       <footer className="mt-12 pt-6 border-t border-sage/25 text-center text-xs text-charcoal/40 font-sans">
-        © {new Date().getFullYear()} Honworth Advisory · Management System · Internal use only
+        © {new Date().getFullYear()} Honworth · Management System · Internal use only
       </footer>
 
     </div>

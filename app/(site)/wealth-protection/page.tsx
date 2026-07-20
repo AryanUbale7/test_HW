@@ -47,7 +47,7 @@ export default async function WealthProtectionPage() {
         "serviceType": "Risk Management",
         "provider": {
           "@type": "ProfessionalService",
-          "name": "Honworth Wealth Advisory",
+          "name": "Honworth",
           "url": "https://honworth.in"
         },
         "description": "Empanelled pure-risk term life, medical cover, and asset protection analysis for high-net-worth families."

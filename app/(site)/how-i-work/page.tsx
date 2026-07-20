@@ -5,7 +5,7 @@ import { CtaBlock } from '@/components/sections/CtaBlock';
 
 export const metadata: Metadata = {
   title: 'How I Work | Honworth',
-  description: 'Our structured and transparent financial stewardship approach. Learn about engagement onboarding, distributor model compensation, and our three core pillars.',
+  description: 'Our structured and transparent financial services approach. Learn about engagement onboarding, distributor model compensation, and our three core pillars.',
   alternates: {
     canonical: 'https://honworth.in/how-i-work',
   },
@@ -54,7 +54,7 @@ export default function HowIWorkPage() {
                     </div>
                   </div>
                   <div className="text-center">
-                    <p className="font-serif text-deep-green font-medium">Stewardship First</p>
+                    <p className="font-serif text-deep-green font-medium">Service First</p>
                     <p className="text-xs text-charcoal/70 mt-1 max-w-xs">Listening, understanding, and aligning before recommending.</p>
                   </div>
                 </div>
@@ -131,7 +131,7 @@ export default function HowIWorkPage() {
                   </div>
                 </div>
                 <div className="text-center">
-                  <p className="font-serif text-deep-green font-medium">The Triad of Stewardship</p>
+                  <p className="font-serif text-deep-green font-medium">The Three Pillars</p>
                   <p className="text-xs text-charcoal/70 mt-1 max-w-xs">Three stages of one financial lifecycle.</p>
                 </div>
               </div>

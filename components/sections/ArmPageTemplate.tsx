@@ -39,11 +39,11 @@ export const ArmPageTemplate: React.FC<ArmPageTemplateProps> = ({
           headingTag="h1"
         />
 
-        {/* Advisor/Credibility Block (E-E-A-T & AI Discoverability) */}
+        {/* Author/Credibility Block (E-E-A-T & AI Discoverability) */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 py-4 px-6 mb-12 bg-sage-mist/20 border border-sage/20 rounded-sm text-sm font-sans text-charcoal/80">
-          <div className="font-semibold text-deep-green">Stewardship by:</div>
+          <div className="font-semibold text-deep-green">Authored by:</div>
           <div className="flex flex-wrap gap-x-3 gap-y-1">
-            <span>{author?.name || 'Honworth Principal Advisor'}</span>
+            <span>{author?.name || 'Honworth'}</span>
             {author?.credentials && author.credentials.length > 0 ? (
               author.credentials.map((cred) => (
                 <React.Fragment key={cred}>

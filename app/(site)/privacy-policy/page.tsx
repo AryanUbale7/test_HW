@@ -39,7 +39,7 @@ export default function PrivacyPolicyPage() {
 
           <section id="section-2">
             <h2 className="text-2xl font-serif text-deep-green mb-4">2. How We Use Your Information</h2>
-            <p>The information we collect is used strictly for the purpose of providing financial stewardship services, facilitating account openings, and maintaining regulatory compliance as mandated by SEBI, AMFI, and IRDAI.</p>
+            <p>The information we collect is used strictly for the purpose of providing financial services, facilitating account openings, and maintaining regulatory compliance as mandated by SEBI, AMFI, and IRDAI.</p>
           </section>
 
           <section id="section-3">

@@ -44,7 +44,7 @@ export default async function HomePage() {
       {
         "@type": "ProfessionalService",
         "@id": "https://honworth.in/#service",
-        "name": "Honworth Wealth Advisory",
+        "name": "Honworth",
         "url": "https://honworth.in",
         "image": "https://honworth.in/logo.png",
         "description": "Bespoke wealth management, risk protection, and legacy structuring for high-net-worth families.",
