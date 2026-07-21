@@ -41,34 +41,6 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-    // 3. Coming Soon Mode: Block public site access when site_mode = coming_soon
-    const isExcludedPath = 
-      pathname === '/coming-soon' ||
-      pathname.startsWith('/api/') ||
-      pathname.startsWith('/admin') ||
-      pathname === '/robots.txt' ||
-      pathname === '/sitemap.xml' ||
-      pathname === '/favicon.ico' ||
-      pathname === '/icon.png';
-
-    if (!isExcludedPath) {
-      try {
-        const protocol = request.headers.get('x-forwarded-proto') || 'https';
-        const apiUrl = `${protocol}://${host}/api/site-settings`;
-        const settingsRes = await fetch(apiUrl, { cache: 'no-store' });
-        if (settingsRes.ok) {
-          const settings = await settingsRes.json();
-          if (settings.siteMode === 'coming_soon') {
-            const redirectUrl = request.nextUrl.clone();
-            redirectUrl.pathname = '/coming-soon';
-            return NextResponse.redirect(redirectUrl);
-          }
-        }
-      } catch {
-        // On error, let the request through (fail open)
-      }
-    }
-
   return NextResponse.next();
 }
 
