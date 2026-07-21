@@ -47,51 +47,25 @@ export async function middleware(request: NextRequest) {
       pathname.startsWith('/api/') ||
       pathname.startsWith('/admin') ||
       pathname === '/robots.txt' ||
-      pathname === '/sitemap.xml';
+      pathname === '/sitemap.xml' ||
+      pathname === '/favicon.ico' ||
+      pathname === '/icon.png';
 
     if (!isExcludedPath) {
-      const siteMode = request.cookies.get('site_mode')?.value;
-
-      // Check cookie cache first, then fetch from API
-      if (siteMode === 'coming_soon') {
-        const redirectUrl = request.nextUrl.clone();
-        redirectUrl.pathname = '/coming-soon';
-        return NextResponse.redirect(redirectUrl);
-      }
-
-      // If no cookie cache, fetch from internal API
-      if (!siteMode) {
-        try {
-          const protocol = request.headers.get('x-forwarded-proto') || 'http';
-          const apiUrl = `${protocol}://${host}/api/site-settings`;
-          const settingsRes = await fetch(apiUrl, { next: { revalidate: 30 } });
-          if (settingsRes.ok) {
-            const settings = await settingsRes.json();
-            const response = NextResponse.next();
-            // Cache the mode in a cookie for 30 seconds to avoid repeated API calls
-            response.cookies.set('site_mode', settings.siteMode, { 
-              maxAge: 30, 
-              httpOnly: true,
-              sameSite: 'lax',
-              path: '/',
-            });
-            if (settings.siteMode === 'coming_soon') {
-              const redirectUrl = request.nextUrl.clone();
-              redirectUrl.pathname = '/coming-soon';
-              const redirectResponse = NextResponse.redirect(redirectUrl);
-              redirectResponse.cookies.set('site_mode', 'coming_soon', {
-                maxAge: 30,
-                httpOnly: true,
-                sameSite: 'lax',
-                path: '/',
-              });
-              return redirectResponse;
-            }
-            return response;
+      try {
+        const protocol = request.headers.get('x-forwarded-proto') || 'https';
+        const apiUrl = `${protocol}://${host}/api/site-settings`;
+        const settingsRes = await fetch(apiUrl, { cache: 'no-store' });
+        if (settingsRes.ok) {
+          const settings = await settingsRes.json();
+          if (settings.siteMode === 'coming_soon') {
+            const redirectUrl = request.nextUrl.clone();
+            redirectUrl.pathname = '/coming-soon';
+            return NextResponse.redirect(redirectUrl);
           }
-        } catch {
-          // On error, let the request through (fail open)
         }
+      } catch {
+        // On error, let the request through (fail open)
       }
     }
 
