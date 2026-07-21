@@ -149,7 +149,7 @@ export default function MyStoryPage() {
                     01
                   </div>
                   <h3 className="font-serif font-bold text-deep-green text-base leading-snug">Mutual Fund Distributor (MFD)</h3>
-                  <p className="text-xs text-charcoal/70 font-sans mt-1.5 leading-relaxed">AMFI Registered Mutual Fund Distributor</p>
+                  <p className="text-xs text-charcoal/70 font-sans mt-1.5 leading-relaxed">AMFI Registered</p>
                 </div>
                 <div className="mt-5 pt-3 border-t border-sage/20">
                   <span className="inline-block bg-white text-gold font-mono font-bold px-3 py-1 rounded border border-gold/30 text-xs tracking-wider shadow-2xs">
@@ -164,12 +164,12 @@ export default function MyStoryPage() {
                   <div className="w-8 h-8 rounded-full bg-deep-green/10 text-deep-green flex items-center justify-center font-serif text-xs font-bold mb-3">
                     02
                   </div>
-                  <h3 className="font-serif font-bold text-deep-green text-base leading-snug">PMS Distributor</h3>
-                  <p className="text-xs text-charcoal/70 font-sans mt-1.5 leading-relaxed">PMS Distributor Certification (APMI)</p>
+                  <h3 className="font-serif font-bold text-deep-green text-base leading-snug">Specialised Investment Fund (SIF) Distributor</h3>
+                  <p className="text-xs text-charcoal/70 font-sans mt-1.5 leading-relaxed">AMFI Registered</p>
                 </div>
                 <div className="mt-5 pt-3 border-t border-sage/20">
                   <span className="inline-block bg-white text-gold font-mono font-bold px-3 py-1 rounded border border-gold/30 text-xs tracking-wider shadow-2xs">
-                    APRN07678
+                    ARN-336150
                   </span>
                 </div>
               </div>
@@ -180,12 +180,12 @@ export default function MyStoryPage() {
                   <div className="w-8 h-8 rounded-full bg-deep-green/10 text-deep-green flex items-center justify-center font-serif text-xs font-bold mb-3">
                     03
                   </div>
-                  <h3 className="font-serif font-bold text-deep-green text-base leading-snug">SIF Distributor</h3>
-                  <p className="text-xs text-charcoal/70 font-sans mt-1.5 leading-relaxed">SIF Distributor Certification</p>
+                  <h3 className="font-serif font-bold text-deep-green text-base leading-snug">Portfolio Management Services (PMS) Distributor</h3>
+                  <p className="text-xs text-charcoal/70 font-sans mt-1.5 leading-relaxed">APMI Registered</p>
                 </div>
                 <div className="mt-5 pt-3 border-t border-sage/20">
                   <span className="inline-block bg-white text-gold font-mono font-bold px-3 py-1 rounded border border-gold/30 text-xs tracking-wider shadow-2xs">
-                    ARN-336150
+                    APRN07678
                   </span>
                 </div>
               </div>
