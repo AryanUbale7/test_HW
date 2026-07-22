@@ -127,7 +127,7 @@ export const SipCalculator = ({ embedded = false }: { embedded?: boolean }) => {
             </div>
             <div className="flex justify-between items-center">
               <span className="font-sans text-sm text-charcoal/70">Estimated Wealth Gained</span>
-              <span className="font-sans font-bold text-gold">{formatCurrency(results.gained)}</span>
+              <span className="font-sans font-bold text-[#CBA32E]">{formatCurrency(results.gained)}</span>
             </div>
             <div className="border-t border-sage/30 pt-4">
               <div className="flex justify-between items-center">
