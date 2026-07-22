@@ -153,8 +153,8 @@ export const SipCalculator = ({ embedded = false }: { embedded?: boolean }) => {
                 <stop offset="95%" stopColor="#36403B" stopOpacity={0} />
               </linearGradient>
               <linearGradient id="sipValue" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#2E4A3A" stopOpacity={0.35} />
-                <stop offset="95%" stopColor="#2E4A3A" stopOpacity={0} />
+                <stop offset="5%" stopColor="#00802b" stopOpacity={0.35} />
+                <stop offset="95%" stopColor="#00802b" stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="#E8E4D8" />
@@ -166,7 +166,7 @@ export const SipCalculator = ({ embedded = false }: { embedded?: boolean }) => {
             />
             <Legend formatter={v => v === 'invested' ? 'Amount Invested' : 'Estimated Value'} wrapperStyle={{ fontSize: 12 }} />
             <Area type="monotone" dataKey="invested" stroke="#36403B" fill="url(#sipInvested)" strokeWidth={2.5} dot={false} />
-            <Area type="monotone" dataKey="value" stroke="#2E4A3A" fill="url(#sipValue)" strokeWidth={2.5} dot={false} />
+            <Area type="monotone" dataKey="value" stroke="#00802b" fill="url(#sipValue)" strokeWidth={2.5} dot={false} />
           </AreaChart>
         </ResponsiveContainer>
       </div>
