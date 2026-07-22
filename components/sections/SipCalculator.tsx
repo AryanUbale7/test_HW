@@ -132,7 +132,7 @@ export const SipCalculator = ({ embedded = false }: { embedded?: boolean }) => {
             <div className="border-t border-sage/30 pt-4">
               <div className="flex justify-between items-center">
                 <span className="font-serif text-lg text-deep-green">Estimated Total Value</span>
-                <span className="font-sans font-bold text-2xl text-[#0FA84F]">{formatCurrency(results.fv)}</span>
+                <span className="font-sans font-bold text-xl md:text-2xl text-[#0FA84F] whitespace-nowrap">{formatCurrency(results.fv)}</span>
               </div>
               <p className="text-xs text-charcoal/50 mt-2 font-sans">
                 Estimated value based on your inputs — not a guaranteed outcome.
