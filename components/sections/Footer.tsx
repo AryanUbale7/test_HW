@@ -86,7 +86,7 @@ export const Footer: React.FC = () => {
             <strong>Disclaimer:</strong> Honworth acts as an AMFI Registered Mutual Fund Distributor & SIF Distributor, not a SEBI Registered Investment Adviser. Content is for education only, not investment advice.
           </p>
           <p>
-            <strong>Risk Warning:</strong> Mutual Fund investments are subject to market risks, read all scheme related documents carefully.
+            <strong>Important Information:</strong> Mutual Fund investments are subject to market risks. Read all scheme related documents carefully.
           </p>
           <p className="mt-1">
             <Link href="/disclosures" className="text-[#E5C158] hover:text-[#E5C158]/80 underline underline-offset-4 transition-colors focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">
