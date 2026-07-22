@@ -47,7 +47,7 @@ export default function HowIWorkPage() {
               </div>
               <div className="w-full rounded-xl border border-sage/30 overflow-hidden shadow-sm bg-[#EBF3ED] p-2 flex items-center justify-center">
                 <Image 
-                  src="/my-approach.jpeg"
+                  src="/my-approach-new.jpeg"
                   alt="01 - My Approach"
                   width={800}
                   height={450}
@@ -113,7 +113,7 @@ export default function HowIWorkPage() {
             </div>
             <div className="w-full rounded-xl border border-sage/30 overflow-hidden shadow-sm bg-[#EBF3ED] p-2 flex items-center justify-center md:order-1">
               <Image 
-                src="/three-pillars.jpeg"
+                src="/three-pillars-new.jpeg"
                 alt="02 - The Three Pillars"
                 width={800}
                 height={450}
@@ -145,7 +145,7 @@ export default function HowIWorkPage() {
             </div>
             <div className="w-full rounded-xl border border-sage/30 overflow-hidden shadow-sm bg-[#EBF3ED] p-2 flex items-center justify-center">
               <Image 
-                src="/how-i-engage.jpeg"
+                src="/how-i-engage-new.jpeg"
                 alt="03 - How I Engage"
                 width={800}
                 height={600}
