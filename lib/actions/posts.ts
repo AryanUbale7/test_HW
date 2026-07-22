@@ -11,6 +11,7 @@ import { query } from '@/lib/mysql';
 import crypto from 'crypto';
 import { promises as fs } from 'fs';
 import path from 'path';
+import { getPersistentStoragePath } from '@/lib/storage';
 
 export async function createPost(prevState: any, formData: FormData): Promise<{ errors: Record<string, string>; success: boolean }> {
   try {
@@ -261,7 +262,7 @@ export async function uploadImage(formData: FormData) {
     const ext = file.name.split('.').pop();
     const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 8)}.${ext}`;
 
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+    const uploadDir = getPersistentStoragePath('uploads');
     await fs.mkdir(uploadDir, { recursive: true });
 
     const filePath = path.join(uploadDir, fileName);
