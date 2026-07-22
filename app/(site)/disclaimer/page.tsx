@@ -26,7 +26,7 @@ export default function DisclaimerPage() {
 
           <section>
             <h2 className="text-2xl font-serif text-deep-green mb-4">Investment Risks</h2>
-            <p>Mutual fund investments are subject to market risks; read all scheme-related documents carefully. Past performance of any scheme or product is not an indicator of future returns. The value of investments may go up or down based on market conditions.</p>
+            <p>Mutual Fund investments are subject to market risks. Read all scheme related documents carefully. Past performance of any scheme or product is not an indicator of future returns. The value of investments may go up or down based on market conditions.</p>
           </section>
 
           <section>

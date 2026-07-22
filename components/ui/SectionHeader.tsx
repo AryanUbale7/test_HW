@@ -3,7 +3,7 @@ import React from 'react';
 interface SectionHeaderProps {
   eyebrow?: string;
   heading: string;
-  subtext?: string;
+  subtext?: React.ReactNode;
   className?: string;
   align?: 'left' | 'center';
   headingTag?: 'h1' | 'h2';

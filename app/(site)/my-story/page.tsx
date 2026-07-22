@@ -68,7 +68,7 @@ export default function MyStoryPage() {
               My journey into investing began in 2016, almost by accident.
             </p>
             <p>
-              By then, I had spent close to two decades building a career in IT—a world of structure, analytical thinking, and disciplined processes. That year, at a family gathering, I reconnected with a close friend after many years. Our conversation drifted towards investing—not stock tips or market predictions, but the idea of building wealth by owning good businesses. I spent most of the discussion listening, fascinated by what I was hearing and quietly realising how little I understood about a subject that immediately caught my interest.
+              By then, I had spent close to two decades building a career in IT—a world of structure, analytical thinking, and disciplined processes. That year, at a family gathering, I reconnected with a close friend after many years. Our conversation drifted towards investing—not quick wins or timing the market, but the idea of building long-term ownership in good businesses. I spent most of the discussion listening, fascinated by what I was hearing and quietly realising how little I understood about a subject that immediately caught my interest.
             </p>
             <p>
               Before we parted, he recommended a few books on investing. I ordered them the same week, eager to learn. Within a few days, I realised I had underestimated just how demanding the subject was, and the books found their way back onto the shelf.
@@ -113,7 +113,7 @@ export default function MyStoryPage() {
             <p>
               The most meaningful relationships are those that are built over years, not transactions.
             </p>
-            <p className="text-xl leading-relaxed text-charcoal">
+            <p className="leading-relaxed text-charcoal">
               There is one simple principle that guides every suggestion: <strong>never invest in something you cannot explain in your own words.</strong> If an investment isn't understood, it probably isn't the right investment.
             </p>
 
@@ -133,7 +133,7 @@ export default function MyStoryPage() {
             <p>
               That idea resonates deeply with me. True wealth is rarely measured only by what we accumulate, but by what we protect, preserve, and leave behind.
             </p>
-            <p className="text-xl leading-relaxed text-charcoal">
+            <p className="leading-relaxed text-charcoal">
               Together, these two ideas shape the philosophy behind Honworth: wealth should be built with integrity, protected with care, and passed on with purpose.
             </p>
             <p>

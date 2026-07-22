@@ -53,7 +53,11 @@ export default function ReachMePage() {
         <SectionHeader 
           eyebrow="Reach Me"
           heading="Start a Conversation."
-          subtext="Whether you have a specific inquiry or wish to explore a long-term partnership, I am available to discuss your financial journey."
+          subtext={
+            <>
+              Whether you have a specific inquiry or wish to explore a long-term partnership,<br className="hidden sm:inline" /> I am available to discuss your financial journey.
+            </>
+          }
           className="mb-16 text-center mx-auto"
           align="center"
           headingTag="h1"

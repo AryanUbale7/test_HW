@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
             <p className="font-serif text-xl text-ivory/90 mb-1 font-semibold">Explore</p>
             <nav className="flex flex-col gap-3 font-sans font-light text-ivory/70 text-sm">
               <Link href="/my-story" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">About</Link>
-              <Link href="/wealth-creation" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">Wealth Creation</Link>
+              <Link href="/wealth-creation" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">Wealth Building</Link>
               <Link href="/wealth-protection" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">Wealth Protection</Link>
               <Link href="/wealth-legacy" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">Wealth Legacy</Link>
               <Link href="/how-i-work" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">Our Approach</Link>
@@ -80,10 +80,10 @@ export const Footer: React.FC = () => {
         {/* 3. Compliance Block */}
         <div className="max-w-5xl font-sans font-light text-sm text-ivory/70 leading-relaxed mb-4 space-y-1.5">
           <p>
-            <strong>Registration:</strong> AMFI Registered Mutual Fund Distributor | ARN–336150
+            <strong>Registration:</strong> Rahul Karandikar | Honworth | AMFI Registered Mutual Fund Distributor | ARN-336150
           </p>
           <p>
-            <strong>Disclaimer:</strong> Honworth acts as an AMFI Registered Mutual Fund Distributor, not a SEBI Registered Investment Adviser. Content is for education only, not investment advice.
+            <strong>Disclaimer:</strong> Honworth acts as an AMFI Registered Mutual Fund Distributor & SIF Distributor, not a SEBI Registered Investment Adviser. Content is for education only, not investment advice.
           </p>
           <p>
             <strong>Risk Warning:</strong> Mutual Fund investments are subject to market risks, read all scheme related documents carefully.

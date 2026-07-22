@@ -32,7 +32,7 @@ export default function HowIWorkPage() {
           <div className="space-y-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 id="approach" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">01-</span> My Approach</h2>
+                <h2 id="approach" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-[#CBA32E] mr-2">01-</span> My Approach</h2>
                 <p className="font-sans text-charcoal leading-relaxed space-y-4">
                   <span>I believe people make better financial decisions when they understand how things work and why they matter.</span>
                   <br /><br />
@@ -40,9 +40,9 @@ export default function HowIWorkPage() {
                   <br /><br />
                   <span>Before discussing investments or insurance, we take the time to build a clear understanding of the options available, how they work, and where they fit into your financial journey. Only then do we explore solutions that align with your goals, priorities, and stage of life.</span>
                   <br /><br />
-                  <span>The same approach applies to insurance. The objective isn't to recommend the largest cover or the most complex solution, but to help you choose protection that's appropriate for your family's circumstances.</span>
+                  <span>The same approach applies to insurance. The objective isn't to evaluate the largest cover or the most complex solution, but to help you choose protection that's appropriate for your family's circumstances.</span>
                   <br /><br />
-                  <span>Every recommendation should be easy to understand, have a clear purpose, and help you make decisions with confidence.</span>
+                  <span>Every evaluation should be easy to understand, have a clear purpose, and help you make decisions with confidence.</span>
                 </p>
               </div>
               <div className="w-full rounded-xl border border-sage/30 overflow-hidden shadow-sm bg-[#EBF3ED] p-2 flex items-center justify-center">
@@ -87,14 +87,14 @@ export default function HowIWorkPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center md:flex-row-reverse">
             <div className="md:order-2">
-              <h2 id="three-arms" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">02-</span> The three Pillars (Offerings):</h2>
+              <h2 id="three-arms" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-[#CBA32E] mr-2">02-</span> The three Pillars (Offerings):</h2>
               <p className="font-sans text-charcoal leading-relaxed mb-6">
                 My work spans three connected pillars, and most families come to need all of them in time.
               </p>
               
               <div className="space-y-6 font-sans text-charcoal leading-relaxed">
                 <div className="border border-sage/30 p-6 rounded-sm bg-sage-mist/10 shadow-sm">
-                  <h3 className="font-serif font-bold text-deep-green text-lg">Wealth Creation</h3>
+                  <h3 className="font-serif font-bold text-deep-green text-lg">Wealth Building</h3>
                   <p className="text-sm mt-2">Helping your money work towards the goals that matter most.</p>
                 </div>
                 <div className="border border-sage/30 p-6 rounded-sm bg-sage-mist/10 shadow-sm">
@@ -124,11 +124,11 @@ export default function HowIWorkPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 id="onboarding" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">03-</span> How I Engage:</h2>
+              <h2 id="onboarding" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-[#CBA32E] mr-2">03-</span> How I Engage:</h2>
               <p className="font-sans text-charcoal leading-relaxed space-y-4">
                 <span>No pressure. No jargon. More thoughtful conversations.</span>
                 <br /><br />
-                <span>Every relationship begins with understanding where you are today—your goals, priorities, and the life you're working towards. From there, we explore what may be appropriate across wealth creation, wealth protection, and wealth legacy.</span>
+                <span>Every relationship begins with understanding where you are today—your goals, priorities, and the life you're working towards. From there, we explore what may be appropriate across wealth building, wealth protection, and wealth legacy.</span>
                 <br /><br />
                 <span>The objective is simple: to help you make informed financial decisions through different stages of life and changing market conditions.</span>
                 <br /><br />
@@ -157,7 +157,7 @@ export default function HowIWorkPage() {
           {/* How I'm Compensated Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start pt-16 border-t border-sage/20">
             <div className="md:col-span-2 max-w-3xl">
-              <h2 id="compensation" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">04-</span> How I'm Compensated:</h2>
+              <h2 id="compensation" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-[#CBA32E] mr-2">04-</span> How I'm Compensated:</h2>
               <div className="space-y-4 font-sans text-charcoal leading-relaxed">
                 <p>
                   Transparency is an important part of every client relationship. Before any investment or insurance decision is made, you'll have a clear understanding of how I'm compensated and what costs, if any, are involved.
@@ -181,7 +181,7 @@ export default function HowIWorkPage() {
           {/* What I Do - and Don't Do Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start pt-16 border-t border-sage/20">
             <div className="md:col-span-2 max-w-3xl">
-              <h2 id="do-and-dont" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-gold mr-2">05-</span> What I Do—and Don't Do (Boundaries):</h2>
+              <h2 id="do-and-dont" className="scroll-mt-32 text-4xl md:text-5xl font-serif font-bold text-deep-green mb-8"><span className="text-[#CBA32E] mr-2">05-</span> What I Do—and Don't Do (Boundaries):</h2>
               <div className="space-y-4 font-sans text-charcoal leading-relaxed">
                 <p>
                   Education comes before evaluation.
@@ -195,9 +195,7 @@ export default function HowIWorkPage() {
                 <p>
                   You'll never be encouraged to invest simply because a product is available or markets are fashionable. Suggestions are made only when they are appropriate for your circumstances, and only after you understand how they work and why they are being considered.
                 </p>
-                <p>
-                  I also believe that no one should invest in something they cannot explain in their own words. Understanding should always come before action.
-                </p>
+
                 <p>
                   As an AMFI-registered Mutual Fund Distributor, my role is to facilitate investments and provide distribution-related guidance. I am not a SEBI-registered Investment Adviser (RIA), and that distinction will always be communicated clearly and transparently.
                 </p>

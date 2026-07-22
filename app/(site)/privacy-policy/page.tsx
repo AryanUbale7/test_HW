@@ -27,6 +27,7 @@ export default function PrivacyPolicyPage() {
             <li><a href="#section-3" className="hover:text-gold hover:underline">3. Information Sharing and Disclosure</a></li>
             <li><a href="#section-4" className="hover:text-gold hover:underline">4. Data Security</a></li>
             <li><a href="#section-5" className="hover:text-gold hover:underline">5. Your Rights</a></li>
+            <li><a href="#section-6" className="hover:text-gold hover:underline">6. Cookies</a></li>
           </ul>
         </nav>
 
@@ -44,7 +45,7 @@ export default function PrivacyPolicyPage() {
 
           <section id="section-3">
             <h2 className="text-2xl font-serif text-deep-green mb-4">3. Information Sharing and Disclosure</h2>
-            <p>We do not sell your personal data. We may share your information with Asset Management Companies (AMCs), insurance providers, and regulatory authorities strictly as required to execute your financial instructions or comply with legal obligations.</p>
+            <p>We do not sell your personal information. We may share your information with Asset Management Companies (AMCs), insurance companies, Registrars & Transfer Agents, service providers or regulatory authorities only where necessary to provide our services or comply with applicable laws.</p>
           </section>
 
           <section id="section-4">
@@ -55,6 +56,11 @@ export default function PrivacyPolicyPage() {
           <section id="section-5">
             <h2 className="text-2xl font-serif text-deep-green mb-4">5. Your Rights</h2>
             <p>You have the right to access, correct, or request deletion of your personal data, subject to record-keeping obligations imposed by financial regulators. Please contact us via the details provided in the <Link href="/reach-me" className="underline hover:text-gold">Reach Me</Link> section to exercise these rights.</p>
+          </section>
+
+          <section id="section-6">
+            <h2 className="text-2xl font-serif text-deep-green mb-4">6. Cookies</h2>
+            <p>Our website may use cookies or similar technologies to improve your browsing experience and understand website usage. You can control cookie preferences through your browser settings.</p>
           </section>
         </div>
       </div>
