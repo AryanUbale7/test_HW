@@ -5,20 +5,20 @@ import { getPrimaryAuthor, getPosts } from '@/lib/queries/posts';
 import { getGlossaryTermsByArm } from '@/lib/queries/glossary';
 
 export const metadata: Metadata = {
-  title: 'Wealth Creation | Honworth',
+  title: 'Wealth Building | Honworth',
   description: 'Strategic, long-term compounding strategies for building generational wealth. We guide asset allocation and mutual fund, SIF, and PMS selection.',
   alternates: {
     canonical: 'https://honworth.in/wealth-creation',
   },
   openGraph: {
-    title: 'Wealth Creation | Honworth',
+    title: 'Wealth Building | Honworth',
     description: 'Strategic, long-term compounding strategies for building generational wealth. We guide asset allocation and mutual fund, SIF, and PMS selection.',
     url: 'https://honworth.in/wealth-creation',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Wealth Creation | Honworth',
+    title: 'Wealth Building | Honworth',
     description: 'Strategic, long-term compounding strategies for building generational wealth. We guide asset allocation and mutual fund, SIF, and PMS selection.',
   },
 };
@@ -37,13 +37,13 @@ export default async function WealthCreationPage() {
         "@type": "WebPage",
         "@id": "https://honworth.in/wealth-creation/#webpage",
         "url": "https://honworth.in/wealth-creation",
-        "name": "Wealth Creation | Honworth",
+        "name": "Wealth Building | Honworth",
         "description": "Strategic, long-term compounding strategies for building generational wealth."
       },
       {
         "@type": "Service",
         "@id": "https://honworth.in/wealth-creation/#service",
-        "name": "Wealth Creation & Asset Allocation",
+        "name": "Wealth Building & Asset Allocation",
         "serviceType": "Financial Services",
         "provider": {
           "@type": "ProfessionalService",
@@ -62,14 +62,14 @@ export default async function WealthCreationPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <ArmPageTemplate 
-        heading="Wealth Creation"
+        heading="Wealth Building"
         author={author}
         posts={posts}
         glossaryTerms={glossaryTerms}
-        philosophyText={`Wealth creation at Honworth is built on a disciplined, goal-based compounding approach rather than short-term market speculation. We believe a structured asset allocation strategy tailored to your family's specific financial milestones is the most reliable engine for generating long-term wealth.`}
+        philosophyText={`Wealth building at Honworth is built on a disciplined, goal-based compounding approach rather than short-term market speculation. We believe a structured asset allocation strategy tailored to your family's specific financial milestones is the most reliable engine for generating long-term wealth.`}
         offeringDescription={`Honworth distributes mutual funds, Portfolio Management Services (PMS), and Strategic Investment Funds (SIF) based strictly on client suitability and due diligence. We facilitate access to vetted institutional-grade wealth vehicles without pushing proprietary products.`}
         disclaimerText="Mutual fund investments are subject to market risks; read all scheme-related documents carefully."
-        ctaText="Discuss your wealth creation goals"
+        ctaText="Discuss your wealth building goals"
       />
     </>
   );

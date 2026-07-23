@@ -29,7 +29,7 @@ const NAV_LINKS = [
     href: '/how-i-work',
     dropdown: [
       { label: 'My Approach', href: '/how-i-work#approach', icon: Handshake },
-      { label: 'The three pillars: Creation · Protection · Legacy', href: '/how-i-work#three-arms', icon: Network },
+      { label: 'The three pillars: Building · Protection · Legacy', href: '/how-i-work#three-arms', icon: Network },
       { label: 'How I Engage', href: '/how-i-work#onboarding', icon: Coffee },
       { label: "Compensation (distributor model)", href: '/how-i-work#compensation', icon: Coins },
       { label: "What I Do—and Don't Do (Boundaries)", href: '/how-i-work#do-and-dont', icon: CheckSquare },
@@ -40,7 +40,7 @@ const NAV_LINKS = [
     href: '/articles',
     dropdown: [
       { label: 'Educational personal-finance posts', href: '/articles?arm=Pers.Fin', icon: BookOpen },
-      { label: 'Filed by pillar: Creation/Protection/Legacy', href: '/articles', icon: Library },
+      { label: 'Browse by Pillar: Building/Protection/Legacy', href: '/articles', icon: Library },
       { label: 'Economy & policy commentary', href: '/articles?arm=Economy', icon: TrendingUp },
       { label: 'Search + category archive', href: '/articles', icon: Search },
     ]

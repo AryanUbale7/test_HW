@@ -143,7 +143,7 @@ export const ContactForm = () => {
           className="w-full bg-transparent border-b border-sage py-3 text-charcoal font-sans focus:outline-none focus:border-gold transition-colors"
         >
           <option value="General Inquiry">General Inquiry</option>
-          <option value="Wealth Creation">Wealth Creation</option>
+          <option value="Wealth Creation">Wealth Building</option>
           <option value="Wealth Protection">Wealth Protection</option>
           <option value="Legacy Planning">Legacy Planning</option>
         </select>

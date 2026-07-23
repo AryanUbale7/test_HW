@@ -9,7 +9,7 @@ import { getPosts } from '@/lib/queries/posts';
 export const revalidate = 60;
 
 const ARM_PAGE: Record<string, { href: string; label: string }> = {
-  Creation: { href: '/wealth-creation', label: 'Wealth Creation' },
+  Creation: { href: '/wealth-creation', label: 'Wealth Building' },
   Protection: { href: '/wealth-protection', label: 'Wealth Protection' },
   Legacy: { href: '/wealth-legacy', label: 'Wealth Legacy' },
   General: { href: '/how-i-work', label: 'How I Work' },
@@ -109,7 +109,7 @@ export default async function GlossaryTermPage(
         {term.arm && (
           <div className="mb-6">
             <span className="text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-sm border border-sage text-charcoal/70">
-              {term.arm}
+              {term.arm === 'Creation' ? 'Building' : term.arm}
             </span>
           </div>
         )}
@@ -161,7 +161,7 @@ export default async function GlossaryTermPage(
         {/* Related Articles */}
         {relatedPosts.length > 0 && (
           <section className="mb-14" aria-label="Related articles">
-            <h2 className="font-serif text-2xl text-deep-green mb-6">Recent Articles in {term.arm}</h2>
+            <h2 className="font-serif text-2xl text-deep-green mb-6">Recent Articles in {term.arm === 'Creation' ? 'Building' : term.arm}</h2>
             <div className="grid gap-6 sm:grid-cols-3">
               {relatedPosts.map(post => (
                 <Link

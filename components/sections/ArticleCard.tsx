@@ -29,7 +29,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
     General: 'bg-transparent text-charcoal border-sage',
   };
 
-  const displayCategory = category === 'Pers.Fin' ? 'Personal Finance' : category;
+  const displayCategory = category === 'Creation' ? 'Building' : (category === 'Pers.Fin' ? 'Personal Finance' : category);
   const colorClass = categoryColors[category] || categoryColors['General'];
 
   return (

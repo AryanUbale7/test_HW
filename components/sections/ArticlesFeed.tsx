@@ -81,7 +81,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
                   : 'text-charcoal/80 border-sage/30 hover:border-deep-green hover:text-deep-green bg-sage-mist/5'
               }`}
             >
-              {arm === 'Pers.Fin' ? 'Personal Finance' : arm}
+              {arm === 'Creation' ? 'Building' : (arm === 'Pers.Fin' ? 'Personal Finance' : arm)}
             </button>
           ))}
         </div>
