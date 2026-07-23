@@ -21,8 +21,8 @@ export default function DisclosuresPage() {
         {/* Legal Content */}
         <div className="space-y-12 font-sans text-charcoal leading-relaxed">
           
-          <section id="arn" className="scroll-mt-32">
-            <h2 className="text-2xl font-serif font-bold text-deep-green mb-4">ARN / SIFD / APRN numbers</h2>
+          <section id="details" className="scroll-mt-32">
+            <h2 className="text-2xl font-serif font-bold text-deep-green mb-4">ARN / SIFD / APRN details</h2>
             <div className="overflow-x-auto mt-6">
               <table className="w-full border-collapse text-left font-sans text-sm">
                 <thead>
@@ -49,7 +49,7 @@ export default function DisclosuresPage() {
             </div>
           </section>
 
-          <section id="distributor-disclaimer" className="scroll-mt-32 border-t border-sage/20 pt-8">
+          <section id="disclaimer" className="scroll-mt-32 border-t border-sage/20 pt-8">
             <h2 className="text-2xl font-serif font-bold text-deep-green mb-4">Distributor (non-advisory) disclaimer</h2>
             <p>
               Honworth acts solely as an AMFI-registered Mutual Fund Distributor (ARN:336150) and earns commission from Asset Management Companies for the distribution of Regular Plan mutual fund schemes. Honworth is not a SEBI Registered Investment Adviser and does not provide investment advice for a fee. All content on this website is for general education and awareness only and does not constitute investment advice or a recommendation to buy, sell or hold any security or scheme. Investors should make their own decisions and consult their own financial or tax advisers, or a SEBI Registered Investment Adviser, before investing.
@@ -75,7 +75,7 @@ export default function DisclosuresPage() {
             </p>
           </section>
 
-          <section id="privacy-terms" className="scroll-mt-32 border-t border-sage/20 pt-8">
+          <section id="privacy" className="scroll-mt-32 border-t border-sage/20 pt-8">
             <h2 className="text-2xl font-serif font-bold text-deep-green mb-4">Privacy Policy & Terms of Use</h2>
             <p>
               Please view our dedicated legal pages for details on terms of website use and user data handling:

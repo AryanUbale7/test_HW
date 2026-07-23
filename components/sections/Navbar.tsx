@@ -70,7 +70,7 @@ const NAV_LINKS = [
     label: 'Disclosures', 
     href: '/disclosures',
     dropdown: [
-      { label: 'ARN · SIFD · APRN numbers', href: '/disclosures#numbers', icon: FileDigit },
+      { label: 'ARN · SIFD · APRN details', href: '/disclosures#details', icon: FileDigit },
       { label: 'Distributor (non-advisory) disclaimer', href: '/disclosures#disclaimer', icon: AlertCircle },
       { label: 'No guaranteed-returns disclaimer', href: '/disclosures#no-guarantee', icon: ShieldAlert },
       { label: 'Grievance redressal / SCORES', href: '/disclosures#grievance', icon: Scale },
