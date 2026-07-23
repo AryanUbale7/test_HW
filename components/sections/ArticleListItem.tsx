@@ -43,7 +43,7 @@ export const ArticleListItem: React.FC<ArticleListItemProps> = ({ title, excerpt
           </div>
 
           {thumbnailUrl && (
-            <div className="w-full md:w-1/3 shrink-0 overflow-hidden rounded-sm aspect-[16/10] relative order-1 md:order-2">
+            <div className="w-full md:w-1/3 shrink-0 overflow-hidden rounded-sm aspect-[16/10] relative order-1 md:order-2 bg-sage-mist/20">
               <Image 
                 src={thumbnailUrl} 
                 alt={title}
@@ -51,7 +51,7 @@ export const ArticleListItem: React.FC<ArticleListItemProps> = ({ title, excerpt
                 priority={priority}
                 sizes="(max-width: 768px) 90vw, (max-width: 1024px) 30vw, 290px"
                 quality={80}
-                className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                className="object-contain transform group-hover:scale-105 transition-transform duration-700 ease-out"
               />
             </div>
           )}

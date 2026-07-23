@@ -38,14 +38,14 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
     >
       <Link href={href} className="flex flex-col h-full" aria-label={`Read article: ${title}`}>
         {thumbnailUrl && (
-          <div className="aspect-[16/9] w-full overflow-hidden bg-sage-mist relative">
+          <div className="aspect-[16/9] w-full overflow-hidden bg-sage-mist/20 relative">
             <Image 
               src={thumbnailUrl} 
               alt={title} 
               fill
               sizes="(max-width: 640px) 380px, (max-width: 1024px) 33vw, 290px"
               quality={70}
-              className="object-cover transition-transform duration-500 group-hover:scale-105" 
+              className="object-contain transition-transform duration-500 group-hover:scale-105" 
             />
           </div>
         )}
