@@ -197,7 +197,7 @@ function FaqForm({ faq, onCancel }: { faq: Faq | null; onCancel: () => void }) {
             className="w-full px-3.5 py-2.5 border border-sage/30 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-gold focus:border-gold text-charcoal bg-[#FAF6EE]/10"
           >
             <option value="">General (No Pillar)</option>
-            <option value="Creation">Creation Pillar</option>
+            <option value="Creation">Building Pillar</option>
             <option value="Protection">Protection Pillar</option>
             <option value="Legacy">Legacy Pillar</option>
           </select>

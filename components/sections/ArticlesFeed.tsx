@@ -23,7 +23,8 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
   // Sync state when searchParams changes (handles client-side next/link navigation and browser history)
   useEffect(() => {
     if (!searchParams) return;
-    setCurrentArm(searchParams.get('arm') || 'All');
+    const rawArm = searchParams.get('arm') || 'All';
+    setCurrentArm(rawArm === 'Creation' ? 'Building' : rawArm);
     setCurrentType(searchParams.get('type') || '');
     setCurrentPage(parseInt(searchParams.get('page') || '1', 10));
   }, [searchParams]);
@@ -43,11 +44,12 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
     window.history.pushState({}, '', newUrl);
   };
 
-  const arms = ['All', 'Creation', 'Protection', 'Legacy', 'Pers.Fin', 'Economy'];
+  const arms = ['All', 'Building', 'Protection', 'Legacy', 'Pers.Fin', 'Economy'];
 
   // Filter posts on the client side
   const filteredPosts = initialPosts.filter((post) => {
-    const matchesArm = currentArm === 'All' || post.arm === currentArm;
+    const postArmMapped = post.arm === 'Creation' ? 'Building' : post.arm;
+    const matchesArm = currentArm === 'All' || postArmMapped === currentArm;
     const matchesType = !currentType || post.type === currentType;
     return matchesArm && matchesType;
   });
@@ -81,7 +83,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
                   : 'text-charcoal/80 border-sage/30 hover:border-deep-green hover:text-deep-green bg-sage-mist/5'
               }`}
             >
-              {arm === 'Creation' ? 'Building' : (arm === 'Pers.Fin' ? 'Personal Finance' : arm)}
+              {arm === 'Pers.Fin' ? 'Personal Finance' : arm}
             </button>
           ))}
         </div>

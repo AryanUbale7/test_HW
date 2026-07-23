@@ -191,7 +191,7 @@ export function GlossaryAdmin({
                   value={form.arm}
                   onChange={e => setForm(f => ({ ...f, arm: e.target.value }))}
                 >
-                  {ARM_OPTIONS.map(a => <option key={a} value={a}>{a}</option>)}
+                  {ARM_OPTIONS.map(a => <option key={a} value={a}>{a === 'Creation' ? 'Building' : a}</option>)}
                 </select>
               </div>
 
