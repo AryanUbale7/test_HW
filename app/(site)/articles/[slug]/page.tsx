@@ -13,6 +13,7 @@ import { ArticleCard } from '@/components/sections/ArticleCard';
 import { Post } from '@/types/post';
 
 export const revalidate = 60;
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
   const posts = await getAllPostSlugs();

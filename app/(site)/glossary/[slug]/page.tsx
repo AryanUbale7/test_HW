@@ -7,6 +7,7 @@ import { getGlossaryTermBySlug, getAllGlossaryTerms, getAllGlossarySlugs } from 
 import { getPosts } from '@/lib/queries/posts';
 
 export const revalidate = 60;
+export const dynamicParams = true;
 
 const ARM_PAGE: Record<string, { href: string; label: string }> = {
   Creation: { href: '/wealth-creation', label: 'Wealth Building' },
