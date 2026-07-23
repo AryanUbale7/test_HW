@@ -27,11 +27,10 @@ export const Footer: React.FC = () => {
           <div className="flex flex-col gap-5">
             <p className="font-serif text-xl text-ivory/90 mb-1 font-semibold">Explore</p>
             <nav className="flex flex-col gap-3 font-sans font-light text-ivory/70 text-sm">
-              <Link href="/my-story" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">About</Link>
-              <Link href="/wealth-creation" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">Wealth Building</Link>
-              <Link href="/wealth-protection" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">Wealth Protection</Link>
-              <Link href="/wealth-legacy" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">Wealth Legacy</Link>
-              <Link href="/how-i-work" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">Our Approach</Link>
+              <Link href="/how-i-work#approach" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">Our Approach</Link>
+              <Link href="/how-i-work#three-arms" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">Wealth Building</Link>
+              <Link href="/how-i-work#three-arms" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">Wealth Protection</Link>
+              <Link href="/how-i-work#legacy-matters" className="hover:text-[#E5C158] transition-colors w-fit focus-visible:ring-2 focus-visible:ring-[#E5C158] focus:outline-none rounded-sm">Wealth Legacy</Link>
             </nav>
           </div>
 

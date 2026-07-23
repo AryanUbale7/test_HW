@@ -18,7 +18,7 @@ const NAV_LINKS = [
     href: '/my-story',
     dropdown: [
       { label: 'My Journey', href: '/my-story#journey', icon: Map },
-      { label: 'Why this work / my philosophy', href: '/my-story#philosophy', icon: Lightbulb },
+      { label: 'The Honworth Philosophy', href: '/my-story#philosophy', icon: Lightbulb },
       { label: 'Meaning of Honour + Worth', href: '/my-story#meaning', icon: Shield },
       { label: 'Credentials: AMFI MFD, PMS, SIF', href: '/my-story#credentials', icon: Award },
       { label: 'Whom I serve (families, HNI)', href: '/my-story#who-i-serve', icon: Users },

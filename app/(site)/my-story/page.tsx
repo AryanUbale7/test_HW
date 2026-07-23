@@ -103,7 +103,7 @@ export default function MyStoryPage() {
               To strengthen my professional foundation, I completed AMFI — Mutual Fund Distributor Certification, Specialised Investment Funds (SIF) Distributor Certification & Portfolio management services (PMS) distribution from APMI, along with the IRDAI examination. These qualifications complement the practical experience gained over years of studying markets and continue to support the work I do with individuals and families.
             </p>
 
-            <h2 id="philosophy" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-[#CBA32E] mr-2">02-</span> How I Work (Philosophy)</h2>
+            <h2 id="philosophy" className="text-3xl md:text-4xl font-serif font-bold text-deep-green mt-12 mb-8 scroll-mt-32 border-t border-sage/20 pt-8"><span className="text-[#CBA32E] mr-2">02-</span> The Honworth Philosophy</h2>
             <p>
               Listening comes first.
             </p>

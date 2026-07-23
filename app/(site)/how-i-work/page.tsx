@@ -58,7 +58,7 @@ export default function HowIWorkPage() {
 
             {/* Why Legacy Planning Matters to Me Section */}
             <div className="max-w-3xl border-t border-sage/20 pt-8">
-              <h3 className="text-2xl md:text-3xl font-serif font-bold text-deep-green mb-6">Why Legacy Planning Matters to Me:</h3>
+              <h3 id="legacy-matters" className="scroll-mt-32 text-2xl md:text-3xl font-serif font-bold text-deep-green mb-6">Why Legacy Planning Matters to Me:</h3>
               <div className="space-y-4 font-sans text-charcoal leading-relaxed">
                 <p>
                   Over time, one aspect of financial planning began to stand out more than any other—legacy planning.
