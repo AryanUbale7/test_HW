@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-export const alt = 'Honworth | Wealth Creation, Protection & Legacy Planning';
+export const alt = 'Honworth | Wealth Building, Protection & Legacy Planning';
 export const size = {
   width: 1200,
   height: 630,
@@ -54,7 +54,7 @@ export default async function Image() {
             textAlign: 'center',
           }}
         >
-          Wealth Creation · Protection · Legacy Planning
+          Wealth Building · Protection · Legacy Planning
         </div>
       </div>
     ),

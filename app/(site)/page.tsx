@@ -7,13 +7,13 @@ import { ArticlesFeed } from '@/components/sections/ArticlesFeed';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Honworth | Wealth Creation, Protection & Legacy Planning',
+  title: 'Honworth | Wealth Building, Protection & Legacy Planning',
   description: 'We help high-net-worth families, professionals, and business owners architect robust financial strategies. Welcome to our journal.',
   alternates: {
     canonical: 'https://honworth.in',
   },
   openGraph: {
-    title: 'Honworth | Wealth Creation, Protection & Legacy Planning',
+    title: 'Honworth | Wealth Building, Protection & Legacy Planning',
     description: 'We help high-net-worth families, professionals, and business owners architect robust financial strategies. Welcome to our journal.',
     url: 'https://honworth.in',
     siteName: 'Honworth',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Honworth | Wealth Creation, Protection & Legacy Planning',
+    title: 'Honworth | Wealth Building, Protection & Legacy Planning',
     description: 'We help high-net-worth families, professionals, and business owners architect robust financial strategies. Welcome to our journal.',
   },
 };
@@ -62,7 +62,7 @@ export default async function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
-      <h1 className="sr-only">Honworth | Wealth Creation, Protection & Legacy Planning</h1>
+      <h1 className="sr-only">Honworth | Wealth Building, Protection & Legacy Planning</h1>
       <IntroStrip />
 
       <div id="articles" className="max-w-4xl mx-auto px-6 md:px-12 lg:px-16 pt-7 pb-12 md:py-16 scroll-mt-32">
