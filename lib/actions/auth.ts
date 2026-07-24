@@ -6,7 +6,7 @@ import { sendEmail } from '@/lib/mail'
 import { incrementFailedLogin, getFailedLoginAttempts, resetFailedLogin } from '@/lib/rate-limit'
 import { loginSchema } from '@/lib/validations/admin'
 import { query } from '@/lib/mysql'
-import { verifyPassword } from '@/lib/auth'
+import { verifyPasswordDetailed, hashPassword } from '@/lib/auth'
 import { signSession } from '@/lib/session'
 
 /**
@@ -34,26 +34,36 @@ export async function login(prevState: any, formData: FormData) {
       return { error: 'Too many failed login attempts. Please try again in 15 minutes.' }
     }
 
-    // 4. Check credentials via DB first, then fallback to environment/default admin
+    // 4. Check credentials via DB first, then fallback to environment variables
     let admin: any = null;
 
     try {
       const rows = await query<any[]>('SELECT * FROM admins WHERE email = ? LIMIT 1', [email])
       if (rows && rows.length > 0) {
         const dbAdmin = rows[0]
-        if (verifyPassword(password, dbAdmin.password_hash)) {
+        const { isValid, needsRehash } = verifyPasswordDetailed(password, dbAdmin.password_hash)
+        if (isValid) {
           admin = dbAdmin
+          // Transparently upgrade legacy password hashes (e.g. 10,000 iterations to 210,000 iterations)
+          if (needsRehash) {
+            try {
+              const upgradedHash = hashPassword(password)
+              await query('UPDATE admins SET password_hash = ? WHERE id = ?', [upgradedHash, dbAdmin.id])
+            } catch (rehashErr) {
+              console.error('Failed to update upgraded password hash:', rehashErr)
+            }
+          }
         }
       }
     } catch {
       // DB check failed, proceed to fallback check
     }
 
-    // Environmental / Default Super Admin Fallback
-    const envAdminEmail = process.env.ADMIN_EMAIL || 'admin@honworth.in'
-    const envAdminPassword = process.env.ADMIN_PASSWORD || 'HonworthAdmin2026!'
+    // Environmental Super Admin Check (strictly via environment variables, NO hardcoded plaintext fallback)
+    const envAdminEmail = process.env.ADMIN_EMAIL
+    const envAdminPassword = process.env.ADMIN_PASSWORD
     
-    if (!admin && email.trim().toLowerCase() === envAdminEmail.trim().toLowerCase() && password === envAdminPassword) {
+    if (!admin && envAdminEmail && envAdminPassword && email.trim().toLowerCase() === envAdminEmail.trim().toLowerCase() && password === envAdminPassword) {
       admin = { id: 'env-super-admin', email: envAdminEmail }
     }
 
