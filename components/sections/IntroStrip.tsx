@@ -2,18 +2,18 @@ import React from 'react';
 
 export const IntroStrip = () => {
   return (
-    <div className="border-b border-sage/30 pt-1 pb-2 bg-ivory/80 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full flex flex-col md:flex-row md:items-center justify-start items-start gap-3 md:gap-6">
+    <div className="border-b border-sage/30 pt-0.5 pb-2 bg-ivory/80 backdrop-blur-sm">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full flex flex-col md:flex-row justify-start items-start gap-3 md:gap-6">
         
-        {/* Left Side: Tagline (Restored to exact top position) */}
+        {/* Left Side: Tagline (Restored to exact original vertical position & text-sm size) */}
         <div className="shrink-0 pt-0.5">
-          <p className="text-charcoal font-sans font-semibold tracking-wide text-sm sm:text-base text-left">
+          <p className="text-charcoal font-sans font-semibold tracking-wide text-sm text-left">
             Helping families build, protect & pass on wealth
           </p>
         </div>
 
         {/* Vertical Divider line between tagline and distributor info */}
-        <div className="hidden md:block w-px h-10 bg-sage/40 shrink-0 self-center mx-1" />
+        <div className="hidden md:block w-px h-5 bg-sage/40 shrink-0 mt-1.5 mx-1" />
 
         {/* Middle / Right: Distributor details */}
         <div className="flex flex-col text-left border-t md:border-t-0 border-sage/20 pt-2 md:pt-0">
@@ -41,6 +41,7 @@ export const IntroStrip = () => {
     </div>
   );
 };
+
 
 
 
