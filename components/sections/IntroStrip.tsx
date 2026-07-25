@@ -5,9 +5,9 @@ export const IntroStrip = () => {
     <div className="border-b border-sage/30 pt-0.5 pb-2 bg-ivory/80 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full flex flex-col md:flex-row justify-start items-center md:items-start gap-3 md:gap-6">
         
-        {/* Left Side: Tagline (Restored to exact original vertical position & text-sm size, centered on mobile) */}
-        <div className="shrink-0 pt-0.5 text-center md:text-left w-full md:w-auto">
-          <p className="text-charcoal font-sans font-semibold tracking-wide text-sm text-center md:text-left">
+        {/* Left Side: Tagline (Restored to exact original vertical position & text-sm size, left-aligned) */}
+        <div className="shrink-0 pt-0.5 text-left w-full md:w-auto">
+          <p className="text-charcoal font-sans font-semibold tracking-wide text-sm text-left">
             Helping families build, protect & pass on wealth
           </p>
         </div>
