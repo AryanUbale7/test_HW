@@ -6,8 +6,8 @@ export async function middleware(request: NextRequest) {
   const host = request.headers.get('host') || '';
   const pathname = url.pathname;
 
-  // 1. Canonical Redirect: www.honworth.in to honworth.in
-  if (host === 'www.honworth.in') {
+  // 1. Canonical Redirects: www.honworth.in, honworth.com, and www.honworth.com to honworth.in
+  if (host === 'www.honworth.in' || host === 'honworth.com' || host === 'www.honworth.com') {
     return NextResponse.redirect(`https://honworth.in${pathname}${url.search}`, 308);
   }
 
