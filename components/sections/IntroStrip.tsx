@@ -17,7 +17,7 @@ export const IntroStrip = () => {
 
         {/* Middle / Right: Distributor details (Left-aligned on all devices) */}
         <div className="flex flex-col text-left items-start border-t md:border-t-0 border-sage/20 pt-2.5 md:pt-0 w-full md:w-auto">
-          {/* Line 1: Distributor - Mutual Funds | SIF | PMS | Legacy Planning. */}
+          {/* Line 1: Distributor - Mutual Funds | SIF | PMS | Insurance & Legacy. */}
           <div className="font-serif text-sm sm:text-base md:text-[17px] text-charcoal leading-snug flex flex-wrap items-center justify-start gap-y-1 text-left">
             <span className="font-medium text-deep-green">AMFI-registered Distributor</span>
             <span className="text-gold font-sans font-bold mx-2">-</span>
@@ -27,11 +27,11 @@ export const IntroStrip = () => {
             <span className="text-gold font-sans font-bold text-xs mx-2 select-none">|</span>
             <span className="whitespace-nowrap">PMS</span>
             <span className="text-gold font-sans font-bold text-xs mx-2 select-none">|</span>
-            <span className="whitespace-nowrap font-medium text-charcoal">Legacy Planning.</span>
+            <span className="whitespace-nowrap font-medium text-charcoal">Insurance & Legacy.</span>
           </div>
 
           {/* Line 2: —Depth over volume, always. */}
-          <div className="font-serif text-xs sm:text-sm md:text-[15.5px] text-charcoal/90 leading-snug mt-1 text-left">
+          <div className="font-serif text-sm sm:text-base md:text-[17px] text-charcoal/90 leading-snug mt-1 text-left">
             <span className="italic text-deep-green font-normal">
               <span className="text-gold font-sans font-bold mr-0.5">—</span>Depth over volume, <strong className="font-bold">always</strong>.
             </span>
