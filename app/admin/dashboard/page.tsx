@@ -10,8 +10,6 @@ import { getFaqsCount } from '@/lib/queries/faqs'
 import { getUnreadLeadsCount, getRecentLeadsCount } from '@/lib/queries/contact'
 import { getSubscribersCount, getRecentSubscribersCount } from '@/lib/queries/newsletter'
 import { getRecentAuditLogs } from '@/lib/audit'
-import { getLaunchSettings } from '@/lib/queries/site-settings'
-import { LaunchControlCard } from '@/components/admin/LaunchControlCard'
 
 export const dynamic = 'force-dynamic'
 
@@ -79,8 +77,7 @@ export default async function AdminDashboardPage() {
     recentLeadsCount,
     subscribers,
     recentSubscribersCount,
-    recentActivityLogs,
-    launchSettings
+    recentActivityLogs
   ] = await Promise.all([
     getPostsCount('draft'),
     getPostsCount('published'),
@@ -91,8 +88,7 @@ export default async function AdminDashboardPage() {
     getRecentLeadsCount(),
     getSubscribersCount(),
     getRecentSubscribersCount(),
-    getRecentAuditLogs(8),
-    getLaunchSettings()
+    getRecentAuditLogs(8)
   ])
 
   const stats = [
@@ -202,12 +198,6 @@ export default async function AdminDashboardPage() {
               </Link>
             </div>
           </div>
-
-          {/* Website Launch Control */}
-          <LaunchControlCard
-            initialMode={launchSettings.siteMode}
-            initialLaunchDate={launchSettings.launchDate}
-          />
 
           {/* System Metrics Grid */}
           <div className="space-y-4">
