@@ -1,15 +1,37 @@
 import { NextResponse } from 'next/server';
 import { query } from '@/lib/mysql';
+import { verifyAdminSession } from '@/lib/auth-check';
 
-export async function GET() {
+/**
+ * Public health check — returns only { status: "ok" }.
+ * Detailed diagnostics (database, memory, node version) require admin authentication
+ * and must be requested via ?detail=true.
+ */
+export async function GET(request: Request) {
+  // Public health probe — no sensitive information
+  const url = new URL(request.url);
+  const wantsDetail = url.searchParams.get('detail') === 'true';
+
+  if (!wantsDetail) {
+    return NextResponse.json({ status: 'ok' }, { status: 200 });
+  }
+
+  // Detailed diagnostics require authenticated admin session
+  try {
+    await verifyAdminSession();
+  } catch {
+    return NextResponse.json({ status: 'ok' }, { status: 200 });
+  }
+
+  // Admin-authenticated: return full diagnostics
   let dbStatus = 'disconnected';
   try {
     const result = await query('SELECT 1 as val');
     if (result && result.length > 0 && result[0].val === 1) {
       dbStatus = 'connected';
     }
-  } catch (err) {
-    dbStatus = `error: ${(err as Error).message}`;
+  } catch {
+    dbStatus = 'error';
   }
 
   const memory = process.memoryUsage();
@@ -27,8 +49,6 @@ export async function GET() {
       uptime: `${Math.round(process.uptime())}s`,
       memory: memoryFormatted,
       timestamp: new Date().toISOString(),
-      nodeVersion: process.version,
-      env: process.env.NODE_ENV,
     },
     { status: 200 }
   );

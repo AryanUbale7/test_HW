@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { getAdminPostBySlug } from '@/lib/queries/posts'
 import { notFound } from 'next/navigation'
 import { formatDate } from '@/lib/utils/formatDate'
+import { sanitizeRichText } from '@/lib/utils/sanitize'
 
 export const dynamic = 'force-dynamic'
 
@@ -25,6 +26,7 @@ export default async function DraftPreviewPage({
   if (!post) notFound()
 
   const author = Array.isArray(post.authors) ? post.authors[0] : post.authors
+  const sanitizedBody = post.body ? sanitizeRichText(post.body) : ''
 
   return (
     <div className="bg-white min-h-screen">
@@ -75,9 +77,9 @@ export default async function DraftPreviewPage({
         )}
 
         <div className="prose prose-lg max-w-none">
-          {post.body ? (
-            // Body is stored as HTML from Tiptap
-            <div dangerouslySetInnerHTML={{ __html: post.body }} />
+          {sanitizedBody ? (
+            // Body is sanitized before rendering
+            <div dangerouslySetInnerHTML={{ __html: sanitizedBody }} />
           ) : (
             <p className="text-slate-500">{post.excerpt || 'No content yet.'}</p>
           )}

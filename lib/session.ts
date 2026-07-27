@@ -58,12 +58,15 @@ export async function signSession(payload: Record<string, any>, secret: string):
  * Constant-time string comparison helper to prevent timing attacks.
  */
 function timingSafeEqual(a: string, b: string): boolean {
-  if (a.length !== b.length) {
-    return false;
-  }
-  let result = 0;
-  for (let i = 0; i < a.length; i++) {
-    result |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  // Pad both strings to equal length to prevent timing-based length leaks.
+  // If lengths differ, the comparison will always fail but in constant time.
+  const maxLen = Math.max(a.length, b.length);
+  const paddedA = a.padEnd(maxLen, '\0');
+  const paddedB = b.padEnd(maxLen, '\0');
+
+  let result = a.length ^ b.length; // Will be non-zero if lengths differ
+  for (let i = 0; i < maxLen; i++) {
+    result |= paddedA.charCodeAt(i) ^ paddedB.charCodeAt(i);
   }
   return result === 0;
 }

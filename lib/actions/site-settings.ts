@@ -32,7 +32,13 @@ export async function updateLaunchSettings(formData: FormData) {
     }
 
     const cookieStore = await cookies();
-    cookieStore.set('site_mode', siteMode, { path: '/', maxAge: 30 });
+    cookieStore.set('site_mode', siteMode, { 
+      path: '/', 
+      maxAge: 30,
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+    });
 
     await writeAuditLog({
       adminEmail: adminUser.email,
@@ -58,7 +64,13 @@ export async function launchNow() {
     await upsertSetting('site_mode', 'live');
 
     const cookieStore = await cookies();
-    cookieStore.set('site_mode', 'live', { path: '/', maxAge: 30 });
+    cookieStore.set('site_mode', 'live', { 
+      path: '/', 
+      maxAge: 30,
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+    });
 
     await writeAuditLog({
       adminEmail: adminUser.email,

@@ -1,5 +1,6 @@
 import { NextResponse, NextRequest } from 'next/server';
 import { verifySession } from '@/lib/session';
+import { getSessionSecret } from '@/lib/env';
 
 export async function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
@@ -13,7 +14,7 @@ export async function middleware(request: NextRequest) {
 
   // 2. Redirect admin subdomain requests to canonical main domain admin path
   const isAdminSubdomain = host === 'admin.honworth.in' || host.startsWith('admin.');
-  const secret = process.env.SESSION_SECRET || 'honworth_secure_admin_session_secret_key_2026_prod';
+  const secret = getSessionSecret();
 
   if (isAdminSubdomain) {
     const targetPath = pathname.startsWith('/admin') ? pathname : (pathname === '/' ? '/admin/login' : `/admin${pathname}`);

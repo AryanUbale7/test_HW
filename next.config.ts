@@ -47,9 +47,9 @@ const nextConfig: NextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self';",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://assets.calendly.com;",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://assets.calendly.com https://www.googletagmanager.com https://www.clarity.ms;",
               "frame-src 'self' https://calendly.com https://www.google.com https://maps.google.com;",
-              `connect-src 'self' ${supabaseOrigin} ${supabaseWss};`,
+              `connect-src 'self' ${supabaseOrigin} ${supabaseWss} https://www.google-analytics.com https://region1.google-analytics.com https://*.clarity.ms;`,
               `img-src 'self' blob: data: https://images.unsplash.com ${supabaseOrigin};`,
               "style-src 'self' 'unsafe-inline' https://assets.calendly.com;",
               "font-src 'self';",

@@ -129,7 +129,7 @@ export async function uploadResourceFile(formData: FormData) {
       return { error: fileCheck.error };
     }
 
-    const ext = file.name.split('.').pop();
+    const ext = fileCheck.detectedExtension || 'pdf';
     const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 8)}.${ext}`;
 
     const uploadDir = getPersistentStoragePath('resources');

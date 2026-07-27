@@ -8,6 +8,7 @@ import { loginSchema } from '@/lib/validations/admin'
 import { query } from '@/lib/mysql'
 import { verifyPasswordDetailed, hashPassword } from '@/lib/auth'
 import { signSession } from '@/lib/session'
+import { getSessionSecret } from '@/lib/env'
 
 /**
  * Handles admin login with Zod validation, brute-force lockout, and notifications.
@@ -59,14 +60,6 @@ export async function login(prevState: any, formData: FormData) {
       // DB check failed, proceed to fallback check
     }
 
-    // Environmental Super Admin Check (strictly via environment variables, NO hardcoded plaintext fallback)
-    const envAdminEmail = process.env.ADMIN_EMAIL
-    const envAdminPassword = process.env.ADMIN_PASSWORD
-    
-    if (!admin && envAdminEmail && envAdminPassword && email.trim().toLowerCase() === envAdminEmail.trim().toLowerCase() && password === envAdminPassword) {
-      admin = { id: 'env-super-admin', email: envAdminEmail }
-    }
-
     if (!admin) {
       const currentFailed = await incrementFailedLogin(ip)
       const remaining = Math.max(0, 5 - currentFailed)
@@ -80,7 +73,7 @@ export async function login(prevState: any, formData: FormData) {
     await resetFailedLogin(ip)
 
     // Sign session token
-    const secret = process.env.SESSION_SECRET || 'honworth_secure_admin_session_secret_key_2026_prod';
+    const secret = getSessionSecret();
     const exp = Date.now() + 24 * 60 * 60 * 1000 // 1 day
     const token = await signSession({ id: admin.id, email: admin.email, exp }, secret)
 

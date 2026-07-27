@@ -1,5 +1,6 @@
 import { cookies } from 'next/headers';
 import { verifySession } from '@/lib/session';
+import { getSessionSecret } from '@/lib/env';
 
 /**
  * Server-side security check that verifies if the current request is authenticated.
@@ -9,7 +10,7 @@ import { verifySession } from '@/lib/session';
 export async function verifyAdminSession(): Promise<{ email: string; id: string }> {
   const cookieStore = await cookies();
   const token = cookieStore.get('admin_session')?.value;
-  const secret = process.env.SESSION_SECRET || 'honworth_secure_admin_session_secret_key_2026_prod';
+  const secret = getSessionSecret();
 
   if (!token) {
     throw new Error('Unauthorized access. Session invalid or expired.');

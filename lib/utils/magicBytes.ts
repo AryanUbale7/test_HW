@@ -1,6 +1,8 @@
 export interface FileValidationResult {
   isValid: boolean;
   error?: string;
+  /** The file extension detected from magic bytes (e.g., 'png', 'jpg', 'pdf'). Only set when isValid is true. */
+  detectedExtension?: string;
 }
 
 /**
@@ -44,25 +46,23 @@ export async function validateUploadedFile(
   const isGif = match([0x47, 0x49, 0x46, 0x38]); // GIF8
   const isPdf = match([0x25, 0x50, 0x44, 0x46]); // %PDF
 
-  // Validate matches
-  let typeMatched = false;
+  // Validate matches and determine extension from magic bytes
+  let detectedExtension: string | undefined;
   if (allowedTypes.includes('image')) {
-    if (isPng || isJpeg || isGif) {
-      typeMatched = true;
-    }
+    if (isPng) detectedExtension = 'png';
+    else if (isJpeg) detectedExtension = 'jpg';
+    else if (isGif) detectedExtension = 'gif';
   }
   if (allowedTypes.includes('pdf')) {
-    if (isPdf) {
-      typeMatched = true;
-    }
+    if (isPdf) detectedExtension = 'pdf';
   }
 
-  if (!typeMatched) {
+  if (!detectedExtension) {
     return {
       isValid: false,
       error: `Invalid file signature. File content does not match allowed formats (${allowedTypes.join(', ')}).`,
     };
   }
 
-  return { isValid: true };
+  return { isValid: true, detectedExtension };
 }

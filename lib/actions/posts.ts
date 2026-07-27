@@ -113,7 +113,7 @@ export async function createPost(prevState: any, formData: FormData): Promise<{ 
         adminEmail: 'error-catcher',
         action: 'CREATE_POST',
         targetId: 'DB_ERROR',
-        details: { message: err.message, stack: err.stack },
+        details: { message: err.message },
       });
     } catch {}
     return { errors: { _form: err.message || 'An unexpected error occurred.' }, success: false };
@@ -259,7 +259,7 @@ export async function uploadImage(formData: FormData) {
       return { error: fileCheck.error };
     }
 
-    const ext = file.name.split('.').pop();
+    const ext = fileCheck.detectedExtension || 'bin';
     const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 8)}.${ext}`;
 
     const uploadDir = getPersistentStoragePath('uploads');
