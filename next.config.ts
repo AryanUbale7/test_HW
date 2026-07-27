@@ -99,7 +99,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/how-i-work/legacy',
-        destination: '/wealth-legacy',
+        destination: '/how-i-work#three-arms',
+        permanent: true,
+      },
+      {
+        source: '/wealth-legacy',
+        destination: '/how-i-work#three-arms',
         permanent: true,
       },
     ];

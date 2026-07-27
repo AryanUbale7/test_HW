@@ -12,7 +12,7 @@ export const dynamicParams = true;
 const ARM_PAGE: Record<string, { href: string; label: string }> = {
   Creation: { href: '/wealth-creation', label: 'Wealth Building' },
   Protection: { href: '/wealth-protection', label: 'Wealth Protection' },
-  Legacy: { href: '/wealth-legacy', label: 'Wealth Legacy' },
+  Legacy: { href: '/how-i-work#three-arms', label: 'Wealth Legacy' },
   General: { href: '/how-i-work', label: 'How I Work' },
 };
 
