@@ -14,7 +14,6 @@ export async function middleware(request: NextRequest) {
 
   // 2. Redirect admin subdomain requests to canonical main domain admin path
   const isAdminSubdomain = host === 'admin.honworth.in' || host.startsWith('admin.');
-  const secret = getSessionSecret();
 
   if (isAdminSubdomain) {
     const targetPath = pathname.startsWith('/admin') ? pathname : (pathname === '/' ? '/admin/login' : `/admin${pathname}`);
@@ -23,6 +22,7 @@ export async function middleware(request: NextRequest) {
 
   // Protect /admin routes on main domain
   if (pathname.startsWith('/admin')) {
+    const secret = getSessionSecret();
     const token = request.cookies.get('admin_session')?.value;
     const user = token ? await verifySession(token, secret) : null;
     const isLoginRoute = pathname === '/admin/login';
