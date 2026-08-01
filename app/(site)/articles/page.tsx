@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { getPosts } from '@/lib/queries/posts';
 import { IntroStrip } from '@/components/sections/IntroStrip';
 import { ArticlesFeed } from '@/components/sections/ArticlesFeed';
+import { KnowledgeHubTeaser } from '@/components/sections/KnowledgeHubTeaser';
 
 export const revalidate = 60;
 
@@ -79,6 +80,9 @@ export default async function ArticlesPage() {
             />
           </Suspense>
         </div>
+
+        {/* Knowledge Hub Teaser Section */}
+        <KnowledgeHubTeaser />
       </div>
     </div>
   );
