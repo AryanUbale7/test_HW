@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { getPosts } from '@/lib/queries/posts';
 import { IntroStrip } from '@/components/sections/IntroStrip';
 import { ArticlesFeed } from '@/components/sections/ArticlesFeed';
+import { KnowledgeHubTeaser } from '@/components/sections/KnowledgeHubTeaser';
 
 export const revalidate = 60;
 
@@ -65,7 +66,11 @@ export default async function HomePage() {
       <h1 className="sr-only">Honworth | Wealth Building, Protection & Legacy Planning</h1>
       <IntroStrip />
 
-      <div id="articles" className="max-w-4xl mx-auto px-6 md:px-12 lg:px-16 pt-7 pb-12 md:py-16 scroll-mt-32">
+      <div id="articles" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-7 pb-12 md:py-16 scroll-mt-32">
+        {/* Explore By Topic Teaser */}
+        <KnowledgeHubTeaser />
+
+        {/* Articles Feed */}
         <Suspense fallback={<div className="h-64 flex items-center justify-center font-sans text-charcoal/50">Loading articles...</div>}>
           <ArticlesFeed 
             initialPosts={posts || []} 
