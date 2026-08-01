@@ -71,6 +71,9 @@ export default async function ArticlesPage() {
       <IntroStrip />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-7 pb-12 md:pt-8 md:pb-16">
+        {/* Knowledge Hub Teaser Section */}
+        <KnowledgeHubTeaser />
+
         {/* Posts Feed */}
         <div className="w-full">
           <Suspense fallback={<div className="h-64 flex items-center justify-center font-sans text-charcoal/50">Loading articles...</div>}>
@@ -80,9 +83,6 @@ export default async function ArticlesPage() {
             />
           </Suspense>
         </div>
-
-        {/* Knowledge Hub Teaser Section */}
-        <KnowledgeHubTeaser />
       </div>
     </div>
   );

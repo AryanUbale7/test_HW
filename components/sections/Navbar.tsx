@@ -39,6 +39,7 @@ const NAV_LINKS = [
     label: 'Articles', 
     href: '/articles',
     dropdown: [
+      { label: 'Knowledge Hub (9 Pillars)', href: '/knowledge-hub', icon: Brain },
       { label: 'Educational personal-finance posts', href: '/articles?arm=Pers.Fin', icon: BookOpen },
       { label: 'Browse by Pillar: Building/Protection/Legacy', href: '/articles', icon: Library },
       { label: 'Economy & policy commentary', href: '/articles?arm=Economy', icon: TrendingUp },
