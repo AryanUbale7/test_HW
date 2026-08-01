@@ -70,7 +70,7 @@ export default async function ArticlesPage() {
       <h1 className="sr-only">Articles and Insights | Honworth</h1>
       <IntroStrip />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-7 pb-12 md:pt-8 md:pb-16">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 sm:pt-3 md:pt-4 pb-12 md:pb-16">
         {/* Knowledge Hub Teaser Section */}
         <KnowledgeHubTeaser />
 

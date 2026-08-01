@@ -66,7 +66,7 @@ export default async function HomePage() {
       <h1 className="sr-only">Honworth | Wealth Building, Protection & Legacy Planning</h1>
       <IntroStrip />
 
-      <div id="articles" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-7 pb-12 md:py-16 scroll-mt-32">
+      <div id="articles" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 sm:pt-3 md:pt-4 pb-12 md:pb-16 scroll-mt-32">
         {/* Explore By Topic Teaser */}
         <KnowledgeHubTeaser />
 
