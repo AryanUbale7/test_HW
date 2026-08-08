@@ -99,7 +99,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
           <span className="text-xs uppercase tracking-widest font-sans font-bold text-deep-green shrink-0 min-w-[60px]">
             Type:
           </span>
-          <div className="grid grid-cols-3 sm:flex sm:flex-wrap gap-2">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2">
             {types.map((typeVal) => {
               const filterVal = typeVal === 'All' ? '' : typeVal;
               const isSelected = currentType === filterVal;
