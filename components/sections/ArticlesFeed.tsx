@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { formatDate } from '@/lib/utils/formatDate';
 import { ArticleListItem } from './ArticleListItem';
-import { Filter, X, ChevronDown } from 'lucide-react';
 
 interface ArticlesFeedProps {
   initialPosts: any[];
@@ -45,21 +44,8 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
     window.history.pushState({}, '', newUrl);
   };
 
-  const arms = [
-    { value: 'All', label: 'All Topics' },
-    { value: 'Building', label: 'Building Wealth' },
-    { value: 'Protection', label: 'Protection' },
-    { value: 'Legacy', label: 'Legacy' },
-    { value: 'Pers.Fin', label: 'Personal Finance' },
-    { value: 'Economy', label: 'Economy' },
-  ];
-
-  const types = [
-    { value: '', label: 'All Types' },
-    { value: 'Guide', label: 'Guide' },
-    { value: 'Money Conversation', label: 'Money Conversation' },
-    { value: 'Note', label: 'Note' },
-  ];
+  const arms = ['All', 'Building', 'Protection', 'Legacy', 'Pers.Fin', 'Economy'];
+  const types = ['All', 'Guide', 'Money Conversation', 'Note'];
 
   // Filter posts on the client side
   const filteredPosts = initialPosts.filter((post) => {
@@ -82,97 +68,61 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
     }
   }, [total, currentPage]);
 
-  const isFiltered = currentArm !== 'All' || currentType !== '';
-
   return (
     <div>
-      {/* Dual Compact Dropdowns Bar */}
-      <div className="mb-6 w-full bg-ivory border border-sage/30 rounded-lg p-3.5 sm:p-4 shadow-xs">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 flex-wrap">
-          
-          {/* Left: Dropdown Selectors */}
-          <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
-            <div className="flex items-center gap-1.5 text-xs uppercase tracking-widest font-sans font-bold text-deep-green mr-1">
-              <Filter className="w-3.5 h-3.5 text-gold" />
-              <span>Filter:</span>
-            </div>
-
-            {/* Topic Dropdown */}
-            <div className="relative">
-              <select
-                value={currentArm}
-                onChange={(e) => updateUrlAndState(e.target.value, currentType, 1)}
-                className="appearance-none bg-sage-mist/20 border border-sage/40 hover:border-gold/60 focus:border-gold text-deep-green font-sans font-medium text-xs sm:text-sm rounded-md pl-3 pr-8 py-1.5 focus:outline-none focus:ring-1 focus:ring-gold transition-colors cursor-pointer"
-              >
-                {arms.map((arm) => (
-                  <option key={arm.value} value={arm.value}>
-                    Topic: {arm.label}
-                  </option>
-                ))}
-              </select>
-              <ChevronDown className="w-3.5 h-3.5 text-sage absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-            </div>
-
-            {/* Type Dropdown */}
-            <div className="relative">
-              <select
-                value={currentType}
-                onChange={(e) => updateUrlAndState(currentArm, e.target.value, 1)}
-                className={`appearance-none bg-sage-mist/20 border border-sage/40 hover:border-gold/60 focus:border-gold font-sans font-medium text-xs sm:text-sm rounded-md pl-3 pr-8 py-1.5 focus:outline-none focus:ring-1 focus:ring-gold transition-colors cursor-pointer ${
-                  currentType === 'Money Conversation' ? 'text-gold font-semibold' : 'text-deep-green'
+      {/* Topic & Type Filters (Pill Button Layout) */}
+      <div className="mb-6 w-full space-y-4 bg-sage-mist/10 border border-sage/20 rounded-md p-4 sm:p-5">
+        {/* Topic Filter */}
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+          <span className="text-xs uppercase tracking-widest font-sans font-bold text-deep-green shrink-0 min-w-[60px]">
+            Topic:
+          </span>
+          <div className="flex flex-wrap gap-2">
+            {arms.map((arm) => (
+              <button
+                key={arm}
+                onClick={() => updateUrlAndState(arm, currentType, 1)}
+                className={`text-xs font-sans tracking-wide transition-all duration-200 px-3 py-1.5 rounded-full border whitespace-nowrap ${
+                  currentArm === arm
+                    ? 'text-gold font-semibold bg-sage-mist/60 border-gold/50 shadow-xs'
+                    : 'text-charcoal/80 border-sage/30 hover:border-deep-green hover:text-deep-green bg-ivory/60'
                 }`}
               >
-                {types.map((t) => (
-                  <option key={t.value} value={t.value}>
-                    Type: {t.label}
-                  </option>
-                ))}
-              </select>
-              <ChevronDown className="w-3.5 h-3.5 text-sage absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-            </div>
-          </div>
-
-          {/* Right: Active Filter Badges & Reset Button */}
-          {isFiltered && (
-            <div className="flex items-center gap-2 flex-wrap pt-1 sm:pt-0 border-t sm:border-t-0 border-sage/20">
-              {currentArm !== 'All' && (
-                <span className="inline-flex items-center gap-1 text-xs font-sans font-medium text-deep-green bg-sage-mist/50 border border-sage/30 px-2.5 py-1 rounded-full">
-                  Topic: {currentArm === 'Pers.Fin' ? 'Personal Finance' : currentArm}
-                  <button
-                    onClick={() => updateUrlAndState('All', currentType, 1)}
-                    className="hover:text-gold transition-colors ml-0.5"
-                    aria-label="Remove topic filter"
-                  >
-                    <X className="w-3 h-3" />
-                  </button>
-                </span>
-              )}
-
-              {currentType !== '' && (
-                <span className={`inline-flex items-center gap-1 text-xs font-sans font-medium px-2.5 py-1 rounded-full border ${
-                  currentType === 'Money Conversation'
-                    ? 'text-gold bg-gold/10 border-gold/40'
-                    : 'text-deep-green bg-sage-mist/50 border-sage/30'
-                }`}>
-                  Type: {currentType}
-                  <button
-                    onClick={() => updateUrlAndState(currentArm, '', 1)}
-                    className="hover:text-gold transition-colors ml-0.5"
-                    aria-label="Remove type filter"
-                  >
-                    <X className="w-3 h-3" />
-                  </button>
-                </span>
-              )}
-
-              <button
-                onClick={() => updateUrlAndState('All', '', 1)}
-                className="text-xs font-sans text-charcoal/60 hover:text-gold transition-colors underline ml-1"
-              >
-                Reset
+                {arm === 'Pers.Fin' ? 'Personal' : arm}
               </button>
-            </div>
-          )}
+            ))}
+          </div>
+        </div>
+
+        {/* Type Filter (Guide / Money Conversation / Note) */}
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 border-t border-sage/20 pt-3">
+          <span className="text-xs uppercase tracking-widest font-sans font-bold text-deep-green shrink-0 min-w-[60px]">
+            Type:
+          </span>
+          <div className="flex flex-wrap gap-2">
+            {types.map((typeVal) => {
+              const filterVal = typeVal === 'All' ? '' : typeVal;
+              const isSelected = currentType === filterVal;
+              const isMoneyConversation = typeVal === 'Money Conversation';
+              return (
+                <button
+                  key={typeVal}
+                  onClick={() => updateUrlAndState(currentArm, filterVal, 1)}
+                  className={`text-xs font-sans tracking-wide transition-all duration-200 px-3 py-1.5 rounded-full border whitespace-nowrap ${
+                    isSelected
+                      ? isMoneyConversation
+                        ? 'text-gold font-bold bg-gold/15 border-gold shadow-xs'
+                        : 'text-deep-green font-bold bg-sage-mist/60 border-deep-green shadow-xs'
+                      : isMoneyConversation
+                        ? 'text-gold font-medium border-gold/40 hover:border-gold hover:bg-gold/10 bg-ivory/80'
+                        : 'text-charcoal/80 border-sage/30 hover:border-deep-green hover:text-deep-green bg-ivory/60'
+                  }`}
+                >
+                  {typeVal}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -193,18 +143,8 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
           ))}
         </div>
       ) : (
-        <div className="text-center py-20 bg-sage-mist/10 rounded-lg border border-sage/20 my-4">
-          <p className="text-base sm:text-lg font-sans text-charcoal/80 mb-3">
-            No articles found matching your selected filters.
-          </p>
-          {isFiltered && (
-            <button
-              onClick={() => updateUrlAndState('All', '', 1)}
-              className="inline-flex items-center text-xs font-sans font-semibold text-gold hover:text-deep-green uppercase tracking-wider transition-colors"
-            >
-              Clear all filters
-            </button>
-          )}
+        <div className="text-center py-20">
+          <p className="text-lg font-sans text-charcoal">No articles found matching your criteria.</p>
         </div>
       )}
 
