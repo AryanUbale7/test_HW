@@ -45,7 +45,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
   };
 
   const arms = ['All', 'Building', 'Protection', 'Legacy', 'Pers.Fin', 'Economy'];
-  const types = ['All', 'Guide', 'Money Conversation', 'Note'];
+  const types = ['All', 'Guide', 'Money Conversation'];
 
   // Filter posts on the client side
   const filteredPosts = initialPosts.filter((post) => {
