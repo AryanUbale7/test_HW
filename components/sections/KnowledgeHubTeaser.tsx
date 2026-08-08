@@ -51,7 +51,7 @@ const TOPIC_CARDS: TopicCardItem[] = [
 export const KnowledgeHubTeaser: React.FC = () => {
   return (
     <section className="w-full my-2 sm:my-3">
-      {/* Sleek Ultra-Compact Container Box */}
+      {/* Sleek Container Box */}
       <div className="border border-sage/40 bg-sage-mist/10 rounded-md p-3 sm:p-4 text-center shadow-xs">
         
         {/* Header */}
@@ -66,26 +66,26 @@ export const KnowledgeHubTeaser: React.FC = () => {
           In-depth guides to help you make better financial decisions at every stage of life.
         </p>
 
-        {/* 5 Topic Cards Grid - Small Compact Height */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 mb-2.5">
+        {/* 3 cards on Mobile (grid-cols-3) & 5 cards on Desktop (lg:grid-cols-5) */}
+        <div className="grid grid-cols-3 lg:grid-cols-5 gap-1.5 sm:gap-2 mb-2.5">
           {TOPIC_CARDS.map((card) => (
             <Link
               key={card.slug}
               href={card.href}
-              className="group bg-ivory border border-sage/30 rounded p-2 sm:p-2.5 text-center hover:border-gold/60 hover:shadow-xs transition-all duration-200 flex flex-col items-center justify-start h-full"
+              className="group bg-ivory border border-sage/30 rounded p-1.5 sm:p-2.5 text-center hover:border-gold/60 hover:shadow-xs transition-all duration-200 flex flex-col items-center justify-start h-full"
             >
               {/* Icon Badge */}
-              <div className="w-7 h-7 rounded-full bg-sage-mist/40 border border-sage/20 flex items-center justify-center mb-1 group-hover:bg-gold/10 group-hover:border-gold/40 transition-colors shrink-0">
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-sage-mist/40 border border-sage/20 flex items-center justify-center mb-1 group-hover:bg-gold/10 group-hover:border-gold/40 transition-colors shrink-0">
                 {card.icon}
               </div>
 
               {/* Card Title */}
-              <h3 className="font-serif text-xs font-bold text-deep-green mb-0.5 leading-tight group-hover:text-gold transition-colors">
+              <h3 className="font-serif text-[11px] sm:text-xs font-bold text-deep-green mb-0.5 leading-tight group-hover:text-gold transition-colors">
                 {card.title}
               </h3>
 
               {/* Card Description */}
-              <p className="font-sans text-[10px] text-charcoal/70 leading-tight line-clamp-2">
+              <p className="font-sans text-[9px] sm:text-[10px] text-charcoal/70 leading-tight line-clamp-2">
                 {card.description}
               </p>
             </Link>
