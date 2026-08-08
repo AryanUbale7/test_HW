@@ -68,11 +68,13 @@ export const KnowledgeHubTeaser: React.FC = () => {
 
         {/* 3 cards on Mobile (grid-cols-3) & 5 cards on Desktop (lg:grid-cols-5) */}
         <div className="grid grid-cols-3 lg:grid-cols-5 gap-1.5 sm:gap-2 mb-2.5">
-          {TOPIC_CARDS.map((card) => (
+          {TOPIC_CARDS.map((card, idx) => (
             <Link
               key={card.slug}
               href={card.href}
-              className="group bg-ivory border border-sage/30 rounded p-1.5 sm:p-2.5 text-center hover:border-gold/60 hover:shadow-xs transition-all duration-200 flex flex-col items-center justify-start h-full"
+              className={`group bg-ivory border border-sage/30 rounded p-1.5 sm:p-2.5 text-center hover:border-gold/60 hover:shadow-xs transition-all duration-200 flex-col items-center justify-start h-full ${
+                idx >= 3 ? 'hidden lg:flex' : 'flex'
+              }`}
             >
               {/* Icon Badge */}
               <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-sage-mist/40 border border-sage/20 flex items-center justify-center mb-1 group-hover:bg-gold/10 group-hover:border-gold/40 transition-colors shrink-0">
