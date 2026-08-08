@@ -73,16 +73,16 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
       {/* Topic & Type Filters (Pill Button Layout) */}
       <div className="mb-6 w-full space-y-4 bg-sage-mist/10 border border-sage/20 rounded-md p-4 sm:p-5">
         {/* Topic Filter */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-          <span className="text-xs uppercase tracking-widest font-sans font-bold text-deep-green shrink-0 min-w-[60px]">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <span className="text-[10px] sm:text-xs uppercase tracking-widest font-sans font-bold text-deep-green shrink-0">
             Topic:
           </span>
-          <div className="grid grid-cols-3 sm:flex sm:flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {arms.map((arm) => (
               <button
                 key={arm}
                 onClick={() => updateUrlAndState(arm, currentType, 1)}
-                className={`text-xs font-sans tracking-wide transition-all duration-200 px-3 py-1.5 rounded-full border whitespace-nowrap text-center ${
+                className={`text-[10px] sm:text-xs font-sans tracking-wide transition-all duration-200 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full border whitespace-nowrap ${
                   currentArm === arm
                     ? 'text-gold font-semibold bg-sage-mist/60 border-gold/50 shadow-xs'
                     : 'text-charcoal/80 border-sage/30 hover:border-deep-green hover:text-deep-green bg-ivory/60'
@@ -95,11 +95,11 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
         </div>
 
         {/* Type Filter (Guide / Money Conversation / Note) */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-2 border-t border-sage/20 pt-3">
-          <span className="text-xs uppercase tracking-widest font-sans font-bold text-deep-green shrink-0 min-w-[60px]">
+        <div className="flex items-center gap-2 sm:gap-3 border-t border-sage/20 pt-3">
+          <span className="text-[10px] sm:text-xs uppercase tracking-widest font-sans font-bold text-deep-green shrink-0">
             Type:
           </span>
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {types.map((typeVal) => {
               const filterVal = typeVal === 'All' ? '' : typeVal;
               const isSelected = currentType === filterVal;
@@ -108,7 +108,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
                 <button
                   key={typeVal}
                   onClick={() => updateUrlAndState(currentArm, filterVal, 1)}
-                  className={`text-xs font-sans tracking-wide transition-all duration-200 px-3 py-1.5 rounded-full border whitespace-nowrap text-center ${
+                  className={`text-[10px] sm:text-xs font-sans tracking-wide transition-all duration-200 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full border whitespace-nowrap ${
                     isSelected
                       ? isMoneyConversation
                         ? 'text-gold font-bold bg-gold/15 border-gold shadow-xs'
