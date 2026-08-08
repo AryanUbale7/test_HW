@@ -67,25 +67,64 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
     }
   }, [total, currentPage]);
 
+  const types = ['All', 'Guide', 'Money Conversation', 'Note'];
+
   return (
     <div>
-      {/* Filters (Individual premium pill style) */}
-      <div className="mb-2 w-full">
-        <span className="text-charcoal font-serif italic text-lg">Filter by:</span>
-        <div className="flex flex-wrap gap-2 mt-1.5">
-          {arms.map((arm) => (
-            <button
-              key={arm}
-              onClick={() => updateUrlAndState(arm, currentType, 1)}
-              className={`text-xs sm:text-sm font-sans tracking-wide transition-all duration-300 px-4 py-2 rounded-full border whitespace-nowrap ${
-                currentArm === arm
-                  ? 'text-gold font-medium bg-sage-mist/40 border-gold/40 shadow-sm'
-                  : 'text-charcoal/80 border-sage/30 hover:border-deep-green hover:text-deep-green bg-sage-mist/5'
-              }`}
-            >
-              {arm === 'Pers.Fin' ? 'Personal Finance' : arm}
-            </button>
-          ))}
+      {/* Topic & Type Filters matching brief specification */}
+      {/* Topic & Type Filters matching brief specification */}
+      <div className="mb-6 w-full space-y-4 bg-sage-mist/10 border border-sage/20 rounded-md p-4 sm:p-5">
+        {/* Topic Filter */}
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+          <span className="text-xs uppercase tracking-widest font-sans font-bold text-deep-green shrink-0 min-w-[60px]">
+            Topic:
+          </span>
+          <div className="flex flex-wrap gap-2">
+            {arms.map((arm) => (
+              <button
+                key={arm}
+                onClick={() => updateUrlAndState(arm, currentType, 1)}
+                className={`text-xs font-sans tracking-wide transition-all duration-200 px-3 py-1.5 rounded-full border whitespace-nowrap ${
+                  currentArm === arm
+                    ? 'text-gold font-semibold bg-sage-mist/60 border-gold/50 shadow-xs'
+                    : 'text-charcoal/80 border-sage/30 hover:border-deep-green hover:text-deep-green bg-ivory/60'
+                }`}
+              >
+                {arm === 'Pers.Fin' ? 'Personal' : arm}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Type Filter (Guide / Money Conversation / Note) */}
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 border-t border-sage/20 pt-3">
+          <span className="text-xs uppercase tracking-widest font-sans font-bold text-deep-green shrink-0 min-w-[60px]">
+            Type:
+          </span>
+          <div className="flex flex-wrap gap-2">
+            {types.map((typeVal) => {
+              const filterVal = typeVal === 'All' ? '' : typeVal;
+              const isSelected = currentType === filterVal;
+              const isMoneyConversation = typeVal === 'Money Conversation';
+              return (
+                <button
+                  key={typeVal}
+                  onClick={() => updateUrlAndState(currentArm, filterVal, 1)}
+                  className={`text-xs font-sans tracking-wide transition-all duration-200 px-3 py-1.5 rounded-full border whitespace-nowrap ${
+                    isSelected
+                      ? isMoneyConversation
+                        ? 'text-gold font-bold bg-gold/15 border-gold shadow-xs'
+                        : 'text-deep-green font-bold bg-sage-mist/60 border-deep-green shadow-xs'
+                      : isMoneyConversation
+                        ? 'text-gold font-medium border-gold/40 hover:border-gold hover:bg-gold/10 bg-ivory/80'
+                        : 'text-charcoal/80 border-sage/30 hover:border-deep-green hover:text-deep-green bg-ivory/60'
+                  }`}
+                >
+                  {typeVal}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 

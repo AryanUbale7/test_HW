@@ -3,21 +3,33 @@ export interface SubTopic {
   description: string;
 }
 
+export interface MoneyConversationQuestion {
+  title: string;
+  slug: string;
+}
+
 export interface KnowledgePillar {
   slug: string;
+  number: string;
   title: string;
   description: string;
   iconName: string;
-  subtopics: SubTopic[];
+  topicCategory: 'Building' | 'Protection' | 'Legacy' | 'Personal' | 'Economy';
+  learnBrief: string;
+  understandGuides: SubTopic[];
+  moneyConversations: MoneyConversationQuestion[];
 }
 
 export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
   {
-    slug: 'mutual-funds-for-beginners',
-    title: 'Mutual Funds for Beginners',
-    description: 'Start your investing journey the right way.',
+    slug: 'starting-your-investment-journey',
+    number: 'Pillar 01',
+    title: 'Starting Your Investment Journey',
+    description: 'Build your foundation with clarity, discipline, and the power of compounding.',
     iconName: 'TrendingUp',
-    subtopics: [
+    topicCategory: 'Building',
+    learnBrief: 'Starting to invest is less about market timing and far more about building the discipline of consistency. This pillar guides you through your first steps with plain-English concepts, clear frameworks, and honest risk awareness.',
+    understandGuides: [
       {
         title: 'What Are Mutual Funds?',
         description: 'A plain-English explanation of how mutual funds work, who manages them, and why they exist.',
@@ -43,13 +55,33 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
         description: 'Stopping SIPs in a downturn, chasing past returns, over-diversifying — what to avoid.',
       },
     ],
+    moneyConversations: [
+      { title: 'How much do I need before I can start?', slug: 'how-much-before-start' },
+      { title: 'Is it too late if everyone began years ago?', slug: 'is-it-too-late-to-start' },
+      { title: 'What do I do the first day I see a loss?', slug: 'what-to-do-first-day-of-loss' },
+      { title: 'Should I invest lump sum or start a SIP today?', slug: 'lump-sum-vs-sip-today' },
+      { title: 'How do I know if my risk appetite is low or high?', slug: 'measuring-risk-appetite' },
+      { title: 'What happens to my SIP if I miss a monthly payment?', slug: 'missed-sip-payment' },
+      { title: 'Is a 12% return realistic over 10 years?', slug: 'realistic-mutual-fund-returns' },
+      { title: 'How many mutual funds should one person own?', slug: 'ideal-number-of-mutual-funds' },
+      { title: 'Should I pause SIPs when Nifty hits all-time highs?', slug: 'pausing-sips-at-market-highs' },
+      { title: 'What is the real difference between direct and regular plans?', slug: 'direct-vs-regular-plans' },
+      { title: 'How do dividends work in mutual funds vs growth options?', slug: 'dividend-vs-growth-option' },
+      { title: 'When is the right time to sell a mutual fund?', slug: 'when-to-sell-a-mutual-fund' },
+      { title: 'Why does market volatility feel scarier than it actually is?', slug: 'psychology-of-market-volatility' },
+      { title: 'How does inflation erode uninvested savings over 5 years?', slug: 'inflation-impact-on-savings' },
+      { title: 'What is the single best habit for first-time investors?', slug: 'best-first-time-investor-habit' },
+    ],
   },
   {
     slug: 'pms-explained',
+    number: 'Pillar 02',
     title: 'PMS Explained',
-    description: 'Professional management for serious investors.',
+    description: 'Professional portfolio management for serious investors seeking tailored equity strategies.',
     iconName: 'Briefcase',
-    subtopics: [
+    topicCategory: 'Building',
+    learnBrief: 'Portfolio Management Services (PMS) offers direct stock ownership and customized portfolio strategies for high-net-worth investors. Understand minimum thresholds, mechanics, and key risk considerations.',
+    understandGuides: [
       {
         title: 'What Is PMS?',
         description: "Portfolio Management Services — what it is, who it's for, and how it differs from mutual funds.",
@@ -75,13 +107,33 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
         description: 'Track record, fee structure, transparency, and questions worth asking.',
       },
     ],
+    moneyConversations: [
+      { title: 'Is the ₹50 Lakh minimum ticket size in PMS worth it?', slug: 'is-pms-50l-minimum-worth-it' },
+      { title: 'How are PMS returns taxed compared to Mutual Funds?', slug: 'pms-taxation-vs-mutual-funds' },
+      { title: 'What happens if my PMS portfolio manager underperforms Nifty?', slug: 'pms-underperformance-handling' },
+      { title: 'Can I transfer existing stocks into a new PMS account?', slug: 'stock-transfer-into-pms' },
+      { title: 'How transparent are transaction charges in PMS fee structures?', slug: 'pms-fee-structure-transparency' },
+      { title: 'Why is stock concentration both a benefit and risk in PMS?', slug: 'pms-concentration-risk' },
+      { title: 'Should I choose Discretionary or Non-Discretionary PMS?', slug: 'discretionary-vs-non-discretionary-pms' },
+      { title: 'How frequently will I receive portfolio reports in PMS?', slug: 'pms-reporting-frequency' },
+      { title: 'What is a performance fee watermark in PMS?', slug: 'pms-high-watermark-explained' },
+      { title: 'Can I exit a PMS strategy prematurely without penalty?', slug: 'exiting-pms-early' },
+      { title: 'How do PMS managers manage cash during market corrections?', slug: 'pms-cash-calls-in-corrections' },
+      { title: 'Is PMS suitable for conservative investors?', slug: 'is-pms-for-conservative-investors' },
+      { title: 'What questions should I ask before signing a PMS agreement?', slug: 'questions-before-pms-agreement' },
+      { title: 'How does stock ownership work in my demat account for PMS?', slug: 'pms-demat-stock-ownership' },
+      { title: 'Why do two investors in the same PMS have different returns?', slug: 'why-pms-returns-differ' },
+    ],
   },
   {
     slug: 'sif-explained',
+    number: 'Pillar 03',
     title: 'SIF Explained',
-    description: 'Alternative investments simplified.',
+    description: 'Alternative investment strategies simplified for modern portfolios.',
     iconName: 'Layers',
-    subtopics: [
+    topicCategory: 'Building',
+    learnBrief: 'Specialised Investment Funds (SIF) bridges the gap between mutual funds and PMS under SEBI rules. Explore long-short strategies, sector opportunities, and risk management.',
+    understandGuides: [
       {
         title: 'What Is SIF?',
         description: 'Specialised Investment Funds — a new SEBI category between mutual funds and PMS.',
@@ -107,13 +159,33 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
         description: 'Complexity, liquidity, and regulatory newness — honest risks to know before investing.',
       },
     ],
+    moneyConversations: [
+      { title: 'Where does SIF fit between Mutual Funds and PMS?', slug: 'sif-positioning-spectrum' },
+      { title: 'How do long-short strategies in SIF cushion market drops?', slug: 'how-sif-long-short-works' },
+      { title: 'What is the SEBI minimum investment requirement for SIF?', slug: 'sebi-sif-minimum-investment' },
+      { title: 'Are derivative-based SIF strategies overly risky for HNIs?', slug: 'sif-derivatives-risk-profile' },
+      { title: 'How is liquidity handled in SIF compared to open-ended funds?', slug: 'sif-liquidity-terms' },
+      { title: 'What tax rules apply to capital gains from SIF investments?', slug: 'sif-capital-gains-tax' },
+      { title: 'Why did SEBI create the SIF framework for Indian investors?', slug: 'why-sebi-created-sif' },
+      { title: 'Can SIF generate positive returns during extended bear markets?', slug: 'sif-in-bear-markets' },
+      { title: 'What is the ideal allocation percentage for SIF in a portfolio?', slug: 'ideal-sif-portfolio-allocation' },
+      { title: 'How do expense ratios in SIF compare to PMS?', slug: 'sif-vs-pms-expense-ratio' },
+      { title: 'Who is the ideal investor for SIF strategies?', slug: 'ideal-sif-investor-profile' },
+      { title: 'How do sector-specific SIF funds manage downside risks?', slug: 'sif-sectoral-downside-management' },
+      { title: 'What disclosures must SIF fund managers provide monthly?', slug: 'sif-monthly-disclosures' },
+      { title: 'How does leverage limitation protect SIF investors?', slug: 'sif-leverage-caps-protection' },
+      { title: 'Should I replace debt mutual funds with low-volatility SIFs?', slug: 'replacing-debt-funds-with-sif' },
+    ],
   },
   {
     slug: 'estate-planning-legacy',
+    number: 'Pillar 04',
     title: 'Estate Planning & Legacy',
-    description: 'Plan today for a secure legacy tomorrow.',
+    description: 'Ensure smooth, conflict-free wealth transfer across generations.',
     iconName: 'Landmark',
-    subtopics: [
+    topicCategory: 'Legacy',
+    learnBrief: 'Building wealth is only half the journey; transferring it smoothly without legal disputes or delays is the true mark of legacy. Learn how Wills, Private Trusts, and clear succession planning safeguard your family.',
+    understandGuides: [
       {
         title: 'What Is Estate Planning?',
         description: 'Why planning wealth transfer is as important as building it — and what happens without it.',
@@ -139,13 +211,33 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
         description: 'Outdated nominations, missing Wills, joint assets without clarity — what gets families stuck.',
       },
     ],
+    moneyConversations: [
+      { title: 'Why is a nominee legally just a trustee and not the final owner?', slug: 'nominee-vs-legal-heir-truth' },
+      { title: 'At what age should a family draft their first formal Will?', slug: 'when-to-write-first-will' },
+      { title: 'What happens to bank accounts if a person dies without a Will?', slug: 'dying-intestate-in-india' },
+      { title: 'How does a Private Family Trust protect assets from future creditors?', slug: 'private-trust-asset-protection' },
+      { title: 'Can a registered Will be challenged in court by family members?', slug: 'can-registered-will-be-challenged' },
+      { title: 'How do joint holdings with "Either or Survivor" clause work legally?', slug: 'either-or-survivor-clause-explained' },
+      { title: 'What is the role of an Executor in executing a Will smoothly?', slug: 'role-of-will-executor' },
+      { title: 'How do I ensure digital assets and passwords pass on securely?', slug: 'digital-estate-planning-guide' },
+      { title: 'Should business owners create separate business succession trusts?', slug: 'business-succession-trusts' },
+      { title: 'What is Probate and when is it legally mandatory in India?', slug: 'probate-mandate-in-india' },
+      { title: 'How do gift deeds differ from Will transfers in terms of stamp duty?', slug: 'gift-deed-vs-will-transfer' },
+      { title: 'What is a Letter of Administration when no Will exists?', slug: 'letter-of-administration-guide' },
+      { title: 'How do I protect inherited wealth for minor children?', slug: 'protecting-wealth-for-minor-children' },
+      { title: 'Why should life insurance policies specify MWP Act endorsement?', slug: 'mwp-act-life-insurance-protection' },
+      { title: 'How often should a family review and update their estate plan?', slug: 'estate-plan-review-frequency' },
+    ],
   },
   {
     slug: 'insurance-demystified',
+    number: 'Pillar 05',
     title: 'Insurance Demystified',
-    description: 'Facts over myths. Protect what matters.',
+    description: 'Separate protection from investment. Shield what matters most.',
     iconName: 'ShieldCheck',
-    subtopics: [
+    topicCategory: 'Protection',
+    learnBrief: 'Insurance is pure risk mitigation, not a wealth-building product. Clear the myths around term policies, health covers, and policy documentation so your family is never left exposed.',
+    understandGuides: [
       {
         title: 'Term Insurance — The Basics',
         description: 'What it is, how it works, and why buying early costs less and protects more.',
@@ -171,13 +263,33 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
         description: 'Inclusions, exclusions, waiting periods — what to check before signing.',
       },
     ],
+    moneyConversations: [
+      { title: 'Why mixing insurance with investment usually hurts both goals?', slug: 'separating-insurance-from-investment' },
+      { title: 'How much term life insurance cover does an earning member need?', slug: 'calculating-term-insurance-cover' },
+      { title: 'Is corporate health insurance enough after job changes or retirement?', slug: 'corporate-vs-personal-health-insurance' },
+      { title: 'What is the critical illness rider and when should you add it?', slug: 'critical-illness-rider-guide' },
+      { title: 'Why buying term insurance at 25 locks in low premiums for life?', slug: 'buying-term-insurance-early' },
+      { title: 'How do pre-existing condition waiting periods affect health claims?', slug: 'health-insurance-waiting-periods' },
+      { title: 'What is restoring benefit in health insurance policies?', slug: 'restore-benefit-health-insurance' },
+      { title: 'Why does claim settlement ratio matter less than claim amount ratio?', slug: 'claim-settlement-vs-amount-ratio' },
+      { title: 'Should non-working spouses or children have term insurance?', slug: 'who-needs-term-insurance' },
+      { title: 'What is a Super Top-up health policy and how does it lower costs?', slug: 'super-top-up-health-policy' },
+      { title: 'Why must material health disclosures never be hidden from insurers?', slug: 'non-disclosure-dangers-in-insurance' },
+      { title: 'What happens to term insurance if you move abroad permanently?', slug: 'term-insurance-for-nris' },
+      { title: 'How does personal accident cover differ from term life insurance?', slug: 'personal-accident-vs-term-insurance' },
+      { title: 'Why does co-payment clause increase out-of-pocket health costs?', slug: 'copayment-clause-in-health-insurance' },
+      { title: 'How do I organize policy documents so my family can claim easily?', slug: 'organizing-family-insurance-claims' },
+    ],
   },
   {
     slug: 'retirement-planning',
+    number: 'Pillar 06',
     title: 'Retirement Planning',
-    description: 'Retire with confidence, not confusion.',
+    description: 'Design a sustainable, inflation-adjusted income stream for your golden years.',
     iconName: 'Compass',
-    subtopics: [
+    topicCategory: 'Personal',
+    learnBrief: 'Retirement planning is working backwards from your future lifestyle to today’s monthly savings rate. Master compounding timelines, NPS, EPF, and Systematic Withdrawal Plans (SWP).',
+    understandGuides: [
       {
         title: 'When Should You Start?',
         description: 'Why starting at 25 beats starting at 40 — the compounding gap in real numbers.',
@@ -203,13 +315,33 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
         description: 'Retiring too early without enough corpus, ignoring inflation, and over-relying on one asset.',
       },
     ],
+    moneyConversations: [
+      { title: 'Why is starting retirement savings at 25 four times better than 35?', slug: 'compounding-gap-in-retirement' },
+      { title: 'How much monthly corpus is needed to generate ₹1 Lakh monthly post-retirement?', slug: 'calculating-1-lakh-retirement-corpus' },
+      { title: 'How does inflation silently double your living expenses every 10 years?', slug: 'inflation-doubling-effect-on-retirement' },
+      { title: 'What is Sequence of Returns Risk and why is it dangerous at retirement?', slug: 'sequence-of-returns-risk-explained' },
+      { title: 'How does an SWP (Systematic Withdrawal Plan) provide tax-efficient monthly income?', slug: 'swp-for-post-retirement-income' },
+      { title: 'NPS Tier 1 vs EPF vs PPF: Which should be your core retirement bucket?', slug: 'nps-vs-epf-vs-ppf-comparison' },
+      { title: 'Why annuities often offer low yields compared to mutual fund SWPs?', slug: 'annuities-vs-swp-for-pension' },
+      { title: 'How do equity mutual funds protect your retirement corpus against healthcare inflation?', slug: 'equity-protection-against-medical-inflation' },
+      { title: 'What is the 4% withdrawal rule and does it apply to Indian markets?', slug: '4-percent-rule-in-india' },
+      { title: 'Should real estate rental income be your sole retirement strategy?', slug: 'dangers-of-relying-only-on-rental-income' },
+      { title: 'How to rebalance from equity to debt 5 years before retirement date?', slug: 'pre-retirement-portfolio-rebalancing' },
+      { title: 'What tax benefits apply to NPS lump sum withdrawals at age 60?', slug: 'nps-withdrawal-taxation-at-60' },
+      { title: 'How do Reverse Mortgages work for senior citizens in India?', slug: 'reverse-mortgage-guide-india' },
+      { title: 'What is the biggest mental adjustment when transitioning from salary to corpus?', slug: 'psychology-of-living-off-corpus' },
+      { title: 'How to structure a 3-bucket strategy for post-retirement peace of mind?', slug: 'three-bucket-retirement-strategy' },
+    ],
   },
   {
     slug: 'tax-saving',
+    number: 'Pillar 07',
     title: 'Tax Saving',
-    description: 'Save smartly. Keep more of what you earn.',
+    description: 'Structure investments legally to retain more of your hard-earned wealth.',
     iconName: 'Calculator',
-    subtopics: [
+    topicCategory: 'Personal',
+    learnBrief: 'Tax optimization is an ongoing strategy, not a last-minute March rush. Evaluate Old vs New Tax Regimes, ELSS, 80C options, and capital gains harvesting.',
+    understandGuides: [
       {
         title: 'Old vs New Tax Regime',
         description: 'Which one saves you more — a clear side-by-side with real income examples.',
@@ -235,13 +367,33 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
         description: 'Last-minute 80C scrambles, wrong regime choices, missed HRA claims — avoidable errors.',
       },
     ],
+    moneyConversations: [
+      { title: 'Old vs New Tax Regime: How to calculate which saves more for your salary bracket?', slug: 'old-vs-new-tax-regime-calculator-guide' },
+      { title: 'Why is ELSS the most efficient Section 80C vehicle over 3-year lock-in?', slug: 'why-elss-is-best-80c-option' },
+      { title: 'How to harvest ₹1.25 Lakh annual tax-free LTCG in equity mutual funds?', slug: 'tax-harvesting-equity-mutual-funds' },
+      { title: 'What is the additional ₹50,000 tax deduction under Section 80CCD(1B) for NPS?', slug: 'nps-extra-50k-tax-deduction' },
+      { title: 'How are debt mutual funds taxed after the 2023 tax rule changes?', slug: 'debt-mutual-fund-taxation-2023' },
+      { title: 'Can HRA and Home Loan interest deductions be claimed together?', slug: 'hra-plus-home-loan-tax-benefit' },
+      { title: 'How does capital gains tax apply when switching between mutual fund schemes?', slug: 'tax-on-mutual-fund-switches' },
+      { title: 'What is Advance Tax and who needs to pay it in quarterly installments?', slug: 'advance-tax-payment-rules' },
+      { title: 'Why is buying high-commission insurance just for tax-saving a bad trade?', slug: 'buying-insurance-solely-for-tax' },
+      { title: 'How are stock intra-day gains taxed versus delivery trades?', slug: 'stock-trading-taxation-india' },
+      { title: 'What tax rules apply to interest earned on FD vs Debt Mutual Fund SWP?', slug: 'fd-interest-vs-swp-tax-comparison' },
+      { title: 'How do gifts from relatives exempt you from gift tax under Income Tax Act?', slug: 'gift-tax-rules-in-india' },
+      { title: 'What is Section 54F tax exemption when reinvesting house sale gains?', slug: 'section-54f-capital-gains-exemption' },
+      { title: 'Why should freelancers and consultants file under Presumptive Tax 44ADA?', slug: 'section-44ada-presumptive-tax' },
+      { title: 'How to structure family asset ownership to split tax liability legally?', slug: 'family-tax-splitting-strategies' },
+    ],
   },
   {
     slug: 'personal-finance-foundations',
+    number: 'Pillar 08',
     title: 'Personal Finance Foundations',
-    description: 'Learn the basics. Stay ahead always.',
+    description: 'Master money habits, emergency funds, debt, and inflation protection.',
     iconName: 'Wallet',
-    subtopics: [
+    topicCategory: 'Personal',
+    learnBrief: 'Strong financial management rests on a solid foundation: establishing emergency reserves, controlling high-cost debt, budgeting effortlessly, and avoiding major money mistakes in your 20s and 30s.',
+    understandGuides: [
       {
         title: 'Save First or Invest First?',
         description: 'The right sequence — emergency fund, then investments. Why the order matters.',
@@ -267,13 +419,33 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
         description: 'Starting late, ignoring insurance, spending before saving — the ones that cost the most.',
       },
     ],
+    moneyConversations: [
+      { title: 'Why must emergency funds precede any stock market or mutual fund investment?', slug: 'emergency-fund-first-rule' },
+      { title: 'How many months of living expenses should be in your liquid emergency pool?', slug: 'how-much-emergency-fund' },
+      { title: 'Where should emergency money be parked: Savings Account, Liquid Fund, or FD?', slug: 'where-to-park-emergency-fund' },
+      { title: 'What is the 50-30-20 rule and how to customize it for Indian salaries?', slug: '50-30-20-budgeting-rule-india' },
+      { title: 'How to pay off high-cost credit card debt using Avalanche vs Snowball methods?', slug: 'avalanche-vs-snowball-debt-payoff' },
+      { title: 'Good Debt vs Bad Debt: Is a home loan or education loan considered good debt?', slug: 'good-debt-vs-bad-debt' },
+      { title: 'Why is keeping excess cash in a 3% savings account a guaranteed real-value loss?', slug: 'dangers-of-excess-savings-account-cash' },
+      { title: 'How does lifestyle creep quietly prevent high earners from building wealth?', slug: 'controlling-lifestyle-creep' },
+      { title: 'Should you prepay your home loan early or invest the surplus in equity?', slug: 'prepaying-home-loan-vs-investing' },
+      { title: 'What is credit score (CIBIL) and how to maintain it above 750?', slug: 'cibil-score-maintenance' },
+      { title: 'How to handle financial peer pressure and lifestyle comparison in your 20s?', slug: 'financial-peer-pressure' },
+      { title: 'Why buying a car beyond your 6-month income is a wealth trap?', slug: 'car-buying-financial-rule' },
+      { title: 'How to discuss money and financial goals openly with your spouse before marriage?', slug: 'discussing-money-with-spouse' },
+      { title: 'What is zero-based budgeting and how does it give every Rupee a job?', slug: 'zero-based-budgeting-guide' },
+      { title: 'What is the cost of waiting 5 years before building your first investment pool?', slug: 'cost-of-waiting-to-invest' },
+    ],
   },
   {
     slug: 'market-economy-basics',
+    number: 'Pillar 09',
     title: 'Market & Economy Basics',
-    description: 'Learn the basics. Stay ahead always.',
+    description: 'Demystify macroeconomic trends, Sensex/Nifty dynamics, and financial news.',
     iconName: 'LineChart',
-    subtopics: [
+    topicCategory: 'Economy',
+    learnBrief: 'Understanding how interest rates, inflation, GDP growth, and corporate earnings interact helps you remain calm during market noise and make informed investment decisions.',
+    understandGuides: [
       {
         title: 'What Is the Stock Market?',
         description: "How markets work, who participates, and why they matter even if you don't invest directly.",
@@ -298,6 +470,75 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
         title: 'Key Financial Terms You Must Know',
         description: 'AUM, NAV, expense ratio, alpha, beta — a plain-English glossary for everyday investors.',
       },
+    ],
+    moneyConversations: [
+      { title: 'What does Nifty 50 index actually measure and how are 50 stocks selected?', slug: 'nifty-50-selection-methodology' },
+      { title: 'How do RBI Repo Rate hikes impact your home loan EMIs and debt mutual funds?', slug: 'repo-rate-impact-on-loans-and-funds' },
+      { title: 'What is GDP growth and why does it drive corporate earnings over the long term?', slug: 'gdp-growth-and-stock-returns' },
+      { title: 'How does US Federal Reserve interest rate policy ripple into Indian stock markets?', slug: 'us-fed-rate-impact-on-indian-market' },
+      { title: 'What are REITs (Real Estate Investment Trusts) and how do they generate dividend income?', slug: 'reits-investing-guide-india' },
+      { title: 'How does Sovereign Gold Bond (SGB) compare to Physical Gold and Gold ETFs?', slug: 'sgb-vs-physical-gold-vs-gold-etf' },
+      { title: 'What is the difference between NAV (Net Asset Value) and stock price?', slug: 'nav-vs-stock-price-explained' },
+      { title: 'Why is a low NAV in a mutual fund NOT a cheap bargain?', slug: 'low-nav-mutual-fund-myth' },
+      { title: 'What is Expense Ratio and how does 1% extra fee compound over 20 years?', slug: 'expense-ratio-compounding-impact' },
+      { title: 'What do Alpha and Beta metrics tell you about fund manager risk & return?', slug: 'alpha-and-beta-in-mutual-funds' },
+      { title: 'How does Rupee depreciation against US Dollar affect domestic inflation?', slug: 'rupee-depreciation-impact-on-economy' },
+      { title: 'What is FII and DII flow and why do news channels track it daily?', slug: 'fii-dii-flows-explained' },
+      { title: 'How to read quarterly earnings reports without getting lost in accounting jargon?', slug: 'reading-quarterly-earnings-reports' },
+      { title: 'What is Yield Curve inversion and why is it watched as a global recession indicator?', slug: 'yield-curve-inversion-recession' },
+      { title: 'How to filter out daily stock market news noise and focus on multi-year trends?', slug: 'filtering-market-news-noise' },
+    ],
+  },
+  {
+    slug: 'business-hni-wealth-structuring',
+    number: 'Pillar 10',
+    title: 'Business & HNI Wealth Structuring',
+    description: 'Advanced liquidity, risk segregation, and family office framework design.',
+    iconName: 'Compass',
+    topicCategory: 'Building',
+    learnBrief: 'High-net-worth individuals, business owners, and founders require specialized wealth architectures to segregate personal assets from business risks, structure holding entities, and plan multi-generational liquidity.',
+    understandGuides: [
+      {
+        title: 'Personal vs Business Wealth Segregation',
+        description: 'Why keeping family wealth isolated from corporate liabilities is essential.',
+      },
+      {
+        title: 'Family Office Structures',
+        description: 'Single Family Office vs Multi Family Office models for comprehensive governance.',
+      },
+      {
+        title: 'Liquidity Planning for Founders',
+        description: 'Managing ESOP liquidity, secondary sales, and windfalls without tax leakage.',
+      },
+      {
+        title: 'Cross-Border Wealth Structuring',
+        description: 'LRS guidelines, overseas property, and global portfolio diversification.',
+      },
+      {
+        title: 'Holding Companies & Asset Holding Vehicles',
+        description: 'Structuring holding companies for dividend efficiency and asset protection.',
+      },
+      {
+        title: 'Governance & Family Charters',
+        description: 'Creating family constitutions to prevent inter-generational business conflict.',
+      },
+    ],
+    moneyConversations: [
+      { title: 'Why must business owners never pledge personal assets for corporate loans?', slug: 'segregating-business-and-personal-assets' },
+      { title: 'How does a Multi Family Office (MFO) manage consolidated wealth governance?', slug: 'multi-family-office-governance' },
+      { title: 'What tax rules apply under LRS (Liberalised Remittance Scheme) for overseas investing?', slug: 'lrs-remittance-tax-rules' },
+      { title: 'How to structure post-startup exit windfall liquidity over 5-year horizons?', slug: 'managing-startup-exit-windfall' },
+      { title: 'Why is a Family Constitution essential for multi-generational business families?', slug: 'drafting-a-family-constitution' },
+      { title: 'How do Holding Companies streamline dividend distribution and reinvestment?', slug: 'holding-company-tax-efficiency' },
+      { title: 'What key clauses protect founder equity in secondary stock sales?', slug: 'founder-secondary-stock-sale-clauses' },
+      { title: 'How to insure key personnel through Keyman Insurance without tax complications?', slug: 'keyman-insurance-tax-structuring' },
+      { title: 'What is the role of an Independent Advisor in Family Office governance?', slug: 'independent-advisor-in-family-office' },
+      { title: 'How do cross-border trusts handle dual-citizenship tax liabilities?', slug: 'cross-border-trusts-dual-citizenship' },
+      { title: 'How to plan liquidity for promoter pledge releases in listed entities?', slug: 'promoter-pledge-release-liquidity' },
+      { title: 'What is ESG integration in HNI global portfolio mandates?', slug: 'esg-integration-hni-portfolios' },
+      { title: 'How to manage currency risk across global asset allocations?', slug: 'currency-risk-management-global-assets' },
+      { title: 'What governance structures prevent family feuds over company dividends?', slug: 'family-dividend-governance' },
+      { title: 'How to conduct annual family wealth audits across real estate, equity, and trusts?', slug: 'annual-family-wealth-audit-process' },
     ],
   },
 ];

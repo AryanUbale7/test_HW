@@ -46,6 +46,11 @@ const NAV_LINKS = [
       { label: 'Search + category archive', href: '/articles', icon: Search },
     ]
   },
+  {
+    label: 'Money Conversations',
+    href: '/articles?type=Money+Conversation',
+    isHighlight: true,
+  },
   { 
     label: 'My Library', 
     href: '/library',
@@ -112,7 +117,9 @@ export const Navbar = () => {
             <div key={link.label} className="relative group h-24 flex items-center">
               <Link 
                 href={link.href}
-                className="text-sm font-medium tracking-wide text-charcoal hover:text-gold transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm flex items-center gap-2"
+                className={`text-sm font-medium tracking-wide transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm flex items-center gap-2 ${
+                  (link as any).isHighlight ? 'text-gold font-serif italic text-base hover:text-deep-green' : 'text-charcoal hover:text-gold'
+                }`}
               >
                 {link.label}
                 {link.dropdown && (
