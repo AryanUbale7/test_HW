@@ -73,8 +73,8 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
       {/* Topic & Type Filters (Pill Button Layout) */}
       <div className="mb-6 w-full space-y-4 bg-sage-mist/10 border border-sage/20 rounded-md p-4 sm:p-5">
         {/* Topic Filter */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          <span className="text-xs sm:text-sm uppercase tracking-widest font-sans font-bold text-deep-green shrink-0">
+        <div className="flex items-start gap-2 sm:gap-3">
+          <span className="text-xs sm:text-sm uppercase tracking-widest font-sans font-bold text-deep-green shrink-0 pt-1.5 sm:pt-2">
             Topic:
           </span>
           <div className="flex flex-wrap gap-2 sm:gap-2.5">
@@ -88,15 +88,15 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
                     : 'text-charcoal/80 border-sage/30 hover:border-deep-green hover:text-deep-green bg-ivory/60'
                 }`}
               >
-                {arm === 'Pers.Fin' ? 'Personal' : arm}
+                {arm === 'Pers.Fin' ? 'Personal Finance' : arm}
               </button>
             ))}
           </div>
         </div>
 
         {/* Type Filter (Guide / Money Conversation / Note) */}
-        <div className="flex items-center gap-2 sm:gap-3 border-t border-sage/20 pt-3">
-          <span className="text-xs sm:text-sm uppercase tracking-widest font-sans font-bold text-deep-green shrink-0">
+        <div className="flex items-start gap-2 sm:gap-3 border-t border-sage/20 pt-3">
+          <span className="text-xs sm:text-sm uppercase tracking-widest font-sans font-bold text-deep-green shrink-0 pt-1.5 sm:pt-2">
             Type:
           </span>
           <div className="flex flex-wrap gap-2 sm:gap-2.5">

@@ -56,7 +56,7 @@ export const KnowledgeHubTeaser: React.FC = () => {
         
         {/* Header */}
         <h2 className="text-xs sm:text-sm md:text-base lg:text-lg font-serif text-deep-green font-bold uppercase tracking-widest mb-0.5 sm:mb-1">
-          EXPLORE BY TOPIC
+          EXPLORE BY PILLAR
         </h2>
         
         {/* Accent ornament */}
@@ -100,7 +100,7 @@ export const KnowledgeHubTeaser: React.FC = () => {
             href="/knowledge-hub"
             className="inline-flex items-center text-[11px] sm:text-xs md:text-sm font-sans font-semibold text-deep-green hover:text-gold transition-colors group tracking-wider uppercase"
           >
-            <span>View all pillar pages</span>
+            <span>View all pillar sections</span>
             <ArrowRight className="ml-1.5 w-3.5 h-3.5 md:w-4 md:h-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
