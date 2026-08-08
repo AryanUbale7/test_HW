@@ -77,12 +77,12 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
           <span className="text-xs uppercase tracking-widest font-sans font-bold text-deep-green shrink-0 min-w-[60px]">
             Topic:
           </span>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2">
             {arms.map((arm) => (
               <button
                 key={arm}
                 onClick={() => updateUrlAndState(arm, currentType, 1)}
-                className={`text-xs font-sans tracking-wide transition-all duration-200 px-3 py-1.5 rounded-full border whitespace-nowrap ${
+                className={`text-xs font-sans tracking-wide transition-all duration-200 px-3 py-1.5 rounded-full border whitespace-nowrap w-fit ${
                   currentArm === arm
                     ? 'text-gold font-semibold bg-sage-mist/60 border-gold/50 shadow-xs'
                     : 'text-charcoal/80 border-sage/30 hover:border-deep-green hover:text-deep-green bg-ivory/60'
@@ -99,7 +99,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
           <span className="text-xs uppercase tracking-widest font-sans font-bold text-deep-green shrink-0 min-w-[60px]">
             Type:
           </span>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2">
             {types.map((typeVal) => {
               const filterVal = typeVal === 'All' ? '' : typeVal;
               const isSelected = currentType === filterVal;
@@ -108,7 +108,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
                 <button
                   key={typeVal}
                   onClick={() => updateUrlAndState(currentArm, filterVal, 1)}
-                  className={`text-xs font-sans tracking-wide transition-all duration-200 px-3 py-1.5 rounded-full border whitespace-nowrap ${
+                  className={`text-xs font-sans tracking-wide transition-all duration-200 px-3 py-1.5 rounded-full border whitespace-nowrap w-fit ${
                     isSelected
                       ? isMoneyConversation
                         ? 'text-gold font-bold bg-gold/15 border-gold shadow-xs'
