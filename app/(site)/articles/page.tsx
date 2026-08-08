@@ -4,6 +4,7 @@ import { getPosts } from '@/lib/queries/posts';
 import { IntroStrip } from '@/components/sections/IntroStrip';
 import { ArticlesFeed } from '@/components/sections/ArticlesFeed';
 import { KnowledgeHubTeaser } from '@/components/sections/KnowledgeHubTeaser';
+import { MOCK_ARTICLES } from '@/lib/data/mockArticles';
 
 export const revalidate = 60;
 
@@ -29,6 +30,9 @@ export const metadata: Metadata = {
 export default async function ArticlesPage() {
   // Fetch up to 100 posts to cover all articles for instant client-side filtering
   const { posts } = await getPosts({ limit: 100 });
+
+  // Use mock articles as fallback when DB is unavailable (local dev / preview)
+  const displayPosts = (posts && posts.length > 0) ? posts : MOCK_ARTICLES;
 
   const schema = {
     "@context": "https://schema.org",
@@ -78,7 +82,7 @@ export default async function ArticlesPage() {
         <div className="w-full">
           <Suspense fallback={<div className="h-64 flex items-center justify-center font-sans text-charcoal/50">Loading articles...</div>}>
             <ArticlesFeed 
-              initialPosts={posts || []} 
+              initialPosts={displayPosts} 
               basePath="/articles" 
             />
           </Suspense>
