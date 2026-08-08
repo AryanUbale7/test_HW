@@ -46,11 +46,6 @@ const NAV_LINKS = [
       { label: 'Search + category archive', href: '/articles', icon: Search },
     ]
   },
-  {
-    label: 'Money Conversations',
-    href: '/articles?type=Money+Conversation',
-    isHighlight: true,
-  },
   { 
     label: 'My Library', 
     href: '/library',
