@@ -108,7 +108,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
                 <button
                   key={typeVal}
                   onClick={() => updateUrlAndState(currentArm, filterVal, 1)}
-                  className={`text-xs sm:text-sm font-sans tracking-wide transition-all duration-200 px-2.5 sm:px-4 py-1 sm:py-2 rounded-full border whitespace-nowrap ${
+                  className={`text-xs sm:text-sm font-sans tracking-wide transition-all duration-200 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border whitespace-nowrap ${
                     isSelected
                       ? isMoneyConversation
                         ? 'text-gold font-bold bg-gold/15 border-gold shadow-xs'
@@ -118,12 +118,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
                         : 'text-charcoal/80 border-sage/30 hover:border-deep-green hover:text-deep-green bg-ivory/60'
                   }`}
                 >
-                  {typeVal === 'Money Conversation' ? (
-                    <>
-                      <span className="hidden sm:inline">Money Conversation</span>
-                      <span className="inline sm:hidden">Money Conv.</span>
-                    </>
-                  ) : typeVal}
+                  {typeVal}
                 </button>
               );
             })}
