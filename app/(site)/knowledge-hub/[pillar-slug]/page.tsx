@@ -12,11 +12,7 @@ interface PillarPageProps {
   params: Promise<{ 'pillar-slug': string }>;
 }
 
-export async function generateStaticParams() {
-  return KNOWLEDGE_PILLARS.map((pillar) => ({
-    'pillar-slug': pillar.slug,
-  }));
-}
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata(props: PillarPageProps): Promise<Metadata> {
   const params = await props.params;
