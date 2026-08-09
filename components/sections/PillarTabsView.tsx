@@ -68,23 +68,36 @@ export const PillarTabsView: React.FC<PillarTabsViewProps> = ({ pillar, conversa
             <div className="flex flex-col gap-4">
               {pillar.moneyConversations.map((q, idx) => {
                 const targetSlug = conversationsMapping[q.slug];
-                const href = targetSlug 
-                  ? `/articles/${targetSlug}`
-                  : `/articles?type=Money+Conversation`;
+
+                if (targetSlug) {
+                  return (
+                    <Link
+                      key={idx}
+                      href={`/articles/${targetSlug}`}
+                      className="group flex items-start gap-3 py-1.5 transition-all duration-200"
+                    >
+                      <span className="text-gold font-bold font-serif text-base sm:text-lg leading-none shrink-0 group-hover:translate-x-1 transition-transform">
+                        →
+                      </span>
+                      <span className="text-sm sm:text-base font-serif font-medium text-deep-green group-hover:text-gold transition-colors leading-snug">
+                        {q.title}
+                      </span>
+                    </Link>
+                  );
+                }
 
                 return (
-                  <Link
+                  <div
                     key={idx}
-                    href={href}
-                    className="group flex items-start gap-3 py-1.5 transition-all duration-200"
+                    className="flex items-start gap-3 py-1.5 text-charcoal/80 cursor-default"
                   >
-                    <span className="text-gold font-bold font-serif text-base sm:text-lg leading-none shrink-0 group-hover:translate-x-1 transition-transform">
-                      →
+                    <span className="text-gold/40 font-bold font-serif text-base sm:text-lg leading-none shrink-0 select-none">
+                      •
                     </span>
-                    <span className="text-sm sm:text-base font-serif font-medium text-deep-green group-hover:text-gold transition-colors leading-snug">
+                    <span className="text-sm sm:text-base font-serif font-medium leading-snug">
                       {q.title}
                     </span>
-                  </Link>
+                  </div>
                 );
               })}
             </div>
