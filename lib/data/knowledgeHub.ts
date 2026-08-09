@@ -132,7 +132,7 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
       { title: 'Why do successful professionals often neglect their own investments?', slug: 'professionals-neglect-investments' },
       { title: 'Are you choosing this for what your portfolio genuinely needs, or for how it feels to have "arrive"?', slug: 'need-vs-status-choice' },
       { title: 'How do you know when experience matters more than information?', slug: 'experience-vs-information' },
-      { title: 'With PMS you can see every share you own - is that transparency a comfort, or a fresh temptation to interfere?', slug: 'pms-transparency-interference' },
+      { title: 'With PMS you can see every share you own is that transparency a comfort, or a fresh temptation to interfere?', slug: 'pms-transparency-interference' },
       { title: 'Could watching every buy and sell make you a worse investor, not a better one?', slug: 'frequent-tracking-bad-investor' },
       { title: "Would you stay with a manager through a full year whose decisions you don't entirely understand?", slug: 'staying-without-understanding' },
       { title: 'When a portfolio holds fewer, larger positions, does that feel like conviction or exposure?', slug: 'concentration-conviction-vs-exposure' },
@@ -186,20 +186,20 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
     ],
     moneyConversations: [
       { title: 'If an SIF and a mutual fund arrived at the same place, which one quietly cost you more to get there?', slug: 'sif-vs-mutual-fund-cost' },
-      { title: "Have you looked at what you'd actually keep after tax — or only at what the strategy is meant to earn?", slug: 'sif-post-tax-returns' },
+      { title: "Have you looked at what you'd actually keep after tax or only at what the strategy is meant to earn?", slug: 'sif-post-tax-returns' },
       { title: "Would you still be comfortable owning this if you couldn't exit the week you suddenly needed the money?", slug: 'sif-liquidity-lockup' },
-      { title: 'Does your manager earn more only when you do — or also simply for taking bigger risks?', slug: 'sif-manager-incentives' },
+      { title: 'Does your manager earn more only when you do or also simply for taking bigger risks?', slug: 'sif-manager-incentives' },
       { title: "If the entry ticket weren't so high, would this product still feel as attractive to you?", slug: 'sif-ticket-size-allure' },
-      { title: 'How much of your comfort rests on the strategy itself — and how much on one person continuing to run it well?', slug: 'sif-key-person-risk' },
+      { title: 'How much of your comfort rests on the strategy itself and how much on one person continuing to run it well?', slug: 'sif-key-person-risk' },
       { title: "Would you be at peace owning something whose weak quarters you can't fully explain, even to yourself?", slug: 'sif-weak-quarters-explanation' },
-      { title: 'Are you adding this to close a real gap in your plan — or to feel your portfolio has finally grown up?', slug: 'sif-status-vs-utility' },
-      { title: 'If you removed this SIF tomorrow, would your plan actually fail — or just feel less sophisticated?', slug: 'sif-removal-impact' },
+      { title: 'Are you adding this to close a real gap in your plan or to feel your portfolio has finally grown up?', slug: 'sif-status-vs-utility' },
+      { title: 'If you removed this SIF tomorrow, would your plan actually fail or just feel less sophisticated?', slug: 'sif-removal-impact' },
       { title: 'Do you understand this well enough to keep holding it when someone you respect says you were foolish to buy it?', slug: 'holding-sif-under-criticism' },
       { title: 'At your portfolio size, does one misjudged product cost you more than any extra return it might add?', slug: 'sif-misjudged-product-cost' },
-      { title: 'Can you describe, in advance, the kind of year that would make you regret this — and are you at peace with it arriving?', slug: 'sif-regret-minimization' },
-      { title: 'Would you recognise the moment to walk away from this strategy — and would you act, or keep hoping?', slug: 'sif-when-to-walk-away' },
-      { title: "Are you paying for genuine skill and flexibility — or for the quiet comfort of owning what most people can't?", slug: 'sif-skill-vs-exclusivity' },
-      { title: "In the end, is this a decision about your money — or about how you'd like to see yourself as an investor?", slug: 'sif-investor-identity-choice' }
+      { title: 'Can you describe, in advance, the kind of year that would make you regret this and are you at peace with it arriving?', slug: 'sif-regret-minimization' },
+      { title: 'Would you recognise the moment to walk away from this strategy and would you act, or keep hoping?', slug: 'sif-when-to-walk-away' },
+      { title: "Are you paying for genuine skill and flexibility or for the quiet comfort of owning what most people can't?", slug: 'sif-skill-vs-exclusivity' },
+      { title: "In the end, is this a decision about your money or about how you'd like to see yourself as an investor?", slug: 'sif-investor-identity-choice' }
     ],
   },
   {
@@ -245,18 +245,18 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
       }
     ],
     moneyConversations: [
-      { title: "What happens to your wealth if you're still here — but no longer able to decide?", slug: 'wealth-without-decision-capacity' },
+      { title: "What happens to your wealth if you're still here but no longer able to decide?", slug: 'wealth-without-decision-capacity' },
       { title: 'Have you named someone to carry out your wishes, or only assumed someone will?', slug: 'executing-wishes-nominee-vs-assumed' },
-      { title: 'Does treating your children equally mean leaving them the same — or leaving each what they actually need?', slug: 'equal-vs-equitable-inheritance' },
+      { title: 'Does treating your children equally mean leaving them the same or leaving each what they actually need?', slug: 'equal-vs-equitable-inheritance' },
       { title: "You've planned for your children. Have you ever talked to your parents about theirs?", slug: 'talking-to-parents-estate-plans' },
-      { title: "If your children are still young, who raises them — and who guards what you've left for them?", slug: 'guardian-choices-for-minors' },
+      { title: "If your children are still young, who raises them and who guards what you've left for them?", slug: 'guardian-choices-for-minors' },
       { title: 'If you built a business, will it survive the day you can no longer run it?', slug: 'business-continuity-succession' },
-      { title: 'Will your daughter inherit as clearly as your son — or only in theory?', slug: 'gender-equality-inheritance' },
+      { title: 'Will your daughter inherit as clearly as your son or only in theory?', slug: 'gender-equality-inheritance' },
       { title: "Is estate planning something you'll do when you're old, or the one thing that can't wait until then?", slug: 'timing-of-estate-planning' },
-      { title: "When you're gone, does your family inherit only your assets — or your liabilities too?", slug: 'inheriting-liabilities-debts' },
-      { title: 'Have you prepared the one who stays behind — or only planned for the ones who inherit?', slug: 'preparing-surviving-spouse' },
+      { title: "When you're gone, does your family inherit only your assets or your liabilities too?", slug: 'inheriting-liabilities-debts' },
+      { title: 'Have you prepared the one who stays behind or only planned for the ones who inherit?', slug: 'preparing-surviving-spouse' },
       { title: "Is your will a decision you made once, or one that still matches the life you're living now?", slug: 'will-review-and-updates' },
-      { title: "If your children have built their lives abroad, do they even want the India you're leaving them — and have you asked?", slug: 'nri-children-inheriting-indian-estate' }
+      { title: "If your children have built their lives abroad, do they even want the India you're leaving them and have you asked?", slug: 'nri-children-inheriting-indian-estate' }
     ],
   },
   {
@@ -299,7 +299,7 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
     ],
     moneyConversations: [
       { title: 'If your income stopped tomorrow, how long would your family\'s lifestyle survive?', slug: 'income-stoppage-survival-duration' },
-      { title: 'Is your family insured—or just carrying insurance policies?', slug: 'insured-vs-carrying-policies' },
+      { title: 'Is your family insured or just carrying insurance policies?', slug: 'insured-vs-carrying-policies' },
       { title: "What's more dangerous than having no insurance?", slug: 'more-dangerous-than-no-insurance' },
       { title: 'Do you know the difference between protecting your life and protecting your income?', slug: 'life-vs-income-protection' },
       { title: 'Would your employer still protect your family after you leave the company?', slug: 'employer-policy-post-employment' },
@@ -355,13 +355,13 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
     ],
     moneyConversations: [
       { title: 'At what age would you stop working if money was no longer a concern?', slug: 'retirement-age-financial-freedom' },
-      { title: 'Are you saving for retirement—or simply hoping it works out?', slug: 'saving-vs-hoping-for-retirement' },
+      { title: 'Are you saving for retirement or simply hoping it works out?', slug: 'saving-vs-hoping-for-retirement' },
       { title: 'Will your retirement depend on your investments... or your children?', slug: 'retirement-dependency-investments-vs-children' },
       { title: 'How much of your retirement plan depends on assumptions?', slug: 'retirement-plan-assumptions' },
-      { title: 'Have you planned for a longer life—or only a successful career?', slug: 'planning-longer-life-vs-career' },
-      { title: 'Does retirement begin when your salary stops—or when your purpose disappears?', slug: 'retirement-start-salary-vs-purpose' },
+      { title: 'Have you planned for a longer life or only a successful career?', slug: 'planning-longer-life-vs-career' },
+      { title: 'Does retirement begin when your salary stops or when your purpose disappears?', slug: 'retirement-start-salary-vs-purpose' },
       { title: 'Can inflation quietly become your longest-lasting expense?', slug: 'inflation-longest-lasting-expense' },
-      { title: 'Are you preparing your children for independence—or preparing yourself?', slug: 'preparing-children-vs-self' },
+      { title: 'Are you preparing your children for independence or preparing yourself?', slug: 'preparing-children-vs-self' },
       { title: 'If you retired five years earlier than planned, what would change?', slug: 'five-years-early-retirement' },
       { title: 'Do you know the difference between becoming wealthy and becoming financially independent?', slug: 'wealthy-vs-financially-independent' },
       { title: 'Will your retirement portfolio survive the first five years after retirement?', slug: 'portfolio-survival-first-five-years' },
@@ -424,7 +424,7 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
       { title: 'Do you have a plan for your money, or only intentions?', slug: 'money-plan-vs-intentions' },
       { title: "When did you last check whether your money habits still fit the life you're living now?", slug: 'money-habits-fit-current-life' },
       { title: 'Are you building financial freedom or just a more expensive version of the same worry?', slug: 'freedom-vs-expensive-worry' },
-      { title: 'If your children copied exactly how you handle money, would you be glad — or worried?', slug: 'children-copying-money-habits' }
+      { title: 'If your children copied exactly how you handle money, would you be glad or worried?', slug: 'children-copying-money-habits' }
     ],
   },
 ];
