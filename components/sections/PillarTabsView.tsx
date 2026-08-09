@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FileText, ArrowRight } from 'lucide-react';
 import { KnowledgePillar } from '@/lib/data/knowledgeHub';
@@ -12,6 +12,22 @@ interface PillarTabsViewProps {
 
 export const PillarTabsView: React.FC<PillarTabsViewProps> = ({ pillar, conversationsMapping = {} }) => {
   const [activeTab, setActiveTab] = useState<'conversations' | 'basics'>('conversations');
+  const [mapping, setMapping] = useState<Record<string, string>>(conversationsMapping);
+
+  useEffect(() => {
+    async function fetchMapping() {
+      try {
+        const res = await fetch('/api/conversations-mapping');
+        if (res.ok) {
+          const data = await res.json();
+          setMapping(data);
+        }
+      } catch (err) {
+        console.error('Failed to load dynamic mappings:', err);
+      }
+    }
+    fetchMapping();
+  }, []);
 
   return (
     <div className="w-full">
@@ -67,7 +83,7 @@ export const PillarTabsView: React.FC<PillarTabsViewProps> = ({ pillar, conversa
             {/* Questions List */}
             <div className="flex flex-col gap-4">
               {pillar.moneyConversations.map((q, idx) => {
-                const targetSlug = conversationsMapping[q.slug];
+                const targetSlug = mapping[q.slug];
 
                 if (targetSlug) {
                   return (

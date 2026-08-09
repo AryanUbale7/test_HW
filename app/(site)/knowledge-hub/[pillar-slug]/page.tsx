@@ -6,7 +6,6 @@ import { ArrowLeft, BookOpen, ChevronRight } from 'lucide-react';
 import { KNOWLEDGE_PILLARS, getKnowledgePillarBySlug } from '@/lib/data/knowledgeHub';
 import { IntroStrip } from '@/components/sections/IntroStrip';
 import { PillarTabsView } from '@/components/sections/PillarTabsView';
-import { getMoneyConversationsMapping } from '@/lib/queries/posts';
 
 interface PillarPageProps {
   params: Promise<{ 'pillar-slug': string }>;
@@ -83,8 +82,6 @@ export default async function KnowledgePillarSinglePage(props: PillarPageProps) 
     ],
   };
 
-  const conversationsMapping = await getMoneyConversationsMapping();
-
   return (
     <div className="bg-ivory min-h-screen">
       <script
@@ -131,7 +128,7 @@ export default async function KnowledgePillarSinglePage(props: PillarPageProps) 
         </div>
 
         {/* Tabbed Pillar Content View */}
-        <PillarTabsView pillar={pillar} conversationsMapping={conversationsMapping} />
+        <PillarTabsView pillar={pillar} />
 
         {/* Footer Navigation CTA */}
         <div className="mt-16 pt-8 border-t border-sage/30 flex flex-col sm:flex-row justify-between items-center gap-4">
