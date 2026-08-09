@@ -60,6 +60,14 @@ export async function login(prevState: any, formData: FormData) {
       // DB check failed, proceed to fallback check
     }
 
+    // Environmental Super Admin Check (strictly via environment variables, NO hardcoded plaintext fallback)
+    const envAdminEmail = process.env.ADMIN_EMAIL
+    const envAdminPassword = process.env.ADMIN_PASSWORD
+    
+    if (!admin && envAdminEmail && envAdminPassword && email.trim().toLowerCase() === envAdminEmail.trim().toLowerCase() && password === envAdminPassword) {
+      admin = { id: 'env-super-admin', email: envAdminEmail }
+    }
+
     if (!admin) {
       const currentFailed = await incrementFailedLogin(ip)
       const remaining = Math.max(0, 5 - currentFailed)
