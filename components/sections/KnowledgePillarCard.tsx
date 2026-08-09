@@ -2,7 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import { 
   ArrowRight, TrendingUp, Briefcase, Layers, Landmark, 
-  ShieldCheck, Compass, Calculator, Wallet, LineChart 
+  ShieldCheck, Compass, Calculator, Wallet, LineChart,
+  User, Sliders
 } from 'lucide-react';
 import { KnowledgePillar } from '@/lib/data/knowledgeHub';
 
@@ -16,6 +17,8 @@ const ICON_MAP: Record<string, React.ReactNode> = {
   Calculator: <Calculator className="w-7 h-7 text-gold" strokeWidth={1.5} />,
   Wallet: <Wallet className="w-7 h-7 text-gold" strokeWidth={1.5} />,
   LineChart: <LineChart className="w-7 h-7 text-gold" strokeWidth={1.5} />,
+  User: <User className="w-7 h-7 text-gold" strokeWidth={1.5} />,
+  Sliders: <Sliders className="w-7 h-7 text-gold" strokeWidth={1.5} />,
 };
 
 interface KnowledgePillarCardProps {

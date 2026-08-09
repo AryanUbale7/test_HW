@@ -1,5 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
 import { KNOWLEDGE_PILLARS } from '@/lib/data/knowledgeHub';
 import { KnowledgePillarCard } from '@/components/sections/KnowledgePillarCard';
 import { IntroStrip } from '@/components/sections/IntroStrip';
@@ -64,6 +66,17 @@ export default function KnowledgeHubPage() {
       <IntroStrip />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        {/* Back Link */}
+        <div className="mb-8">
+          <Link
+            href="/"
+            className="inline-flex items-center text-xs font-sans uppercase tracking-widest text-deep-green hover:text-gold transition-colors font-medium"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Home
+          </Link>
+        </div>
+
         {/* Header Section */}
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gold mb-3">
