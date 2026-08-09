@@ -8,7 +8,7 @@ export const postSchema = z.object({
   body: z.string().trim().optional().nullable(),
   cover_image_url: z.string().trim().optional().nullable(),
   arm: z.enum(['Creation', 'Protection', 'Legacy', 'General', 'Pers.Fin', 'Economy']),
-  type: z.enum(['Insight', 'News', 'Guide']),
+  type: z.enum(['Guide', 'Money Conversation', 'Note']),
   source_url: z.string().trim().url('Invalid source URL').or(z.literal('')).optional().nullable(),
   author_id: z.string().uuid('Invalid author ID').optional().nullable(),
   seo_title: z.string().trim().optional().nullable(),
@@ -21,13 +21,6 @@ export const postSchema = z.object({
         code: z.ZodIssueCode.custom,
         path: ['body'],
         message: 'Body content is required to publish',
-      });
-    }
-    if (data.type === 'News' && (!data.source_url || data.source_url.trim() === '')) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        path: ['source_url'],
-        message: 'Source URL is required for News posts',
       });
     }
   }

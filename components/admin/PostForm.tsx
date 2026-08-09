@@ -334,30 +334,12 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
                 }`}
               >
                 <option value="">Select type…</option>
-                <option value="Insight">Insight</option>
-                <option value="News">News</option>
+                <option value="Guide">Guide</option>
+                <option value="Money Conversation">Money Conversation</option>
+                <option value="Note">Note</option>
               </select>
               {errors.type && <p className="text-red-600 text-xs mt-1">{errors.type}</p>}
             </div>
-
-            {type === 'News' && (
-              <div>
-                <label htmlFor="source_url" className="block text-sm font-medium text-slate-700 mb-1">
-                  Source URL {status === 'published' && '*'}
-                </label>
-                <input
-                  id="source_url"
-                  name="source_url"
-                  type="url"
-                  defaultValue={post?.source_url || ''}
-                  className={`w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                    errors.source_url ? 'border-red-300' : 'border-slate-300'
-                  }`}
-                  placeholder="https://…"
-                />
-                {errors.source_url && <p className="text-red-600 text-xs mt-1">{errors.source_url}</p>}
-              </div>
-            )}
 
             <div>
               <label htmlFor="author_id" className="block text-sm font-medium text-slate-700 mb-1">Author</label>
