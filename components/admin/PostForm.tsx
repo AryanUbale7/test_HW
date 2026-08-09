@@ -352,6 +352,7 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
                 </label>
                 <select
                   id="question_slug"
+                  name="question_slug"
                   value={questionSlug}
                   onChange={(e) => setQuestionSlug(e.target.value)}
                   className="w-full px-3 py-2 border border-slate-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
