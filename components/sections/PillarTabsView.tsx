@@ -87,12 +87,9 @@ export const PillarTabsView: React.FC<PillarTabsViewProps> = ({ pillar }) => {
           <div className="animate-in fade-in slide-in-from-bottom-2 duration-300 space-y-8">
             {/* Learn Section */}
             <section className="space-y-3">
-              <h2 className="text-base sm:text-lg font-serif font-bold text-deep-green">
-                Learn
+              <h2 className="text-base sm:text-lg font-serif font-bold text-deep-green uppercase tracking-widest">
+                GUIDE:
               </h2>
-              <p className="text-xs sm:text-sm font-sans italic text-charcoal/60">
-                The pillar brief — what this chapter of life is about.
-              </p>
               <p className="text-sm sm:text-base font-sans text-charcoal/90 leading-relaxed font-normal pt-1">
                 {pillar.learnBrief}
               </p>
@@ -100,8 +97,8 @@ export const PillarTabsView: React.FC<PillarTabsViewProps> = ({ pillar }) => {
 
             {/* Understand Section */}
             <section className="space-y-4 border-t border-sage/20 pt-6">
-              <h2 className="text-base sm:text-lg font-serif font-bold text-deep-green">
-                Understand — the concept guides
+              <h2 className="text-base sm:text-lg font-serif font-bold text-deep-green uppercase tracking-widest">
+                UNDERSTAND:
               </h2>
 
               <div className="flex flex-col gap-4">
