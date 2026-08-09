@@ -209,101 +209,110 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
     description: "Preparing your family to receive what's yours.",
     iconName: 'Landmark',
     topicCategory: 'Legacy',
-    learnBrief: 'Building wealth is only half the journey; transferring it smoothly without legal disputes or delays is the true mark of legacy. Learn how Wills, Private Trusts, and clear succession planning safeguard your family.',
+    learnBrief: `Something silently changes once you have spent decades building. The question stops being "how do I grow this" and becomes "what happens to it and to them when I am no longer here to explain it." Most people never make that turn. They build carefully and leave chaotically, because talking about it feels distant, or simply always postponable to next year. This chapter is about making that turn early and calmly. Not death paperwork, the far more human work of making sure the people you love inherit clarity, not confusion, your values, not just your valuables. It is the most personal money conversation there is, and the one most families have last, if at all.`,
     understandGuides: [
       {
-        title: 'What Is Estate Planning?',
-        description: 'Why planning wealth transfer is as important as building it — and what happens without it.',
+        title: 'Will Your Family Know What To Do Without You?',
+        description: `Most of us keep our financial lives quietly to ourselves the accounts, the logins, the little arrangements only we understand. It feels responsible. But that same privacy can become the very thing that strands your family on the hardest day of their lives. This reframes estate planning as it should be - not a grim exercise about dying, but a simple act of care making sure the people you love aren't left guessing. The measure of a legacy isn't only what you leave, it's whether they can find it.`
       },
       {
-        title: 'Will vs Trust',
-        description: 'When a Will is enough, when a Trust makes more sense, and how they work together.',
+        title: 'Have You Left Assets… Or Instructions?',
+        description: `You can leave behind a great deal and still leave behind a mess. Money without a map isn't a gift but it's a burden handed to grieving people who don't know where to look or whom to ask. The real difference between wealth and a legacy is instructions, who gets what, where it sits, how it's meant to be handled. This is about closing that gap turning a pile of assets into something your family can actually receive.`
       },
       {
-        title: 'Nomination vs Ownership',
-        description: 'A nominee is not an owner — one of the most misunderstood facts in personal finance.',
+        title: 'When Is A Will Enough?',
+        description: `For a great many families, a clear, valid, well-kept will does most of the heavy lifting - it says plainly who inherits what, and spares everyone the guesswork. The trouble is rarely that people pick the wrong instrument, it's that they never get around to the simple one. This looks at what a will genuinely does, and the point in a family's life where it's honestly enough so you don't over-engineer what one well-drafted document could have settled. (The drafting itself is a job for a legal professional - this is about knowing when you need one.)`
       },
       {
-        title: 'Succession Planning',
-        description: 'Planning who inherits what, how, and with what conditions attached.',
+        title: 'When Does A Family Need A Trust?',
+        description: `A trust isn't a status symbol or a rung on some sophistication ladder - it's a tool for specific situations. It starts to earn its place when life gets more layered, a dependent who'll need lifelong care, a business in the mix, a blended family, a wish for privacy, or a desire to control not just who inherits but how and when. This is less about the mechanics of trusts and more about honestly recognising when your circumstances have grown complex enough to warrant one and, just as importantly, when they haven't.`
       },
       {
-        title: 'Private Trusts in India',
-        description: 'How trusts work, what they protect against, and who benefits from setting one up.',
+        title: 'The Hidden Problems Families Discover Too Late',
+        description: `This is the unglamorous, high-stakes one. An outdated nomination. The belief that a nominee is the owner one of India's most expensive misunderstandings. A jointly-held asset that didn't pass the way everyone assumed. Investments nobody knew existed. A phone full of logins that die with you. None of these are exotic they are the ordinary cracks that quietly undo decades of careful work. Naming them in advance is the whole point you can only fix what someone has made you see.`
       },
       {
-        title: 'Common Estate Planning Mistakes',
-        description: 'Outdated nominations, missing Wills, joint assets without clarity — what gets families stuck.',
+        title: 'Preparing The Next Generation',
+        description: `Here is the part almost nobody mentions, leaving wealth and preparing someone to receive it are two entirely different jobs. Money handed to heirs who were never readied for it has a way of evaporating not from bad luck, but from inexperience. This is about the quieter inheritance - the conversations, the judgement, the values that let the next generation hold what you pass on instead of losing it. You spent years growing the wealth, this is about growing the people who will carry it.`
       },
+      {
+        title: 'Legacy For NRI Families',
+        description: `This is its own world, and a hard one. Children who have built their lives abroad, assets that stayed behind in India, and a web of cross-border complexity in between differing laws, repatriation, and the simple question of who manages the Indian side when the family is spread across time zones. This is about organising your Indian estate clearly and coordinating the pieces that reach across borders, so distance doesn't turn your legacy into a tangle.`
+      },
+      {
+        title: 'Conversations Families Avoid',
+        description: `Money and mortality are the two subjects Indian families are best at not discussing and that silence is exactly where the problems grow. We tell ourselves there's time, or that raising it invites bad luck, or that it's simply awkward. Meanwhile the questions that matter go unasked until it's too late to ask them. This is about the conversations themselves, why we dodge them, what the dodging costs, and why having them awkward as they are may be the most valuable thing you ever leave behind.`
+      }
     ],
     moneyConversations: [
-      { title: 'Why is a nominee legally just a trustee and not the final owner?', slug: 'nominee-vs-legal-heir-truth' },
-      { title: 'At what age should a family draft their first formal Will?', slug: 'when-to-write-first-will' },
-      { title: 'What happens to bank accounts if a person dies without a Will?', slug: 'dying-intestate-in-india' },
-      { title: 'How does a Private Family Trust protect assets from future creditors?', slug: 'private-trust-asset-protection' },
-      { title: 'Can a registered Will be challenged in court by family members?', slug: 'can-registered-will-be-challenged' },
-      { title: 'How do joint holdings with "Either or Survivor" clause work legally?', slug: 'either-or-survivor-clause-explained' },
-      { title: 'What is the role of an Executor in executing a Will smoothly?', slug: 'role-of-will-executor' },
-      { title: 'How do I ensure digital assets and passwords pass on securely?', slug: 'digital-estate-planning-guide' },
-      { title: 'Should business owners create separate business succession trusts?', slug: 'business-succession-trusts' },
-      { title: 'What is Probate and when is it legally mandatory in India?', slug: 'probate-mandate-in-india' },
-      { title: 'How do gift deeds differ from Will transfers in terms of stamp duty?', slug: 'gift-deed-vs-will-transfer' },
-      { title: 'What is a Letter of Administration when no Will exists?', slug: 'letter-of-administration-guide' },
-      { title: 'How do I protect inherited wealth for minor children?', slug: 'protecting-wealth-for-minor-children' },
-      { title: 'Why should life insurance policies specify MWP Act endorsement?', slug: 'mwp-act-life-insurance-protection' },
-      { title: 'How often should a family review and update their estate plan?', slug: 'estate-plan-review-frequency' },
+      { title: "What happens to your wealth if you're still here — but no longer able to decide?", slug: 'wealth-without-decision-capacity' },
+      { title: 'Have you named someone to carry out your wishes, or only assumed someone will?', slug: 'executing-wishes-nominee-vs-assumed' },
+      { title: 'Does treating your children equally mean leaving them the same — or leaving each what they actually need?', slug: 'equal-vs-equitable-inheritance' },
+      { title: "You've planned for your children. Have you ever talked to your parents about theirs?", slug: 'talking-to-parents-estate-plans' },
+      { title: "If your children are still young, who raises them — and who guards what you've left for them?", slug: 'guardian-choices-for-minors' },
+      { title: 'If you built a business, will it survive the day you can no longer run it?', slug: 'business-continuity-succession' },
+      { title: 'Will your daughter inherit as clearly as your son — or only in theory?', slug: 'gender-equality-inheritance' },
+      { title: "Is estate planning something you'll do when you're old, or the one thing that can't wait until then?", slug: 'timing-of-estate-planning' },
+      { title: "When you're gone, does your family inherit only your assets — or your liabilities too?", slug: 'inheriting-liabilities-debts' },
+      { title: 'Have you prepared the one who stays behind — or only planned for the ones who inherit?', slug: 'preparing-surviving-spouse' },
+      { title: "Is your will a decision you made once, or one that still matches the life you're living now?", slug: 'will-review-and-updates' },
+      { title: "If your children have built their lives abroad, do they even want the India you're leaving them — and have you asked?", slug: 'nri-children-inheriting-indian-estate' }
     ],
   },
   {
     slug: 'understanding-insurance',
     number: 'Pillar 05',
-    title: 'Understanding Insurance',
+    title: 'Insurance Demystified',
     description: 'Protecting your family, income & health.',
     iconName: 'ShieldCheck',
     topicCategory: 'Protection',
-    learnBrief: 'Insurance is pure risk mitigation, not a wealth-building product. Clear the myths around term policies, health covers, and policy documentation so your family is never left exposed.',
+    learnBrief: `Before you grow wealth, you have to protect the person building it and the family leaning on them. That's all insurance really is, a quiet promise that if life takes a sudden turn, the people you love don't pay the price for it. Yet most families own policies without owning protection, a mix bought years ago, half-understood, never revisited & understood fully. This chapter puts the worry before the product - not "what should I buy," but "what am I actually protecting, and would it hold on the worst day?"`,
     understandGuides: [
       {
-        title: 'Term Insurance — The Basics',
-        description: 'What it is, how it works, and why buying early costs less and protects more.',
+        title: 'What Risks Does Your Family Actually Face?',
+        description: `Most insurance talk starts with a product but this starts with the truth underneath it, what would genuinely shake your family - the loss of an earner, a serious illness, an accident, a bill that arrives without warning. Name the real risks first, and the right cover becomes obvious instead of something you are sold.`
       },
       {
-        title: 'Term vs Endowment vs ULIP',
-        description: 'Clear comparison of the three most common types — what each one actually delivers.',
+        title: 'Protecting Income, Not Just Life',
+        description: `Life insurance doesn't really cover a life - it replaces an income. What your family loses isn't only you, it is the salary that paid the EMIs, the fees, the ordinary days. Framed that way, the question shifts from "am I insured?" to "for how many years could my family keep living as they do?"`
       },
       {
-        title: 'Health Insurance Essentials',
-        description: 'What to look for, what gets excluded, and how to avoid claim surprises.',
+        title: 'Protecting Health Before Wealth',
+        description: `One serious hospitalization can quietly undo years of patient investing in a single week. Health cover isn't a grudging expense, it's the wall that stops a medical event from becoming a financial one. Before chasing growth, it is worth making sure a single bill can't dismantle it.`
       },
       {
-        title: 'Personal Accident Cover',
-        description: "Why it's a supplement, not a substitute for term insurance.",
+        title: "The Gaps Most Families Don't Know They Have",
+        description: `Most families are less covered than they assume. The employer policy that vanishes with the job, no personal accident cover, nothing against a critical illness, a thin emergency fund - each feels minor until it's the one thing missing. This is about seeing the quiet holes before life finds them for you.`
       },
       {
-        title: 'Common Insurance Myths',
-        description: "Busting the ones that cost people real money — 'I'm young, I don't need it' and others.",
+        title: 'When Does Insurance Become Complicated?',
+        description: `Insurance rarely fails at the buying, it fails in the fine print - waiting periods, exclusions, room-rent limits, the claim process nobody reads until they're standing in a hospital corridor. This is about understanding what you actually own, well before the day you need it to work.`
       },
       {
-        title: 'How to Read a Policy Document',
-        description: 'Inclusions, exclusions, waiting periods — what to check before signing.',
+        title: "Insurance Decisions You'll Thank Yourself For Later",
+        description: `Insurance isn't a one-time purchase but it's a living arrangement that should keep pace with your life. A new child, a bigger loan, a rising salary, an outdated nominee - each is a reason to revisit, not assume. The small reviews you do periodically are the ones your family quietly benefits from later.`
       },
+      {
+        title: 'Insurance Myths That Cost Families The Most',
+        description: `Some of the most expensive insurance mistakes come dressed as common sense. "I'm young, I don't need it yet" - until the cover you could've locked in cheaply is suddenly costlier, or out of reach. "My employer policy is enough" - until you change jobs and it walks out the door with you. "One policy covers everything" - until a claim quietly reveals what it never did. This one gently dismantles the beliefs families lean on, because in insurance, the myth you trust is usually the gap you'll discover at the worst possible moment.`
+      }
     ],
     moneyConversations: [
-      { title: 'Why mixing insurance with investment usually hurts both goals?', slug: 'separating-insurance-from-investment' },
-      { title: 'How much term life insurance cover does an earning member need?', slug: 'calculating-term-insurance-cover' },
-      { title: 'Is corporate health insurance enough after job changes or retirement?', slug: 'corporate-vs-personal-health-insurance' },
-      { title: 'What is the critical illness rider and when should you add it?', slug: 'critical-illness-rider-guide' },
-      { title: 'Why buying term insurance at 25 locks in low premiums for life?', slug: 'buying-term-insurance-early' },
-      { title: 'How do pre-existing condition waiting periods affect health claims?', slug: 'health-insurance-waiting-periods' },
-      { title: 'What is restoring benefit in health insurance policies?', slug: 'restore-benefit-health-insurance' },
-      { title: 'Why does claim settlement ratio matter less than claim amount ratio?', slug: 'claim-settlement-vs-amount-ratio' },
-      { title: 'Should non-working spouses or children have term insurance?', slug: 'who-needs-term-insurance' },
-      { title: 'What is a Super Top-up health policy and how does it lower costs?', slug: 'super-top-up-health-policy' },
-      { title: 'Why must material health disclosures never be hidden from insurers?', slug: 'non-disclosure-dangers-in-insurance' },
-      { title: 'What happens to term insurance if you move abroad permanently?', slug: 'term-insurance-for-nris' },
-      { title: 'How does personal accident cover differ from term life insurance?', slug: 'personal-accident-vs-term-insurance' },
-      { title: 'Why does co-payment clause increase out-of-pocket health costs?', slug: 'copayment-clause-in-health-insurance' },
-      { title: 'How do I organize policy documents so my family can claim easily?', slug: 'organizing-family-insurance-claims' },
+      { title: 'If your income stopped tomorrow, how long would your family\'s lifestyle survive?', slug: 'income-stoppage-survival-duration' },
+      { title: 'Is your family insured—or just carrying insurance policies?', slug: 'insured-vs-carrying-policies' },
+      { title: "What's more dangerous than having no insurance?", slug: 'more-dangerous-than-no-insurance' },
+      { title: 'Do you know the difference between protecting your life and protecting your income?', slug: 'life-vs-income-protection' },
+      { title: 'Would your employer still protect your family after you leave the company?', slug: 'employer-policy-post-employment' },
+      { title: 'Why do intelligent people postpone buying insurance?', slug: 'why-people-postpone-insurance' },
+      { title: 'Should your insurance grow as your salary grows?', slug: 'insurance-growth-vs-salary-growth' },
+      { title: 'Why do families discover policy exclusions only during a claim?', slug: 'discovering-exclusions-during-claim' },
+      { title: 'Do you need another insurance policy—or a better insurance plan?', slug: 'more-policies-vs-better-plan' },
+      { title: "Insurance isn't bought for the day you die. It's bought for the days your family must continue living.", slug: 'insurance-is-for-living-days' },
+      { title: 'Did you tell your insurer the whole truth when you bought the policy or leave a quiet door open for them to say no later?', slug: 'non-disclosure-insurer-loophole' },
+      { title: 'If your health worsens next year, will you still be allowed to buy the cover you keep postponing today?', slug: 'postponing-insurance-health-risk' },
+      { title: "You've protected the one who earns. Have you valued the one whose unpaid work holds the whole home together?", slug: 'valuing-homemaker-protection' },
+      { title: 'What happens to all this protection the year you forget to pay a single premium?', slug: 'forgetting-single-insurance-premium' },
+      { title: 'Is the nominee on your policy still the right person or someone from a life you\'ve already moved past?', slug: 'policy-nominee-review' }
     ],
   },
   {
@@ -313,49 +322,53 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
     description: 'Funding, filling, the years after work.',
     iconName: 'Compass',
     topicCategory: 'Personal',
-    learnBrief: 'Retirement planning is working backwards from your future lifestyle to today’s monthly savings rate. Master compounding timelines, NPS, EPF, and Systematic Withdrawal Plans (SWP).',
+    learnBrief: `Retirement isn't an ending you save up for it's twenty or thirty unscripted years you have to fund and, harder still, fill. For most people it's the largest financial goal of their life and the least planned, because it feels far away right up until it isn't. This chapter is about arriving there on your own terms: enough money to stop worrying about money, and enough thought given to what the days are actually for. Because the goal was never just to retire comfortably, it was to retire well.`,
     understandGuides: [
       {
-        title: 'When Should You Start?',
-        description: 'Why starting at 25 beats starting at 40 — the compounding gap in real numbers.',
+        title: 'What Does Retirement Actually Mean To You?',
+        description: `Retirement means something different to everyone - for some it's stopping, for others it's finally choosing what to work on. Get that picture clear first, because the number you need depends entirely on the life you are funding. Plan the life, then the money not the other way round.`
       },
       {
-        title: 'How Much Is Enough?',
-        description: 'A simple framework to estimate your retirement corpus based on lifestyle and inflation.',
+        title: 'Building Enough Without Guessing',
+        description: `"Enough" isn't a feeling; it's a figure you can actually estimate from your expenses, the years you'll live them, and the quiet way inflation lifts them decade after decade. This is about replacing hope with a rough, honest number, so your plan rests on arithmetic rather than optimism.`
       },
       {
-        title: 'NPS vs EPF — What to Prioritise',
-        description: 'Government retirement tools explained — benefits, limits, and tax treatment.',
+        title: "The Income You'll Need After The Last Salary",
+        description: `A corpus isn't the goal, the monthly income it produces is. The real question is how a lifetime's savings turns back into a dependable "salary" that lasts as long as you do. This is about building the pipeline that pays you after nobody else does.`
       },
       {
-        title: 'Retirement Corpus Calculator',
-        description: 'A practical guide to working backwards from your goal to your monthly SIP.',
+        title: 'Preparing Your Portfolio For Retirement',
+        description: `A portfolio built to grow and one built to sustain you are different machines. As retirement nears, the job quietly shifts from chasing returns to protecting what you've built and drawing from it steadily. This is about reshaping the mix so it can carry you, not just grow for you.`
       },
       {
-        title: 'Post-Retirement Income Planning',
-        description: 'How to make your corpus last — SWP, annuities, and the sequence of returns risk.',
+        title: 'Government Retirement Tools Explained',
+        description: `NPS, EPF, PPF - the steady, often underused backbone of an Indian retirement, each with its own rules, limits, and quiet advantages. This is about understanding what these tools genuinely do, so they work as a foundation rather than an afterthought you never quite figured out.`
       },
       {
-        title: 'Common Retirement Mistakes',
-        description: 'Retiring too early without enough corpus, ignoring inflation, and over-relying on one asset.',
+        title: 'Retirement Mistakes That Are Hard To Reverse',
+        description: `Most financial mistakes give you time to recover; retirement mistakes often don't, because you're spending down without a salary to repair the damage. Starting late, underestimating how long you'll live, taking too much risk or too little - this names the errors you most want to catch before the last salary, not after.`
       },
+      {
+        title: "Retirement Isn't Just About Money",
+        description: `This is the piece almost no finance site writes. A funded retirement can still be an empty one — when the work that gave you purpose, structure, and identity suddenly stops. Money buys the freedom; it doesn't fill the day. This is about preparing for the part no corpus covers: who you are, and what you're for, once the working years are done.`
+      }
     ],
     moneyConversations: [
-      { title: 'Why is starting retirement savings at 25 four times better than 35?', slug: 'compounding-gap-in-retirement' },
-      { title: 'How much monthly corpus is needed to generate ₹1 Lakh monthly post-retirement?', slug: 'calculating-1-lakh-retirement-corpus' },
-      { title: 'How does inflation silently double your living expenses every 10 years?', slug: 'inflation-doubling-effect-on-retirement' },
-      { title: 'What is Sequence of Returns Risk and why is it dangerous at retirement?', slug: 'sequence-of-returns-risk-explained' },
-      { title: 'How does an SWP (Systematic Withdrawal Plan) provide tax-efficient monthly income?', slug: 'swp-for-post-retirement-income' },
-      { title: 'NPS Tier 1 vs EPF vs PPF: Which should be your core retirement bucket?', slug: 'nps-vs-epf-vs-ppf-comparison' },
-      { title: 'Why annuities often offer low yields compared to mutual fund SWPs?', slug: 'annuities-vs-swp-for-pension' },
-      { title: 'How do equity mutual funds protect your retirement corpus against healthcare inflation?', slug: 'equity-protection-against-medical-inflation' },
-      { title: 'What is the 4% withdrawal rule and does it apply to Indian markets?', slug: '4-percent-rule-in-india' },
-      { title: 'Should real estate rental income be your sole retirement strategy?', slug: 'dangers-of-relying-only-on-rental-income' },
-      { title: 'How to rebalance from equity to debt 5 years before retirement date?', slug: 'pre-retirement-portfolio-rebalancing' },
-      { title: 'What tax benefits apply to NPS lump sum withdrawals at age 60?', slug: 'nps-withdrawal-taxation-at-60' },
-      { title: 'How do Reverse Mortgages work for senior citizens in India?', slug: 'reverse-mortgage-guide-india' },
-      { title: 'What is the biggest mental adjustment when transitioning from salary to corpus?', slug: 'psychology-of-living-off-corpus' },
-      { title: 'How to structure a 3-bucket strategy for post-retirement peace of mind?', slug: 'three-bucket-retirement-strategy' },
+      { title: 'At what age would you stop working if money was no longer a concern?', slug: 'retirement-age-financial-freedom' },
+      { title: 'Are you saving for retirement—or simply hoping it works out?', slug: 'saving-vs-hoping-for-retirement' },
+      { title: 'Will your retirement depend on your investments... or your children?', slug: 'retirement-dependency-investments-vs-children' },
+      { title: 'How much of your retirement plan depends on assumptions?', slug: 'retirement-plan-assumptions' },
+      { title: 'Have you planned for a longer life—or only a successful career?', slug: 'planning-longer-life-vs-career' },
+      { title: 'Does retirement begin when your salary stops—or when your purpose disappears?', slug: 'retirement-start-salary-vs-purpose' },
+      { title: 'Can inflation quietly become your longest-lasting expense?', slug: 'inflation-longest-lasting-expense' },
+      { title: 'Are you preparing your children for independence—or preparing yourself?', slug: 'preparing-children-vs-self' },
+      { title: 'If you retired five years earlier than planned, what would change?', slug: 'five-years-early-retirement' },
+      { title: 'Do you know the difference between becoming wealthy and becoming financially independent?', slug: 'wealthy-vs-financially-independent' },
+      { title: 'Will your retirement portfolio survive the first five years after retirement?', slug: 'portfolio-survival-first-five-years' },
+      { title: "How much retirement is enough if you don't know how long you'll live?", slug: 'enough-retirement-with-unknown-lifespan' },
+      { title: 'Can a successful career create a financially difficult retirement?', slug: 'career-success-vs-retirement-difficulty' },
+      { title: 'Who are you after your visiting card no longer defines you?', slug: 'who-are-you-without-visiting-card' },
+      { title: "You've spent forty years planning for work. Have you spent even four hours planning for life after work?", slug: 'planning-work-vs-planning-life' }
     ],
   },
   {
@@ -365,49 +378,53 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
     description: 'Everyday habits that hold everything up.',
     iconName: 'Wallet',
     topicCategory: 'Personal',
-    learnBrief: 'Strong financial management rests on a solid foundation: establishing emergency reserves, controlling high-cost debt, budgeting effortlessly, and avoiding major money mistakes in your 20s and 30s.',
+    learnBrief: `Before the investing, the insurance, the big goals there's the ground it all stands on how you earn, spend, save, and borrow, month after month. Get these basics right and everything above them holds; get them wrong and no clever investment can quite make up for it. This chapter is the foundation the quiet, unglamorous habits that decide whether money feels like a source of stress or a sense of control. Nobody teaches this at home or in school, which is exactly why it belongs at the start.`,
     understandGuides: [
       {
         title: 'Save First or Invest First?',
-        description: 'The right sequence — emergency fund, then investments. Why the order matters.',
+        description: `Everyone rushes to invest, but the order matters more than the enthusiasm an emergency fund comes before the first SIP. This is about the right sequence: a safety net first, so that investing becomes something you can sustain rather than something you are forced to interrupt.`
       },
       {
         title: 'Building an Emergency Fund',
-        description: 'How much, where to park it, and why it protects your investment habit.',
+        description: `Life throws the odd bill you didn't plan for a job gap, a repair, a medical week and without a cushion, those moments pull money out of your investments at exactly the wrong time. This is about how much to keep, where to park it, and why it quietly protects everything else you're building.`
       },
       {
         title: 'Budgeting Without Spreadsheets',
-        description: 'A simple mental framework — needs, investments, savings, lifestyle.',
+        description: `Budgeting fails when it feels like homework. This is about a simple mental framework instead a rough sense of what goes to needs, to future-you, and to living now so you stay in control of your money without tracking every rupee or opening a single spreadsheet.`
       },
       {
         title: 'Understanding Inflation',
-        description: 'Why keeping money idle in a savings account is quietly losing value every year.',
+        description: `Money sitting idle isn't safe it's quietly shrinking, losing a little purchasing power every year you are not looking. This is about seeing inflation for what it is - the slow, invisible tax that makes "playing it safe" in a savings account its own kind of risk.`
       },
       {
         title: 'Debt Management Basics',
-        description: 'Good debt vs bad debt, how to prioritise repayment, when EMIs make sense.',
+        description: `Not all debt is bad, and not all of it is fine the difference decides whether borrowing builds your life or slowly runs it. This is about telling good debt from bad, knowing what to clear first, and understanding when an EMI is a tool rather than a trap.`
+      },
+      {
+        title: 'Managing a Rising Income Well',
+        description: `Here is the trap nobody warns you about as you earn more, you spend more, and the raise vanishes without ever becoming wealth. This is about the gap between earning and keeping: letting your savings grow faster than your lifestyle, so a bigger salary actually leaves you better off.`
       },
       {
         title: 'Financial Mistakes in Your 20s and 30s',
-        description: 'Starting late, ignoring insurance, spending before saving — the ones that cost the most.',
-      },
+        description: `The costliest money mistakes are the early ones, because they rob you of the one thing you can't buy back, the TIME. Starting late, skipping insurance, spending before saving, chasing quick money this names them plainly, so you can sidestep the errors that quietly cost the most over a lifetime.`
+      }
     ],
     moneyConversations: [
-      { title: 'Why must emergency funds precede any stock market or mutual fund investment?', slug: 'emergency-fund-first-rule' },
-      { title: 'How many months of living expenses should be in your liquid emergency pool?', slug: 'how-much-emergency-fund' },
-      { title: 'Where should emergency money be parked: Savings Account, Liquid Fund, or FD?', slug: 'where-to-park-emergency-fund' },
-      { title: 'What is the 50-30-20 rule and how to customize it for Indian salaries?', slug: '50-30-20-budgeting-rule-india' },
-      { title: 'How to pay off high-cost credit card debt using Avalanche vs Snowball methods?', slug: 'avalanche-vs-snowball-debt-payoff' },
-      { title: 'Good Debt vs Bad Debt: Is a home loan or education loan considered good debt?', slug: 'good-debt-vs-bad-debt' },
-      { title: 'Why is keeping excess cash in a 3% savings account a guaranteed real-value loss?', slug: 'dangers-of-excess-savings-account-cash' },
-      { title: 'How does lifestyle creep quietly prevent high earners from building wealth?', slug: 'controlling-lifestyle-creep' },
-      { title: 'Should you prepay your home loan early or invest the surplus in equity?', slug: 'prepaying-home-loan-vs-investing' },
-      { title: 'What is credit score (CIBIL) and how to maintain it above 750?', slug: 'cibil-score-maintenance' },
-      { title: 'How to handle financial peer pressure and lifestyle comparison in your 20s?', slug: 'financial-peer-pressure' },
-      { title: 'Why buying a car beyond your 6-month income is a wealth trap?', slug: 'car-buying-financial-rule' },
-      { title: 'How to discuss money and financial goals openly with your spouse before marriage?', slug: 'discussing-money-with-spouse' },
-      { title: 'What is zero-based budgeting and how does it give every Rupee a job?', slug: 'zero-based-budgeting-guide' },
-      { title: 'What is the cost of waiting 5 years before building your first investment pool?', slug: 'cost-of-waiting-to-invest' },
+      { title: 'If your income stopped for three months tomorrow, would you be inconvenienced or in trouble?', slug: 'income-stop-convenience-vs-trouble' },
+      { title: "Do you know where your money actually went last month, or only that it's gone?", slug: 'where-did-money-go' },
+      { title: 'Are you saving what\'s left after spending or spending what\'s left after saving?', slug: 'saving-first-vs-spending-first' },
+      { title: 'Is the money sitting "safely" in your savings account quietly losing value while you feel responsible?', slug: 'savings-account-idle-cash-loss' },
+      { title: 'When your salary rises, does your saving rise with it or only your spending?', slug: 'salary-rise-saving-vs-spending' },
+      { title: 'Is your EMI buying you something that grows, or something that shrinks the moment you own it?', slug: 'emi-asset-growth-vs-depreciation' },
+      { title: 'Do you own your lifestyle or does the EMI on it own you?', slug: 'lifestyle-ownership-vs-emi-trap' },
+      { title: 'If a big expense hit this week, would it come from a fund you kept ready or from your investments?', slug: 'emergency-expense-source' },
+      { title: 'Are you managing your money, or just watching it pass through your account?', slug: 'managing-vs-watching-money' },
+      { title: "What's the real cost of the years you wait to begin and can you ever earn them back?", slug: 'cost-of-delayed-investing' },
+      { title: 'Is a bigger salary making you wealthier, or just raising the price of your life?', slug: 'bigger-salary-wealth-vs-cost' },
+      { title: 'Do you have a plan for your money, or only intentions?', slug: 'money-plan-vs-intentions' },
+      { title: "When did you last check whether your money habits still fit the life you're living now?", slug: 'money-habits-fit-current-life' },
+      { title: 'Are you building financial freedom or just a more expensive version of the same worry?', slug: 'freedom-vs-expensive-worry' },
+      { title: 'If your children copied exactly how you handle money, would you be glad — or worried?', slug: 'children-copying-money-habits' }
     ],
   },
 ];
