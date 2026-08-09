@@ -31,8 +31,10 @@ export default async function ArticlesPage() {
   // Fetch up to 100 posts to cover all articles for instant client-side filtering
   const { posts } = await getPosts({ limit: 100 });
 
-  // Use mock articles as fallback when DB is unavailable (local dev / preview)
-  const displayPosts = (posts && posts.length > 0) ? posts : MOCK_ARTICLES;
+  // Use mock articles as fallback only in development mode when DB is unavailable
+  const displayPosts = (posts && posts.length > 0) 
+    ? posts 
+    : (process.env.NODE_ENV === 'development' ? MOCK_ARTICLES : []);
 
   const schema = {
     "@context": "https://schema.org",
