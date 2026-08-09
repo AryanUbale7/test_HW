@@ -1,5 +1,6 @@
 export interface SubTopic {
   title: string;
+  subtext?: string;
   description: string;
 }
 
@@ -28,49 +29,68 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
     description: 'First steps into investing.',
     iconName: 'TrendingUp',
     topicCategory: 'Building',
-    learnBrief: 'Starting to invest is less about market timing and far more about building the discipline of consistency. This pillar guides you through your first steps with plain-English concepts, clear frameworks, and honest risk awareness.',
+    learnBrief: `Everyone starts somewhere usually with more questions than answers, and a quiet worry that everyone else already figured this out. You didn't miss a class, there wasn't one. This first Pillar is for exactly that moment - the first salary, the first SIP, the first time the word "portfolio" sounds like it belongs to someone else. We will keep it simple and honest what the basic pieces are, why they matter, and how to begin without first becoming an expert. Because starting well matters far more than starting perfectly, and the earlier you begin, the more quietly time works in your favour.`,
     understandGuides: [
       {
-        title: 'What Are Mutual Funds?',
-        description: 'A plain-English explanation of how mutual funds work, who manages them, and why they exist.',
+        title: 'Mutual Funds',
+        subtext: 'Where most people actually begin',
+        description: `Think like a bunch of people put their money into one common pool, and a professional fund manager takes that pool and spreads it across dozens of companies. So, the day you put in your first Rs 5,000, you quietly become a tiny part-owner of maybe forty or fifty businesses without having to read a single balance sheet yourself. That is really the beauty of it. You get the spread and the expertise, and you get to carry on with your life. For most people just starting out, this is the sensible first door not because anyone sold it to them but because it does the heavy lifting, they don't yet have the time or the appetite for. And yes, all of it rides on the market, so nothing here is promised but that's a conversation for a little later.`
       },
       {
-        title: 'Types of Mutual Funds',
-        description: 'Equity, Debt, Hybrid, Index — what each one does and who it suits.',
+        title: 'SIP (Systematic Investment plan)',
+        subtext: 'Investing a little, every month, on purpose',
+        description: `SIP is just a slightly fancy name for a simple habit you invest a fixed amount every month on a date you pick, and it happens on its own. Rs 3,000, Rs 5,000, whatever sits comfortably with your budget. What I like about it is that it quietly removes the guesswork. You stop trying to catch the market at the 'right moment' that never quite shows up, and you just keep turning up. And here's the part most people miss in the months the market slips, that same Rs 3,000 happens to buy you a few more units than usual. You are not cheering the fall but you have no reason to fear it either. Over the longer period, it tends to be this steadiness, not any clever move, that does the real work. It isn't a promise of profit. It's simply a calmer way to keep the habit going.`
       },
       {
-        title: 'How SIPs Work',
-        description: 'Why a small monthly investment beats a large one-time guess. The compounding story.',
+        title: 'Index Funds',
+        subtext: 'Owning the whole market instead of guessing',
+        description: `This is something that surprises a lot of first-timers you don't actually have to pick the winners to do alright. An index fund doesn't try to be clever. It just copies a market index, say the Nifty 50, and holds the same companies in the same proportion. So, when the broader market does well, you simply come along for the ride. And because there's no manager making constant calls, the running cost tends to be lower and over a long stretch, cost quietly matters more than people expect. I often say this to someone who feels drowned by choice sometimes the smartest thing isn't to outsmart the market, it's to own a small slice of the whole thing and let time do its bit.`
       },
       {
-        title: 'Index Funds vs Active Funds',
-        description: 'The great debate — when to pick passive, when to trust a fund manager.',
+        title: 'Asset Allocation',
+        subtext: 'How you split money between different baskets',
+        description: `This one sound technical but is really just common aspect. Asset allocation is simply how you divide your money how much sits in equity, which grows over time but swings around a fair bit, and how much sits in the steadier stuff. It usually matters more than which exact fund you pick. Small example, if you're setting aside money for a house down payment a year from now, putting all of it in equity is asking for a headache, because markets can be moody in the short run. But money you won't touch for ten years can happily ride those ups and downs. So, the real question was never 'which fund is best’, it's “when will I actually need this money”. Get that one right.`
       },
       {
-        title: 'How to Choose the Right Fund',
-        description: 'A simple framework — goals, horizon, risk appetite. No jargon.',
+        title: 'Behaviour',
+        subtext: 'Why the investor usually matters more than the investment',
+        description: `If I had to bet on what decides how well someone does over the years, I wouldn't bet on the fund. I'd bet on the person. I've seen it up close two people in almost the same funds, years apart in how they end up, purely because of how they behaved when things got uncomfortable. One panics the moment the market dips and pulls the money out. Another keeps chasing whatever topped the charts last year, always a step late. And a third just stays put, keeps the SIP running and barely opens the app. You can guess who tends to sleep better. None of this is about being brainy. It's about temperament, the slightly boring discipline of not doing something dramatic every time the headlines get loud. That's the part nobody prints on a brochure and that’s the part which matters most.`
       },
       {
-        title: 'Common SIP Mistakes',
-        description: 'Stopping SIPs in a downturn, chasing past returns, over-diversifying — what to avoid.',
+        title: 'Your First Portfolio',
+        subtext: 'What it actually feels like to begin',
+        description: `\'Portfolio\' is one of those words that sounds like it belongs to older men in suits. It really just means the collection of whatever you own and your first one can be refreshingly boring. A fund or two you genuinely understand. That's it. You don't need a big amount to begin, you need to begin. I have watched people wait years for the 'perfect time' and the 'perfect fund,' when starting small and letting it grow alongside their salary would have served them far better. Your first portfolio isn't meant to impress anyone. It's meant to get you into the game and show you how you react so that by the time the amounts get serious, the habits are already sitting in place.`
       },
+      {
+        title: 'Common Mistakes',
+        subtext: 'The ones almost every beginner makes',
+        description: `Let me save you a few bruises. The classic one stopping your SIP the moment the market falls, which is precisely when it's silently working hardest for you. Then there's chasing last year's top performer, forgetting that last year's hero is often this year's straggler. Or collecting eight funds that more or less own the same companies, and calling it variety. And my personal favourite, checking the portfolio every single day and riding an emotional rollercoaster that helps absolutely no one. None of these come from being foolish. They come from being human and from nobody having pointed them out earlier. The aim isn't to never feel the urge, it's to catch yourself in the moment, take a breath, and more often than not, do nothing at all.`
+      },
+      {
+        title: 'Market Corrections',
+        subtext: 'What happens when things fall, and why it\'s normal',
+        description: `At some point, probably sooner than you'd like after you start, the market may fall. It always does a correction, they call it, usually a drop of ten percent or more from a recent high. The first time you see red against your name, it feels personal, as if you did something wrong. You didn't. Falls are just how markets breathe, they've happened many times before and they'll happen again, and historically the market has gone on to recover and move ahead in time, though of course no one can tell you exactly when or by how much. It is my view to everyone in their first dip, the fall itself isn't the risk. Reacting to it is. Understand this before it arrives, and you'll hold steady when it actually counts. That one bit of understanding can be worth more than any suggestion you'll ever be handed.`
+      }
     ],
     moneyConversations: [
-      { title: 'How much do I need before I can start?', slug: 'how-much-before-start' },
-      { title: 'Is it too late if everyone began years ago?', slug: 'is-it-too-late-to-start' },
-      { title: 'What do I do the first day I see a loss?', slug: 'what-to-do-first-day-of-loss' },
-      { title: 'Should I invest lump sum or start a SIP today?', slug: 'lump-sum-vs-sip-today' },
-      { title: 'How do I know if my risk appetite is low or high?', slug: 'measuring-risk-appetite' },
-      { title: 'What happens to my SIP if I miss a monthly payment?', slug: 'missed-sip-payment' },
-      { title: 'Is a 12% return realistic over 10 years?', slug: 'realistic-mutual-fund-returns' },
-      { title: 'How many mutual funds should one person own?', slug: 'ideal-number-of-mutual-funds' },
-      { title: 'Should I pause SIPs when Nifty hits all-time highs?', slug: 'pausing-sips-at-market-highs' },
-      { title: 'What is the real difference between direct and regular plans?', slug: 'direct-vs-regular-plans' },
-      { title: 'How do dividends work in mutual funds vs growth options?', slug: 'dividend-vs-growth-option' },
-      { title: 'When is the right time to sell a mutual fund?', slug: 'when-to-sell-a-mutual-fund' },
-      { title: 'Why does market volatility feel scarier than it actually is?', slug: 'psychology-of-market-volatility' },
-      { title: 'How does inflation erode uninvested savings over 5 years?', slug: 'inflation-impact-on-savings' },
-      { title: 'What is the single best habit for first-time investors?', slug: 'best-first-time-investor-habit' },
+      { title: 'How much money do you actually need before you are “allowed” to start investing?', slug: 'allowed-investing-minimum' },
+      { title: 'Is it too late to begin if everyone around you seems to have started years ago?', slug: 'too-late-to-begin-investing' },
+      { title: 'Should you clear all your loans first, or can saving and investing begin alongside them?', slug: 'loans-vs-investing-priority' },
+      { title: "What's the real difference between saving money and investing it and does it matter this early?", slug: 'saving-vs-investing-difference' },
+      { title: 'If you can only spare a small amount each month, is it even worth starting?', slug: 'small-amount-investing-worth' },
+      { title: "How do you begin investing when you don't fully understand where the money is going?", slug: 'investing-without-expert-knowledge' },
+      { title: 'Is it safer to wait until you “know more,” or does waiting quietly cost you something too?', slug: 'waiting-cost-of-inertia' },
+      { title: 'When the market falls right after you invest, does it mean you made a mistake?', slug: 'market-falls-after-investing-error' },
+      { title: 'How do you tell the difference between real guidance and someone simply selling you something?', slug: 'guidance-vs-product-sales' },
+      { title: 'Should your first investment be the one with the highest returns, or the one you understand best?', slug: 'first-investment-highest-returns' },
+      { title: "Why does everyone's “best fund” seem different and whom are you supposed to believe?", slug: 'why-best-funds-differ' },
+      { title: 'Is checking your investment every day helping you, or quietly making you anxious?', slug: 'daily-portfolio-tracking-anxiety' },
+      { title: 'What should you actually do on the first day your investment shows a loss?', slug: 'first-day-portfolio-loss-action' },
+      { title: 'Does starting with the “wrong” fund set you back, or is starting at all the bigger win?', slug: 'starting-with-wrong-fund' },
+      { title: 'How do you keep a SIP going in a month when money already feels tight?', slug: 'keeping-sip-in-tight-month' },
+      { title: 'Is your fear of losing money bigger than your fear of never growing it?', slug: 'fear-of-loss-vs-growth' },
+      { title: 'When friends talk about stocks and returns, how do you know what\'s worth listening to?', slug: 'filtering-friend-investment-advice' },
+      { title: 'How do you begin building wealth without feeling you must first become a finance expert?', slug: 'building-wealth-no-expert' }
     ],
   },
   {

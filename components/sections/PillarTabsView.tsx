@@ -112,6 +112,11 @@ export const PillarTabsView: React.FC<PillarTabsViewProps> = ({ pillar }) => {
                       <h3 className="font-serif text-sm sm:text-base font-bold text-deep-green leading-snug">
                         {guide.title}
                       </h3>
+                      {guide.subtext && (
+                        <p className="font-sans text-[11px] sm:text-xs italic text-gold font-medium mt-0.5">
+                          {guide.subtext}
+                        </p>
+                      )}
                       <p className="font-sans text-xs sm:text-sm text-charcoal/70 leading-relaxed mt-1">
                         {guide.description}
                       </p>
