@@ -88,7 +88,12 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
                     : 'text-charcoal/80 border-sage/30 hover:border-deep-green hover:text-deep-green bg-ivory/60'
                 }`}
               >
-                {arm === 'Pers.Fin' ? 'Personal Finance' : arm}
+                {arm === 'Pers.Fin' ? (
+                  <>
+                    <span className="hidden sm:inline">Personal Finance</span>
+                    <span className="inline sm:hidden">Pers. Finance</span>
+                  </>
+                ) : arm}
               </button>
             ))}
           </div>
@@ -118,7 +123,12 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
                         : 'text-charcoal/80 border-sage/30 hover:border-deep-green hover:text-deep-green bg-ivory/60'
                   }`}
                 >
-                  {typeVal}
+                  {typeVal === 'Money Conversation' ? (
+                    <>
+                      <span className="hidden sm:inline">Money Conversation</span>
+                      <span className="inline sm:hidden">Money Conv.</span>
+                    </>
+                  ) : typeVal}
                 </button>
               );
             })}
