@@ -97,52 +97,53 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
     slug: 'when-does-investing-become-more-personal',
     number: 'Pillar 02',
     title: 'When Does Investing Become More Personal?',
-    description: 'Personalised investing for larger portfolios.',
+    description: 'Personalized investing for larger portfolios.',
     iconName: 'User',
     topicCategory: 'Building',
-    learnBrief: 'Portfolio Management Services (PMS) offers direct stock ownership and customized portfolio strategies for high-net-worth investors. Understand minimum thresholds, mechanics, and key risk considerations.',
+    learnBrief: `There are few moments in some financial lives when the mutual fund SIP that served beautifully for a decade starts to feel - not wrong, but not quite enough. Maybe the portfolio has grown large. Maybe the questions have grown more personal. This chapter is about that moment, when investing stops being one-size-fits-all and starts asking for a closer fit. We will walk through what changes as the numbers grow, when a portfolio genuinely needs individual attention, and just as honestly when it doesn't. Because the point isn't to reach for something fancier. It's to notice whether you actually need it.`,
     understandGuides: [
       {
-        title: 'What Is PMS?',
-        description: "Portfolio Management Services — what it is, who it's for, and how it differs from mutual funds.",
+        title: 'Is Mutual Fund Still Enough For Me?',
+        description: `This starts with a question most people are slightly embarrassed to ask, have I outgrown mutual funds? Sometimes the answer is yes, the portfolio is large, the needs more specific. But just as often, the itch for "something more sophisticated" is really boredom, or a bit of status talking, rather than a genuine gap. For the overwhelming majority, mutual funds remain more than enough, and there's no prize for complicating things. Knowing which camp you are in is the whole point, a far better question than "what's the next level up."`
       },
       {
-        title: 'How PMS Works',
-        description: 'Direct stock ownership, customised portfolios, dedicated managers — the mechanics.',
+        title: 'When Does A Portfolio Need Personal Attention?',
+        description: `A mutual fund treats everyone in it identically same holdings, same decisions, for the crore and the lakh alike. That's a feature, not a flaw, right up until your situation stops being average. Maybe there's a large concentrated holding, a complicated tax picture, or specific things you want owned or deliberately avoided. This piece is about spotting those signals honestly the point where a shared, standardised portfolio starts to fit a little less well. Not a portfolio size to brag about, but a set of circumstances that silently ask for a closer, more individual fit.`
       },
       {
-        title: 'Who Should Invest in PMS?',
-        description: 'Minimum ticket size, investor profile, and when PMS makes more sense than mutual funds.',
+        title: 'How Much Wealth Changes The Way You Invest?',
+        description: `Here is something people rarely warn you about - investing at ten lakh and at ten crore aren't just bigger versions of the same thing, they differ in kind. As the numbers grow, the quiet goal shifts from "grow this" to "don't lose this," a single mistake starts costing far more than it used to, and simplicity becomes more valuable, not less. This is about that shift in mindset. Less about products, more about how bigger money changes what you should genuinely be worried about and, just as usefully, what stops mattering.`
       },
       {
-        title: 'PMS vs Mutual Funds',
-        description: 'Side-by-side comparison — control, cost, taxation, and flexibility.',
+        title: 'Does Bigger Money Need a Different Strategy?',
+        description: `The instinct, once a portfolio crosses a certain size, is that it must now need something cleverer. Sometimes that's true. Often it isn't. This is where I would gently separate a real need from the simple pull of exclusivity because complicated doesn't mean better, and some of the calmest large portfolios I have seen are also the simplest. The honest answer to whether bigger money needs a different strategy is only if your goals and constraints have actually changed. If they haven't, extra sophistication usually just adds cost.`
       },
       {
-        title: 'Risks in PMS',
-        description: 'Concentration risk, manager dependency, illiquidity — what to watch before investing.',
+        title: 'Choosing A Professional Money Manager',
+        description: `This is where Portfolio Management Services (PMS) actually enters the picture. In plain terms, instead of pooling your money with thousands of others the way a mutual fund does, a SEBI registered portfolio manager runs an individual portfolio held directly in your own name, with securities you can actually see. It begins at a fifty-lakh minimum, usually costs more than a mutual fund, and is taxed differently, since each transaction happens in your hands. When weighing one, the thing that matters least is last year's return what matters is the manager's process, how the portfolio behaves in the bad years, the transparency, and the true cost. The strategy on paper counts for far less than the discipline behind it.`
       },
       {
-        title: 'How to Evaluate a PMS Provider',
-        description: 'Track record, fee structure, transparency, and questions worth asking.',
-      },
+        title: 'Mistakes Wealthy Investors Make',
+        description: `Wealthy investors make a different set of mistakes from beginners and often more expensive ones. Successful professionals neglect their own portfolios while running everything else brilliantly. People over-concentrate in the very thing that made them rich and call it conviction. Others collect complex products for the quiet feeling of exclusivity, or hand things to whoever sounds most impressive rather than whoever's most disciplined. This piece names those patterns plainly. The through-line is simple, more money magnifies the cost of an ordinary mistake, so the discipline that felt optional at ten lakh becomes the entire game at ten crore.`
+      }
     ],
     moneyConversations: [
-      { title: 'Is the ₹50 Lakh minimum ticket size in PMS worth it?', slug: 'is-pms-50l-minimum-worth-it' },
-      { title: 'How are PMS returns taxed compared to Mutual Funds?', slug: 'pms-taxation-vs-mutual-funds' },
-      { title: 'What happens if my PMS portfolio manager underperforms Nifty?', slug: 'pms-underperformance-handling' },
-      { title: 'Can I transfer existing stocks into a new PMS account?', slug: 'stock-transfer-into-pms' },
-      { title: 'How transparent are transaction charges in PMS fee structures?', slug: 'pms-fee-structure-transparency' },
-      { title: 'Why is stock concentration both a benefit and risk in PMS?', slug: 'pms-concentration-risk' },
-      { title: 'Should I choose Discretionary or Non-Discretionary PMS?', slug: 'discretionary-vs-non-discretionary-pms' },
-      { title: 'How frequently will I receive portfolio reports in PMS?', slug: 'pms-reporting-frequency' },
-      { title: 'What is a performance fee watermark in PMS?', slug: 'pms-high-watermark-explained' },
-      { title: 'Can I exit a PMS strategy prematurely without penalty?', slug: 'exiting-pms-early' },
-      { title: 'How do PMS managers manage cash during market corrections?', slug: 'pms-cash-calls-in-corrections' },
-      { title: 'Is PMS suitable for conservative investors?', slug: 'is-pms-for-conservative-investors' },
-      { title: 'What questions should I ask before signing a PMS agreement?', slug: 'questions-before-pms-agreement' },
-      { title: 'How does stock ownership work in my demat account for PMS?', slug: 'pms-demat-stock-ownership' },
-      { title: 'Why do two investors in the same PMS have different returns?', slug: 'why-pms-returns-differ' },
+      { title: 'When you hand your portfolio to a manager, are you giving up control or finally admitting you never fully had it?', slug: 'handing-portfolio-control' },
+      { title: 'Why do successful professionals often neglect their own investments?', slug: 'professionals-neglect-investments' },
+      { title: 'Are you choosing this for what your portfolio genuinely needs, or for how it feels to have "arrive"?', slug: 'need-vs-status-choice' },
+      { title: 'How do you know when experience matters more than information?', slug: 'experience-vs-information' },
+      { title: 'With PMS you can see every share you own - is that transparency a comfort, or a fresh temptation to interfere?', slug: 'pms-transparency-interference' },
+      { title: 'Could watching every buy and sell make you a worse investor, not a better one?', slug: 'frequent-tracking-bad-investor' },
+      { title: "Would you stay with a manager through a full year whose decisions you don't entirely understand?", slug: 'staying-without-understanding' },
+      { title: 'When a portfolio holds fewer, larger positions, does that feel like conviction or exposure?', slug: 'concentration-conviction-vs-exposure' },
+      { title: "Are you at peace owning something you can't exit as quickly or as cleanly as a mutual fund?", slug: 'pms-liquidity-vs-mutual-fund' },
+      { title: 'Does paying a visible, higher fee make you value the service more or quietly resent it?', slug: 'visible-higher-fees-resentment' },
+      { title: 'Does your manager do better only when you do, or are they paid the same either way?', slug: 'manager-incentive-alignment' },
+      { title: 'How much do you need to understand before you can truly trust, rather than simply hope?', slug: 'trust-vs-hope' },
+      { title: "Would you recognise the moment it's time to leave a manager and would you have the discipline to act on it?", slug: 'recognizing-when-to-leave-manager' },
+      { title: "If you weren't around tomorrow, could your family understand and carry on the arrangement you've built?", slug: 'family-inheriting-pms-arrangement' },
+      { title: "When you measure your portfolio against a friend's or the index every quarter, are you tracking performance or feeding anxiety?", slug: 'tracking-performance-vs-anxiety' },
+      { title: 'Before asking what it can return, have you asked what job you actually want it to do in your life?', slug: 'portfolio-purpose-in-life' }
     ],
   },
   {
