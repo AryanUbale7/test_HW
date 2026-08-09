@@ -153,49 +153,53 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
     description: 'Flexible strategies for more sophisticated investor.',
     iconName: 'Sliders',
     topicCategory: 'Building',
-    learnBrief: 'Specialised Investment Funds (SIF) bridges the gap between mutual funds and PMS under SEBI rules. Explore long-short strategies, sector opportunities, and risk management.',
+    learnBrief: `An SIF, or Specialised Investment Fund, is a newer SEBI-created category that sits between a mutual fund and a Portfolio Management Service. It's built for a more sophisticated investor, carrying a higher entry threshold than an ordinary mutual fund. What sets it apart is freedom: an SIF can use strategies a regular fund can't like taking both sides of a trade or using derivatives to pursue its goals. That flexibility opens up new possibilities, and new risks alongside them. This section is about understanding it clearly, and honestly, before deciding whether it belongs anywhere near your portfolio.`,
     understandGuides: [
       {
-        title: 'What Is SIF?',
-        description: 'Specialised Investment Funds — a new SEBI category between mutual funds and PMS.',
+        title: 'What Extra Flexibility Are You Actually Paying For in an SIF?',
+        description: `An SIF can do things a plain mutual fund can't, take both sides of a trade, use derivatives, shift more tactically as the manager reads the market. That flexibility is the whole pitch, and sometimes it genuinely earns its keep. But flexibility isn't free, and it isn't always useful - the same freedom that can protect you can also be used to take bigger risks with your money. So, the real question isn't "how much can it do," it is - "how much of what it can do, do I actually need" because you're paying for all of it, whether it helps you or not.`
       },
       {
-        title: 'Types of SIF Strategies',
-        description: 'Long-short equity, derivatives-based, sector strategies — the options available.',
+        title: 'Can You Understand the Strategy Before You Invest?',
+        description: `Here's a simple, slightly unfair test - could you explain, in two plain sentences, what this fund actually does to earn its returns? If the honest answer is no, that's worth pausing on not because you aren't clever enough, but because a strategy you can't describe is one you can't judge, and can't hold with any conviction when a bad patch arrives. This is about reading the objective and the approach in plain English before the sophistication impresses you. What you don't understand, you tend to abandon at exactly the wrong moment.`
       },
       {
-        title: 'How SIF Works',
-        description: 'How funds are structured, managed, and how returns are generated.',
+        title: 'Who Should Not Invest in an SIF?',
+        description: `Most conversations start with who a product is for. This one deliberately flips it. An SIF isn't unsuitable only for people who can't afford the ticket - it can be a poor fit for someone with a short horizon, someone who'll need the money at short notice, or someone whose stomach turns at a loss they can't easily explain. Financial eligibility and genuine suitability are two very different things. Knowing clearly that you're not the right investor for something is one of the most valuable, and most underrated, financial decisions you can make.`
       },
       {
-        title: 'Who Should Invest?',
-        description: 'Minimum investment threshold, risk profile, and investor suitability criteria.',
+        title: 'Where Does SIF Fit Between Mutual Funds and PMS?',
+        description: `An SIF lives in the gap more flexible and personalised than a mutual fund, less bespoke than a full portfolio service, and sitting between the two on cost and complexity too. Seeing exactly where it sits matters, because it stops you buying it for a job something simpler already does. The useful question isn't "is an SIF good," it is "what does an SIF do that my existing setup doesn't" and if the honest answer is "not much," that's your answer. It's a specific tool for a specific gap, not an upgrade you graduate into.`
       },
       {
-        title: 'SIF vs PMS vs Mutual Funds',
-        description: 'Where SIF sits in the product spectrum and when it makes sense.',
+        title: 'What Can Go Wrong Even When the Strategy Sounds Intelligent?',
+        description: `A strategy can be genuinely clever and still be a poor investment for you that's the uncomfortable truth this one sits with. Derivatives can amplify a loss as easily as a gain. A concentrated position can turn. A short bet can move the wrong way. And all of it leans on the manager's judgement holding up under pressure. Intelligence on paper isn't the same as a good outcome in your hands what protects you isn't how smart the strategy sounds, but how well its worst realistic year fits a loss you could actually live through.`
       },
       {
-        title: 'Risks in SIF',
-        description: 'Complexity, liquidity, and regulatory newness — honest risks to know before investing.',
+        title: 'How Easily Can You Actually Get Out?',
+        description: `With an open-ended mutual fund, exiting is usually quick and clean. An SIF may not work that way, there can be windows, waiting periods, or simply less liquidity. Before the strategy pulls you in, it's worth asking the unglamorous question - if life changed suddenly, how fast could this become cash again?`
       },
+      {
+        title: 'Is the Minimum a Door or a Warning?',
+        description: `SIFs carry a high entry threshold, and it's tempting to read that as a status badge. It's better read as a signal the regulator's way of pointing to who this is, and isn't, built for. If the only reason it fits is that you can afford the ticket, that's usually a reason to pause, not to proceed.`
+      }
     ],
     moneyConversations: [
-      { title: 'Where does SIF fit between Mutual Funds and PMS?', slug: 'sif-positioning-spectrum' },
-      { title: 'How do long-short strategies in SIF cushion market drops?', slug: 'how-sif-long-short-works' },
-      { title: 'What is the SEBI minimum investment requirement for SIF?', slug: 'sebi-sif-minimum-investment' },
-      { title: 'Are derivative-based SIF strategies overly risky for HNIs?', slug: 'sif-derivatives-risk-profile' },
-      { title: 'How is liquidity handled in SIF compared to open-ended funds?', slug: 'sif-liquidity-terms' },
-      { title: 'What tax rules apply to capital gains from SIF investments?', slug: 'sif-capital-gains-tax' },
-      { title: 'Why did SEBI create the SIF framework for Indian investors?', slug: 'why-sebi-created-sif' },
-      { title: 'Can SIF generate positive returns during extended bear markets?', slug: 'sif-in-bear-markets' },
-      { title: 'What is the ideal allocation percentage for SIF in a portfolio?', slug: 'ideal-sif-portfolio-allocation' },
-      { title: 'How do expense ratios in SIF compare to PMS?', slug: 'sif-vs-pms-expense-ratio' },
-      { title: 'Who is the ideal investor for SIF strategies?', slug: 'ideal-sif-investor-profile' },
-      { title: 'How do sector-specific SIF funds manage downside risks?', slug: 'sif-sectoral-downside-management' },
-      { title: 'What disclosures must SIF fund managers provide monthly?', slug: 'sif-monthly-disclosures' },
-      { title: 'How does leverage limitation protect SIF investors?', slug: 'sif-leverage-caps-protection' },
-      { title: 'Should I replace debt mutual funds with low-volatility SIFs?', slug: 'replacing-debt-funds-with-sif' },
+      { title: 'If an SIF and a mutual fund arrived at the same place, which one quietly cost you more to get there?', slug: 'sif-vs-mutual-fund-cost' },
+      { title: "Have you looked at what you'd actually keep after tax — or only at what the strategy is meant to earn?", slug: 'sif-post-tax-returns' },
+      { title: "Would you still be comfortable owning this if you couldn't exit the week you suddenly needed the money?", slug: 'sif-liquidity-lockup' },
+      { title: 'Does your manager earn more only when you do — or also simply for taking bigger risks?', slug: 'sif-manager-incentives' },
+      { title: "If the entry ticket weren't so high, would this product still feel as attractive to you?", slug: 'sif-ticket-size-allure' },
+      { title: 'How much of your comfort rests on the strategy itself — and how much on one person continuing to run it well?', slug: 'sif-key-person-risk' },
+      { title: "Would you be at peace owning something whose weak quarters you can't fully explain, even to yourself?", slug: 'sif-weak-quarters-explanation' },
+      { title: 'Are you adding this to close a real gap in your plan — or to feel your portfolio has finally grown up?', slug: 'sif-status-vs-utility' },
+      { title: 'If you removed this SIF tomorrow, would your plan actually fail — or just feel less sophisticated?', slug: 'sif-removal-impact' },
+      { title: 'Do you understand this well enough to keep holding it when someone you respect says you were foolish to buy it?', slug: 'holding-sif-under-criticism' },
+      { title: 'At your portfolio size, does one misjudged product cost you more than any extra return it might add?', slug: 'sif-misjudged-product-cost' },
+      { title: 'Can you describe, in advance, the kind of year that would make you regret this — and are you at peace with it arriving?', slug: 'sif-regret-minimization' },
+      { title: 'Would you recognise the moment to walk away from this strategy — and would you act, or keep hoping?', slug: 'sif-when-to-walk-away' },
+      { title: "Are you paying for genuine skill and flexibility — or for the quiet comfort of owning what most people can't?", slug: 'sif-skill-vs-exclusivity' },
+      { title: "In the end, is this a decision about your money — or about how you'd like to see yourself as an investor?", slug: 'sif-investor-identity-choice' }
     ],
   },
   {
