@@ -114,6 +114,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       arm: row.arm,
       type: row.type,
       sourceUrl: row.source_url,
+      question_slug: row.question_slug,
       author,
     };
   } catch (error) {
@@ -352,5 +353,26 @@ export async function getRecentPublicationsCount(): Promise<number> {
   } catch (error) {
     console.error('Error fetching recent publications count:', error);
     return 0;
+  }
+}
+
+/**
+ * Fetches all published 'Money Conversation' posts and returns a map of question_slug -> post_slug.
+ */
+export async function getMoneyConversationsMapping(): Promise<Record<string, string>> {
+  try {
+    const rows = await query<any[]>(
+      "SELECT slug, question_slug FROM posts WHERE type = 'Money Conversation' AND status = 'published' AND question_slug IS NOT NULL"
+    );
+    const mapping: Record<string, string> = {};
+    rows.forEach((row) => {
+      if (row.question_slug) {
+        mapping[row.question_slug] = row.slug;
+      }
+    });
+    return mapping;
+  } catch (error) {
+    console.error('Error fetching money conversations mapping:', error);
+    return {};
   }
 }

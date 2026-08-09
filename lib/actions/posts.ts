@@ -26,6 +26,7 @@ export async function createPost(prevState: any, formData: FormData): Promise<{ 
     const type = formData.get('type') as string;
     const source_url = formData.get('source_url') as string;
     const author_id = formData.get('author_id') as string;
+    const question_slug = formData.get('question_slug') as string;
     const seo_title = formData.get('seo_title') as string;
     const seo_description = formData.get('seo_description') as string;
     const status = formData.get('status') as string;
@@ -41,6 +42,7 @@ export async function createPost(prevState: any, formData: FormData): Promise<{ 
       type: type as any,
       source_url,
       author_id,
+      question_slug,
       seo_title,
       seo_description,
       status: status as any,
@@ -75,8 +77,8 @@ export async function createPost(prevState: any, formData: FormData): Promise<{ 
     const published_at = status === 'published' ? new Date() : null;
 
     await query(
-      `INSERT INTO posts (id, title, slug, excerpt, body, cover_image_url, arm, type, status, published_at, author_id, source_url, seo_title, seo_description) 
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO posts (id, title, slug, excerpt, body, cover_image_url, arm, type, status, published_at, author_id, source_url, question_slug, seo_title, seo_description) 
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         id,
         title.trim(),
@@ -90,6 +92,7 @@ export async function createPost(prevState: any, formData: FormData): Promise<{ 
         published_at,
         author_id || null,
         source_url?.trim() || null,
+        question_slug?.trim() || null,
         seo_title?.trim() || null,
         seo_description?.trim() || null
       ]
@@ -137,6 +140,7 @@ export async function updatePost(postId: string, prevState: any, formData: FormD
     const type = formData.get('type') as string;
     const source_url = formData.get('source_url') as string;
     const author_id = formData.get('author_id') as string;
+    const question_slug = formData.get('question_slug') as string;
     const seo_title = formData.get('seo_title') as string;
     const seo_description = formData.get('seo_description') as string;
     const status = formData.get('status') as string;
@@ -152,6 +156,7 @@ export async function updatePost(postId: string, prevState: any, formData: FormD
       type: type as any,
       source_url,
       author_id,
+      question_slug,
       seo_title,
       seo_description,
       status: status as any,
@@ -183,7 +188,7 @@ export async function updatePost(postId: string, prevState: any, formData: FormD
 
     await query(
       `UPDATE posts 
-       SET title = ?, slug = ?, excerpt = ?, body = ?, cover_image_url = ?, arm = ?, type = ?, status = ?, published_at = ?, author_id = ?, source_url = ?, seo_title = ?, seo_description = ? 
+       SET title = ?, slug = ?, excerpt = ?, body = ?, cover_image_url = ?, arm = ?, type = ?, status = ?, published_at = ?, author_id = ?, source_url = ?, question_slug = ?, seo_title = ?, seo_description = ? 
        WHERE id = ?`,
       [
         title.trim(),
@@ -197,6 +202,7 @@ export async function updatePost(postId: string, prevState: any, formData: FormD
         published_at,
         author_id || null,
         source_url?.trim() || null,
+        question_slug?.trim() || null,
         seo_title?.trim() || null,
         seo_description?.trim() || null,
         postId

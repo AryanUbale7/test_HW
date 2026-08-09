@@ -7,9 +7,10 @@ import { KnowledgePillar } from '@/lib/data/knowledgeHub';
 
 interface PillarTabsViewProps {
   pillar: KnowledgePillar;
+  conversationsMapping?: Record<string, string>;
 }
 
-export const PillarTabsView: React.FC<PillarTabsViewProps> = ({ pillar }) => {
+export const PillarTabsView: React.FC<PillarTabsViewProps> = ({ pillar, conversationsMapping = {} }) => {
   const [activeTab, setActiveTab] = useState<'conversations' | 'basics'>('conversations');
 
   return (
@@ -65,20 +66,27 @@ export const PillarTabsView: React.FC<PillarTabsViewProps> = ({ pillar }) => {
 
             {/* Questions List */}
             <div className="flex flex-col gap-4">
-              {pillar.moneyConversations.map((q, idx) => (
-                <Link
-                  key={idx}
-                  href={`/articles?type=Money+Conversation`}
-                  className="group flex items-start gap-3 py-1.5 transition-all duration-200"
-                >
-                  <span className="text-gold font-bold font-serif text-base sm:text-lg leading-none shrink-0 group-hover:translate-x-1 transition-transform">
-                    →
-                  </span>
-                  <span className="text-sm sm:text-base font-serif font-medium text-deep-green group-hover:text-gold transition-colors leading-snug">
-                    {q.title}
-                  </span>
-                </Link>
-              ))}
+              {pillar.moneyConversations.map((q, idx) => {
+                const targetSlug = conversationsMapping[q.slug];
+                const href = targetSlug 
+                  ? `/articles/${targetSlug}`
+                  : `/articles?type=Money+Conversation`;
+
+                return (
+                  <Link
+                    key={idx}
+                    href={href}
+                    className="group flex items-start gap-3 py-1.5 transition-all duration-200"
+                  >
+                    <span className="text-gold font-bold font-serif text-base sm:text-lg leading-none shrink-0 group-hover:translate-x-1 transition-transform">
+                      →
+                    </span>
+                    <span className="text-sm sm:text-base font-serif font-medium text-deep-green group-hover:text-gold transition-colors leading-snug">
+                      {q.title}
+                    </span>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         )}

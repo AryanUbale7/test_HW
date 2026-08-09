@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS posts (
   published_at TIMESTAMP NULL,
   author_id VARCHAR(36),
   source_url TEXT,
+  question_slug VARCHAR(255) NULL,
   seo_title VARCHAR(255),
   seo_description TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

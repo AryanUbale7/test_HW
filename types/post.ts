@@ -16,6 +16,7 @@ export interface Post {
   arm: string;
   type: string;
   sourceUrl?: string | null;
+  question_slug?: string | null;
   author?: Author | null;
 }
 
@@ -32,6 +33,7 @@ export interface AdminPost {
   published_at: string | null;
   author_id: string | null;
   source_url: string | null;
+  question_slug: string | null;
   seo_title: string | null;
   seo_description: string | null;
   created_at: string;

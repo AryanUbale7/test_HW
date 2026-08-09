@@ -22,6 +22,7 @@ interface PostData {
   arm?: string
   type?: string
   source_url?: string
+  question_slug?: string
   author_id?: string
   seo_title?: string
   seo_description?: string
@@ -36,6 +37,7 @@ interface PostFormProps {
 }
 
 import { slugify } from '@/lib/utils/slugify'
+import { KNOWLEDGE_PILLARS } from '@/lib/data/knowledgeHub'
 
 
 const initialState = { errors: {} as Record<string, string>, success: false }
@@ -55,6 +57,7 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
   const [body, setBody] = useState(post?.body || '')
   const [coverUrl, setCoverUrl] = useState(post?.cover_image_url || '')
   const [type, setType] = useState(post?.type || '')
+  const [questionSlug, setQuestionSlug] = useState(post?.question_slug || '')
   const [status, setStatus] = useState(post?.status || 'draft')
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
   const [deleting, setDeleting] = useState(false)
@@ -86,9 +89,10 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
 
   return (
     <form action={formAction} className="space-y-8">
-      {/* Hidden fields for body, cover_image_url */}
+      {/* Hidden fields for body, cover_image_url, question_slug */}
       <input type="hidden" name="body" value={body} />
       <input type="hidden" name="cover_image_url" value={coverUrl} />
+      <input type="hidden" name="question_slug" value={questionSlug} />
 
       {/* Success banner */}
       {showSuccess && (
@@ -340,6 +344,31 @@ export function PostForm({ post, authors, mode }: PostFormProps) {
               </select>
               {errors.type && <p className="text-red-600 text-xs mt-1">{errors.type}</p>}
             </div>
+
+            {type === 'Money Conversation' && (
+              <div>
+                <label htmlFor="question_slug" className="block text-sm font-medium text-slate-700 mb-1">
+                  Related Money Conversation Question *
+                </label>
+                <select
+                  id="question_slug"
+                  value={questionSlug}
+                  onChange={(e) => setQuestionSlug(e.target.value)}
+                  className="w-full px-3 py-2 border border-slate-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                >
+                  <option value="">Select a question…</option>
+                  {KNOWLEDGE_PILLARS.map((pillar) => (
+                    <optgroup key={pillar.slug} label={`${pillar.number} — ${pillar.title}`}>
+                      {pillar.moneyConversations.map((q) => (
+                        <option key={q.slug} value={q.slug}>
+                          {q.title}
+                        </option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </select>
+              </div>
+            )}
 
             <div>
               <label htmlFor="author_id" className="block text-sm font-medium text-slate-700 mb-1">Author</label>
