@@ -80,13 +80,15 @@ export const KnowledgeHubTeaser: React.FC = () => {
           In-depth guides to help you make better financial decisions at every stage of life.
         </p>
 
-        {/* 2 cards on Mobile (grid-cols-2), 4 on Tablet (md:grid-cols-4), 7 on Desktop (lg:grid-cols-7) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2 sm:gap-2.5 md:gap-3 mb-3 md:mb-4">
-          {TOPIC_CARDS.map((card) => (
+        {/* 3 cards on Mobile (grid-cols-3) & 5 cards on Desktop (lg:grid-cols-5) */}
+        <div className="grid grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-2.5 md:gap-3 mb-3 md:mb-4">
+          {TOPIC_CARDS.map((card, idx) => (
             <Link
               key={card.slug}
               href={card.href}
-              className="group bg-ivory border border-sage/30 rounded-md p-2 sm:p-3 md:p-3.5 text-center hover:border-gold/60 hover:shadow-xs transition-all duration-200 flex flex-col items-center justify-start h-full col-span-1 last:max-md:col-span-2"
+              className={`group bg-ivory border border-sage/30 rounded-md p-2 sm:p-3 md:p-3.5 text-center hover:border-gold/60 hover:shadow-xs transition-all duration-200 flex-col items-center justify-start h-full ${
+                idx >= 5 ? 'hidden' : (idx >= 3 ? 'hidden lg:flex' : 'flex')
+              }`}
             >
               {/* Icon Badge */}
               <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full bg-sage-mist/40 border border-sage/20 flex items-center justify-center mb-1.5 sm:mb-2 group-hover:bg-gold/10 group-hover:border-gold/40 transition-colors shrink-0">
