@@ -77,7 +77,7 @@ export const PillarTabsView: React.FC<PillarTabsViewProps> = ({ pillar, conversa
         {activeTab === 'conversations' && (
           <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
             <p className="text-xs sm:text-sm font-sans text-charcoal/60 mb-6 italic">
-              An index of ~{pillar.moneyConversations.length} questions — each links to its own short piece
+              An index of ~{pillar.moneyConversations.length} questions — Where the honest thinking begins
             </p>
 
             {/* Questions List */}
