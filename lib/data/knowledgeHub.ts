@@ -306,7 +306,7 @@ export const KNOWLEDGE_PILLARS: KnowledgePillar[] = [
       { title: 'Why do intelligent people postpone buying insurance?', slug: 'why-people-postpone-insurance' },
       { title: 'Should your insurance grow as your salary grows?', slug: 'insurance-growth-vs-salary-growth' },
       { title: 'Why do families discover policy exclusions only during a claim?', slug: 'discovering-exclusions-during-claim' },
-      { title: 'Do you need another insurance policy—or a better insurance plan?', slug: 'more-policies-vs-better-plan' },
+      { title: 'Do you need another insurance policy or a better insurance plan?', slug: 'more-policies-vs-better-plan' },
       { title: "Insurance isn't bought for the day you die. It's bought for the days your family must continue living.", slug: 'insurance-is-for-living-days' },
       { title: 'Did you tell your insurer the whole truth when you bought the policy or leave a quiet door open for them to say no later?', slug: 'non-disclosure-insurer-loophole' },
       { title: 'If your health worsens next year, will you still be allowed to buy the cover you keep postponing today?', slug: 'postponing-insurance-health-risk' },
