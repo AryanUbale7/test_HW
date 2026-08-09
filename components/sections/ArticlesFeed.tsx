@@ -111,7 +111,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
                   className={`text-xs sm:text-sm font-sans tracking-wide transition-all duration-200 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border whitespace-nowrap ${
                     isSelected
                       ? isMoneyConversation
-                        ? 'text-gold font-bold bg-gold/15 border-gold shadow-xs'
+                        ? 'text-ivory font-bold bg-gold border-gold shadow-md'
                         : 'text-deep-green font-bold bg-sage-mist/60 border-deep-green shadow-xs'
                       : isMoneyConversation
                         ? 'text-gold font-medium border-gold/40 hover:border-gold hover:bg-gold/10 bg-ivory/80'
