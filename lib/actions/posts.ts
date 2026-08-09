@@ -108,6 +108,7 @@ export async function createPost(prevState: any, formData: FormData): Promise<{ 
 
     revalidatePath('/admin/posts');
     revalidatePath('/articles');
+    revalidatePath('/knowledge-hub/[pillar-slug]');
     revalidatePath('/');
   } catch (err: any) {
     if (err && err.message === 'NEXT_REDIRECT') throw err;
@@ -219,6 +220,8 @@ export async function updatePost(postId: string, prevState: any, formData: FormD
 
     revalidatePath('/admin/posts');
     revalidatePath(`/articles/${slug}`);
+    revalidatePath('/articles');
+    revalidatePath('/knowledge-hub/[pillar-slug]');
     revalidatePath('/');
     return { errors: {}, success: true };
   } catch (err: any) {
@@ -241,6 +244,8 @@ export async function deletePost(postId: string) {
     });
 
     revalidatePath('/admin/posts');
+    revalidatePath('/articles');
+    revalidatePath('/knowledge-hub/[pillar-slug]');
     revalidatePath('/');
   } catch (err: any) {
     if (err && err.message === 'NEXT_REDIRECT') throw err;
