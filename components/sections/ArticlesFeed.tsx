@@ -91,7 +91,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
                 {arm === 'Pers.Fin' ? (
                   <>
                     <span className="hidden sm:inline">Personal Finance</span>
-                    <span className="inline sm:hidden">Pers. Finance</span>
+                    <span className="inline sm:hidden">Personal Fin</span>
                   </>
                 ) : arm}
               </button>
@@ -123,12 +123,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
                         : 'text-charcoal/80 border-sage/30 hover:border-deep-green hover:text-deep-green bg-ivory/60'
                   }`}
                 >
-                  {typeVal === 'Money Conversation' ? (
-                    <>
-                      <span className="hidden sm:inline">Money Conversation</span>
-                      <span className="inline sm:hidden">Money Conv.</span>
-                    </>
-                  ) : typeVal}
+                  {typeVal}
                 </button>
               );
             })}
