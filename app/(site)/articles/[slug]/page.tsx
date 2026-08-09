@@ -188,12 +188,7 @@ export default async function SingleArticlePage(props: { params: Promise<{ slug:
           </div>
         )}
 
-        {/* Entity/Compliance Banner for Guide Articles */}
-        {post.type === 'Guide' && (
-          <div className="mb-10 p-5 bg-sage-mist/30 border border-sage/20 rounded-sm text-sm font-sans text-charcoal/80 leading-relaxed italic">
-            <strong>Compliance Statement:</strong> Honworth is an AMFI-registered Mutual Fund Distributor based in India, working with families across Wealth Building, Protection, and Legacy planning. This guide is educational and does not constitute financial or legal advice.
-          </div>
-        )}
+
 
         {/* Table of Contents for Guides */}
         {post.type === 'Guide' && headings.length > 0 && (
