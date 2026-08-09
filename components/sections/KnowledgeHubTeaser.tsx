@@ -69,12 +69,14 @@ export const KnowledgeHubTeaser: React.FC = () => {
       <div className="border border-sage/40 bg-sage-mist/10 rounded-md p-3.5 sm:p-5 md:p-6 text-center shadow-xs">
         
         {/* Header */}
-        <h2 className="text-xs sm:text-sm md:text-base lg:text-lg font-serif text-deep-green font-bold uppercase tracking-widest mb-0.5 sm:mb-1">
-          EXPLORE BY PILLAR
+        <h2 className="text-xs sm:text-sm md:text-base lg:text-lg font-serif text-deep-green font-bold uppercase tracking-widest mb-3 sm:mb-4">
+          EXPLORE{' '}
+          <span className="relative inline-block pb-1.5">
+            BY
+            <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-gold/75 rounded-full" />
+          </span>{' '}
+          PILLAR
         </h2>
-        
-        {/* Accent ornament */}
-        <div className="w-6 h-0.5 bg-gold/50 mx-auto mb-1.5 rounded-full" />
         
         <p className="text-[11px] sm:text-xs md:text-sm font-sans text-charcoal/80 leading-normal mb-3 md:mb-4 max-w-md mx-auto">
           In-depth guides to help you make better financial decisions at every stage of life.

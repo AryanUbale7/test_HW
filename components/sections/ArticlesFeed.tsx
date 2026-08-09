@@ -74,7 +74,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
       <div className="mb-6 w-full space-y-4 bg-sage-mist/10 border border-sage/20 rounded-md p-4 sm:p-5">
         {/* Topic Filter */}
         <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-3">
-          <span className="text-xs sm:text-sm uppercase tracking-widest font-sans font-bold text-deep-green shrink-0 sm:pt-2">
+          <span className="text-xs sm:text-sm uppercase tracking-widest font-sans font-bold text-deep-green shrink-0 sm:pt-2 sm:w-[72px]">
             Topic:
           </span>
           <div className="flex flex-wrap gap-1.5 sm:gap-2.5">
@@ -96,7 +96,7 @@ export const ArticlesFeed: React.FC<ArticlesFeedProps> = ({
 
         {/* Type Filter (Guide / Money Conversation / Note) */}
         <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-3 border-t border-sage/20 pt-3">
-          <span className="text-xs sm:text-sm uppercase tracking-widest font-sans font-bold text-deep-green shrink-0 sm:pt-2">
+          <span className="text-xs sm:text-sm uppercase tracking-widest font-sans font-bold text-deep-green shrink-0 sm:pt-2 sm:w-[72px]">
             Type:
           </span>
           <div className="flex flex-wrap gap-1.5 sm:gap-2.5">

@@ -104,6 +104,7 @@ export async function createPost(prevState: any, formData: FormData): Promise<{ 
     });
 
     revalidatePath('/admin/posts');
+    revalidatePath('/articles');
     revalidatePath('/');
   } catch (err: any) {
     if (err && err.message === 'NEXT_REDIRECT') throw err;
