@@ -39,7 +39,7 @@ export async function generateMetadata(
       canonical: `https://honworth.in/articles/${post.slug}`,
     },
     openGraph: {
-      title: `${post.title} | Honworth`,
+      title: post.title,
       description: cleanDescription,
       url: `https://honworth.in/articles/${post.slug}`,
       images: post.thumbnailUrl ? [{ url: post.thumbnailUrl }] : [],
@@ -49,7 +49,7 @@ export async function generateMetadata(
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${post.title} | Honworth`,
+      title: post.title,
       description: cleanDescription,
       images: post.thumbnailUrl ? [post.thumbnailUrl] : [],
     },
