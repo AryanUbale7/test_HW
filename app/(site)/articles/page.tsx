@@ -6,7 +6,7 @@ import { ArticlesFeed } from '@/components/sections/ArticlesFeed';
 import { KnowledgeHubTeaser } from '@/components/sections/KnowledgeHubTeaser';
 import { MOCK_ARTICLES } from '@/lib/data/mockArticles';
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Articles & Insights | Honworth',
