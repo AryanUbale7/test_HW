@@ -26,13 +26,22 @@ export async function GET(
       return new NextResponse('Invalid file name', { status: 400 });
     }
 
-    const primaryDir = getPersistentStoragePath('uploads');
-    const fallbackDir = path.join(process.cwd(), 'public', 'uploads');
-
-    const candidatePaths = [
-      path.join(primaryDir, sanitizedFilename),
-      path.join(fallbackDir, sanitizedFilename),
-    ];
+    const candidatePaths: string[] = [
+      // 1. Explicit PERSISTENT_STORAGE_DIR environment variable
+      process.env.PERSISTENT_STORAGE_DIR ? path.join(process.env.PERSISTENT_STORAGE_DIR, 'uploads', sanitizedFilename) : null,
+      // 2. Direct 1-level parent (standard local / standard hosting)
+      path.join(process.cwd(), '..', 'honworth-storage', 'uploads', sanitizedFilename),
+      // 3. 2-level parent (Hostinger domains/domain.com/public_html layout)
+      path.join(process.cwd(), '..', '..', 'honworth-storage', 'uploads', sanitizedFilename),
+      // 4. 3-level parent (deep nested layout)
+      path.join(process.cwd(), '..', '..', '..', 'honworth-storage', 'uploads', sanitizedFilename),
+      // 5. Explicit Hostinger user root path
+      path.join('/home/u321533764/honworth-storage/uploads', sanitizedFilename),
+      // 6. Historical public/uploads in current working directory
+      path.join(process.cwd(), 'public', 'uploads', sanitizedFilename),
+      // 7. Historical public/uploads in parent directory
+      path.join(process.cwd(), '..', 'public', 'uploads', sanitizedFilename),
+    ].filter((p): p is string => Boolean(p));
 
     let validFilePath: string | null = null;
     for (const candidate of candidatePaths) {
