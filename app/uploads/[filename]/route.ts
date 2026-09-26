@@ -26,18 +26,31 @@ export async function GET(
       return new NextResponse('Invalid file name', { status: 400 });
     }
 
-    const baseDir = getPersistentStoragePath('uploads');
-    const filePath = path.join(baseDir, sanitizedFilename);
+    const primaryDir = getPersistentStoragePath('uploads');
+    const fallbackDir = path.join(process.cwd(), 'public', 'uploads');
 
-    // Verify file exists
-    try {
-      await fs.access(filePath);
-    } catch {
+    const candidatePaths = [
+      path.join(primaryDir, sanitizedFilename),
+      path.join(fallbackDir, sanitizedFilename),
+    ];
+
+    let validFilePath: string | null = null;
+    for (const candidate of candidatePaths) {
+      try {
+        await fs.access(candidate);
+        validFilePath = candidate;
+        break;
+      } catch {
+        // Continue to fallback location
+      }
+    }
+
+    if (!validFilePath) {
       return new NextResponse('Image not found', { status: 404 });
     }
 
-    const fileBuffer = await fs.readFile(filePath);
-    const fileStats = await fs.stat(filePath);
+    const fileBuffer = await fs.readFile(validFilePath);
+    const fileStats = await fs.stat(validFilePath);
 
     // Resolve MIME type
     const ext = sanitizedFilename.split('.').pop()?.toLowerCase() || '';
