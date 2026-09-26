@@ -17,18 +17,40 @@ export async function GET(
       return new NextResponse('Invalid file name', { status: 400 });
     }
 
-    const baseDir = getPersistentStoragePath('resources');
-    const filePath = path.join(baseDir, sanitizedFilename);
+    const candidatePaths: string[] = [
+      // 1. Explicit PERSISTENT_STORAGE_DIR environment variable
+      process.env.PERSISTENT_STORAGE_DIR ? path.join(process.env.PERSISTENT_STORAGE_DIR, 'resources', sanitizedFilename) : null,
+      // 2. Direct 1-level parent (standard local / standard hosting)
+      path.join(process.cwd(), '..', 'honworth-storage', 'resources', sanitizedFilename),
+      // 3. 2-level parent (Hostinger domains/domain.com/public_html layout)
+      path.join(process.cwd(), '..', '..', 'honworth-storage', 'resources', sanitizedFilename),
+      // 4. 3-level parent (deep nested layout)
+      path.join(process.cwd(), '..', '..', '..', 'honworth-storage', 'resources', sanitizedFilename),
+      // 5. Explicit Hostinger user root path
+      path.join('/home/u321533764/honworth-storage/resources', sanitizedFilename),
+      // 6. Historical public/resources in current working directory
+      path.join(process.cwd(), 'public', 'resources', sanitizedFilename),
+      // 7. Historical public/resources in parent directory
+      path.join(process.cwd(), '..', 'public', 'resources', sanitizedFilename),
+    ].filter((p): p is string => Boolean(p));
 
-    // Verify file exists and read its stats
-    try {
-      await fs.access(filePath);
-    } catch {
+    let validFilePath: string | null = null;
+    for (const candidate of candidatePaths) {
+      try {
+        await fs.access(candidate);
+        validFilePath = candidate;
+        break;
+      } catch {
+        // Continue to next candidate
+      }
+    }
+
+    if (!validFilePath) {
       return new NextResponse('File wasn\'t available on site', { status: 404 });
     }
 
-    const fileBuffer = await fs.readFile(filePath);
-    const fileStats = await fs.stat(filePath);
+    const fileBuffer = await fs.readFile(validFilePath);
+    const fileStats = await fs.stat(validFilePath);
 
     // Serve the file dynamically
     return new NextResponse(fileBuffer, {
