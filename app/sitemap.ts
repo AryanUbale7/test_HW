@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getAllPostSlugs } from '@/lib/queries/posts';
 import { getAllGlossarySlugs } from '@/lib/queries/glossary';
+import { KNOWLEDGE_PILLARS } from '@/lib/data/knowledgeHub';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://honworth.in';
@@ -23,9 +24,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
+  // Knowledge Hub Pillar pages
+  const pillarUrls = KNOWLEDGE_PILLARS.map((pillar) => ({
+    url: `${baseUrl}/knowledge-hub/${pillar.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
   // Static pages
   const staticUrls = [
     { url: `${baseUrl}/`, lastModified: new Date(), changeFrequency: 'daily' as const, priority: 1.0 },
+    { url: `${baseUrl}/knowledge-hub`, lastModified: new Date(), changeFrequency: 'daily' as const, priority: 0.9 },
     { url: `${baseUrl}/my-story`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8 },
     { url: `${baseUrl}/how-i-work`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
     { url: `${baseUrl}/wealth-creation`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
@@ -41,5 +51,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/disclaimer`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.3 },
   ];
 
-  return [...staticUrls, ...postUrls, ...glossaryUrls];
+  return [...staticUrls, ...postUrls, ...glossaryUrls, ...pillarUrls];
 }
