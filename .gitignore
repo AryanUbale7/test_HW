@@ -41,5 +41,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# uploads
-/public/uploads/
+# archives & scratch
+*.tar.gz
+/scratch/
+/temp_extract/
